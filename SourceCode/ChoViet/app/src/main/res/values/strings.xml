@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">ChoViet</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- signin -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="signin">Sign In</string>
+    <string name="not_have_acc">Not have an account?Sign up here.</string>
+
+
+    <!-- signup -->
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="retype_pass">Retype password</string>
+    <string name="birthday">Birthday</string>
+    <string name="have_acc">Already have an account?Sign in here</string>
+
+    <!-- Toast -->
+    <string name="please_enter_signin">Please enter username and password</string>
+    <string name="wrong_signin">Invalid username or password</string>
+    <string name="please_enter_all">Please enter all fields</string>
+    <string name="pass_not_match">Password not match</string>
+    <string name="please_enter_email">Please enter your email</string>
+    <string name="invalid_email">Your email is invalid</string>
+    <string name="please_enter_title">Please enter title task</string>
+
+    <string name="edt_hint">Type here</string>
+    <string name="no_date">No date</string>
+    <string name="done">Done</string>
+    <string name="not_done">Not done</string>
+
+    <!-- forgot pass -->
+    <string name="forgot_title">Please enter your registed email below:</string>
+    <string name="enter_email">Enter email</string>
+    <string name="back">Back</string>
+    <string name="submit">Submit</string>
+
+    <!-- menu -->
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="cart">Cart</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+
+</resources>

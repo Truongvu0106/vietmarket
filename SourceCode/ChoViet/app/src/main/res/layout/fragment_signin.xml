@@ -1,0 +1,132 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_signin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_medium"
+    android:background="@color/textColorWhite"
+    android:orientation="vertical"
+    android:weightSum="4">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+        <ImageView
+            android:layout_width="@dimen/icon_size_huge"
+            android:layout_height="@dimen/icon_size_huge"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/padding_big"
+            android:src="@drawable/logo"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_weight="2.5"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_big"
+        android:layout_marginRight="@dimen/margin_big"
+        android:orientation="vertical" >
+        <edu.hust.truongvu.choviet.customview.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textSize="@dimen/text_size_small"
+            android:textAllCaps="true"
+            android:textColor="@color/colorGray"/>
+        <edu.hust.truongvu.choviet.customview.MyEditText
+            android:id="@+id/signin_username"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/padding_big"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/text_size_medium" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginBottom="@dimen/margin_medium"/>
+
+        <edu.hust.truongvu.choviet.customview.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:textAllCaps="true"
+            android:textColor="@color/colorGray"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <edu.hust.truongvu.choviet.customview.MyEditText
+                android:id="@+id/signin_password"
+                android:singleLine="true"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:inputType="textPassword"
+                android:padding="@dimen/padding_big"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/text_size_medium" />
+            <edu.hust.truongvu.choviet.customview.MyTextView
+                android:id="@+id/forgot_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="@dimen/padding_small"
+                android:text="@string/forgot_pass"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/text_size_small" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginBottom="@dimen/margin_large"/>
+        <edu.hust.truongvu.choviet.customview.MyButton
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edt_height_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@color/colorSecond"
+            android:padding="3dp"
+            android:text="@string/signin"
+            android:textColor="@color/textColorWhite"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold" />
+        <edu.hust.truongvu.choviet.customview.MyTextView
+            android:id="@+id/createAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_medium"
+            android:text="@string/not_have_acc"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/text_size_small" />
+    </LinearLayout>
+
+
+</LinearLayout>
