@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.fragment;
+package edu.hust.truongvu.choviet.signup;
 
 
 import android.app.DatePickerDialog;
@@ -24,11 +24,12 @@ import edu.hust.truongvu.choviet.customview.MyEditText;
 import edu.hust.truongvu.choviet.customview.MyTextView;
 import edu.hust.truongvu.choviet.customview.MyToast;
 import edu.hust.truongvu.choviet.helper.Utils;
+import edu.hust.truongvu.choviet.signin.SigninFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SignupFragment extends Fragment implements View.OnClickListener{
+public class SignupFragment extends Fragment implements SignupView, View.OnClickListener{
 
 
     public static View view;
@@ -38,6 +39,8 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     LinearLayout root;
     private Animation animation;
     private static FragmentManager fragmentManager;
+
+    private SignupPresenterImp signupPresenterImp;
     public SignupFragment() {
         // Required empty public constructor
     }
@@ -53,16 +56,16 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_signup, container, false);
-        root = (LinearLayout) view.findViewById(R.id.signup_layout);
-        username = (MyEditText) view.findViewById(R.id.signup_username);
-        email = (MyEditText) view.findViewById(R.id.signup_email);
-        password = (MyEditText) view.findViewById(R.id.signup_password);
-        retypePass = (MyEditText) view.findViewById(R.id.retype_pass);
-        birthday = (MyEditText) view.findViewById(R.id.birth_day);
-        alreadyUser = (MyTextView) view.findViewById(R.id.already_user);
-        signUp = (MyButton) view.findViewById(R.id.signUpBtn);
+        root = view.findViewById(R.id.signup_layout);
+        username = view.findViewById(R.id.signup_username);
+        email =  view.findViewById(R.id.signup_email);
+        password =  view.findViewById(R.id.signup_password);
+        retypePass =  view.findViewById(R.id.retype_pass);
+        birthday = view.findViewById(R.id.birth_day);
+        alreadyUser = view.findViewById(R.id.already_user);
+        signUp = view.findViewById(R.id.signUpBtn);
 
-
+        signupPresenterImp = new SignupPresenterImp(getContext(), this);
 
         alreadyUser.setOnClickListener(this);
         signUp.setOnClickListener(this);
@@ -79,12 +82,14 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         final Calendar calendar = Calendar.getInstance();
         switch (view.getId()){
             case R.id.already_user:
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
-                        .replace(R.id.start_container, new SigninFragment(), Utils.SIGNIN_FRAGMENT).commit();
+                navigateToSignin();
                 break;
             case R.id.signUpBtn:
-                checkValid();
+                String getUserName = username.getText().toString();
+                String getEmail = email.getText().toString();
+                String getPass = password.getText().toString();
+                String getRetype = retypePass.getText().toString();
+                signupPresenterImp.signup(getUserName, getEmail, getPass, getRetype);
                 break;
             case R.id.birth_day:
                 new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
@@ -98,30 +103,21 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
-    private void checkValid(){
-        String getUserName = username.getText().toString();
-        String getEmail = email.getText().toString();
-        String getPass = password.getText().toString();
-        String getRetype = retypePass.getText().toString();
-
-        // Pattern match for email id
-        Pattern p = Pattern.compile(Utils.REG_EX);
-        Matcher m = p.matcher(getEmail);
-
-        if (getUserName.equals("")||getEmail.equals("")||getPass.equals("")||getRetype.equals("")
-                ||getUserName.length()==0||getEmail.length()==0||getPass.length()==0||getRetype.length()==0){
-            new MyToast().Show_Toast(getActivity(), view, getString(R.string.please_enter_all));
-            root.startAnimation(animation);
-        }else if (!getPass.equals(getRetype)) {
-            new MyToast().Show_Toast(getActivity(), view, getString(R.string.pass_not_match));
-            root.startAnimation(animation);
-        }else if (!m.find()){
-            new MyToast().Show_Toast(getActivity(), view, getString(R.string.invalid_email));
-            root.startAnimation(animation);
-        }else {
-            Toast.makeText(getContext(), "Signup successful!", Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onSuccess() {
+        Toast.makeText(getContext(), getString(R.string.signup_successful), Toast.LENGTH_SHORT).show();
+        navigateToSignin();
     }
 
+    @Override
+    public void onError(String error) {
+        new MyToast().Show_Toast(getActivity(), view, error);
+        root.startAnimation(animation);
+    }
+
+    private void navigateToSignin(){
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                .replace(R.id.start_container, new SigninFragment(), Utils.SIGNIN_FRAGMENT).commit();
+    }
 }

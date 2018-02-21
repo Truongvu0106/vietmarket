@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.fragment.SigninFragment;
+import edu.hust.truongvu.choviet.signin.SigninFragment;
 import edu.hust.truongvu.choviet.helper.Utils;
 
 public class StartActivity extends AppCompatActivity {

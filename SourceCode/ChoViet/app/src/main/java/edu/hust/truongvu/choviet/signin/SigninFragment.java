@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.fragment;
+package edu.hust.truongvu.choviet.signin;
 
 
 import android.content.Intent;
@@ -18,12 +18,14 @@ import edu.hust.truongvu.choviet.customview.MyButton;
 import edu.hust.truongvu.choviet.customview.MyEditText;
 import edu.hust.truongvu.choviet.customview.MyTextView;
 import edu.hust.truongvu.choviet.customview.MyToast;
+import edu.hust.truongvu.choviet.fragment.ForgotPassFragment;
+import edu.hust.truongvu.choviet.signup.SignupFragment;
 import edu.hust.truongvu.choviet.helper.Utils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SigninFragment extends Fragment implements View.OnClickListener{
+public class SigninFragment extends Fragment implements SigninView, View.OnClickListener{
 
 
     MyEditText username, password;
@@ -33,6 +35,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
     private Animation animation;
     private static View view;
     private FragmentManager fragmentManager;
+    private SigninPresenterImp signinPresenterImp;
 
     public SigninFragment() {
         // Required empty public constructor
@@ -49,12 +52,12 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_signin, container, false);
-        root = (LinearLayout) view.findViewById(R.id.root_signin);
-        username = (MyEditText) view.findViewById(R.id.signin_username);
-        password = (MyEditText) view.findViewById(R.id.signin_password);
-        signup = (MyTextView) view.findViewById(R.id.createAccount);
-        forgotPass = (MyTextView) view.findViewById(R.id.forgot_password);
-        signin = (MyButton) view.findViewById(R.id.loginBtn);
+        root = view.findViewById(R.id.root_signin);
+        username = view.findViewById(R.id.signin_username);
+        password = view.findViewById(R.id.signin_password);
+        signup = view.findViewById(R.id.createAccount);
+        forgotPass = view.findViewById(R.id.forgot_password);
+        signin = view.findViewById(R.id.loginBtn);
 
         signup.setOnClickListener(this);
         forgotPass.setOnClickListener(this);
@@ -62,43 +65,47 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
         fragmentManager = getActivity().getSupportFragmentManager();
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
+        signinPresenterImp = new SigninPresenterImp(getContext(),this);
         return view;
-    }
-
-    private void checkValidation(){
-        String name = username.getText().toString();
-        String pass = password.getText().toString();
-
-        if (name.equals("") || pass.equals("") || name.length() == 0 || pass.length() == 0){
-            new MyToast().Show_Toast(getActivity(), view, getString(R.string.please_enter_signin));
-            root.startAnimation(animation);
-        }else if (!name.equals("t") || !pass.equals("1")){
-            new MyToast().Show_Toast(getActivity(), view, getString(R.string.wrong_signin));
-            root.startAnimation(animation);
-        }else {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-        }
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.forgot_password:
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
-                        .replace(R.id.start_container, new ForgotPassFragment(), Utils.FORGOTPASS_FRAGMENT).commit();
+                navigate(new ForgotPassFragment(), Utils.FORGOTPASS_FRAGMENT);
                 break;
             case R.id.createAccount:
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
-                        .replace(R.id.start_container, new SignupFragment(), Utils.SIGNUP_FRAGMENT).commit();
+                navigate(new SignupFragment(), Utils.SIGNUP_FRAGMENT);
                 break;
             case R.id.loginBtn:
-                checkValidation();
+                String name = username.getText().toString();
+                String pass = password.getText().toString();
+                signinPresenterImp.signin(name, pass);
                 break;
         }
     }
 
+    @Override
+    public void onSuccess() {
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onError(String error) {
+        new MyToast().Show_Toast(getActivity(), view, error);
+        root.startAnimation(animation);
+    }
+
+    private void navigate(Fragment fragment, String tag){
+        if (fragment == null){
+            return;
+        }else {
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                    .replace(R.id.start_container, fragment, tag).commit();
+        }
+
+    }
 }

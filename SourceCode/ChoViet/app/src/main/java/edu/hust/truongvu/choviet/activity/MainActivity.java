@@ -1,30 +1,19 @@
 package edu.hust.truongvu.choviet.activity;
 
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.fragment.CartFragment;
 import edu.hust.truongvu.choviet.fragment.CategoryFragment;
-import edu.hust.truongvu.choviet.fragment.HomeFragment;
+import edu.hust.truongvu.choviet.home.HomeFragment;
 import edu.hust.truongvu.choviet.fragment.NotificationFragment;
 import edu.hust.truongvu.choviet.fragment.ProfileFragment;
 

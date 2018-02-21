@@ -26,6 +26,7 @@
     <string name="please_enter_email">Please enter your email</string>
     <string name="invalid_email">Your email is invalid</string>
     <string name="please_enter_title">Please enter title task</string>
+    <string name="signup_successful">Signup Successful</string>
 
     <string name="edt_hint">Type here</string>
     <string name="no_date">No date</string>
@@ -44,5 +45,16 @@
     <string name="cart">Cart</string>
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
+
+    <!-- home -->
+    <string name="store">Store</string>
+    <string name="discount">Discount</string>
+    <string name="promotion">Promotion</string>
+    <string name="popular_search">Popular searchs</string>
+    <string name="brand">Brand</string>
+    <string name="more">More</string>
+    <string name="highlights_store">Highlights stores</string>
+    <string name="highlights_products">Highlights products</string>
+    <string name="suggest_products">Suggest products</string>
 
 </resources>

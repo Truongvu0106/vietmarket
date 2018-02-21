@@ -20,6 +20,7 @@ import edu.hust.truongvu.choviet.customview.MyButton;
 import edu.hust.truongvu.choviet.customview.MyEditText;
 import edu.hust.truongvu.choviet.customview.MyToast;
 import edu.hust.truongvu.choviet.helper.Utils;
+import edu.hust.truongvu.choviet.signin.SigninFragment;
 
 /**
  * A simple {@link Fragment} subclass.
