@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.fragment;
+package edu.hust.truongvu.choviet.category;
 
 
 import android.os.Bundle;
@@ -17,6 +17,11 @@ public class CategoryFragment extends Fragment {
 
     public CategoryFragment() {
         // Required empty public constructor
+    }
+
+    public static CategoryFragment newInstance(){
+        CategoryFragment fragment = new CategoryFragment();
+        return fragment;
     }
 
 

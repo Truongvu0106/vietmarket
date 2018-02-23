@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_medium"
-    android:background="@color/textColorWhite"
+    android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="4">
     <RelativeLayout
@@ -48,7 +48,7 @@
             android:gravity="center_vertical"
             android:inputType="textEmailAddress"
             android:padding="@dimen/padding_big"
-            android:textColor="@color/textColorBlack"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_medium" />
 
         <View
@@ -82,7 +82,7 @@
                 android:gravity="center_vertical"
                 android:inputType="textPassword"
                 android:padding="@dimen/padding_big"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
             <edu.hust.truongvu.choviet.customview.MyTextView
                 android:id="@+id/forgot_password"
@@ -110,7 +110,7 @@
             android:background="@color/colorSecond"
             android:padding="3dp"
             android:text="@string/signin"
-            android:textColor="@color/textColorWhite"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />

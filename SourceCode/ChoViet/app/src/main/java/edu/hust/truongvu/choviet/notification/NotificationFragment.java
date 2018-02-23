@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.fragment;
+package edu.hust.truongvu.choviet.notification;
 
 
 import android.os.Bundle;
@@ -19,6 +19,10 @@ public class NotificationFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static NotificationFragment newInstance(){
+        NotificationFragment fragment = new NotificationFragment();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

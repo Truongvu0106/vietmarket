@@ -5,4 +5,10 @@ package edu.hust.truongvu.choviet.home;
  */
 
 public interface HomePresenter {
+    void initBanner();
+    void initListBrand();
+    void initListSearch();
+    void initListStore();
+    void initListProduct();
+    void initListSuggest();
 }

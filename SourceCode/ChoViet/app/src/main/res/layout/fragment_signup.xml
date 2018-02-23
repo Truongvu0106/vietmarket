@@ -8,7 +8,7 @@
         android:id="@+id/signup_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/textColorWhite"
+        android:background="@color/white"
         android:orientation="vertical"
         android:padding="@dimen/padding_medium"
         android:weightSum="4">
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/signup"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_big" />
 
             <ImageView
@@ -65,7 +65,7 @@
                 android:inputType="textCapWords"
                 android:padding="@dimen/padding_big"
                 android:singleLine="true"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
 
             <View
@@ -92,7 +92,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/padding_big"
                 android:singleLine="true"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
 
             <View
@@ -120,7 +120,7 @@
                 android:inputType="textPassword"
                 android:padding="@dimen/padding_big"
                 android:singleLine="true"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
 
             <View
@@ -148,7 +148,7 @@
                 android:inputType="textPassword"
                 android:padding="@dimen/padding_big"
                 android:singleLine="true"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
 
             <View
@@ -178,7 +178,7 @@
                 android:focusable="false"
                 android:padding="@dimen/padding_big"
                 android:singleLine="true"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_medium" />
             <View
                 android:layout_width="match_parent"
@@ -195,7 +195,7 @@
                 android:padding="@dimen/padding_big"
                 android:text="@string/signup"
                 android:textAllCaps="false"
-                android:textColor="@color/textColorWhite"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_medium"
                 android:textStyle="bold" />
 

@@ -9,8 +9,8 @@
     <color name="colorGrayLight">#F8F8FA</color>
     <color name="grayicon">#898989</color>
 
-    <color name="textColorBlack">#000000</color>
-    <color name="textColorWhite">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 
     <color name="titleMustTask">#f16666</color>
     <color name="titleNeedTask">#4ce183</color>

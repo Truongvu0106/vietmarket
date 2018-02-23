@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@color/textColorWhite"
+            android:background="@color/white"
             android:layout_weight="1">
             <com.daimajia.slider.library.Indicators.PagerIndicator
                 android:id="@+id/custom_indicator"
@@ -43,8 +43,9 @@
             android:layout_marginTop="@dimen/margin_small"
             android:paddingLeft="@dimen/padding_big"
             android:paddingRight="@dimen/padding_big"
-            android:background="@color/textColorWhite">
+            android:background="@color/white">
             <RelativeLayout
+                android:id="@+id/btn_store"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -60,12 +61,13 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_1"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/textColorBlack"
+                    android:textColor="@color/black"
                     android:text="@string/store"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/btn_discount"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -81,31 +83,39 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_2"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/textColorBlack"
+                    android:textColor="@color/black"
                     android:text="@string/discount"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
+
             <RelativeLayout
+                android:id="@+id/btn_promotion"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
                 android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/image_3"
                     android:layout_width="@dimen/icon_size_big"
                     android:layout_height="@dimen/icon_size_big"
-                    android:padding="@dimen/padding_small"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/promotion"/>
+                    android:padding="@dimen/padding_small"
+                    android:src="@drawable/promotion" />
+
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_3"
-                    android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/textColorBlack"
+                    android:layout_centerHorizontal="true"
                     android:text="@string/promotion"
-                    android:layout_centerHorizontal="true"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/btn_category"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -121,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_4"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/textColorBlack"
+                    android:textColor="@color/black"
                     android:text="@string/category"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
@@ -130,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/textColorWhite"
+            android:background="@color/white"
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -146,6 +156,7 @@
                     android:text="@string/popular_search"/>
             </RelativeLayout>
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_popular_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -155,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/textColorWhite"
+            android:background="@color/white"
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -169,30 +180,9 @@
                     android:textAllCaps="true"
                     android:textColor="@color/colorSecondDark"
                     android:text="@string/brand"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="@dimen/padding_medium"
-                    android:paddingBottom="@dimen/padding_medium"
-                    android:paddingLeft="@dimen/padding_big"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/margin_small"
-                    android:background="@drawable/bg_color">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/textColorWhite"
-                        android:text="@string/more"/>
-                    <ImageView
-                        android:layout_width="@dimen/icon_size_medium"
-                        android:layout_height="@dimen/icon_size_small"
-                        android:padding="@dimen/padding_tiny"
-                        android:src="@drawable/next"/>
-                </LinearLayout>
             </RelativeLayout>
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/mylist_brand"
+                android:id="@+id/list_brand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -202,7 +192,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/textColorWhite"
+            android:background="@color/white"
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -215,8 +205,9 @@
                     android:layout_marginLeft="@dimen/margin_small"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSecondDark"
-                    android:text="@string/brand"/>
+                    android:text="@string/highlights_store"/>
                 <LinearLayout
+                    android:id="@+id/more_highlight_store"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -229,7 +220,7 @@
                     <edu.hust.truongvu.choviet.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/textColorWhite"
+                        android:textColor="@color/white"
                         android:text="@string/more"/>
                     <ImageView
                         android:layout_width="@dimen/icon_size_medium"
@@ -239,6 +230,81 @@
                 </LinearLayout>
             </RelativeLayout>
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_highlight_store"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium">
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_medium"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorSecondDark"
+                    android:text="@string/highlights_products"/>
+                <LinearLayout
+                    android:id="@+id/more_highlight_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_medium"
+                    android:paddingBottom="@dimen/padding_medium"
+                    android:paddingLeft="@dimen/padding_big"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:background="@drawable/bg_color">
+                    <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="@string/more"/>
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:padding="@dimen/padding_tiny"
+                        android:src="@drawable/next"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_hightlight_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium">
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_medium"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorSecondDark"
+                    android:text="@string/suggest_products"/>
+            </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_suggest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

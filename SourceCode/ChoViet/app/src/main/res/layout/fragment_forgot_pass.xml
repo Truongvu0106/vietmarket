@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hust.truongvu.todoapp.fragment.ForgotPassFragment">
+    tools:context="fragment.ForgotPassFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,10 +15,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_title"
-            android:textColor="@color/textColorBlack"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_medium"
             android:layout_marginBottom="@dimen/margin_big"/>
-        <hust.truongvu.todoapp.customview.MyEditText
+        <edu.hust.truongvu.choviet.customview.MyEditText
             android:id="@+id/enter_email"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edt_height_medium"
@@ -30,7 +30,7 @@
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="@dimen/margin_medium">
-            <hust.truongvu.todoapp.customview.MyButton
+            <edu.hust.truongvu.choviet.customview.MyButton
                 android:id="@+id/back"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -41,8 +41,8 @@
                 android:background="@color/colorSecond"
                 android:padding="@dimen/padding_small"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/textColorWhite"/>
-            <hust.truongvu.todoapp.customview.MyButton
+                android:textColor="@color/white"/>
+            <edu.hust.truongvu.choviet.customview.MyButton
                 android:id="@+id/submit"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -53,7 +53,7 @@
                 android:background="@color/colorSecondDark"
                 android:padding="@dimen/padding_small"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/textColorWhite"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 
