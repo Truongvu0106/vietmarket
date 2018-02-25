@@ -66,6 +66,15 @@ public class HomePresenterImp implements HomePresenter {
     @Override
     public void initListStore() {
         ArrayList<Store> listStore = new ArrayList<>();
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.hp, "HP Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.asus, "Asus Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.canon, "Canon Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.hp, "HP Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.asus, "Asus Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.canon, "Canon Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Store", "abcdefghij"));
+        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.hp, "HP Store", "abcdefghij"));
         homeView.loadListHighlightStore(listStore);
     }
 
@@ -89,6 +98,17 @@ public class HomePresenterImp implements HomePresenter {
     @Override
     public void initListSuggest() {
         ArrayList<Product> listProduct = new ArrayList<>();
+        listProduct.add(new Product(0, "giày dép", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "quần áo", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "áo khoác", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "máy tính", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "điện thoại", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "laptop", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "máy ảnh", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "tai nghe", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "chuột", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "bàn phím", R.drawable.giaydep, 20000, 25, false, 4));
+        listProduct.add(new Product(0, "xe máy", R.drawable.giaydep, 20000, 25, false, 4));
         homeView.loadListSuggest(listProduct);
     }
 }

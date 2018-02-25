@@ -33,7 +33,8 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
     private HomePresenterImp homePresenterImp;
     private SliderLayout mSliderLayout;
 
-    private RecyclerView mListPopularSearch, mListBrand, mListHighlightProduct;
+    private RecyclerView mListPopularSearch, mListBrand, mListHighlightProduct,
+            mListHighlightStore, mListSuggest;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,11 +55,15 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
         mListPopularSearch = view.findViewById(R.id.list_popular_search);
         mListBrand = view.findViewById(R.id.list_brand);
         mListHighlightProduct = view.findViewById(R.id.list_hightlight_product);
+        mListHighlightStore = view.findViewById(R.id.list_highlight_store);
+        mListSuggest = view.findViewById(R.id.list_suggest);
         homePresenterImp = new HomePresenterImp(this);
         homePresenterImp.initBanner();
         homePresenterImp.initListSearch();
         homePresenterImp.initListBrand();
         homePresenterImp.initListProduct();
+        homePresenterImp.initListStore();
+        homePresenterImp.initListSuggest();
         return view;
     }
 
@@ -105,7 +110,14 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadListHighlightStore(ArrayList<Store> listStore) {
-
+        StoreAdapter adapter = new StoreAdapter(listStore, new StoreAdapter.StoreListener() {
+            @Override
+            public void onStoreResult(Store store) {
+                Toast.makeText(getContext(), store.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        mListHighlightStore.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        mListHighlightStore.setAdapter(adapter);
     }
 
     @Override
@@ -127,7 +139,19 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadListSuggest(ArrayList<Product> listProduct) {
+        ProductAdapter adapter = new ProductAdapter(listProduct, new ProductAdapter.ProductListener() {
+            @Override
+            public void onProductResult(Product product) {
+                Toast.makeText(getContext(), product.getName(), Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onLikeClick() {
+                Toast.makeText(getContext(), "Like Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mListSuggest.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+        mListSuggest.setAdapter(adapter);
     }
 
 

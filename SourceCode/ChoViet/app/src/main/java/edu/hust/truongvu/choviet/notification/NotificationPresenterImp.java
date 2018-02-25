@@ -16,6 +16,10 @@ public class NotificationPresenterImp implements NotificationPresenter {
     @Override
     public void initNotification() {
         ArrayList<MyNotification> listNotification = new ArrayList<>();
+        listNotification.add(new MyNotification(0, 0, "Cập nhật phiên bản", "Phiên bản hiện tại là mới nhất"));
+        listNotification.add(new MyNotification(0, 1, "Sản phẩm mới", "Gian hàng bạn theo dõi đã cập nhật sản phẩm mới"));
+        listNotification.add(new MyNotification(0, 2, "Khuyến mại 20%", "Tưng bừng đón Tết nguyên đán"));
+        listNotification.add(new MyNotification(0, 3, "Cập nhật đơn hàng", "Đơn hàng đã được giao thành công"));
         notificationView.loadNotify(listNotification);
     }
 }

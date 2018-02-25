@@ -18,8 +18,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:elevation="@dimen/margin_big"
-        app:itemIconTint="@color/colorSecond"
-        app:itemTextColor="@color/grayicon"
+        app:itemIconTint="@color/bg_navigation"
+        app:itemTextColor="@color/bg_navigation"
         app:menu="@menu/navigation_menu" />
 
 </RelativeLayout>

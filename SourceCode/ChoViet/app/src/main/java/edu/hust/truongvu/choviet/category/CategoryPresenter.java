@@ -5,5 +5,6 @@ package edu.hust.truongvu.choviet.category;
  */
 
 public interface CategoryPresenter {
-    void initCategory();
+    void initParentCategory();
+    void initChildCategory(int id);
 }
