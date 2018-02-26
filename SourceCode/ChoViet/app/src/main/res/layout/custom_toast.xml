@@ -7,7 +7,7 @@
     android:background="@android:color/transparent"
     android:padding="@dimen/padding_medium" >
 
-    <edu.hust.truongvu.choviet.customview.MyTextView
+    <TextView
         android:id="@+id/toast_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:drawablePadding="@dimen/padding_big"
         android:gravity="center_vertical"
         android:padding="@dimen/padding_big"
-        android:textColor="@color/titleMustTask"
+        android:textColor="@color/colorRed"
         android:text="abcdef"
         android:textSize="@dimen/text_size_medium" />
 

@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,6 +26,7 @@ import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Store;
+import edu.hust.truongvu.choviet.product.ProductActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -126,6 +128,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
             @Override
             public void onProductResult(Product product) {
                 Toast.makeText(getContext(), product.getName(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ProductActivity.class));
             }
 
             @Override
@@ -143,6 +146,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
             @Override
             public void onProductResult(Product product) {
                 Toast.makeText(getContext(), product.getName(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ProductActivity.class));
             }
 
             @Override
