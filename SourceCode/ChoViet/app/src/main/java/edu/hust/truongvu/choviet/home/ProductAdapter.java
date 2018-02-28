@@ -1,6 +1,5 @@
 package edu.hust.truongvu.choviet.home;
 
-import android.annotation.SuppressLint;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,14 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * Created by truon on 2/23/2018.
@@ -65,7 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             imgLikeFill = itemView.findViewById(R.id.img_like_fill);
             tvDiscount = itemView.findViewById(R.id.tv_discount);
             tvName = itemView.findViewById(R.id.name_product);
-            tvOldPrice = itemView.findViewById(R.id.old_price_product);
+            tvOldPrice = itemView.findViewById(R.id.olđ_price_product);
             tvNewPrice = itemView.findViewById(R.id.new_price_product);
             layoutDiscount = itemView.findViewById(R.id.layout_discount);
             layoutLike = itemView.findViewById(R.id.btn_like);

@@ -55,7 +55,7 @@
                 android:textColor="@color/black"
                 android:text="Giày dép cao cấp"/>
             <edu.hust.truongvu.choviet.customview.MyTextView
-                android:id="@+id/old_price_product"
+                android:id="@+id/olđ_price_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_small"

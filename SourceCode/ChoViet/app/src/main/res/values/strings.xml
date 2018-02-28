@@ -84,4 +84,19 @@
     <string name="shop_now">Shop now</string>
     <string name="rate_now">Rate now</string>
 
+    <!-- cart -->
+    <string name="carry_out_payment">Carry out payment</string>
+    <string name="summary">Summary:</string>
+
+    <!-- payment -->
+    <string-array name="payment_step">
+        <item>Address</item>
+        <item>Shipping</item>
+        <item>Payment</item>
+        <item>Confirm</item>
+    </string-array>
+    <string name="next_shipping">Next : Shipping</string>
+    <string name="next_payment">Next : Payment</string>
+    <string name="next_confirm">Next : Confirm</string>
+    <string name="confirm">Confirm</string>
 </resources>

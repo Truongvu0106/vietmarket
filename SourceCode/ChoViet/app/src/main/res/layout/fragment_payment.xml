@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.hust.truongvu.choviet.payment.PaymentFragment">
+    <RelativeLayout
+        android:id="@+id/btn_payment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_size"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorRed">
+        <edu.hust.truongvu.choviet.customview.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:text="@string/next_confirm"/>
+    </RelativeLayout>
+
+</RelativeLayout>
