@@ -6,15 +6,16 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import edu.hust.truongvu.choviet.category.CategoryFragment;
 import edu.hust.truongvu.choviet.notification.NotificationFragment;
-import edu.hust.truongvu.choviet.fragment.ProfileFragment;
+import edu.hust.truongvu.choviet.profile.ProfileFragment;
 import edu.hust.truongvu.choviet.home.HomeFragment;
+import edu.hust.truongvu.choviet.shop.ListShopFragment;
 
 /**
  * Created by truon on 2/22/2018.
  */
 
 public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 5;
     public MainViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -27,8 +28,10 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return CategoryFragment.newInstance();
             case 2:
-                return NotificationFragment.newInstance();
+                return ListShopFragment.getInstance();
             case 3:
+                return NotificationFragment.newInstance();
+            case 4:
                 return ProfileFragment.newInstance();
             default:
                 return null;

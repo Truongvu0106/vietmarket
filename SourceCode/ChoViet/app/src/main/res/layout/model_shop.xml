@@ -31,7 +31,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/bg_white">
+                        android:background="@drawable/bg_white_border">
                         <ImageView
                             android:id="@+id/img_avatar_store"
                             android:layout_width="50dp"

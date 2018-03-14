@@ -32,6 +32,8 @@ public class ChildCategoryAdapter extends RecyclerView.Adapter<ChildCategoryAdap
     @Override
     public ChildCategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_category_child, null);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
         ChildCategoryHolder holder = new ChildCategoryHolder(view);
         return holder;
     }

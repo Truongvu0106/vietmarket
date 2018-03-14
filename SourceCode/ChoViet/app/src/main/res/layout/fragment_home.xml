@@ -63,7 +63,7 @@
                     android:layout_below="@+id/image_1"
                     android:textSize="@dimen/text_size_small"
                     android:textColor="@color/black"
-                    android:text="@string/store"
+                    android:text="@string/shop"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 

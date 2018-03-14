@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.hust.truongvu.choviet.activity.MainActivity">
+    tools:context="edu.hust.truongvu.choviet.main.MainActivity">
     <include
         android:id="@+id/toolbar_main"
         layout="@layout/toolbar_main"/>

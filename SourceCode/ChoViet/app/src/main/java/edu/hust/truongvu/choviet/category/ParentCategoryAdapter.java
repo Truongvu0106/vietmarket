@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.category;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
+import edu.hust.truongvu.choviet.main.MainActivity;
 
 /**
  * Created by truon on 2/24/2018.
@@ -20,15 +24,19 @@ public class ParentCategoryAdapter extends RecyclerView.Adapter<ParentCategoryAd
     public interface ParentCategoryListener{
         void onResult(ParentCategory category);
     }
+    private Context context;
     private ParentCategoryListener myListener;
     private ArrayList<ParentCategory> data;
-    public ParentCategoryAdapter(ArrayList<ParentCategory> data, ParentCategoryListener listener){
+    public ParentCategoryAdapter(Context context, ArrayList<ParentCategory> data, ParentCategoryListener listener){
+        this.context = context;
         this.data = data;
         this.myListener = listener;
     }
     @Override
     public ParentCategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_category_parent, null);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
         ParentCategoryHolder holder = new ParentCategoryHolder(view);
         return holder;
     }
@@ -53,7 +61,14 @@ public class ParentCategoryAdapter extends RecyclerView.Adapter<ParentCategoryAd
             name = itemView.findViewById(R.id.name_parent_category);
         }
         public void setContent(final ParentCategory category){
-            img.setImageResource(category.getImg());
+            Picasso.with(context)
+                    .load(category.getPath_img())
+                    .placeholder(R.drawable.loading)
+                    .error(R.drawable.error)
+                    .resize(150, 150)
+                    .centerCrop()
+                    .into(img);
+//            img.setImageResource(category.getImg());
             name.setText(category.getName());
 
             itemView.setOnClickListener(new View.OnClickListener() {

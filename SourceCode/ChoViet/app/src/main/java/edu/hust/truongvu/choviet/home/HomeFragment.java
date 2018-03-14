@@ -25,7 +25,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Store;
+import edu.hust.truongvu.choviet.entity.Shop;
 import edu.hust.truongvu.choviet.product.ProductActivity;
 
 /**
@@ -111,10 +111,10 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
     }
 
     @Override
-    public void loadListHighlightStore(ArrayList<Store> listStore) {
-        StoreAdapter adapter = new StoreAdapter(listStore, new StoreAdapter.StoreListener() {
+    public void loadListHighlightStore(ArrayList<Shop> listShop) {
+        HighlightStoreAdapter adapter = new HighlightStoreAdapter(listShop, new HighlightStoreAdapter.StoreListener() {
             @Override
-            public void onStoreResult(Store store) {
+            public void onStoreResult(Shop store) {
                 Toast.makeText(getContext(), store.getName(), Toast.LENGTH_SHORT).show();
             }
         });

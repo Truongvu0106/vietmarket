@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.activity.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.

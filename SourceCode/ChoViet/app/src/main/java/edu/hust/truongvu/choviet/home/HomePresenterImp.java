@@ -7,7 +7,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Store;
+import edu.hust.truongvu.choviet.entity.Shop;
 
 /**
  * Created by truon on 2/21/2018.
@@ -65,17 +65,17 @@ public class HomePresenterImp implements HomePresenter {
 
     @Override
     public void initListStore() {
-        ArrayList<Store> listStore = new ArrayList<>();
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.hp, "HP Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.asus, "Asus Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.canon, "Canon Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.hp, "HP Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.asus, "Asus Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.canon, "Canon Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Store", "abcdefghij"));
-        listStore.add(new Store(0, R.drawable.giaydep, R.drawable.hp, "HP Store", "abcdefghij"));
-        homeView.loadListHighlightStore(listStore);
+        ArrayList<Shop> listShop = new ArrayList<>();
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.hp, "HP Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.asus, "Asus Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.canon, "Canon Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.hp, "HP Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.asus, "Asus Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.canon, "Canon Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Shop", "abcdefghij"));
+        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.hp, "HP Shop", "abcdefghij"));
+        homeView.loadListHighlightStore(listShop);
     }
 
     @Override

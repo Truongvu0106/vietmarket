@@ -15,9 +15,10 @@
         <ImageView
             android:id="@+id/close_activity"
             android:layout_width="@dimen/icon_size_big"
-            android:layout_height="@dimen/icon_size_big"
+            android:layout_height="@dimen/icon_size_medium"
             android:src="@drawable/close"
-            android:padding="@dimen/padding_huge"/>
+            android:layout_marginTop="@dimen/margin_small"
+            android:padding="@dimen/padding_medium"/>
         <FrameLayout
             android:id="@+id/start_container"
             android:layout_width="match_parent"

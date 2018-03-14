@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.customview.MyButton;
@@ -33,9 +32,9 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
 
 
     public static View view;
-    MyEditText username, email, password, retypePass, birthday;
-    MyTextView alreadyUser;
-    MyButton signUp;
+    EditText fullName, email, password, retypePass;
+    View alreadyUser;
+    View signUp;
     LinearLayout root;
     private Animation animation;
     private static FragmentManager fragmentManager;
@@ -57,11 +56,10 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_signup, container, false);
         root = view.findViewById(R.id.signup_layout);
-        username = view.findViewById(R.id.signup_username);
+        fullName = view.findViewById(R.id.signup_username);
         email =  view.findViewById(R.id.signup_email);
         password =  view.findViewById(R.id.signup_password);
         retypePass =  view.findViewById(R.id.retype_pass);
-        birthday = view.findViewById(R.id.birth_day);
         alreadyUser = view.findViewById(R.id.already_user);
         signUp = view.findViewById(R.id.signUpBtn);
 
@@ -69,7 +67,6 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
 
         alreadyUser.setOnClickListener(this);
         signUp.setOnClickListener(this);
-        birthday.setOnClickListener(this);
 
 
         fragmentManager = getActivity().getSupportFragmentManager();
@@ -85,19 +82,12 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
                 navigateToSignin();
                 break;
             case R.id.signUpBtn:
-                String getUserName = username.getText().toString();
+                String getUserName = fullName.getText().toString();
                 String getEmail = email.getText().toString();
                 String getPass = password.getText().toString();
                 String getRetype = retypePass.getText().toString();
                 signupPresenterImp.signup(getUserName, getEmail, getPass, getRetype);
                 break;
-            case R.id.birth_day:
-                new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        birthday.setText(i2 + "/" + (i1 + 1) + "/" + i);
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             default:
                 break;
         }

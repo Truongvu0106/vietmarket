@@ -6,10 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.facebook.CallbackManager;
 
 import java.util.ArrayList;
 
@@ -45,21 +48,23 @@ public class CategoryFragment extends Fragment implements CategoryView{
         mListParentCategory = view.findViewById(R.id.list_parent_category);
         mListChildCategory = view.findViewById(R.id.list_child_category);
         categoryPresenterImp = new CategoryPresenterImp(this);
+        categoryPresenterImp.initChildCategory();
+        categoryPresenterImp.initChildCategoryById(1);
         categoryPresenterImp.initParentCategory();
         return view;
     }
 
     @Override
     public void loadParentCategory(ArrayList<ParentCategory> parentCategories) {
-        parentAdapter = new ParentCategoryAdapter(parentCategories, new ParentCategoryAdapter.ParentCategoryListener() {
+        Log.e("Data Parent", parentCategories.size() + "");
+        parentAdapter = new ParentCategoryAdapter(getContext(), parentCategories, new ParentCategoryAdapter.ParentCategoryListener() {
             @Override
             public void onResult(ParentCategory category) {
-                categoryPresenterImp.initChildCategory(category.getId());
+                categoryPresenterImp.initChildCategoryById(category.getId());
             }
         });
         mListParentCategory.setLayoutManager(new LinearLayoutManager(getContext()));
         mListParentCategory.setAdapter(parentAdapter);
-        categoryPresenterImp.initChildCategory(0);
     }
 
     @Override
@@ -72,5 +77,10 @@ public class CategoryFragment extends Fragment implements CategoryView{
         });
         mListChildCategory.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         mListChildCategory.setAdapter(childAdapter);
+    }
+
+    @Override
+    public void onLoadError(String err) {
+
     }
 }

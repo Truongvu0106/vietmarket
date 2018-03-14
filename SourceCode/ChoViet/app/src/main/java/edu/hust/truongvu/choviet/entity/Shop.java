@@ -4,14 +4,14 @@ package edu.hust.truongvu.choviet.entity;
  * Created by truon on 2/22/2018.
  */
 
-public class Store {
+public class Shop {
     private int id;
     private int imgCover;
     private int imgAvatar;
     private String name;
     private String slogan;
 
-    public Store(int id, int imgCover, int imgAvatar, String name, String slogan) {
+    public Shop(int id, int imgCover, int imgAvatar, String name, String slogan) {
         this.id = id;
         this.imgCover = imgCover;
         this.imgAvatar = imgAvatar;

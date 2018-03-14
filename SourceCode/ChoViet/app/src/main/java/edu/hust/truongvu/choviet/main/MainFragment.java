@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.fragment;
+package edu.hust.truongvu.choviet.main;
 
 
 import android.os.Bundle;
@@ -55,11 +55,14 @@ public class MainFragment extends Fragment {
                     case R.id.nav_category:
                         viewPager.setCurrentItem(1);
                         break;
-                    case R.id.nav_notification:
+                    case R.id.nav_market:
                         viewPager.setCurrentItem(2);
                         break;
-                    case R.id.nav_profile:
+                    case R.id.nav_notification:
                         viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.nav_profile:
+                        viewPager.setCurrentItem(4);
                         break;
                     default:
                         viewPager.setCurrentItem(0);

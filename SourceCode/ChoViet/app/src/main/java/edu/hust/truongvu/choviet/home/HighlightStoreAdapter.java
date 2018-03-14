@@ -10,35 +10,35 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Store;
+import edu.hust.truongvu.choviet.entity.Shop;
 
 /**
  * Created by truon on 2/23/2018.
  */
 
-public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreHolder>{
+public class HighlightStoreAdapter extends RecyclerView.Adapter<HighlightStoreAdapter.HighlightStoreHolder>{
     public interface StoreListener{
-        void onStoreResult(Store store);
+        void onStoreResult(Shop shop);
     }
     private StoreListener myListener;
-    private ArrayList<Store> data;
+    private ArrayList<Shop> data;
 
-    public StoreAdapter(ArrayList<Store> data, StoreListener listener){
+    public HighlightStoreAdapter(ArrayList<Shop> data, StoreListener listener){
         this.data = data;
         this.myListener = listener;
     }
 
     @Override
-    public StoreHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_store, null);
-        StoreHolder holder = new StoreHolder(view);
+    public HighlightStoreHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_shop, null);
+        HighlightStoreHolder holder = new HighlightStoreHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(StoreHolder holder, int position) {
-        Store store = data.get(position);
-        holder.setContent(store);
+    public void onBindViewHolder(HighlightStoreHolder holder, int position) {
+        Shop shop = data.get(position);
+        holder.setContent(shop);
     }
 
     @Override
@@ -47,10 +47,10 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreHolder>
     }
 
 
-    class StoreHolder extends RecyclerView.ViewHolder{
+    class HighlightStoreHolder extends RecyclerView.ViewHolder{
         private ImageView imgCover, imgAvatar;
         private TextView name, slogan;
-        public StoreHolder(View itemView) {
+        public HighlightStoreHolder(View itemView) {
             super(itemView);
             imgCover = itemView.findViewById(R.id.img_cover_store);
             imgAvatar = itemView.findViewById(R.id.img_avatar_store);
@@ -58,16 +58,16 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreHolder>
             slogan = itemView.findViewById(R.id.slogan_store);
         }
 
-        public void setContent(final Store store){
-            imgAvatar.setImageResource(store.getImgAvatar());
-            imgCover.setImageResource(store.getImgCover());
-            name.setText(store.getName());
-            slogan.setText(store.getSlogan());
+        public void setContent(final Shop shop){
+            imgAvatar.setImageResource(shop.getImgAvatar());
+            imgCover.setImageResource(shop.getImgCover());
+            name.setText(shop.getName());
+            slogan.setText(shop.getSlogan());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    myListener.onStoreResult(store);
+                    myListener.onStoreResult(shop);
                 }
             });
         }
