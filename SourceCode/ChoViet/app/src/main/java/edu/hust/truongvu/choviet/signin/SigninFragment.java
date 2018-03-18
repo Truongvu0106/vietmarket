@@ -132,26 +132,27 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
                 signinPresenterImp.signin(name, pass);
                 break;
             case R.id.login_with_facebook:
-                LoginManager.getInstance()
-                        .logInWithReadPermissions(SigninFragment.this, Arrays.asList("public_profile", "email"));
+//                LoginManager.getInstance()
+//                        .logInWithReadPermissions(SigninFragment.this, Arrays.asList("public_profile", "email"));
                 break;
             case R.id.login_with_gplus:
-                Log.e("Click", "click");
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, SIGN_IN_GOOGLE);
+//                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+//                startActivityForResult(signInIntent, SIGN_IN_GOOGLE);
                 break;
         }
     }
 
     @Override
     public void onSuccess() {
+        Log.e("login", "success");
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onError(String error) {
-        new MyToast().Show_Toast(getActivity(), view, error);
+        new MyToast().Show_Toast(getActivity(), view, getString(R.string.wrong_signin));
+        Log.e("error_signin", error);
         root.startAnimation(animation);
     }
 

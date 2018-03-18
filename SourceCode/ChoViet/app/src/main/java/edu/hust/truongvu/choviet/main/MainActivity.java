@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.main;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+//        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
@@ -49,12 +51,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cart.setOnClickListener(this);
 
         mainPresenterImp = new MainPresenterImp(this);
-        mainPresenterImp.loadInfoFacebook();
-        GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("GOOGLE");
-        if (account != null){
-            mainPresenterImp.loadInfoGoogle(account);
-        }
+//        mainPresenterImp.loadInfoFacebook();
+//        GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("GOOGLE");
+//        if (account != null){
+//            mainPresenterImp.loadInfoGoogle(account);
+//        }
+        Toast.makeText(this, "Welcome " + getUserPreference(this), Toast.LENGTH_SHORT).show();
 
+    }
+
+    private String getUserPreference(Context context){
+        SharedPreferences userPreference = context.getSharedPreferences("mylogin", MODE_PRIVATE);
+        String username = userPreference.getString("username", "");
+        return username;
     }
 
 

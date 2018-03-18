@@ -6,12 +6,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
 import edu.hust.truongvu.choviet.helper.JsonHelper;
-import edu.hust.truongvu.choviet.utils.MyPath;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 2/22/2018.
@@ -19,8 +21,8 @@ import edu.hust.truongvu.choviet.utils.MyPath;
 
 public class CategoryPresenterImp implements CategoryPresenter {
 
-    public static String PATH_PARENT = MyPath.PATH_REAL_DEVICE + "categoryparent.php";
-    public static String PATH_CHILD = MyPath.PATH_REAL_DEVICE + "categorychild.php";
+    public static String PATH_PARENT = Constants.Path.PATH_GENNYMOTION + "categoryparent.php";
+    public static String PATH_CHILD = Constants.Path.PATH_GENNYMOTION + "categorychild.php";
     public static ArrayList<ChildCategory> childCategories;
     private CategoryView categoryView;
     public CategoryPresenterImp(CategoryView categoryView){
@@ -33,9 +35,15 @@ public class CategoryPresenterImp implements CategoryPresenter {
     public void initParentCategory() {
         try {
             ArrayList<ParentCategory> parentCategories = new ArrayList<>();
-            JsonHelper jsonHelper = new JsonHelper(PATH_PARENT);
+            List<HashMap<String, String>> attrs = new ArrayList<>();
+            HashMap<String, String> attrFunction = new HashMap<>();
+            attrFunction.put("func", "getListParentCategory");
+            attrs.add(attrFunction);
+
+            JsonHelper jsonHelper = new JsonHelper(PATH_PARENT, attrs);
             jsonHelper.execute();
             String results = jsonHelper.get();
+            Log.e("parent_category", results);
             JSONObject jsonObject = new JSONObject(results);
             JSONArray jsonCategories = jsonObject.getJSONArray("parent_category");
             JSONArray myJsonArr = jsonCategories.getJSONArray(0);
@@ -61,8 +69,11 @@ public class CategoryPresenterImp implements CategoryPresenter {
     @Override
     public void initChildCategory() {
         childCategories = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunction = new HashMap<>();
+        attrFunction.put("func", "getListChildCategory");
         try {
-            JsonHelper jsonHelper = new JsonHelper(PATH_CHILD);
+            JsonHelper jsonHelper = new JsonHelper(PATH_CHILD, attrs);
             jsonHelper.execute();
             String results = jsonHelper.get();
             JSONObject jsonObject = new JSONObject(results);

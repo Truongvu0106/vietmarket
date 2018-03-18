@@ -34,6 +34,7 @@
     <string name="invalid_email">Your email is invalid</string>
     <string name="please_enter_title">Please enter title task</string>
     <string name="signup_successful">Signup Successful</string>
+    <string name="signup_false">Signup False</string>
 
     <string name="edt_hint">Type here</string>
     <string name="no_date">No date</string>

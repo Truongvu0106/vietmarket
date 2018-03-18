@@ -19,11 +19,12 @@ public class SigninPresenterImp implements SigninPresenter {
 
     @Override
     public void signin(String username, String password) {
-        if (username.matches("1") && password.matches("1")){
-            signinView.onSuccess();
-        }else if (username.equals("") || password.equals("") ||
+        SigninModel signinModel = new SigninModel(context);
+        if (username.trim().equals("") || password.trim().equals("") ||
                 username.length() == 0 || password.length() == 0){
             signinView.onError(context.getString(R.string.please_enter_signin));
+        }else if (signinModel.checkLogin(username, password)){
+            signinView.onSuccess();
         }else {
             signinView.onError(context.getString(R.string.wrong_signin));
         }

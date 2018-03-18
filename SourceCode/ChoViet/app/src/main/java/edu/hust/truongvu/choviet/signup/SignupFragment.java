@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,7 +102,8 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
 
     @Override
     public void onError(String error) {
-        new MyToast().Show_Toast(getActivity(), view, error);
+        Log.e("signup_error", error);
+        Toast.makeText(getContext(), getString(R.string.signup_false), Toast.LENGTH_SHORT).show();
         root.startAnimation(animation);
     }
 

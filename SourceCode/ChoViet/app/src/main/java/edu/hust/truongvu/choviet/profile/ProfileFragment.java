@@ -39,13 +39,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         initView(view);
-        if (MainActivity.IMAGE.matches("")){
-            if (MainActivity.URI_IMAGE != null){
-                loadGoogle(MainActivity.URI_IMAGE, MainActivity.USER_NAME);
-            }
-        }else {
-            loadFacebook(MainActivity.IMAGE, MainActivity.USER_NAME);
-        }
+//        if (MainActivity.IMAGE.matches("")){
+//            if (MainActivity.URI_IMAGE != null){
+//                loadGoogle(MainActivity.URI_IMAGE, MainActivity.USER_NAME);
+//            }
+//        }else {
+//            loadFacebook(MainActivity.IMAGE, MainActivity.USER_NAME);
+//        }
 
         return view;
     }
