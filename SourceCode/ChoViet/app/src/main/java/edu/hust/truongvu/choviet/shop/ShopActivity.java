@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.home.ProductAdapter;
+import edu.hust.truongvu.choviet.product.ProductAdapter;
 
 public class ShopActivity extends AppCompatActivity implements ShopView{
 
@@ -27,7 +27,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
 
     @Override
     public void loadListProduct(ArrayList<Product> listProduct) {
-        adapter = new ProductAdapter(listProduct, new ProductAdapter.ProductListener() {
+        adapter = new ProductAdapter(ShopActivity.this, listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
 

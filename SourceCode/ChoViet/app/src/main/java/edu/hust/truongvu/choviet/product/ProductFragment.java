@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,6 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.ProductRate;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
-import edu.hust.truongvu.choviet.home.ProductAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +53,11 @@ public class ProductFragment extends Fragment implements ProductView{
         mListSuggest = view.findViewById(R.id.list_maybe_like);
 
         productPresenterImp = new ProductPresenterImp(this);
-        productPresenterImp.initListImage();
+        if (product != null){
+            productPresenterImp.initListImage(product.getImgs());
+        }else if (product == null){
+            Log.e("details_product", "null");
+        }
         productPresenterImp.initListProduct();
         productPresenterImp.initListRate();
         productPresenterImp.initListSuggest();
@@ -61,7 +65,7 @@ public class ProductFragment extends Fragment implements ProductView{
     }
 
     @Override
-    public void loadListImage(ArrayList<Integer> list) {
+    public void loadListImage(ArrayList<String> list) {
         adapter = new ImgProductPagerAdapter(getFragmentManager(), list);
         mViewPager.setAdapter(adapter);
         mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
@@ -93,7 +97,7 @@ public class ProductFragment extends Fragment implements ProductView{
 
     @Override
     public void loadListProduct(ArrayList<Product> listProduct) {
-        ProductAdapter adapter = new ProductAdapter(listProduct, new ProductAdapter.ProductListener() {
+        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
 
@@ -110,7 +114,7 @@ public class ProductFragment extends Fragment implements ProductView{
 
     @Override
     public void loadListSuggest(ArrayList<Product> listSuggest) {
-        ProductAdapter adapter = new ProductAdapter(listSuggest, new ProductAdapter.ProductListener() {
+        ProductAdapter adapter = new ProductAdapter(getContext(), listSuggest, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
 

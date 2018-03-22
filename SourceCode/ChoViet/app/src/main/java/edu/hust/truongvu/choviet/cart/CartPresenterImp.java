@@ -18,8 +18,7 @@ public class CartPresenterImp implements CartPresenter {
     @Override
     public void initListItemCart() {
         ArrayList<Product> list = new ArrayList<>();
-        list.add(new Product(0, "Điện thoại iphone", R.drawable.iphone, 20000, 25, false, 4));
-        list.add(new Product(0, "Giầy Sneaker", R.drawable.giaydep, 20000, 25, false, 4));
+
         cartView.loadCartItem(list);
     }
 }

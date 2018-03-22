@@ -27,6 +27,8 @@ import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
 import edu.hust.truongvu.choviet.product.ProductActivity;
+import edu.hust.truongvu.choviet.product.ProductAdapter;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,7 +95,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadBrand(ArrayList<Brand> listBrand) {
-        BrandAdapter adapter = new BrandAdapter(listBrand, new BrandAdapter.BrandListener() {
+        BrandAdapter adapter = new BrandAdapter(getContext(), listBrand, new BrandAdapter.BrandListener() {
             @Override
             public void onClick(Brand brand) {
                 Toast.makeText(getContext(), brand.getName(), Toast.LENGTH_SHORT).show();
@@ -112,7 +114,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadListHighlightStore(ArrayList<Shop> listShop) {
-        HighlightStoreAdapter adapter = new HighlightStoreAdapter(listShop, new HighlightStoreAdapter.StoreListener() {
+        HighlightShopAdapter adapter = new HighlightShopAdapter(getContext(), listShop, new HighlightShopAdapter.StoreListener() {
             @Override
             public void onStoreResult(Shop store) {
                 Toast.makeText(getContext(), store.getName(), Toast.LENGTH_SHORT).show();
@@ -124,11 +126,13 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadListHighlightProduct(ArrayList<Product> listProduct) {
-        ProductAdapter adapter = new ProductAdapter(listProduct, new ProductAdapter.ProductListener() {
+        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Toast.makeText(getContext(), product.getName(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), ProductActivity.class));
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra(Constants.MyTag.PRODUCT_ID, product.getId());
+                startActivity(intent);
             }
 
             @Override
@@ -142,11 +146,13 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadListSuggest(ArrayList<Product> listProduct) {
-        ProductAdapter adapter = new ProductAdapter(listProduct, new ProductAdapter.ProductListener() {
+        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Toast.makeText(getContext(), product.getName(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), ProductActivity.class));
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra(Constants.MyTag.PRODUCT_ID, product.getId());
+                startActivity(intent);
             }
 
             @Override

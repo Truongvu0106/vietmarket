@@ -17,7 +17,8 @@ public class ListShopPresenterImp implements ListShopPresenter{
 
     @Override
     public void initListShop() {
-        ArrayList<Shop> data = new ArrayList<>();
+        ShopModel model = new ShopModel();
+        ArrayList<Shop> data = model.getAllShop();
         listShopView.loadListShop(data);
     }
 }

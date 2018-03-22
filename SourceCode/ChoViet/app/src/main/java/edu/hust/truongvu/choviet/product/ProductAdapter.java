@@ -1,5 +1,6 @@
-package edu.hust.truongvu.choviet.home;
+package edu.hust.truongvu.choviet.product;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,9 +11,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 2/23/2018.
@@ -25,10 +29,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     }
     private ProductListener myListener;
     private ArrayList<Product> data;
+    private Context context;
 
-    public ProductAdapter(ArrayList<Product> data, ProductListener listener){
+    public ProductAdapter(Context context, ArrayList<Product> data, ProductListener listener){
         this.data = data;
         this.myListener = listener;
+        this.context = context;
     }
 
     @Override
@@ -71,14 +77,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         }
 
         public void setContent(final Product product){
+            tvName.setText(product.getName());
+
             int discount = product.getDiscount();
             long oldPrice = product.getPrice();
-            long newPrice = oldPrice - oldPrice*discount/100;
-            imgProduct.setImageResource(product.getImg());
-            tvDiscount.setText("-" + discount + "%");
-            tvName.setText(product.getName());
-            tvOldPrice.setText(oldPrice + "đ");
-            tvNewPrice.setText(newPrice + "đ");
+            if (discount == 0){
+                layoutDiscount.setVisibility(View.GONE);
+                tvOldPrice.setText("");
+                tvNewPrice.setText(oldPrice+"đ");
+            }else {
+                layoutDiscount.setVisibility(View.VISIBLE);
+                tvDiscount.setText("-"+discount+"%");
+                long newPrice = oldPrice - oldPrice*discount/100;
+                tvOldPrice.setText(oldPrice+"đ");
+                tvNewPrice.setText(newPrice+"đ");
+            }
+            MyHelper.setImagePicasso(context, imgProduct, Constants.Path.MY_PATH + product.getImgs().get(0).trim());
             ratingBar.setRating(product.getRate());
 
             itemView.setOnClickListener(new View.OnClickListener() {

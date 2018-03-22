@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 public class ProductActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    ProductPresenterImp productPresenterImp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,10 @@ public class ProductActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar_product);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        loadFragment(ProductFragment.getInstance(null));
+        productPresenterImp = new ProductPresenterImp();
+
+        int id = getIntent().getIntExtra(Constants.MyTag.PRODUCT_ID, 0);
+        loadFragment(ProductFragment.getInstance(productPresenterImp.getProductById(id)));
     }
 
     private void loadFragment(Fragment fragment) {

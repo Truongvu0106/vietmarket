@@ -47,7 +47,10 @@
 		}
 		
 		$query = "INSERT INTO user (fullname, username, password, id_type) 
-		VALUES ('".$fullname."','".$username."','".$password."','".$typeid."')"; 
+		VALUES ('".$fullname."',
+				'".$username."',
+				'".$password."',
+				'".$typeid."')"; 
 		if (mysqli_query($conn, $query)) {
 			echo "{result : true}";
 		}else{

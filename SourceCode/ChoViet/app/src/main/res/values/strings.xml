@@ -111,4 +111,11 @@
 
     <!-- Shop -->
     <string name="follow">Follow</string>
+
+    <!-- Rate -->
+    <string name="rate_title">Title</string>
+    <string name="rate_content">Content</string>
+    <string name="cancel">Cancel</string>
+    <string name="please_add_star">Please add star</string>
+    <string name="please_write_title_rate">Please write title</string>
 </resources>

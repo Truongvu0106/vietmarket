@@ -21,7 +21,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
  */
 
 public class SignupModel {
-    public static final String PATH_SIGNUP = Constants.Path.PATH_GENNYMOTION + "user.php";
+    public static final String PATH_SIGNUP = Constants.Path.MY_PATH + "user.php";
     private Context context;
     public SignupModel(Context context){
         this.context = context;

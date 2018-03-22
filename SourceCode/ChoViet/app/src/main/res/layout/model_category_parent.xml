@@ -14,11 +14,19 @@
     <edu.hust.truongvu.choviet.customview.MyTextView
         android:id="@+id/name_parent_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/text_size_small"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_tiny"
         android:layout_marginTop="@dimen/margin_tiny"
         android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_tiny"
+        android:layout_marginRight="@dimen/margin_tiny"
         android:textColor="@color/black"
-        android:text="Thể thao"/>
+        android:text="Thiết bị văn phòng, Máy in"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/grayicon"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"/>
 </LinearLayout>

@@ -1,11 +1,16 @@
 package edu.hust.truongvu.choviet.product;
 
+import java.util.ArrayList;
+
+import edu.hust.truongvu.choviet.entity.Product;
+
 /**
  * Created by truon on 2/26/2018.
  */
 
 public interface ProductPresenter {
-    void initListImage();
+    Product getProductById(int id);
+    void initListImage(ArrayList<String> imgs);
     void initListRate();
     void initListProduct();
     void initListSuggest();

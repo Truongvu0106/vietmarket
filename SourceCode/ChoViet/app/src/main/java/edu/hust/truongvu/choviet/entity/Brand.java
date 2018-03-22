@@ -7,9 +7,9 @@ package edu.hust.truongvu.choviet.entity;
 public class Brand {
     private int id;
     private String name;
-    private int logo;
+    private String logo;
 
-    public Brand(int id, String name, int logo) {
+    public Brand(int id, String name, String logo) {
         this.id = id;
         this.name = name;
         this.logo = logo;
@@ -31,11 +31,11 @@ public class Brand {
         this.name = name;
     }
 
-    public int getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(int logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
     }
 }

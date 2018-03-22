@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.home.ProductAdapter;
 
 public class ListProductActivity extends AppCompatActivity implements ListProductView{
     private View btnFilter, btnSort;
@@ -31,7 +30,7 @@ public class ListProductActivity extends AppCompatActivity implements ListProduc
 
     @Override
     public void loadList(ArrayList<Product> listProduct) {
-        adapter = new ProductAdapter(listProduct, new ProductAdapter.ProductListener() {
+        adapter = new ProductAdapter(ListProductActivity.this, listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
 

@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class ImgProductPagerAdapter extends FragmentStatePagerAdapter {
 
-    private ArrayList<Integer> listImage;
-    public ImgProductPagerAdapter(FragmentManager fm, ArrayList<Integer> list) {
+    private ArrayList<String> listImage;
+    public ImgProductPagerAdapter(FragmentManager fm, ArrayList<String> list) {
         super(fm);
         this.listImage = list;
     }

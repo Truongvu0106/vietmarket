@@ -69,7 +69,7 @@ public class CategoryFragment extends Fragment implements CategoryView{
 
     @Override
     public void loadChildCategory(ArrayList<ChildCategory> childCategories) {
-        childAdapter = new ChildCategoryAdapter(childCategories, new ChildCategoryAdapter.ChildCategoryListener() {
+        childAdapter = new ChildCategoryAdapter(getContext(), childCategories, new ChildCategoryAdapter.ChildCategoryListener() {
             @Override
             public void onResult(ChildCategory category) {
                 Toast.makeText(getContext(), category.getName(), Toast.LENGTH_SHORT).show();

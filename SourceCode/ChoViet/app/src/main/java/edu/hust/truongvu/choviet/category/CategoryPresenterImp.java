@@ -21,8 +21,8 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class CategoryPresenterImp implements CategoryPresenter {
 
-    public static String PATH_PARENT = Constants.Path.PATH_GENNYMOTION + "categoryparent.php";
-    public static String PATH_CHILD = Constants.Path.PATH_GENNYMOTION + "categorychild.php";
+    public static String PATH_PARENT = Constants.Path.MY_PATH + "categoryparent.php";
+    public static String PATH_CHILD = Constants.Path.MY_PATH + "categorychild.php";
     public static ArrayList<ChildCategory> childCategories;
     private CategoryView categoryView;
     public CategoryPresenterImp(CategoryView categoryView){
@@ -52,6 +52,7 @@ public class CategoryPresenterImp implements CategoryPresenter {
                 String id = data.getString("id");
                 String name = data.getString("name");
                 String img = data.getString("image");
+                Log.e("path", img);
                 ParentCategory parentCategory = new ParentCategory(Integer.parseInt(id), name, R.drawable.cate_dodientu, img);
                 parentCategories.add(parentCategory);
             }

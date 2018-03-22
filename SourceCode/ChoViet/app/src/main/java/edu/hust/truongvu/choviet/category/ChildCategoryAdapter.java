@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.category;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 2/24/2018.
@@ -22,9 +27,11 @@ public class ChildCategoryAdapter extends RecyclerView.Adapter<ChildCategoryAdap
     public interface ChildCategoryListener{
         void onResult(ChildCategory category);
     }
+    private Context context;
     private ChildCategoryListener myListener;
     private ArrayList<ChildCategory> data;
-    public ChildCategoryAdapter(ArrayList<ChildCategory> data, ChildCategoryAdapter.ChildCategoryListener listener){
+    public ChildCategoryAdapter(Context context, ArrayList<ChildCategory> data, ChildCategoryAdapter.ChildCategoryListener listener){
+        this.context = context;
         this.data = data;
         this.myListener = listener;
     }
@@ -58,7 +65,14 @@ public class ChildCategoryAdapter extends RecyclerView.Adapter<ChildCategoryAdap
             name = itemView.findViewById(R.id.name_child_category);
         }
         public void setContent(final ChildCategory category){
-            img.setImageResource(category.getImg());
+//            Picasso.with(context)
+//                    .load(Constants.Path.MY_PATH + category.getPath_img().trim())
+//                    .placeholder(R.drawable.loading)
+//                    .error(R.drawable.error)
+//                    .resize(150, 150)
+//                    .centerCrop()
+//                    .into(img);
+            MyHelper.setImagePicasso(context, img, Constants.Path.MY_PATH + category.getPath_img().trim());
             name.setText(category.getName());
 
             itemView.setOnClickListener(new View.OnClickListener() {

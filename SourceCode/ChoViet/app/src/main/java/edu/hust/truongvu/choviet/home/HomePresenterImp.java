@@ -8,6 +8,8 @@ import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.product.ProductModel;
+import edu.hust.truongvu.choviet.shop.ShopModel;
 
 /**
  * Created by truon on 2/21/2018.
@@ -33,19 +35,8 @@ public class HomePresenterImp implements HomePresenter {
 
     @Override
     public void initListBrand() {
-        ArrayList<Brand> listBrand = new ArrayList<>();
-        listBrand.add(new Brand(0, "Canon", R.drawable.canon));
-        listBrand.add(new Brand(0, "Nikon", R.drawable.nikon));
-        listBrand.add(new Brand(0, "Hp", R.drawable.hp));
-        listBrand.add(new Brand(0, "Asus", R.drawable.asus));
-        listBrand.add(new Brand(0, "Canon", R.drawable.canon));
-        listBrand.add(new Brand(0, "Nikon", R.drawable.nikon));
-        listBrand.add(new Brand(0, "Hp", R.drawable.hp));
-        listBrand.add(new Brand(0, "Asus", R.drawable.asus));
-        listBrand.add(new Brand(0, "Canon", R.drawable.canon));
-        listBrand.add(new Brand(0, "Nikon", R.drawable.nikon));
-        listBrand.add(new Brand(0, "Hp", R.drawable.hp));
-        listBrand.add(new Brand(0, "Asus", R.drawable.asus));
+        BrandModel brandModel = new BrandModel();
+        ArrayList<Brand> listBrand = brandModel.getListBrand();
         homeView.loadBrand(listBrand);
     }
 
@@ -65,50 +56,21 @@ public class HomePresenterImp implements HomePresenter {
 
     @Override
     public void initListStore() {
-        ArrayList<Shop> listShop = new ArrayList<>();
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.hp, "HP Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.asus, "Asus Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.canon, "Canon Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.hp, "HP Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.asus, "Asus Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.canon, "Canon Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.nikon, "Nikon Shop", "abcdefghij"));
-        listShop.add(new Shop(0, R.drawable.giaydep, R.drawable.hp, "HP Shop", "abcdefghij"));
+        ShopModel model = new ShopModel();
+        ArrayList<Shop> listShop = model.getAllShop();
+
         homeView.loadListHighlightStore(listShop);
     }
 
     @Override
     public void initListProduct() {
-        ArrayList<Product> listProduct = new ArrayList<>();
-        listProduct.add(new Product(0, "giày dép", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "quần áo", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "áo khoác", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "máy tính", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "điện thoại", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "laptop", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "máy ảnh", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "tai nghe", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "chuột", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "bàn phím", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "xe máy", R.drawable.giaydep, 20000, 25, false, 4));
-        homeView.loadListHighlightProduct(listProduct);
+        ProductModel model = new ProductModel();
+        homeView.loadListHighlightProduct(model.getAllProduct());
     }
 
     @Override
     public void initListSuggest() {
-        ArrayList<Product> listProduct = new ArrayList<>();
-        listProduct.add(new Product(0, "giày dép", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "quần áo", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "áo khoác", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "máy tính", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "điện thoại", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "laptop", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "máy ảnh", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "tai nghe", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "chuột", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "bàn phím", R.drawable.giaydep, 20000, 25, false, 4));
-        listProduct.add(new Product(0, "xe máy", R.drawable.giaydep, 20000, 25, false, 4));
-        homeView.loadListSuggest(listProduct);
+        ProductModel model = new ProductModel();
+        homeView.loadListSuggest(model.getAllProduct());
     }
 }

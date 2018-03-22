@@ -81,7 +81,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
         public void setContent(final Product product){
             long oldPrice = product.getPrice();
             long newPrice = oldPrice - oldPrice*product.getDiscount()/100;
-            imgProduct.setImageResource(product.getImg());
+            imgProduct.setImageResource(R.drawable.giaydep);
             tvNameProduct.setText(product.getName());
             tvOldPrice.setText(oldPrice + "đ");
             tvNewPrice.setText(newPrice + "đ");

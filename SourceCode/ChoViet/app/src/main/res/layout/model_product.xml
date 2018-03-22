@@ -48,12 +48,12 @@
             <edu.hust.truongvu.choviet.customview.MyTextView
                 android:id="@+id/name_product"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:padding="@dimen/padding_medium"
                 android:textSize="@dimen/text_size_small"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:textColor="@color/black"
-                android:text="Giày dép cao cấp"/>
+                android:text="Giày dép cao cấp aaaaaaaaaaa"/>
             <edu.hust.truongvu.choviet.customview.MyTextView
                 android:id="@+id/olđ_price_product"
                 android:layout_width="wrap_content"

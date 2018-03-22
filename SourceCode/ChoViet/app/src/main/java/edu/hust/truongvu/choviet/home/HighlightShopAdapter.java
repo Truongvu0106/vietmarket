@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.home;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +12,23 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 2/23/2018.
  */
 
-public class HighlightStoreAdapter extends RecyclerView.Adapter<HighlightStoreAdapter.HighlightStoreHolder>{
+public class HighlightShopAdapter extends RecyclerView.Adapter<HighlightShopAdapter.HighlightStoreHolder>{
     public interface StoreListener{
         void onStoreResult(Shop shop);
     }
     private StoreListener myListener;
     private ArrayList<Shop> data;
+    private Context context;
 
-    public HighlightStoreAdapter(ArrayList<Shop> data, StoreListener listener){
+    public HighlightShopAdapter(Context context, ArrayList<Shop> data, StoreListener listener){
+        this.context = context;
         this.data = data;
         this.myListener = listener;
     }
@@ -59,11 +64,10 @@ public class HighlightStoreAdapter extends RecyclerView.Adapter<HighlightStoreAd
         }
 
         public void setContent(final Shop shop){
-            imgAvatar.setImageResource(shop.getImgAvatar());
-            imgCover.setImageResource(shop.getImgCover());
+            MyHelper.setImagePicasso(context, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());
+            MyHelper.setImagePicasso(context, imgCover, Constants.Path.MY_PATH + shop.getImgCover());
             name.setText(shop.getName());
             slogan.setText(shop.getSlogan());
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

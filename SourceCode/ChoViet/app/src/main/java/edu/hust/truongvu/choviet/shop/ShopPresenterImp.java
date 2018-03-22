@@ -3,6 +3,7 @@ package edu.hust.truongvu.choviet.shop;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.product.ProductModel;
 
 /**
  * Created by truon on 3/8/2018.
@@ -16,7 +17,8 @@ public class ShopPresenterImp implements ShopPresenter {
 
     @Override
     public void initListProduct() {
-        ArrayList<Product> data = new ArrayList<>();
+        ProductModel model = new ProductModel();
+        ArrayList<Product> data = model.getAllProduct();
         shopView.loadListProduct(data);
     }
 }

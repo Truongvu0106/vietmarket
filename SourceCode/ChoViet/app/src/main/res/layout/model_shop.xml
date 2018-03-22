@@ -51,7 +51,7 @@
                     <edu.hust.truongvu.choviet.customview.MyTextView
                         android:id="@+id/slogan_store"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/padding_small"
                         android:layout_marginTop="@dimen/margin_small"

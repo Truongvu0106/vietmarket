@@ -20,7 +20,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
  */
 
 public class SigninModel {
-    public static final String PATH_SIGNIN = Constants.Path.PATH_GENNYMOTION + "user.php";
+    public static final String PATH_SIGNIN = Constants.Path.MY_PATH + "user.php";
     private Context context;
     public SigninModel(Context context){
         this.context = context;

@@ -9,19 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ImgProductFragment extends Fragment {
 
-    private int img;
+    private String img;
     private ImageView imageView;
     public ImgProductFragment() {
         // Required empty public constructor
     }
 
-    public static ImgProductFragment getInstance(int img){
+    public static ImgProductFragment getInstance(String img){
         ImgProductFragment fragment = new ImgProductFragment();
         fragment.img = img;
         return fragment;
@@ -34,7 +36,7 @@ public class ImgProductFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_img_product, container, false);
         imageView = view.findViewById(R.id.img_product);
-        imageView.setImageResource(img);
+        MyHelper.setImagePicasso(getContext(), imageView, Constants.Path.MY_PATH + img);
         return view;
     }
 

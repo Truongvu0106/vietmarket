@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.shop;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 3/7/2018.
@@ -24,8 +27,10 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
     }
     private ShopListener myListener;
     private ArrayList<Shop> data;
+    private Context context;
 
-    public ListShopAdapter(ArrayList<Shop> data, ShopListener listener){
+    public ListShopAdapter(Context context, ArrayList<Shop> data, ShopListener listener){
+        this.context = context;
         this.data = data;
         this.myListener = listener;
     }
@@ -67,9 +72,9 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
         }
 
         public void setContent(final Shop shop){
-            imgAvatar.setImageResource(shop.getImgAvatar());
-            imgCover.setImageResource(shop.getImgCover());
-            tvRate.setText(shop.getName());
+            MyHelper.setImagePicasso(context, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());
+            MyHelper.setImagePicasso(context, imgCover, Constants.Path.MY_PATH + shop.getImgCover());
+            tvRate.setText(shop.getRate() + "");
             tvSlogan.setText(shop.getSlogan());
 
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -44,7 +44,7 @@ public class ListShopFragment extends Fragment implements ListShopView{
 
     @Override
     public void loadListShop(ArrayList<Shop> listShop) {
-        adapter = new ListShopAdapter(listShop, new ListShopAdapter.ShopListener() {
+        adapter = new ListShopAdapter(getContext(), listShop, new ListShopAdapter.ShopListener() {
             @Override
             public void onResults(Shop shop) {
                 Intent intent = new Intent(getActivity(), ShopActivity.class);
