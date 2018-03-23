@@ -16,7 +16,8 @@ import edu.hust.truongvu.choviet.entity.User;
  * Created by truon on 3/22/2018.
  */
 
-public class RateProductDialog extends AlertDialog{
+public class RateProductDialog extends AlertDialog implements RatingBar.OnRatingBarChangeListener{
+
     public interface RateProductListener{
         void onRate(Rate rate);
     }
@@ -25,6 +26,7 @@ public class RateProductDialog extends AlertDialog{
     private RatingBar ratingBar;
     private TextView tvTitle, tvContent;
     private View btnCancel, btnRate;
+    private float star = 0;
     private User user;
     private int id_product;
 
@@ -46,6 +48,8 @@ public class RateProductDialog extends AlertDialog{
         btnCancel = findViewById(R.id.btn_cancel);
         btnRate = findViewById(R.id.btn_rate);
 
+        ratingBar.setOnRatingBarChangeListener(this);
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,13 +60,13 @@ public class RateProductDialog extends AlertDialog{
         btnRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ratingBar.getRating() == 0){
+                if (star == 0){
                     Toast.makeText(context, context.getString(R.string.please_add_star), Toast.LENGTH_SHORT).show();
                 } else if (tvTitle.getText().toString().trim().matches("")){
                     Toast.makeText(context, context.getString(R.string.please_write_title_rate), Toast.LENGTH_SHORT).show();
                 } else {
                     Rate rate = new Rate(id_product, user.getUsername(), tvTitle.getText().toString().trim(),
-                            tvContent.getText().toString(), ratingBar.getRating(), "");
+                            tvContent.getText().toString(), star, "");
                     myListener.onRate(rate);
                     dismiss();
                 }
@@ -71,5 +75,9 @@ public class RateProductDialog extends AlertDialog{
         });
     }
 
+    @Override
+    public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+        star = v;
+    }
 
 }

@@ -11,7 +11,7 @@ import edu.hust.truongvu.choviet.entity.Product;
 public interface ProductPresenter {
     Product getProductById(int id);
     void initListImage(ArrayList<String> imgs);
-    void initListRate();
+    void initListRate(String username, int id_product);
     void initListProduct();
     void initListSuggest();
 }

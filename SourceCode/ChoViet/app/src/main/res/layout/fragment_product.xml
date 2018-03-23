@@ -700,23 +700,50 @@
                     android:layout_marginTop="@dimen/margin_small">
 
                 </android.support.v7.widget.RecyclerView>
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_big"
-                    android:paddingBottom="@dimen/padding_big"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:layout_marginRight="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:background="@drawable/bg_border_color">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
-                        android:layout_width="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:id="@+id/btn_rate"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_medium"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:text="@string/rate_now"/>
-                </RelativeLayout>
+                        android:paddingTop="@dimen/padding_big"
+                        android:paddingBottom="@dimen/padding_big"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:background="@drawable/bg_border_color">
+                        <edu.hust.truongvu.choviet.customview.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_medium"
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:text="@string/rate_now"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/layout_disable_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/padding_big"
+                        android:paddingBottom="@dimen/padding_big"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_gray_dark">
+                        <edu.hust.truongvu.choviet.customview.MyTextView
+                            android:id="@+id/tv_disable_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_medium"
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/white"
+                            android:text="@string/already_rate"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

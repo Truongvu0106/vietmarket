@@ -19,7 +19,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
  */
 
 public class RateModel {
-    public static final String PATH_RATE = Constants.Path.MY_PATH + "product.php";
+    public static final String PATH_RATE = Constants.Path.MY_PATH + "rate.php";
 
     public boolean addRate(Rate rate){
         boolean flag = false;
@@ -60,7 +60,6 @@ public class RateModel {
                 flag = true;
             }else {
                 flag = false;
-                Log.e("error_sign_up", data);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -74,5 +73,45 @@ public class RateModel {
 
     public ArrayList<Rate> loadListRate(int id){
         return new ArrayList<>();
+    }
+
+    public boolean isRated(String username, int id_product){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "isRated");
+
+        HashMap<String, String> attrIdProduct = new HashMap<>();
+        attrIdProduct.put("id_product", id_product + "");
+
+        HashMap<String, String> attrUser = new HashMap<>();
+        attrUser.put("user_rate", username);
+
+
+
+        attrs.add(attrFucn);
+        attrs.add(attrIdProduct);
+        attrs.add(attrUser);
+
+        JsonHelper jsonHelper = new JsonHelper(PATH_RATE, attrs);
+        jsonHelper.execute();
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 }

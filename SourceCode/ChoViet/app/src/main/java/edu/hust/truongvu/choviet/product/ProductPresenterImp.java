@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.ProductRate;
+import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.rate.RateModel;
+import edu.hust.truongvu.choviet.signin.SigninModel;
 
 /**
  * Created by truon on 2/26/2018.
@@ -33,12 +36,16 @@ public class ProductPresenterImp implements ProductPresenter{
     }
 
     @Override
-    public void initListRate() {
+    public void initListRate(String username, int id_product) {
         ArrayList<ProductRate> listProductRate = new ArrayList<>();
         listProductRate.add(new ProductRate(0, R.drawable.avatar, "truongvu", 4.5f, "San pham tot", "26-2-2018"));
         listProductRate.add(new ProductRate(0, R.drawable.nikon, "bachkhoa", 4.8f, "San pham tot", "26-2-2018"));
         listProductRate.add(new ProductRate(0, R.drawable.giaydep, "hanoi", 4.8f, "San pham tot", "26-2-2018"));
+
         productView.loadListRate(listProductRate);
+
+        RateModel rateModel = new RateModel();
+        productView.setEnableRate(rateModel.isRated(username, id_product));
     }
 
     @Override
@@ -55,4 +62,5 @@ public class ProductPresenterImp implements ProductPresenter{
         ArrayList<Product> listProduct = productModel.getAllProduct();
         productView.loadListSuggest(listProduct);
     }
+
 }

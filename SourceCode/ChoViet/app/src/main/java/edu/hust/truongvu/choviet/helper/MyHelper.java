@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.helper;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -8,7 +10,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.signin.SigninModel;
 import edu.hust.truongvu.choviet.utils.Constants;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by truon on 3/21/2018.
@@ -58,5 +64,22 @@ public class MyHelper {
                 .resize(150, 150)
                 .centerCrop()
                 .into(imageView);
+    }
+
+    public static String getUserPreference(Context context){
+        SharedPreferences userPreference = context.getSharedPreferences("mylogin", MODE_PRIVATE);
+        String username = userPreference.getString("username", "");
+        return username;
+    }
+
+    public static User getCurrentUser(Context context){
+        SigninModel signinModel = new SigninModel();
+        User user = signinModel.getUserByUsername(getUserPreference(context));
+        if (user == null){
+            Log.e("user", "null");
+        }else {
+            Log.e("user", "not null");
+        }
+        return user;
     }
 }

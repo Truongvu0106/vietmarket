@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -22,6 +26,10 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class SigninModel {
     public static final String PATH_SIGNIN = Constants.Path.MY_PATH + "user.php";
     private Context context;
+    public SigninModel(){
+
+    }
+
     public SigninModel(Context context){
         this.context = context;
     }
@@ -68,5 +76,53 @@ public class SigninModel {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public User getUserByUsername(String username){
+        User user = null;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getUserByUsername");
+
+        HashMap<String, String> attrUsername = new HashMap<>();
+        attrUsername.put("username", username);
+
+        attrs.add(attrFunc);
+        attrs.add(attrUsername);
+
+        JsonHelper jsonHelper = new JsonHelper(PATH_SIGNIN, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("user");
+            JSONArray jsonArray = myJsonArr.getJSONArray(0);
+            JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+            String id = jsonObject1.getString("id");
+            String fullname = jsonObject1.getString("fullname");
+            String username1 = jsonObject1.getString("username");
+            String password = jsonObject1.getString("password");
+            String address = jsonObject1.getString("address");
+            String birthday = jsonObject1.getString("birthday");
+            String phone = jsonObject1.getString("phone");
+            String gender = jsonObject1.getString("gender");
+            String img_avatar = jsonObject1.getString("img_avatar");
+            String id_type = jsonObject1.getString("id_type");
+            String type_login = jsonObject1.getString("type_login");
+
+            user = new User(Integer.parseInt(id), fullname, username1, password, address, birthday, phone,
+                    Integer.parseInt(gender), img_avatar, Integer.parseInt(id_type), Integer.parseInt(type_login));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return user;
     }
 }

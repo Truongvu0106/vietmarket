@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.search.SearchActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainView{
@@ -56,15 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        if (account != null){
 //            mainPresenterImp.loadInfoGoogle(account);
 //        }
-        Toast.makeText(this, "Welcome " + getUserPreference(this), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Welcome " + MyHelper.getUserPreference(this), Toast.LENGTH_SHORT).show();
 
     }
 
-    private String getUserPreference(Context context){
-        SharedPreferences userPreference = context.getSharedPreferences("mylogin", MODE_PRIVATE);
-        String username = userPreference.getString("username", "");
-        return username;
-    }
+//    private String getUserPreference(Context context){
+//        SharedPreferences userPreference = context.getSharedPreferences("mylogin", MODE_PRIVATE);
+//        String username = userPreference.getString("username", "");
+//        return username;
+//    }
 
 
 

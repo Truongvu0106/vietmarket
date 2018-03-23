@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.product;
 
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 
@@ -18,17 +22,24 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.ProductRate;
+import edu.hust.truongvu.choviet.entity.Rate;
+import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
+import edu.hust.truongvu.choviet.rate.RateProductDialog;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProductFragment extends Fragment implements ProductView{
+public class ProductFragment extends Fragment implements ProductView, View.OnClickListener{
+    private String username;
     private ViewPager mViewPager;
     private ViewPagerIndicator mIndicator;
     private ImgProductPagerAdapter adapter;
     private ProductPresenterImp productPresenterImp;
     private RecyclerView mListRate, mListProduct, mListSuggest;
+    private View btnRate, layoutDisableRate;
+    TextView tvDisableRate;
     private Product product;
     public ProductFragment() {
         // Required empty public constructor
@@ -46,20 +57,25 @@ public class ProductFragment extends Fragment implements ProductView{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product, container, false);
+
+        username = MyHelper.getUserPreference(getContext());
+
         mViewPager = view.findViewById(R.id.img_pager);
         mIndicator = view.findViewById(R.id.img_indicator);
         mListRate = view.findViewById(R.id.list_rating);
         mListProduct = view.findViewById(R.id.list_another_product);
         mListSuggest = view.findViewById(R.id.list_maybe_like);
+        btnRate = view.findViewById(R.id.btn_rate);
+        layoutDisableRate = view.findViewById(R.id.layout_disable_rate);
+        tvDisableRate = view.findViewById(R.id.tv_disable_rate);
+
+        btnRate.setOnClickListener(this);
 
         productPresenterImp = new ProductPresenterImp(this);
-        if (product != null){
-            productPresenterImp.initListImage(product.getImgs());
-        }else if (product == null){
-            Log.e("details_product", "null");
-        }
+        productPresenterImp.initListImage(product.getImgs());
+
         productPresenterImp.initListProduct();
-        productPresenterImp.initListRate();
+        productPresenterImp.initListRate(username, product.getId());
         productPresenterImp.initListSuggest();
         return view;
     }
@@ -96,6 +112,27 @@ public class ProductFragment extends Fragment implements ProductView{
     }
 
     @Override
+    public void setEnableRate(boolean isRated) {
+        if (username.matches("")){
+            btnRate.setVisibility(View.GONE);
+            layoutDisableRate.setVisibility(View.VISIBLE);
+            tvDisableRate.setText(getContext().getString(R.string.login_to_rate));
+            return;
+        }
+
+        if (isRated){
+            btnRate.setVisibility(View.GONE);
+            layoutDisableRate.setVisibility(View.VISIBLE);
+            tvDisableRate.setText(getContext().getString(R.string.already_rate));
+            return;
+        }
+
+        btnRate.setVisibility(View.VISIBLE);
+        layoutDisableRate.setVisibility(View.GONE);
+
+    }
+
+    @Override
     public void loadListProduct(ArrayList<Product> listProduct) {
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
@@ -127,5 +164,36 @@ public class ProductFragment extends Fragment implements ProductView{
         });
         mListSuggest.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mListSuggest.setAdapter(adapter);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id){
+            case R.id.btn_rate:
+                rate();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void rate(){
+        User user = MyHelper.getCurrentUser(getContext());
+        if (user == null){
+            Toast.makeText(getContext(), getContext().getString(R.string.not_log_in), Toast.LENGTH_SHORT).show();
+        }else {
+            Log.e("rate", "click");
+            RateProductDialog rateDialog = new RateProductDialog(getContext(), product.getId(), user, new RateProductDialog.RateProductListener() {
+                @Override
+                public void onRate(Rate rate) {
+
+                }
+            });
+            rateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            rateDialog.show();
+        }
+
     }
 }

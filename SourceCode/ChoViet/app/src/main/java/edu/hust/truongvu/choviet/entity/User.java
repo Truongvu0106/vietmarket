@@ -12,11 +12,10 @@ public class User {
     private String username;
     private String password;
     private String address;
-    private Date birthday;
+    private String birthday;
     private String phone;
     private int gender;
-    private int avatar;
-    private int idShop;
+    private String avatar;
     private int idTypeUser;
     private int typeLogin;
 
@@ -25,8 +24,8 @@ public class User {
     }
 
     public User(int id, String fullname, String username, String password,
-                String address, Date birthday, String phone, int gender,
-                int avatar, int idShop, int idTypeUser, int typeLogin) {
+                String address, String birthday, String phone, int gender,
+                String avatar, int idTypeUser, int typeLogin) {
         this.id = id;
         this.fullname = fullname;
         this.username = username;
@@ -36,7 +35,6 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.avatar = avatar;
-        this.idShop = idShop;
         this.idTypeUser = idTypeUser;
         this.typeLogin = typeLogin;
     }
@@ -81,11 +79,11 @@ public class User {
         this.address = address;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -105,20 +103,12 @@ public class User {
         this.gender = gender;
     }
 
-    public int getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public int getIdShop() {
-        return idShop;
-    }
-
-    public void setIdShop(int idShop) {
-        this.idShop = idShop;
     }
 
     public int getIdTypeUser() {

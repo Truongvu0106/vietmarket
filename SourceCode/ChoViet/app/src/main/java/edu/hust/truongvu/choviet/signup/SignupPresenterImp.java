@@ -39,8 +39,8 @@ public class SignupPresenterImp implements SignupPresenter{
             signupView.onError(context.getString(R.string.invalid_email));
         }else {
             SignupModel signupModel = new SignupModel(context);
-            User user = new User(0, fullname, email, password, "", null, "", -1, -1, -1,
-                    Constants.UserType.TYPE_CUSTOMER, -1);
+            User user = new User(0, fullname, email, password, "", null, "", -1, "", -1,
+                    Constants.UserType.TYPE_CUSTOMER);
             if (signupModel.registerUser(user)){
                 signupView.onSuccess();
             }else {

@@ -9,38 +9,9 @@
 		case 'getProductById':
 			$func();
 			break;
-		case 'addRate':
-			$func();
-			break;
 		default:
 			# code...
 			break;
-	}
-
-	function addRate(){
-		global $conn;
-		String $date = date("d/m/Y");
-		if (isset($_POST["id_product"]) || isset($_POST["user_rate"]) || isset($_POST["title"]) || isset($_POST["content"]) || isset($_POST["star"])) {
-			$id_product = $_POST["id_product"];
-			$user_rate = $_POST["user_rate"];
-			$title = $_POST["title"];
-			$content = $_POST["content"];
-			$star = $_POST["star"];
-		}
-
-		$query = "INSERT INTO rate (id_product,user_rate,title,content,star,date_rate) 
-		VALUES ('".$id_product."', 
-				'".$user_rate."', 
-				'".$title."',
-				'".$content."',
-				'".$star."',
-				'".$date."')";
-		if (mysqli_query($conn, $query)) {
-			echo "{result : true}";
-		}else{
-			echo "{result : false, error : ".$query."</br>".$conn->error."}";
-		}
-		mysqli_close($conn);
 	}
 
 	function getAllProduct(){
