@@ -24,7 +24,7 @@
                 android:paddingLeft="@dimen/padding_medium"
                 android:paddingRight="@dimen/padding_medium"
                 android:paddingTop="@dimen/padding_small"
-                android:src="@drawable/avatar"/>
+                android:src="@drawable/user_default"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,6 +45,13 @@
                 android:layout_height="wrap_content"
                 android:numStars="5" />
             <edu.hust.truongvu.choviet.customview.MyTextView
+                android:id="@+id/date_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:text="26-2-2018"/>
+            <edu.hust.truongvu.choviet.customview.MyTextView
                 android:id="@+id/customer_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,12 +60,13 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="Sản phẩm rất tốt"/>
             <edu.hust.truongvu.choviet.customview.MyTextView
-                android:id="@+id/date_comment"
+                android:id="@+id/customer_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="26-2-2018"/>
+                android:textColor="@color/grayicon"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

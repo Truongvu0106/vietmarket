@@ -2,6 +2,7 @@ package edu.hust.truongvu.choviet.rate;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.entity.ParentCategory;
 import edu.hust.truongvu.choviet.entity.Rate;
 import edu.hust.truongvu.choviet.helper.JsonHelper;
 import edu.hust.truongvu.choviet.utils.Constants;
@@ -72,7 +75,45 @@ public class RateModel {
     }
 
     public ArrayList<Rate> loadListRate(int id){
-        return new ArrayList<>();
+        ArrayList<Rate> rates = new ArrayList<>();
+
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunction = new HashMap<>();
+        attrFunction.put("func", "getRateByProduct");
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_product", id + "");
+
+        attrs.add(attrFunction);
+        attrs.add(attrId);
+
+        JsonHelper jsonHelper = new JsonHelper(PATH_RATE, attrs);
+        jsonHelper.execute();
+        try {
+            String results = jsonHelper.get();
+            Log.e("rate", results);
+            JSONObject jsonObject = new JSONObject(results);
+            JSONArray jsonArrays = jsonObject.getJSONArray("rate");
+            Log.e("rate", "json array 1: " + jsonArrays.length());
+            JSONArray myJsonArr = jsonArrays.getJSONArray(0);
+            Log.e("rate", "json array 2: " + myJsonArr.length());
+            for (int i = 0; i < myJsonArr.length(); i++){
+                JSONObject data = myJsonArr.getJSONObject(i);
+                String id_product = data.getString("id");
+                String username = data.getString("user");
+                String title = data.getString("title");
+                String content = data.getString("content");
+                String star = data.getString("star");
+                String date = data.getString("date");
+
+                Rate rate = new Rate(Integer.parseInt(id_product), username, title, content, Float.parseFloat(star), date);
+                rates.add(rate);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Log.e("rate", rates.size() + "");
+        return rates;
     }
 
     public boolean isRated(String username, int id_product){

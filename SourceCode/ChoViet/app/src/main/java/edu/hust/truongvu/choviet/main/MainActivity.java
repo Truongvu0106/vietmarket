@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -23,6 +24,8 @@ import org.json.JSONObject;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
+import edu.hust.truongvu.choviet.cart.CartPresenter;
+import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.search.SearchActivity;
 
@@ -32,8 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static String IMAGE = "";
     public static Uri URI_IMAGE = null;
     private Toolbar toolbar;
-    private View search, cart;
+    private View search, cart, layoutNumberItemCart;
+    private TextView tvNumberItemCart;
     private MainPresenterImp mainPresenterImp;
+    private CartPresenterImp cartPresenterImp;
     private AccessToken accessToken;
     private AccessTokenTracker accessTokenTracker;
     @Override
@@ -46,12 +51,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         search = findViewById(R.id.layout_search);
         cart = findViewById(R.id.img_cart);
+        layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
+        tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
+
         loadFragment(MainFragment.newInstance());
 
         search.setOnClickListener(this);
         cart.setOnClickListener(this);
 
         mainPresenterImp = new MainPresenterImp(this);
+        cartPresenterImp = new CartPresenterImp();
 //        mainPresenterImp.loadInfoFacebook();
 //        GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("GOOGLE");
 //        if (account != null){
@@ -68,6 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MyHelper.setViewCart(layoutNumberItemCart, tvNumberItemCart, cartPresenterImp.getNumberItemCart(this));
+    }
 
     private void loadFragment(Fragment fragment) {
         // load fragment

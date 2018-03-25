@@ -64,8 +64,8 @@
 		global $conn;
 		$my_json_array = array();
 
-		if (isset($_GET["id_product"])) {
-			$id = $_GET["id_product"];
+		if (isset($_POST["id_product"])) {
+			$id = $_POST["id_product"];
 		}
 		$query = "SELECT * FROM rate WHERE id_product = ".$id;
 		$results = mysqli_query($conn, $query);

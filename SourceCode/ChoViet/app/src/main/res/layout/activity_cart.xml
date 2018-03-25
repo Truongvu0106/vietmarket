@@ -31,24 +31,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:id="@+id/title_sum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_medium"
+                    android:textSize="@dimen/text_size_small"
                     android:layout_centerVertical="true"
                     android:textColor="@color/black"
                     android:layout_marginLeft="@dimen/margin_medium"
                     android:text="@string/summary"/>
                 <edu.hust.truongvu.choviet.customview.MyTextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_total_money"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_medium"
                     android:textStyle="bold"
+                    android:gravity="center"
                     android:textColor="@color/colorRed"
                     android:layout_marginLeft="@dimen/margin_small"
-                    android:text="123000đ"/>
+                    android:text=""/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/btn_pay"

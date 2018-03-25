@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.product.ProductModel;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 2/27/2018.
@@ -80,13 +83,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
 
         public void setContent(final Product product){
             long oldPrice = product.getPrice();
-            long newPrice = oldPrice - oldPrice*product.getDiscount()/100;
-            imgProduct.setImageResource(R.drawable.giaydep);
+            int discount = product.getDiscount();
+            if (discount == 0){
+                tvOldPrice.setText("");
+                tvNewPrice.setText(MyHelper.formatMoney(product.getPrice()) + "đ");
+            }else {
+                tvOldPrice.setText(MyHelper.formatMoney(oldPrice) + "đ");
+                long newPrice = oldPrice - oldPrice*product.getDiscount()/100;
+                tvNewPrice.setText(MyHelper.formatMoney(newPrice) + "đ");
+            }
+//            imgProduct.setImageResource(R.drawable.giaydep);
+            MyHelper.setImagePicasso(context,imgProduct,Constants.Path.MY_PATH + product.getImgs().get(0));
             tvNameProduct.setText(product.getName());
-            tvOldPrice.setText(oldPrice + "đ");
-            tvNewPrice.setText(newPrice + "đ");
             like_fill.setVisibility(View.GONE);
-            initSpinner();
+            initSpinner(product);
 
             spinNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -122,15 +132,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
             });
         }
 
-        private void initSpinner(){
+        private void initSpinner(Product product){
             ArrayList<String> arrayList = new ArrayList<>();
-            for (int i = 1; i < 10; i++){
+            for (int i = 1; i <= product.getAmount(); i++){
                 arrayList.add(i + "");
             }
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, R.layout.support_simple_spinner_dropdown_item, arrayList);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinNumber.setAdapter(dataAdapter);
 
+            spinNumber.setSelection(product.getNumberSelect() - 1);
         }
 
     }

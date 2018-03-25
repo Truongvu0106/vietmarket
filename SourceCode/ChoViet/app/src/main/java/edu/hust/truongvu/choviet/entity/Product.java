@@ -17,15 +17,18 @@ public class Product {
     private int typeProduct;
     private int brand;
     private float rate;
+    private int amount;
     private boolean highlight;
     private boolean isLike;
+
+    private int numberSelect;
 
     public Product(){
 
     }
 
     public Product(int id, String name, long price, int discount, ArrayList<String> imgs, String infomation, String weight,
-                   int typeProduct, int brand, float rate, boolean highlight, boolean isLike) {
+                   int typeProduct, int brand, float rate, int amount, boolean highlight, boolean isLike) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -36,6 +39,7 @@ public class Product {
         this.typeProduct = typeProduct;
         this.brand = brand;
         this.rate = rate;
+        this.amount = amount;
         this.highlight = highlight;
         this.isLike = isLike;
     }
@@ -120,6 +124,14 @@ public class Product {
         this.rate = rate;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     public boolean isHighlight() {
         return highlight;
     }
@@ -134,5 +146,13 @@ public class Product {
 
     public void setLike(boolean like) {
         isLike = like;
+    }
+
+    public int getNumberSelect() {
+        return numberSelect;
+    }
+
+    public void setNumberSelect(int numberSelect) {
+        this.numberSelect = numberSelect;
     }
 }

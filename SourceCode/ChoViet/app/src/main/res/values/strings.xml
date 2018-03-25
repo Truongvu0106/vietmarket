@@ -95,6 +95,13 @@
     <string name="already_rate">Already rated</string>
     <string name="login_to_rate">Sign in to rate</string>
     <string name="not_log_in">You are not login yet</string>
+    <string name="added_to_your_cart">Added to your cart</string>
+    <string name="already_in_your_cart">This item already in your cart</string>
+    <string name="do_you_really_want_to_delete">Do you really want to remove this item?</string>
+    <string name="yes">Yes</string>
+    <string name="item_has_been_removed">Item has been removed!</string>
+    <string name="remove_false">Remove false</string>
+    <string name="cart_empty">Your cart is empty</string>
 
     <!-- cart -->
     <string name="carry_out_payment">Carry out payment</string>

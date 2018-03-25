@@ -33,6 +33,7 @@
 					"type_product" => $line["type_product"],
 					"brand" => $line["brand"],
 					"rate" => $line["rate"],
+					"amount" => $line["amount"],
 					"highlight" => $line["hightlight"],
 					"discount" => $line["discount"]));
 			}
@@ -65,6 +66,7 @@
 					"type_product" => $line["type_product"],
 					"brand" => $line["brand"],
 					"rate" => $line["rate"],
+					"amount" => $line["amount"],
 					"highlight" => $line["hightlight"],
 					"discount" => $line["discount"]));
 			}

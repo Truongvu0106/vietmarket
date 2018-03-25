@@ -39,14 +39,38 @@
                     android:text="@string/app_name"/>
             </LinearLayout>
         </LinearLayout>
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_cart"
-            android:layout_width="@dimen/icon_size_big"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/cart_toolbar"
-            android:tint="@color/colorPrimaryDark"
-            android:layout_marginRight="@dimen/margin_small"
-            android:padding="12dp"/>
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:layout_width="@dimen/icon_size_big"
+                android:layout_height="match_parent"
+                android:src="@drawable/cart_toolbar"
+                android:tint="@color/colorPrimaryDark"
+                android:layout_marginRight="@dimen/margin_small"
+                android:padding="12dp"/>
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/layout_number_item_cart"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:alpha="0.8"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:background="@drawable/bg_circle_red">
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:id="@+id/tv_number_item_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:text="12"/>
+            </RelativeLayout>
+        </FrameLayout>
+
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

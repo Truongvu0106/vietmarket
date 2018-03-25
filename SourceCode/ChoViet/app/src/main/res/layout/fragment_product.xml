@@ -693,13 +693,32 @@
                             android:src="@drawable/next"/>
                     </LinearLayout>
                 </RelativeLayout>
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/list_rating"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small">
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:id="@+id/layout_no_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+                        <edu.hust.truongvu.choviet.customview.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textSize="@dimen/text_size_medium"
+                            android:textColor="@color/black"
+                            android:text="No rate on this product"/>
+                    </RelativeLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small">
 
-                </android.support.v7.widget.RecyclerView>
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -855,6 +874,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
         <RelativeLayout
+            android:id="@+id/btn_add_to_cart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"
@@ -868,6 +888,7 @@
                 android:src="@drawable/add_to_cart"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/btn_buy_now"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@color/colorRed"

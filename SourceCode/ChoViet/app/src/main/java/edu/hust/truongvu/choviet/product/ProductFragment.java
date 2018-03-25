@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.product;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,25 +20,32 @@ import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.ProductRate;
 import edu.hust.truongvu.choviet.entity.Rate;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
+import edu.hust.truongvu.choviet.rate.RateProductAdapter;
 import edu.hust.truongvu.choviet.rate.RateProductDialog;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductFragment extends Fragment implements ProductView, View.OnClickListener{
+
+    public interface ItemCartListener{
+        void passNumberItem(int number);
+    }
+    private ItemCartListener itemCartListener;
     private String username;
     private ViewPager mViewPager;
     private ViewPagerIndicator mIndicator;
     private ImgProductPagerAdapter adapter;
     private ProductPresenterImp productPresenterImp;
+    private CartPresenterImp cartPresenterImp;
     private RecyclerView mListRate, mListProduct, mListSuggest;
-    private View btnRate, layoutDisableRate;
+    private View btnRate, layoutDisableRate, layoutNoRate, btnAddToCart, btnBuyNow;
     TextView tvDisableRate;
     private Product product;
     public ProductFragment() {
@@ -51,6 +58,11 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         return fragment;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        itemCartListener = (ItemCartListener) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,18 +78,28 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         mListProduct = view.findViewById(R.id.list_another_product);
         mListSuggest = view.findViewById(R.id.list_maybe_like);
         btnRate = view.findViewById(R.id.btn_rate);
+        btnAddToCart = view.findViewById(R.id.btn_add_to_cart);
+        btnBuyNow = view.findViewById(R.id.btn_buy_now);
         layoutDisableRate = view.findViewById(R.id.layout_disable_rate);
+        layoutNoRate = view.findViewById(R.id.layout_no_rate);
         tvDisableRate = view.findViewById(R.id.tv_disable_rate);
 
         btnRate.setOnClickListener(this);
+        btnAddToCart.setOnClickListener(this);
 
+        cartPresenterImp = new CartPresenterImp();
         productPresenterImp = new ProductPresenterImp(this);
         productPresenterImp.initListImage(product.getImgs());
-
         productPresenterImp.initListProduct();
         productPresenterImp.initListRate(username, product.getId());
         productPresenterImp.initListSuggest();
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
     }
 
     @Override
@@ -105,10 +127,16 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadListRate(ArrayList<ProductRate> listRate) {
-        RateProductAdapter adapter = new RateProductAdapter(listRate);
-        mListRate.setLayoutManager(new LinearLayoutManager(getContext()));
-        mListRate.setAdapter(adapter);
+    public void loadListRate(ArrayList<Rate> listRate) {
+        if (listRate.size() == 0){
+            layoutNoRate.setVisibility(View.VISIBLE);
+        }else {
+            layoutNoRate.setVisibility(View.GONE);
+            RateProductAdapter adapter = new RateProductAdapter(getContext(), listRate);
+            mListRate.setLayoutManager(new LinearLayoutManager(getContext()));
+            mListRate.setAdapter(adapter);
+        }
+
     }
 
     @Override
@@ -166,6 +194,16 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         mListSuggest.setAdapter(adapter);
     }
 
+    @Override
+    public void addToCartSuccessful() {
+        Toast.makeText(getContext(), getContext().getString(R.string.added_to_your_cart), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void addToCartFalse() {
+        Toast.makeText(getContext(), getContext().getString(R.string.already_in_your_cart), Toast.LENGTH_SHORT).show();
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -173,6 +211,12 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         switch (id){
             case R.id.btn_rate:
                 rate();
+                break;
+            case R.id.btn_add_to_cart:
+                productPresenterImp.addToCart(getContext(), product);
+                itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
+                break;
+            case R.id.btn_buy_now:
                 break;
             default:
                 break;
@@ -184,10 +228,12 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         if (user == null){
             Toast.makeText(getContext(), getContext().getString(R.string.not_log_in), Toast.LENGTH_SHORT).show();
         }else {
-            Log.e("rate", "click");
             RateProductDialog rateDialog = new RateProductDialog(getContext(), product.getId(), user, new RateProductDialog.RateProductListener() {
                 @Override
                 public void onRate(Rate rate) {
+                    if (productPresenterImp.addRate(rate)){
+                        productPresenterImp.initListRate(username, product.getId());
+                    }
 
                 }
             });

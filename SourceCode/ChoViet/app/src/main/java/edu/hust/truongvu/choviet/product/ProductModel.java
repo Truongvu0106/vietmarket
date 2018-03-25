@@ -53,11 +53,12 @@ public class ProductModel {
                 String type_product = jsonObject1.getString("type_product");
                 String brand = jsonObject1.getString("brand");
                 String rate = jsonObject1.getString("rate");
+                String amount = jsonObject1.getString("amount");
                 String hightlight = jsonObject1.getString("highlight");
 
                 Product product = new Product(Integer.parseInt(id), name, Long.parseLong(price), Integer.parseInt(discount),
                         listImage, information, weight, Integer.parseInt(type_product), Integer.parseInt(brand),
-                        Float.parseFloat(rate), hightlight.matches("1")?true:false, false);
+                        Float.parseFloat(rate), Integer.parseInt(amount), hightlight.matches("1")?true:false, false);
                 listProduct.add(product);
             }
         } catch (InterruptedException e) {
@@ -104,11 +105,12 @@ public class ProductModel {
             String type_product = jsonObject1.getString("type_product");
             String brand = jsonObject1.getString("brand");
             String rate = jsonObject1.getString("rate");
+            String amount = jsonObject1.getString("amount");
             String hightlight = jsonObject1.getString("highlight");
 
             product = new Product(id, name, Long.parseLong(price), Integer.parseInt(discount),
                     listImage, information, weight, Integer.parseInt(type_product), Integer.parseInt(brand),
-                    Float.parseFloat(rate), hightlight.matches("1")?true:false, false);
+                    Float.parseFloat(rate), Integer.parseInt(amount), hightlight.matches("1")?true:false, false);
         } catch (InterruptedException e) {
             e.printStackTrace();
             return null;

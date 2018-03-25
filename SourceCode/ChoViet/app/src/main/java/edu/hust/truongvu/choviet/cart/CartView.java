@@ -10,4 +10,7 @@ import edu.hust.truongvu.choviet.entity.Product;
 
 public interface CartView {
     void loadCartItem(ArrayList<Product> listProduct);
+    void deleteSuccessful();
+    void deleteFalse();
+    void updateTotalMoney(long money);
 }
