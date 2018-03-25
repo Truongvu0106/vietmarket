@@ -13,6 +13,9 @@
 		case 'getUserByUsername':
 			$func();
 			break;
+		case 'updateUser':
+			$func();
+			break;
 		default:
 			# code...
 			break;
@@ -42,18 +45,56 @@
 
 	function registerUser(){
 		global $conn;
-		if (isset($_POST["fullname"]) || isset($_POST["username"]) || isset($_POST["password"]) || isset($_POST["typeid"])) {
+		if (isset($_POST["fullname"]) || isset($_POST["username"]) || isset($_POST["phone"]) || isset($_POST["password"]) || isset($_POST["typeid"])) {
 			$fullname = $_POST["fullname"];
 			$username = $_POST["username"];
+			$phone = $_POST["phone"];
 			$password = $_POST["password"];
 			$typeid = $_POST["typeid"];
 		}
 		
-		$query = "INSERT INTO user (fullname, username, password, id_type) 
+		$query = "INSERT INTO user (fullname, username, password, phone, id_type) 
 		VALUES ('".$fullname."',
 				'".$username."',
 				'".$password."',
+				'".$phone."',
 				'".$typeid."')"; 
+		if (mysqli_query($conn, $query)) {
+			echo "{result : true}";
+		}else{
+			echo "{result : false, error : ".$query."</br>".$conn->error."}";
+		}
+
+		mysqli_close($conn);
+	}
+
+	function updateUser(){
+		global $conn;
+		if (isset($_POST["fullname"]) || isset($_POST["username"]) 
+			|| isset($_POST["password"]) || isset($_POST["address"]) 
+			|| isset($_POST["birthday"]) || isset($_POST["phone"]) 
+			||isset($_POST["gender"]) || isset($_POST["img_avatar"]) 
+			|| isset($_POST["typeid"]) || isset($_POST["type_login"])) {
+			$fullname = $_POST["fullname"];
+			$username = $_POST["username"];
+			$password = $_POST["password"];
+			$address = $_POST["address"];
+			$birthday = $_POST["birthday"];
+			$phone = $_POST["phone"];
+			$gender = $_POST["gender"];
+			$img_avatar = $_POST["img_avatar"];
+			$typeid = $_POST["typeid"];
+			$typelogin = $_POST["type_login"];
+		}
+		
+		$query = "UPDATE user SET 
+				fullname = '".$fullname."',
+				password = '".$password."',
+				address = '".$address."',
+				birthday = '".$birthday."',
+				phone = '".$phone."',
+				gender = '".$gender."',
+				img_avatar = '".$img_avatar."' WHERE username = '".$username."'"; 
 		if (mysqli_query($conn, $query)) {
 			echo "{result : true}";
 		}else{
