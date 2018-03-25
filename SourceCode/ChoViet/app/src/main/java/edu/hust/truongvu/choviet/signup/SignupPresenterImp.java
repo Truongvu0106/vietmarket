@@ -10,6 +10,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.customview.MyToast;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.Utils;
+import edu.hust.truongvu.choviet.profile.UserModel;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -19,29 +20,30 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class SignupPresenterImp implements SignupPresenter{
     private Context context;
     private SignupView signupView;
+    private UserModel userModel;
     public SignupPresenterImp(Context context, SignupView signupView){
         this.context = context;
         this.signupView = signupView;
+        userModel = new UserModel(context);
     }
 
 
     @Override
-    public void signup(String fullname, String email, String password, String retype) {
+    public void signup(String fullname, String email, String phone, String password, String retype) {
         // Pattern match for email id
         Pattern p = Pattern.compile(Utils.REG_EX);
         Matcher m = p.matcher(email);
-        if (fullname.trim().matches("")||email.trim().matches("")||password.trim().matches("")||retype.trim().matches("")
-                ||fullname.length()==0||email.length()==0||password.length()==0||retype.length()==0){
+        if (fullname.trim().matches("")||email.trim().matches("")|| phone.trim().matches("") ||
+                password.trim().matches("") ||retype.trim().matches("") ||fullname.length()==0||
+                email.length()==0|| phone.length() == 0 || password.length()==0||retype.length()==0){
             signupView.onError(context.getString(R.string.please_enter_all));
         }else if (!password.equals(retype)){
             signupView.onError(context.getString(R.string.pass_not_match));
         }else if (!m.find()){
             signupView.onError(context.getString(R.string.invalid_email));
         }else {
-            SignupModel signupModel = new SignupModel(context);
-            User user = new User(0, fullname, email, password, "", null, "", -1, "", -1,
-                    Constants.UserType.TYPE_CUSTOMER);
-            if (signupModel.registerUser(user)){
+            User user = new User(0, fullname, email, password, "", null, phone, -1, "", Constants.UserType.TYPE_CUSTOMER, -1);
+            if (userModel.registerUser(user)){
                 signupView.onSuccess();
             }else {
                 signupView.onError(context.getString(R.string.signup_false));

@@ -5,33 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorGray"
     tools:context="edu.hust.truongvu.choviet.payment.PaymentActivity">
     <include
         android:id="@+id/toolbar_payment"
         layout="@layout/toolbar_main"/>
-    <com.shuhart.stepview.StepView
-        android:id="@+id/step_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:padding="16dp"
-        android:layout_marginTop="@dimen/margin_medium"
-        app:selectedCircleColor="@color/colorPrimaryDark"
-        app:selectedTextColor="@color/colorPrimaryDark"
-        app:stepLineWidth="1dp"
-        app:stepPadding="4dp"
-        app:nextTextColor="@color/grayicon"
-        app:nextStepLineColor="@color/grayicon"
-        app:doneCircleColor="@color/colorPrimaryDark"
-        app:doneStepLineColor="@color/colorPrimaryDark"
-        app:doneCircleRadius="12dp"
-        app:selectedCircleRadius="12dp"
-        app:selectedStepNumberColor="@color/white"
-        app:stepViewStyle="@style/StepView"
-        app:doneStepMarkColor="@color/white"
-        app:doneTextColor="@color/colorPrimaryDark"
-        app:stepNumberTextSize="12sp"
-        app:steps="@array/payment_step"
-        app:animationType="All" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/margin_small">
+        <com.shuhart.stepview.StepView
+            android:id="@+id/step_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="16dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:selectedCircleColor="@color/colorPrimaryDark"
+            app:selectedTextColor="@color/colorPrimaryDark"
+            app:stepLineWidth="1dp"
+            app:stepPadding="4dp"
+            app:nextTextColor="@color/grayicon"
+            app:nextStepLineColor="@color/grayicon"
+            app:doneCircleColor="@color/colorPrimaryDark"
+            app:doneStepLineColor="@color/colorPrimaryDark"
+            app:doneCircleRadius="12dp"
+            app:selectedCircleRadius="12dp"
+            app:selectedStepNumberColor="@color/white"
+            app:stepViewStyle="@style/StepView"
+            app:doneStepMarkColor="@color/white"
+            app:doneTextColor="@color/colorPrimaryDark"
+            app:stepNumberTextSize="12sp"
+            app:steps="@array/payment_step"
+            app:animationType="All" />
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/frame_container_payment"
         android:layout_width="match_parent"

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.hust.truongvu.choviet.payment.ShippingFragment">
+    tools:context="edu.hust.truongvu.choviet.payment.shipping.ShippingFragment">
     <RelativeLayout
         android:id="@+id/btn_shipping"
         android:layout_width="match_parent"

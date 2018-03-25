@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.payment;
+package edu.hust.truongvu.choviet.payment.confirm;
 
 
 import android.os.Bundle;

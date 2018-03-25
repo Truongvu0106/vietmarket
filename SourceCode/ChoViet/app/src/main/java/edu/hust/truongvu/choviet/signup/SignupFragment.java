@@ -33,7 +33,7 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
 
 
     public static View view;
-    EditText fullName, email, password, retypePass;
+    EditText fullName, email, phone, password, retypePass;
     View alreadyUser;
     View signUp;
     LinearLayout root;
@@ -59,6 +59,7 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
         root = view.findViewById(R.id.signup_layout);
         fullName = view.findViewById(R.id.signup_username);
         email =  view.findViewById(R.id.signup_email);
+        phone = view.findViewById(R.id.signup_phone);
         password =  view.findViewById(R.id.signup_password);
         retypePass =  view.findViewById(R.id.retype_pass);
         alreadyUser = view.findViewById(R.id.already_user);
@@ -83,11 +84,12 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
                 navigateToSignin();
                 break;
             case R.id.signUpBtn:
-                String getUserName = fullName.getText().toString();
-                String getEmail = email.getText().toString();
-                String getPass = password.getText().toString();
-                String getRetype = retypePass.getText().toString();
-                signupPresenterImp.signup(getUserName, getEmail, getPass, getRetype);
+                String getUserName = fullName.getText().toString().trim();
+                String getEmail = email.getText().toString().trim();
+                String getPhone = phone.getText().toString().trim();
+                String getPass = password.getText().toString().trim();
+                String getRetype = retypePass.getText().toString().trim();
+                signupPresenterImp.signup(getUserName, getEmail, getPhone, getPass, getRetype);
                 break;
             default:
                 break;
@@ -103,7 +105,7 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
     @Override
     public void onError(String error) {
         Log.e("signup_error", error);
-        Toast.makeText(getContext(), getString(R.string.signup_false), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
         root.startAnimation(animation);
     }
 

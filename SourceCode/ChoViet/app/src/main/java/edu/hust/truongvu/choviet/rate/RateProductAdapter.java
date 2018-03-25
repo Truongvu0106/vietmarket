@@ -15,7 +15,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Rate;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.signin.SigninModel;
+import edu.hust.truongvu.choviet.profile.UserModel;
 
 /**
  * Created by truon on 2/26/2018.
@@ -60,8 +60,8 @@ public class RateProductAdapter extends RecyclerView.Adapter<RateProductAdapter.
             ratingBar = itemView.findViewById(R.id.customer_rate);
         }
         public void setContent(Rate productRate){
-            SigninModel signinModel = new SigninModel();
-            User user = signinModel.getUserByUsername(productRate.getUserName());
+            UserModel userModel = new UserModel();
+            User user = userModel.getUserByUsername(productRate.getUserName());
             MyHelper.loadImageUser(context, imageView, user.getAvatar());
             tvName.setText(user.getFullname());
             tvTitle.setText(productRate.getTitle());

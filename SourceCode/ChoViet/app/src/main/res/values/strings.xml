@@ -20,6 +20,7 @@
     <string name="signup">Sign Up</string>
     <string name="full_name">FULL NAME</string>
     <string name="email">EMAIL</string>
+    <string name="phone">PHONE</string>
     <string name="retype_pass">RETYPE PASSWORD</string>
     <string name="birthday">Birthday</string>
     <string name="have_acc">Already have an account?</string>
@@ -128,4 +129,9 @@
     <string name="cancel">Cancel</string>
     <string name="please_add_star">Please add star</string>
     <string name="please_write_title_rate">Please write title</string>
+
+    <!-- address -->
+    <string name="insert_other_address">Write your other address</string>
+    <string name="ok">OK</string>
+    <string name="please_enter_address">Please write your address</string>
 </resources>

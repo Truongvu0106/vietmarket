@@ -5,5 +5,5 @@ package edu.hust.truongvu.choviet.signup;
  */
 
 public interface SignupPresenter {
-    void signup(String username, String email, String password, String retype);
+    void signup(String username, String email, String phone, String password, String retype);
 }

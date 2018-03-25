@@ -9,6 +9,10 @@ import android.support.v7.widget.Toolbar;
 import com.shuhart.stepview.StepView;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.payment.address.AddressFragment;
+import edu.hust.truongvu.choviet.payment.confirm.ConfirmFragment;
+import edu.hust.truongvu.choviet.payment.paymethod.PaymentFragment;
+import edu.hust.truongvu.choviet.payment.shipping.ShippingFragment;
 
 public class PaymentActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -46,7 +50,7 @@ public class PaymentActivity extends AppCompatActivity {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame_container_payment);
         if (fragment instanceof AddressFragment){
             finish();
-        }else if (fragment instanceof  ShippingFragment){
+        }else if (fragment instanceof ShippingFragment){
             stepView.go(0, true);
             stepView.done(false);
             loadFragment(AddressFragment.getInstance());

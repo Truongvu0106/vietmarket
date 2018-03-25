@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.payment;
+package edu.hust.truongvu.choviet.payment.paymethod;
 
 
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.payment.confirm.ConfirmFragment;
+import edu.hust.truongvu.choviet.payment.PaymentActivity;
+import edu.hust.truongvu.choviet.payment.PaymentPresenterImp;
+import edu.hust.truongvu.choviet.payment.PaymentView;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -15,8 +15,7 @@ import java.util.Locale;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.User;
-import edu.hust.truongvu.choviet.signin.SigninModel;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.profile.UserModel;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -96,8 +95,8 @@ public class MyHelper {
     }
 
     public static User getCurrentUser(Context context){
-        SigninModel signinModel = new SigninModel();
-        User user = signinModel.getUserByUsername(getUserPreference(context));
+        UserModel userModel = new UserModel();
+        User user = userModel.getUserByUsername(getUserPreference(context));
         if (user == null){
             Log.e("user", "null");
         }else {

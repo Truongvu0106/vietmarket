@@ -4,7 +4,7 @@ package edu.hust.truongvu.choviet.payment;
  * Created by truon on 2/28/2018.
  */
 
-public class PaymentPresenterImp implements PaymentPresenter{
+public class PaymentPresenterImp implements PaymentPresenter {
     private PaymentView paymentView;
 
     public PaymentPresenterImp(PaymentView paymentView){
