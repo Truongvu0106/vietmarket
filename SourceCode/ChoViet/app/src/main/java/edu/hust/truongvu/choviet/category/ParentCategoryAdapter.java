@@ -1,24 +1,18 @@
 package edu.hust.truongvu.choviet.category;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import java.io.File;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.main.MainActivity;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -39,7 +33,7 @@ public class ParentCategoryAdapter extends RecyclerView.Adapter<ParentCategoryAd
     }
     @Override
     public ParentCategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_category_parent, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_parent, null);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
         ParentCategoryHolder holder = new ParentCategoryHolder(view);

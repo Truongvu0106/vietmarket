@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/padding_small">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:orientation="vertical"
+                android:layout_weight="5">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="abc"/>
+                    <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_alignBottom="@+id/tv_title"
+                        android:text="20000d"/>
+                </RelativeLayout>
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:id="@+id/tv_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giao hang tu 2-3 ngay"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/img_check"
+                    android:layout_width="@dimen/icon_size_medium"
+                    android:layout_height="@dimen/icon_size_medium"
+                    android:tint="@color/colorPrimaryDark"
+                    android:padding="@dimen/padding_big"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_check"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_check"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:alpha="0.7">
+
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

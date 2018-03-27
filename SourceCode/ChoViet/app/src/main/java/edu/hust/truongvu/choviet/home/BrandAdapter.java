@@ -2,13 +2,10 @@ package edu.hust.truongvu.choviet.home;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,7 +34,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.BrandHolder>
 
     @Override
     public BrandHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_brand, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_brand, null);
         BrandHolder holder = new BrandHolder(view);
         return holder;
     }

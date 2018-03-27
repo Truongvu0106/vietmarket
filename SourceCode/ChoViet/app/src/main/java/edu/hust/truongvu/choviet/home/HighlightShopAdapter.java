@@ -35,7 +35,7 @@ public class HighlightShopAdapter extends RecyclerView.Adapter<HighlightShopAdap
 
     @Override
     public HighlightStoreHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_shop, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop, null);
         HighlightStoreHolder holder = new HighlightStoreHolder(view);
         return holder;
     }

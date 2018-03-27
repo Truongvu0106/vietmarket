@@ -30,7 +30,7 @@ public class RateProductAdapter extends RecyclerView.Adapter<RateProductAdapter.
     }
     @Override
     public RateProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_rate, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rate, parent, false);
         RateProductHolder holder = new RateProductHolder(view);
         return holder;
     }

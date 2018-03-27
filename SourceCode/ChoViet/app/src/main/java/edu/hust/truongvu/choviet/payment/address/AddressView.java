@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public interface AddressView {
     void loadListAddress(ArrayList<String> list);
+    void loadUserInfo(String username, String phone);
     void insertSuccessful();
     void insertFalse();
 }

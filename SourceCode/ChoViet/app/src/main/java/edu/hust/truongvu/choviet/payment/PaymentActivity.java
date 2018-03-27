@@ -12,7 +12,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.payment.address.AddressFragment;
 import edu.hust.truongvu.choviet.payment.confirm.ConfirmFragment;
 import edu.hust.truongvu.choviet.payment.paymethod.PaymentFragment;
-import edu.hust.truongvu.choviet.payment.shipping.ShippingFragment;
+import edu.hust.truongvu.choviet.payment.transport.TransportFragment;
 
 public class PaymentActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -50,14 +50,14 @@ public class PaymentActivity extends AppCompatActivity {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame_container_payment);
         if (fragment instanceof AddressFragment){
             finish();
-        }else if (fragment instanceof ShippingFragment){
+        }else if (fragment instanceof TransportFragment){
             stepView.go(0, true);
             stepView.done(false);
             loadFragment(AddressFragment.getInstance());
         }else if (fragment instanceof PaymentFragment){
             stepView.go(1, true);
             stepView.done(false);
-            loadFragment(ShippingFragment.getInstance());
+            loadFragment(TransportFragment.getInstance());
         }else if (fragment instanceof ConfirmFragment){
             stepView.go(2, true);
             stepView.done(false);

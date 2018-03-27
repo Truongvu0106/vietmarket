@@ -25,7 +25,7 @@ public class PopularSearchAdapter extends RecyclerView.Adapter<PopularSearchAdap
 
     @Override
     public PopularSearchHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_popular_search, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_popular_search, null);
         PopularSearchHolder holder = new PopularSearchHolder(view);
         return holder;
     }

@@ -37,7 +37,7 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
 
     @Override
     public ListShopHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_shop_large, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop_large, null);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
         ListShopHolder holder = new ListShopHolder(view);

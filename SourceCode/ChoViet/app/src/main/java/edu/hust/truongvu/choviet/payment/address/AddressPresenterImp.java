@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.payment.address;
 
 import android.content.Context;
+import android.util.Log;
 
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
@@ -22,6 +23,14 @@ public class AddressPresenterImp implements AddressPresenter {
     }
 
     @Override
+    public void initUser() {
+        User user = MyHelper.getCurrentUser(context);
+        String username = user.getUsername();
+        String phone = user.getPhone();
+        addressView.loadUserInfo(username, phone);
+    }
+
+    @Override
     public void initListAddress() {
         User user = MyHelper.getCurrentUser(context);
         String address = user.getAddress();
@@ -31,8 +40,9 @@ public class AddressPresenterImp implements AddressPresenter {
     @Override
     public void insertAddress(String address) {
         User user = MyHelper.getCurrentUser(context);
+        String updateAddress = user.getAddress() + "@" + address;
         User newUser = new User(user.getId(), user.getFullname(), user.getUsername(),
-                user.getPassword(), address, user.getBirthday(), user.getPhone(),
+                user.getPassword(), updateAddress, user.getBirthday(), user.getPhone(),
                 user.getGender(), user.getAvatar(), user.getIdTypeUser(), user.getTypeLogin());
         if (userModel.updateUser(newUser)){
             addressView.insertSuccessful();

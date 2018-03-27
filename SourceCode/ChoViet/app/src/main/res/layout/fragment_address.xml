@@ -9,12 +9,72 @@
         android:layout_marginBottom="@dimen/actionbar_size">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_small"
+                android:padding="@dimen/padding_medium">
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:id="@+id/tv_name_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:textSize="@dimen/text_size_small"
+                    android:text=""/>
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:textColor="@color/black"
+                    android:text=""/>
+            </LinearLayout>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small">
             </android.support.v7.widget.RecyclerView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grayicon"/>
+            <RelativeLayout
+                android:id="@+id/btn_add_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:paddingLeft="@dimen/padding_medium"
+                android:paddingRight="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_large"
+                android:paddingBottom="@dimen/padding_large"
+                android:background="@color/white">
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:text="@string/add_new_address"/>
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:src="@drawable/add"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grayicon"/>
         </LinearLayout>
     </ScrollView>
     <RelativeLayout

@@ -5,6 +5,7 @@ package edu.hust.truongvu.choviet.payment.address;
  */
 
 public interface AddressPresenter {
+    void initUser();
     void initListAddress();
     void insertAddress(String address);
 }

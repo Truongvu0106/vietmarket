@@ -111,11 +111,11 @@
     <!-- payment -->
     <string-array name="payment_step">
         <item>Address</item>
-        <item>Shipping</item>
+        <item>Transport</item>
         <item>Payment</item>
         <item>Confirm</item>
     </string-array>
-    <string name="next_shipping">Next : Shipping</string>
+    <string name="next_shipping">Next : Transport</string>
     <string name="next_payment">Next : Payment</string>
     <string name="next_confirm">Next : Confirm</string>
     <string name="confirm">Confirm</string>
@@ -134,4 +134,7 @@
     <string name="insert_other_address">Write your other address</string>
     <string name="ok">OK</string>
     <string name="please_enter_address">Please write your address</string>
+    <string name="add_new_address">Add new address</string>
+    <string name="insert_false">Insert false</string>
+    <string name="please_select_address">Please select your address</string>
 </resources>

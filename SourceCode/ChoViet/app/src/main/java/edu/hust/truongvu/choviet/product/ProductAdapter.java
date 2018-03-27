@@ -11,7 +11,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
@@ -39,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
     @Override
     public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_product, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, null);
         ProductHolder holder = new ProductHolder(view);
         return holder;
     }
