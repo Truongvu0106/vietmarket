@@ -62,6 +62,7 @@ public class CartModel {
         return database.update(TABLE_NAME, values, COLUMN_ID_PRODUCT + " = " + id_product, null) > 0;
     }
 
+
     public boolean deleteItemCart(int id_product){
         return database.delete(TABLE_NAME, COLUMN_ID_PRODUCT + " = " + id_product, null) > 0;
     }

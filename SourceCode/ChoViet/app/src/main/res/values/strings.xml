@@ -137,4 +137,10 @@
     <string name="add_new_address">Add new address</string>
     <string name="insert_false">Insert false</string>
     <string name="please_select_address">Please select your address</string>
+
+    <!-- transport -->
+    <string name="please_select_transport">Please select transport</string>
+
+    <!-- payment -->
+    <string name="please_select_paymethod">Please select pay method</string>
 </resources>

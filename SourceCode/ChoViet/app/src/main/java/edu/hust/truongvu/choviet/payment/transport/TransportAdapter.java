@@ -68,10 +68,8 @@ public class TransportAdapter extends RecyclerView.Adapter<TransportAdapter.Tran
             tvNote.setText(transport.getNote());
             if (position == mCheckedPosition){
                 imgCheck.setVisibility(View.VISIBLE);
-                layoutCheck.setVisibility(View.VISIBLE);
             }else {
                 imgCheck.setVisibility(View.GONE);
-                layoutCheck.setVisibility(View.GONE);
             }
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +77,6 @@ public class TransportAdapter extends RecyclerView.Adapter<TransportAdapter.Tran
                 public void onClick(View view) {
                     if (position == mCheckedPosition){
                         imgCheck.setVisibility(View.GONE);
-                        layoutCheck.setVisibility(View.GONE);
                         mCheckedPosition = -1;
                     }else {
                         mCheckedPosition = position;

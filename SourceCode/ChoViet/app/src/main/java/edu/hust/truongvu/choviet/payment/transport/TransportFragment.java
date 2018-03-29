@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Transport;
 import edu.hust.truongvu.choviet.payment.PaymentActivity;
-import edu.hust.truongvu.choviet.payment.paymethod.PaymentFragment;
+import edu.hust.truongvu.choviet.payment.paymethod.PayMethodFragment;
 import edu.hust.truongvu.choviet.payment.PaymentPresenterImp;
 import edu.hust.truongvu.choviet.payment.PaymentView;
 
@@ -29,6 +29,7 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
     private View btnTransport;
     private RecyclerView recyclerView;
     private TransportAdapter adapter;
+    private int idTransport = 0;
     public TransportFragment() {
         // Required empty public constructor
     }
@@ -56,9 +57,13 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
 
     @Override
     public void loadNext() {
-        ((PaymentActivity)getContext()).loadFragment(PaymentFragment.getInstance());
-        PaymentActivity.stepView.go(2, true);
-//        PaymentActivity.stepView.done(true);
+        if (idTransport == 0){
+            Toast.makeText(getContext(), getContext().getString(R.string.please_select_transport), Toast.LENGTH_SHORT).show();
+        }else {
+            ((PaymentActivity)getContext()).loadFragment(PayMethodFragment.getInstance());
+            PaymentActivity.stepView.go(2, true);
+        }
+
     }
 
     @Override
@@ -71,7 +76,7 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
         adapter = new TransportAdapter(arrayList, new TransportAdapter.TransportListener() {
             @Override
             public void onClick(Transport transport) {
-                Toast.makeText(getContext(), transport.getTitle(), Toast.LENGTH_SHORT).show();
+                idTransport = transport.getId();
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -59,10 +59,8 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
             tvAddress.setText(address);
             if (position == mCheckedPosition){
                 imgCheck.setVisibility(View.VISIBLE);
-                layoutCheck.setVisibility(View.VISIBLE);
             }else {
                 imgCheck.setVisibility(View.GONE);
-                layoutCheck.setVisibility(View.GONE);
             }
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +68,6 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
                 public void onClick(View view) {
                     if (position == mCheckedPosition){
                         imgCheck.setVisibility(View.GONE);
-                        layoutCheck.setVisibility(View.GONE);
                         mCheckedPosition = -1;
                     }else {
                         mCheckedPosition = position;

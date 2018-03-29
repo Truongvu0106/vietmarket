@@ -2,7 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.hust.truongvu.choviet.payment.paymethod.PaymentFragment">
+    tools:context="edu.hust.truongvu.choviet.payment.paymethod.PayMethodFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/actionbar_size">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_payment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
     <RelativeLayout
         android:id="@+id/btn_payment"
         android:layout_width="match_parent"

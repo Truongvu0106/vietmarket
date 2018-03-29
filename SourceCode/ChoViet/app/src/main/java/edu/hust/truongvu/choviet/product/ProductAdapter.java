@@ -83,13 +83,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             if (discount == 0){
                 layoutDiscount.setVisibility(View.GONE);
                 tvOldPrice.setText("");
-                tvNewPrice.setText(MyHelper.formatMoney(oldPrice)+"đ");
+                tvNewPrice.setText(MyHelper.formatMoney(oldPrice));
             }else {
                 layoutDiscount.setVisibility(View.VISIBLE);
                 tvDiscount.setText("-"+discount+"%");
                 long newPrice = oldPrice - oldPrice*discount/100;
-                tvOldPrice.setText(MyHelper.formatMoney(oldPrice)+"đ");
-                tvNewPrice.setText(MyHelper.formatMoney(newPrice)+"đ");
+                tvOldPrice.setText(MyHelper.formatMoney(oldPrice));
+                tvNewPrice.setText(MyHelper.formatMoney(newPrice));
             }
             MyHelper.setImagePicasso(context, imgProduct, Constants.Path.MY_PATH + product.getImgs().get(0).trim());
             ratingBar.setRating(product.getRate());

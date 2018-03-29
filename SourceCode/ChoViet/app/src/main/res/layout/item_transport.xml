@@ -16,24 +16,33 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium"
                 android:orientation="vertical"
-                android:layout_weight="5">
+                android:layout_weight="6">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium">
                     <edu.hust.truongvu.choviet.customview.MyTextView
                         android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:text="abc"/>
+                    <ImageView
+                        android:id="@+id/ic_transport"
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_transport"
+                        android:tint="@color/colorPrimaryDark"
+                        android:layout_alignBottom="@+id/tv_title"/>
                     <edu.hust.truongvu.choviet.customview.MyTextView
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:textColor="@color/colorRed"
+                        android:layout_toLeftOf="@+id/ic_transport"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_marginRight="@dimen/margin_small"
                         android:textSize="@dimen/text_size_small"
                         android:layout_alignBottom="@+id/tv_title"
                         android:text="20000d"/>
@@ -42,6 +51,8 @@
                     android:id="@+id/tv_note"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_marginLeft="@dimen/margin_medium"
                     android:text="Giao hang tu 2-3 ngay"/>
             </LinearLayout>
             <LinearLayout

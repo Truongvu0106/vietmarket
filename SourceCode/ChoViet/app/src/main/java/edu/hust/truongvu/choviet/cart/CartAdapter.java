@@ -86,11 +86,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
             int discount = product.getDiscount();
             if (discount == 0){
                 tvOldPrice.setText("");
-                tvNewPrice.setText(MyHelper.formatMoney(product.getPrice()) + "đ");
+                tvNewPrice.setText(MyHelper.formatMoney(product.getPrice()));
             }else {
-                tvOldPrice.setText(MyHelper.formatMoney(oldPrice) + "đ");
+                tvOldPrice.setText(MyHelper.formatMoney(oldPrice));
                 long newPrice = oldPrice - oldPrice*product.getDiscount()/100;
-                tvNewPrice.setText(MyHelper.formatMoney(newPrice) + "đ");
+                tvNewPrice.setText(MyHelper.formatMoney(newPrice));
             }
 //            imgProduct.setImageResource(R.drawable.giaydep);
             MyHelper.setImagePicasso(context,imgProduct,Constants.Path.MY_PATH + product.getImgs().get(0));

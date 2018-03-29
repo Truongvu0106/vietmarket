@@ -11,7 +11,7 @@ import com.shuhart.stepview.StepView;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.payment.address.AddressFragment;
 import edu.hust.truongvu.choviet.payment.confirm.ConfirmFragment;
-import edu.hust.truongvu.choviet.payment.paymethod.PaymentFragment;
+import edu.hust.truongvu.choviet.payment.paymethod.PayMethodFragment;
 import edu.hust.truongvu.choviet.payment.transport.TransportFragment;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -54,14 +54,14 @@ public class PaymentActivity extends AppCompatActivity {
             stepView.go(0, true);
             stepView.done(false);
             loadFragment(AddressFragment.getInstance());
-        }else if (fragment instanceof PaymentFragment){
+        }else if (fragment instanceof PayMethodFragment){
             stepView.go(1, true);
             stepView.done(false);
             loadFragment(TransportFragment.getInstance());
         }else if (fragment instanceof ConfirmFragment){
             stepView.go(2, true);
             stepView.done(false);
-            loadFragment(PaymentFragment.getInstance());
+            loadFragment(PayMethodFragment.getInstance());
         }else {
             return;
         }

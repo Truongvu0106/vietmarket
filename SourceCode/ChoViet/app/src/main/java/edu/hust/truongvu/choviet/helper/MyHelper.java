@@ -106,7 +106,7 @@ public class MyHelper {
     }
 
     public static String formatMoney(long money){
-        return NumberFormat.getNumberInstance(Locale.US).format(money);
+        return NumberFormat.getNumberInstance(Locale.US).format(money) + "đ";
     }
 
     public static void setViewCart(View root, TextView tvNumber, int number){

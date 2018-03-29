@@ -101,7 +101,7 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
     @Override
     public void updateTotalMoney(long money) {
         totalMoney = money;
-        tvTotal.setText(MyHelper.formatMoney(totalMoney) + "đ");
+        tvTotal.setText(MyHelper.formatMoney(totalMoney));
     }
 
     @Override
