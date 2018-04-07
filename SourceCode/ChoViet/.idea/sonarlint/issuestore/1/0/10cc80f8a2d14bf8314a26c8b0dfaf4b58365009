@@ -1,0 +1,29 @@
+
+^squid:S1192"IDefine a constant instead of duplicating this literal "username" 7 times.(ù°Øç
+^squid:S1192"IDefine a constant instead of duplicating this literal "password" 4 times.(²Šæ‚
+asquid:S1192"GDefine a constant instead of duplicating this literal "result" 3 times.(‘äû¤úÿÿÿÿ
+^squid:S1192"IDefine a constant instead of duplicating this literal "fullname" 3 times.(Ý¾¡à
+[squid:S1192"FDefine a constant instead of duplicating this literal "phone" 3 times.(‘½‡°
+[squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+[squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+[squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+[squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+^squid:S2147"DCombine this catch with the one at line 69, which has the same body.(åþŒóùÿÿÿÿ
+^squid:S2147"DCombine this catch with the one at line 69, which has the same body.(÷¿­¹ÿÿÿÿÿ
+_squid:S2147"ECombine this catch with the one at line 114, which has the same body.(åþŒóùÿÿÿÿ
+_squid:S2147"ECombine this catch with the one at line 114, which has the same body.(÷¿­¹ÿÿÿÿÿ
+_squid:S2147"ECombine this catch with the one at line 168, which has the same body.(åþŒóùÿÿÿÿ
+_squid:S2147"ECombine this catch with the one at line 168, which has the same body.(÷¿­¹ÿÿÿÿÿ
+_squid:S2147"ECombine this catch with the one at line 240, which has the same body.(åþŒóùÿÿÿÿ
+_squid:S2147"ECombine this catch with the one at line 240, which has the same body.(÷¿­¹ÿÿÿÿÿ
+lsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬æÉëøÿÿÿÿ
+lsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á¼òâýÿÿÿÿ
+lsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶•Â¸üÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

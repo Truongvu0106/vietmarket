@@ -7,7 +7,7 @@
     tools:context="edu.hust.truongvu.choviet.profile.ProfileFragment">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="@dimen/height_header_small"
         android:background="@color/colorPrimaryDark">
         <LinearLayout
             android:id="@+id/layout_profile"
@@ -27,8 +27,8 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/icon_size_bigger"
+                android:layout_height="@dimen/icon_size_bigger"
                 android:padding="@dimen/padding_small"
                 android:src="@drawable/user_default"
                 android:layout_marginLeft="@dimen/margin_medium"

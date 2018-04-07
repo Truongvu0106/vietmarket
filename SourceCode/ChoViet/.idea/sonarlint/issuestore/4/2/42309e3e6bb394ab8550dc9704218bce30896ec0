@@ -1,0 +1,11 @@
+
+=squid:S1185"(Remove this method to simply inherit it.(ËÐƒ
+Bsquid:S1185"(Remove this method to simply inherit it.(Œÿµºøÿÿÿÿ
+Ysquid:S2147"DCombine this catch with the one at line 56, which has the same body.(ï­£Ä
+Zsquid:S2147"ECombine this catch with the one at line 123, which has the same body.(ï­£Ä
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Ssquid:S1155">Use isEmpty() to check whether the collection is empty or not.(×“ø§

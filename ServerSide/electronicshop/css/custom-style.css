@@ -1,0 +1,16 @@
+#col-right{
+	float: right;
+	width: 60%;
+	margin: 2% 0 0 0;
+}
+
+#col-left{
+	width: 40%;
+}
+
+.form-style label,.form-style input{
+	margin-top: 10px;
+}
+
+
+

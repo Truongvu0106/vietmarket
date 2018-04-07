@@ -7,8 +7,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- signin -->
-    <string name="username">USERNAME</string>
-    <string name="password">PASSWORD</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
     <string name="forgot_pass">Forgot password?</string>
     <string name="signin">Sign In</string>
     <string name="not_have_acc">Not have an account?Sign up here.</string>
@@ -18,10 +18,10 @@
 
     <!-- signup -->
     <string name="signup">Sign Up</string>
-    <string name="full_name">FULL NAME</string>
-    <string name="email">EMAIL</string>
-    <string name="phone">PHONE</string>
-    <string name="retype_pass">RETYPE PASSWORD</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="retype_pass">Retype password</string>
     <string name="birthday">Birthday</string>
     <string name="have_acc">Already have an account?</string>
     <string name="sign_in_here">Sign in here.</string>
@@ -143,4 +143,10 @@
 
     <!-- payment -->
     <string name="please_select_paymethod">Please select pay method</string>
+
+    <!-- infomation -->
+    <string name="change_pass">Change password</string>
+    <string name="gender">Gender</string>
+    <string name="not_set">Not set</string>
+    <string name="address">Address</string>
 </resources>

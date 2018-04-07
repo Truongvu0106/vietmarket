@@ -11,23 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-        <activity android:name=".main.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action andrnotename="android.intent.action.MAIN" />-->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-                <!--<category andrnotename="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+        <activity android:name=".main.MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action andrnotename="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category andrnotename="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".activity.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".product.ProductActivity" />
         <activity android:name=".cart.CartActivity" />
@@ -36,12 +38,15 @@
         <activity android:name=".shop.ShopActivity" />
         <activity android:name=".product.ListProductActivity" />
         <activity android:name=".splash.SplashActivity">
-            <!--<intent-filter>-->
-                <!--<action andrnotename="android.intent.action.MAIN" />-->
 
-                <!--<category andrnotename="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action andrnotename="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category andrnotename="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
+        <activity android:name=".info.InfoActivity"></activity>
     </application>
 
 </manifest>
