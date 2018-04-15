@@ -17,8 +17,43 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li>UI Kits</li>
-                            <li class="active">Theming</li>
+                            <li>Dashboard</li>
+                            <li class="active">
+                                <?php 
+                                    switch ($_GET["page"]) {
+                                        case 'order':
+                                            echo "Đơn hàng";
+                                            break;
+                                        case 'payment':
+                                            echo "Thanh toán";
+                                            break;
+                                        case 'transport':
+                                            echo "Vận chuyển";
+                                            break;
+                                        case 'banner':
+                                            echo "Banner";
+                                            break;
+                                        case 'brand':
+                                            echo "Thương hiệu";
+                                            break;
+                                        case 'discount':
+                                            echo "Khuyến mại";
+                                            break;
+                                        case 'category':
+                                            echo "Danh mục";
+                                            break;
+                                        case 'product':
+                                            echo "Sản phẩm";
+                                            break;
+                                        case 'user':
+                                            echo "Danh sách người dùng";
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+                                 ?>
+                            </li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -101,11 +136,32 @@
                 <div class="side-body">
                     <?php 
                         switch ($_GET["page"]) {
+                            case 'order':
+                                include("bussiness_view/order.php");
+                                break;
+                            case 'payment':
+                                include("bussiness_view/payment.php");
+                                break;
+                            case 'transport':
+                                include("bussiness_view/transport.php");
+                                break;
+                            case 'banner':
+                                include("other_view/banner.php");
+                                break;
+                            case 'brand':
+                                include("other_view/brand.php");
+                                break;
+                            case 'discount':
+                                include("other_view/discount.php");
+                                break;
                             case 'category':
                                 include("product_view/category.php");
                                 break;
                             case 'product':
                                 include("product_view/product.php");
+                                break;
+                            case 'user':
+                                include("user_view/user.php");
                                 break;
                             default:
                                 # code...
@@ -117,7 +173,7 @@
         </div>
         <footer class="app-footer">
             <div class="wrapper">
-                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+                <span class="pull-right"><a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 
             </div>
         </footer>
     <div>

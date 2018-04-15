@@ -4,7 +4,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">
                                 <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">Flat Admin V.2</div>
+                                <div class="title">VietMarket</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -12,55 +12,36 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="index.php">
+                                <a href="dashboard.php">
                                     <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
                                 </a>
                             </li>
                             <li class="active panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">Quản lý</span>
+                                    <span class="icon fa fa-desktop"></span><span class="title">Quản lý sản phẩm</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                          <li><a href="view/template.php?page=category">Loại sản phẩm</a>
-                                          </li>
-                                            <li><a href="view/grid.php">Grid</a></li>
+                                            <li><a href="view/template.php?page=category">Loại sản phẩm</a>
                                             </li>
-                                            <li><a href="view/button.php">Buttons</a>
+                                            <li><a href="view/template.php?page=product">Sản phẩm</a>
                                             </li>
-                                            <li><a href="view/card.php">Cards</a>
-                                            </li>
-                                            <li><a href="view/list.php">Lists</a>
-                                            </li>
-                                            <li><a href="view/modal.php">Modals</a>
-                                            </li>
-                                            <li><a href="view/alert.php">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="view/panel.php">Panels</a>
-                                            </li>
-                                            <li><a href="view/loader.php">Loaders</a>
-                                            </li>
-                                            <li><a href="view/step.php">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="view/other.php">Other</a>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
+                                    <span class="icon fa fa-table"></span><span class="title">Quản lý người dùng</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="../table/table.html">Table</a>
-                                            </li>
-                                            <li><a href="../table/datatable.html">Datatable</a>
+                                            <li><a href="view/template.php?page=user">Danh sách người dùng</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -68,15 +49,18 @@
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Quản lý nghiệp vụ</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="../form/ui-kits.html">Form UI Kits</a>
+                                            <li><a href="view/template.php?page=order">Đơn hàng</a></li>
                                             </li>
-
+                                            <li><a href="view/template.php?page=transport">Vận chuyển</a>
+                                            </li>
+                                            <li><a href="view/template.php?page=payment">Thanh toán</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -84,60 +68,22 @@
                             <!-- Dropdown-->
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                                    <span class="icon fa fa-cubes"></span><span class="title">Khác</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="component-example" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="../components/pricing-table.html">Pricing Table</a>
+                                           <li><a href="view/template.php?page=banner">Banner</a></li>
                                             </li>
-                                            <li><a href="../components/chartjs.html">Chart.JS</a>
+                                            <li><a href="view/template.php?page=brand">Thương hiệu</a>
                                             </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-example">
-                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../pages/login.html">Login</a>
-                                            </li>
-
-                                            <li><a href="../pages/index.html">Landing Page</a>
+                                            <li><a href="view/template.php?page=discount">Khuyến mại</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-icon">
-                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-icon" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../icons/glyphicons.html">Glyphicons</a>
-                                            </li>
-                                            <li><a href="../icons/font-awesome.html">Font Awesomes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="../license.html">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-                                </a>
-                            </li>
+                            </li>    
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

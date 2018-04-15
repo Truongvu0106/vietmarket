@@ -4,6 +4,11 @@
 	margin: 2% 0 0 0;
 }
 
+#col-right > .table-search{
+	float: right;
+	margin-right: 8px;
+}
+
 #col-left{
 	width: 40%;
 }
@@ -12,5 +17,9 @@
 	margin-top: 10px;
 }
 
-
+#btn-delete-category{
+	width: 100px;
+	margin-left: 8px;
+	margin-bottom: 5px;
+}
 
