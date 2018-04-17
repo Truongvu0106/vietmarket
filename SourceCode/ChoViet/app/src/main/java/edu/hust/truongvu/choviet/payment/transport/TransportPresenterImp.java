@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.payment.transport;
 
+import edu.hust.truongvu.choviet.model.TransportModel;
+
 /**
  * Created by truon on 3/27/2018.
  */

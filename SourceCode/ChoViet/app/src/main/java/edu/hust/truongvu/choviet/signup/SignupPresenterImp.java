@@ -1,16 +1,13 @@
 package edu.hust.truongvu.choviet.signup;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.customview.MyToast;
-import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.Utils;
-import edu.hust.truongvu.choviet.profile.UserModel;
+import edu.hust.truongvu.choviet.model.UserModel;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -42,7 +39,7 @@ public class SignupPresenterImp implements SignupPresenter{
         }else if (!m.find()){
             signupView.onError(context.getString(R.string.invalid_email));
         }else {
-            User user = new User(0, fullname, email, password, "", null, phone, -1, "", Constants.UserType.TYPE_CUSTOMER, -1);
+            edu.hust.truongvu.choviet.entity.User user = new edu.hust.truongvu.choviet.entity.User(0, fullname, email, password, "", null, phone, -1, "", Constants.User.TYPE_CUSTOMER, -1);
             if (userModel.registerUser(user)){
                 signupView.onSuccess();
             }else {

@@ -50,7 +50,7 @@
                 android:src="@drawable/cart_toolbar"
                 android:tint="@color/colorPrimaryDark"
                 android:layout_marginRight="@dimen/margin_small"
-                android:padding="12dp"/>
+                android:padding="@dimen/padding_huge"/>
             <RelativeLayout
                 android:visibility="gone"
                 android:id="@+id/layout_number_item_cart"

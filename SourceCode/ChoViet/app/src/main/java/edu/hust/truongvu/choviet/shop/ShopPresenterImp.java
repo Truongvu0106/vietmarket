@@ -3,7 +3,7 @@ package edu.hust.truongvu.choviet.shop;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.product.ProductModel;
+import edu.hust.truongvu.choviet.model.ProductModel;
 
 /**
  * Created by truon on 3/8/2018.

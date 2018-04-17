@@ -4,10 +4,11 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.cart.CartModel;
+import edu.hust.truongvu.choviet.model.CartModel;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Rate;
-import edu.hust.truongvu.choviet.rate.RateModel;
+import edu.hust.truongvu.choviet.model.ProductModel;
+import edu.hust.truongvu.choviet.model.RateModel;
 
 /**
  * Created by truon on 2/26/2018.

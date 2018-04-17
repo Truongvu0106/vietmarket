@@ -104,7 +104,6 @@
 			$("#btn-submit").click(function(){
 				var username = $("#m-username").val();
 				var pass = $("#m-password").val();
-				var path = $("#dashboard-url").val();
 				$.ajax({
 					url: "controller/UserController.php",
 					type: "POST",
@@ -115,7 +114,7 @@
 					},
 					success:function(data){
 						if (data != 0) {
-							window.location.replace(path + "/html/dashboard.php");
+							window.location.replace("http://localhost:8080/electronicshop/html/dashboard.php");
 						}else{
 							alert("Email or pass is incorrect!")
 						}

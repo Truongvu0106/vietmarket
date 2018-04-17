@@ -6,6 +6,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.model.CartModel;
 
 /**
  * Created by truon on 2/27/2018.

@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.cart;
+package edu.hust.truongvu.choviet.model;
 
 import android.content.ContentValues;
 import android.content.Context;

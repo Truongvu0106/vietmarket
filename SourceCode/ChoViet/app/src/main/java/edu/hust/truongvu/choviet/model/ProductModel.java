@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.product;
+package edu.hust.truongvu.choviet.model;
 
 import android.util.Log;
 

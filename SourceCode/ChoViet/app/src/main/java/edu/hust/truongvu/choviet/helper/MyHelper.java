@@ -15,7 +15,7 @@ import java.util.Locale;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.User;
-import edu.hust.truongvu.choviet.profile.UserModel;
+import edu.hust.truongvu.choviet.model.UserModel;
 
 import static android.content.Context.MODE_PRIVATE;
 

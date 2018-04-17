@@ -26,30 +26,7 @@ $(document).ready(function(){
 		}	
 	});
 
-	//Phân trang category
-	$("ul.pagination>li").click(function(){
-		var pageNumber = $(this).text();
-		if ((pageNumber === '&laquo;') || (pageNumber === '&raquo;')) {
-			alert("Error");
-		}else{
-			$("ul.pagination>li").removeClass("active");
-			$(this).addClass("active");
-			$.ajax({
-				url: "../../controller/CategoryController.php",
-				type: "POST",
-				data: {
-					action: "getListCategoryLimit",
-					pageNumber: pageNumber
-				},
-				success:function(data){
-					$("table.table").find("tbody").empty();
-					$("table.table").find("tbody").append(data);
-				}
-			});
-		}
-		
-	})
-
+	//Phân trang loại sản phẩm
 	$('#category-pagination').bootpag({
 	    total: $("#category-pagination").attr("data-total-page"),
 	    maxVisible: 4,
@@ -69,32 +46,7 @@ $(document).ready(function(){
 			});
 	});
 
-	//Phân trang product
-	$("ul.product-pagination>li").click(function(){
-		var pageNumber = $(this).text();
-		if ((pageNumber === '&laquo;') || (pageNumber === '&raquo;')) {
-			alert("Error");
-		}else{
-			$("ul.product-pagination>li").removeClass("active");
-			$(this).addClass("active");
-			$.ajax({
-				url: "../../controller/ProductController.php",
-				type: "POST",
-				data: {
-					action: "getListProductLimit",
-					pageNumber: pageNumber
-				},
-				success:function(data){
-					$("table.table").find("tbody").empty();
-					$("table.table").find("tbody").append(data);
-				}
-			});
-		}
-		
-	})
-
-	//Xoa danh muc
-	
+	//Xoa loại sản phẩm	
 	$("body").delegate(".btn-delete-category", "click", function(){
 		var id = $(this).parent().attr("data-id");
 		mThis = $(this);
@@ -119,7 +71,7 @@ $(document).ready(function(){
 		
 	});
 
-	//Sua danh muc
+	//Sua loại sản phẩm
 	$("body").delegate(".btn-edit-category", "click", function(){
 		newHTML = '<div class="file-loading"><input id="upload-img-category" name="upload-img-category" type="file"></div>';
 		// $("#div-img-category").empty;
@@ -152,23 +104,9 @@ $(document).ready(function(){
 
 		$("#btn-update-loaisanpham").attr("data-id", idCategory);
 
-		// $("#upload-img-category").fileinput({
-		//     overwriteInitial: true,
-		//     initialPreview: [
-		//         ".."+imageCategory
-		//     ],
-		//     initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-		//     initialPreviewFileType: 'image', // image is the default and can be overridden in config below
-		//     initialPreviewConfig: [
-		//         {caption: nameImage },
-		      
-		//     ],
-		 
-		// });
-
 	});
 
-	//Cap nhat danh muc
+	//Cap nhat loại sản phẩm
 	$("#btn-update-loaisanpham").click(function(){
 		var idChild = $(this).attr("data-id");
 		var nameChild = $("#id_tenloaisp").val();
@@ -197,7 +135,7 @@ $(document).ready(function(){
 		}	
 	});
 
-	//Search
+	//Tìm kiếm loại sản phẩm
 	$("#btn-search").click(function(){
 		var searchContent = $("#txt-search").val();
 		$.ajax({
@@ -214,10 +152,49 @@ $(document).ready(function(){
 		});
 	});
 
-	//Upload image category
+	//Upload ảnh loại sản phẩm
 	$("#upload-img-category").fileinput({
         'allowedFileExtensions': ['jpg', 'png', 'gif'],
         uploadUrl: "../../controller/UploadImageCategory.php"
     });
+
+
+
+    //Phân trang sản phẩm
+	$('#product-pagination').bootpag({
+	    total: $("#product-pagination").attr("data-total-page"),
+	    maxVisible: 5,
+	    page: 1
+	}).on("page", function(event, num){
+	 	$.ajax({
+				url: "../../controller/ProductController.php",
+				type: "POST",
+				data: {
+					action: "getListProductLimit",
+					pageNumber: num
+				},
+				success:function(data){
+					$("table.table").find("tbody").empty();
+					$("table.table").find("tbody").append(data);
+				}
+			});
+	});
+
+	//Tìm kiếm loại sản phẩm
+	$("#btn-search-product").click(function(){
+		var searchContent = $("#txt-search-product").val();
+		$.ajax({
+				url: "../../controller/ProductController.php",
+				type: "POST",
+				data: {
+					action: "searchProductByName",
+					content: searchContent
+				},
+				success:function(data){
+					$("table.table").find("tbody").empty();
+					$("table.table").find("tbody").append(data);
+				}
+		});
+	});
 	
 });

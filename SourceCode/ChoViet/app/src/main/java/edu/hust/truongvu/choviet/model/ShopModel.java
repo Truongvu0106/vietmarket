@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.shop;
+package edu.hust.truongvu.choviet.model;
 
 import org.json.JSONArray;
 import org.json.JSONException;

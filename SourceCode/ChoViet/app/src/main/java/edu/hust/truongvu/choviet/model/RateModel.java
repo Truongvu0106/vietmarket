@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.rate;
+package edu.hust.truongvu.choviet.model;
 
 import android.util.Log;
 

@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/bg_red"
+                android:background="@drawable/bg_blue_dark"
                 android:padding="@dimen/padding_small">
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="match_parent"

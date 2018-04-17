@@ -3,7 +3,7 @@ package edu.hust.truongvu.choviet.signin;
 import android.content.Context;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.profile.UserModel;
+import edu.hust.truongvu.choviet.model.UserModel;
 
 /**
  * Created by truon on 2/21/2018.

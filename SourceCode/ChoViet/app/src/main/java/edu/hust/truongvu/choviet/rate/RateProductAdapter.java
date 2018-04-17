@@ -15,7 +15,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Rate;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.profile.UserModel;
+import edu.hust.truongvu.choviet.model.UserModel;
 
 /**
  * Created by truon on 2/26/2018.

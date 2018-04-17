@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.product.ProductModel;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**

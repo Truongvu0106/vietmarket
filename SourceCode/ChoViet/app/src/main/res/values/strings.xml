@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ChoViet</string>
+    <string name="app_name">Viet Market</string>
     <string name="facebook_app_id">209910142922615</string>
     <string name="fb_login_protocol_scheme">fb209910142922615</string>
     <string name="google_plus_id">80859942862-pucbv1v6k5eattv4v6oa6v69jsgrecvf.apps.googleusercontent.com</string>
@@ -149,4 +149,8 @@
     <string name="gender">Gender</string>
     <string name="not_set">Not set</string>
     <string name="address">Address</string>
+    <string name="update">Update</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

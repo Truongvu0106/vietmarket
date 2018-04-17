@@ -1,6 +1,6 @@
 package edu.hust.truongvu.choviet.payment.paymethod;
 
-import android.content.Context;
+import edu.hust.truongvu.choviet.model.PayMethodModel;
 
 /**
  * Created by truon on 3/29/2018.

@@ -1,11 +1,10 @@
 package edu.hust.truongvu.choviet.payment.address;
 
 import android.content.Context;
-import android.util.Log;
 
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.profile.UserModel;
+import edu.hust.truongvu.choviet.model.UserModel;
 
 /**
  * Created by truon on 3/25/2018.

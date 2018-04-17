@@ -13,9 +13,12 @@ public class Constants {
         public static final String MY_PATH = PATH_GENNYMOTION;
     }
 
-    public class UserType{
+    public class User {
         public static final int TYPE_ADMIN = 1;
         public static final int TYPE_CUSTOMER = 2;
+
+        public static final int MALE = 1;
+        public static final int FEMALE = 2;
     }
 
     public class LoginType{

@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.profile;
+package edu.hust.truongvu.choviet.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;

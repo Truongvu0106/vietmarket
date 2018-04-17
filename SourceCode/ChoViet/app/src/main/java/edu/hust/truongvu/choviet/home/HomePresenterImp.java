@@ -6,10 +6,10 @@ import java.util.HashMap;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
-import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.product.ProductModel;
-import edu.hust.truongvu.choviet.shop.ShopModel;
+import edu.hust.truongvu.choviet.model.BrandModel;
+import edu.hust.truongvu.choviet.model.ProductModel;
+import edu.hust.truongvu.choviet.model.ShopModel;
 
 /**
  * Created by truon on 2/21/2018.

@@ -42,7 +42,7 @@
                 <ImageView
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:tint="@color/colorPrimaryDark"
                     android:layout_marginTop="@dimen/margin_small"
                     android:src="@drawable/full_name"/>
@@ -70,7 +70,7 @@
                 <ImageView
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:tint="@color/colorPrimaryDark"
                     android:layout_marginTop="@dimen/margin_small"
                     android:src="@drawable/email"/>
@@ -98,7 +98,7 @@
                 <ImageView
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:tint="@color/colorPrimaryDark"
                     android:layout_marginTop="@dimen/margin_small"
                     android:src="@drawable/ic_phone"/>
@@ -128,7 +128,7 @@
                 <ImageView
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:layout_marginTop="@dimen/margin_small"
                     android:tint="@color/colorPrimaryDark"
                     android:src="@drawable/lock"/>
@@ -158,7 +158,7 @@
                 <ImageView
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:src="@drawable/lock"
                     android:layout_marginTop="@dimen/margin_small"
                     android:tint="@color/colorPrimaryDark"/>

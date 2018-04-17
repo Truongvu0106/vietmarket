@@ -55,7 +55,7 @@
                     android:id="@+id/image_1"
                     android:layout_width="@dimen/icon_size_big"
                     android:layout_height="@dimen/icon_size_big"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/store"/>
                 <edu.hust.truongvu.choviet.customview.MyTextView
@@ -77,7 +77,7 @@
                     android:id="@+id/image_2"
                     android:layout_width="@dimen/icon_size_big"
                     android:layout_height="@dimen/icon_size_big"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/discount"/>
                 <edu.hust.truongvu.choviet.customview.MyTextView
@@ -104,7 +104,7 @@
                     android:layout_width="@dimen/icon_size_big"
                     android:layout_height="@dimen/icon_size_big"
                     android:layout_centerHorizontal="true"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:src="@drawable/promotion" />
 
                 <edu.hust.truongvu.choviet.customview.MyTextView
@@ -125,7 +125,7 @@
                     android:id="@+id/image_4"
                     android:layout_width="@dimen/icon_size_big"
                     android:layout_height="@dimen/icon_size_big"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_medium"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/category_color"/>
                 <edu.hust.truongvu.choviet.customview.MyTextView

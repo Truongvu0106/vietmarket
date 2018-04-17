@@ -3,6 +3,7 @@ package edu.hust.truongvu.choviet.rate;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Rate;
+import edu.hust.truongvu.choviet.model.RateModel;
 
 /**
  * Created by truon on 3/22/2018.

@@ -32,6 +32,7 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:orientation="vertical">
                 <RelativeLayout
+                    android:id="@+id/btn_fullname"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size_big"
                     android:padding="@dimen/padding_big">
@@ -47,6 +48,7 @@
                             android:textAllCaps="false"
                             android:text="@string/full_name"/>
                         <edu.hust.truongvu.choviet.customview.MyTextView
+                            android:id="@+id/edt_full_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_tiny"
@@ -64,7 +66,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"/>
                 <RelativeLayout
-                    android:id="@+id/btn_your_wishlist"
+                    android:id="@+id/btn_changepass"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size_big"
                     android:padding="@dimen/padding_big">
@@ -87,7 +89,7 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:id="@+id/btn_account"
+                    android:id="@+id/btn_gender"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:padding="@dimen/padding_big"
@@ -109,6 +111,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"/>
                 <LinearLayout
+                    android:id="@+id/btn_birthday"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:padding="@dimen/padding_big"
@@ -130,6 +133,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"/>
                 <LinearLayout
+                    android:id="@+id/btn_phone"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:padding="@dimen/padding_big"
@@ -164,11 +168,13 @@
                     android:textColor="@color/black"
                     android:text="@string/address"/>
                 <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
                 <RelativeLayout
+                    android:id="@+id/btn_add_address"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size_big"
                     android:layout_marginTop="@dimen/margin_medium"
