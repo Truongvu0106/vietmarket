@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.myshop;
+package edu.hust.truongvu.choviet.myshop.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

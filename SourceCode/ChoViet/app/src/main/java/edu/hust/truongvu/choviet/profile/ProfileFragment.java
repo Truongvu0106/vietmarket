@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.profile;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.main.MainActivity;
+import edu.hust.truongvu.choviet.myshop.main.MyShopActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,6 +112,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
             case R.id.btn_your_favorite_shop:
                 break;
             case R.id.btn_your_shop:
+                startActivity(new Intent(getActivity(), MyShopActivity.class));
                 break;
             case R.id.btn_account:
                 break;

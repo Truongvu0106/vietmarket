@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.adapter.ListShopAdapter;
 import edu.hust.truongvu.choviet.entity.Shop;
 
 /**

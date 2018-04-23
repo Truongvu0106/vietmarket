@@ -153,4 +153,32 @@
 
     <string name="male">Male</string>
     <string name="female">Female</string>
+
+    <string name="list_product">List products</string>
+    <string name="list_order">List orders</string>
+    <string name="report">Report</string>
+    <string name="edit">Edit</string>
+    <string name="add_new_product">Add new product</string>
+    <string name="edit_information">Edit information</string>
+    <string name="number">Number</string>
+
+    <string name="customer">Customer</string>
+
+    <string name="waiting">Waiting</string>
+    <string name="shipping">Shipping</string>
+    <string name="received">Received</string>
+    <string name="other">Other</string>
+    <string name="update_status">Update status</string>
+    <string name="delete">Delete</string>
+    
+    <string name="name">Name:</string>
+    <string name="price">Price:</string>
+    <string name="image">Image:</string>
+    <string name="information">Description</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_information">Enter description</string>
+    <string name="enter_weight">Enter weight</string>
+    <string name="enter_price">Enter price</string>
+    <string name="add_photo">Add photo</string>
+    <string name="enter_number">Enter number</string>
 </resources>

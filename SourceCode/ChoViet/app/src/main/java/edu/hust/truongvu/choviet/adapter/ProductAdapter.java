@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.product;
+package edu.hust.truongvu.choviet.adapter;
 
 import android.content.Context;
 import android.graphics.Paint;

@@ -31,6 +31,7 @@
     <dimen name="text_size_huge">35sp</dimen>
 
     <!-- Edit text height -->
+    <dimen name="edt_height_tiny">30dp</dimen>
     <dimen name="edt_height_small">40dp</dimen>
     <dimen name="edt_height_medium">60dp</dimen>
 

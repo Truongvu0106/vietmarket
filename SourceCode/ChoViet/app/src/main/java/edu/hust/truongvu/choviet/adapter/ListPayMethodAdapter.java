@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.payment.paymethod;
+package edu.hust.truongvu.choviet.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

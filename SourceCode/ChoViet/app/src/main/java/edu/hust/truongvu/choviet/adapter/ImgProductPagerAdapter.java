@@ -1,10 +1,12 @@
-package edu.hust.truongvu.choviet.product;
+package edu.hust.truongvu.choviet.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
+
+import edu.hust.truongvu.choviet.product.ImgProductFragment;
 
 /**
  * Created by truon on 2/26/2018.

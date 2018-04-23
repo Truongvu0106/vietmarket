@@ -20,13 +20,15 @@ import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.adapter.ImgProductPagerAdapter;
+import edu.hust.truongvu.choviet.adapter.ProductAdapter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Rate;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
-import edu.hust.truongvu.choviet.rate.RateProductAdapter;
+import edu.hust.truongvu.choviet.adapter.RateProductAdapter;
 import edu.hust.truongvu.choviet.rate.RateProductDialog;
 
 /**

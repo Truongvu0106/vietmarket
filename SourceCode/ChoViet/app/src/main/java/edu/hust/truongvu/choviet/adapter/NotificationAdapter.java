@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.notification;
+package edu.hust.truongvu.choviet.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

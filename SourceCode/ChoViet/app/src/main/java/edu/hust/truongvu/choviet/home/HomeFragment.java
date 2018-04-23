@@ -22,12 +22,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.adapter.BrandAdapter;
+import edu.hust.truongvu.choviet.adapter.PopularSearchAdapter;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
 import edu.hust.truongvu.choviet.product.ProductActivity;
-import edu.hust.truongvu.choviet.product.ProductAdapter;
+import edu.hust.truongvu.choviet.adapter.ProductAdapter;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**

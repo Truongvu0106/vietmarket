@@ -1,6 +1,5 @@
-package edu.hust.truongvu.choviet.payment.transport;
+package edu.hust.truongvu.choviet.adapter;
 
-import android.content.pm.LabeledIntent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;

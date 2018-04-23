@@ -14,9 +14,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.adapter.CartAdapter;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.main.MainActivity;
 import edu.hust.truongvu.choviet.payment.PaymentActivity;
 
 public class CartActivity extends AppCompatActivity implements CartView, View.OnClickListener{

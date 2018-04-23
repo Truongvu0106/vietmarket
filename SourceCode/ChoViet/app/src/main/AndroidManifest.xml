@@ -46,7 +46,12 @@
             <!-- <category andrnotename="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".info.InfoActivity"></activity>
+        <activity android:name=".info.InfoActivity" />
+        <activity android:name=".myshop.main.MyShopActivity" />
+        <activity android:name=".myshop.list_product.MyListProductActivity" />
+        <activity android:name=".myshop.list_order.MyListOrderActivity" />
+        <activity android:name=".myshop.report.ReportActivity" />
+        <activity android:name=".myshop.add_product.AddProductActivity"></activity>
     </application>
 
 </manifest>

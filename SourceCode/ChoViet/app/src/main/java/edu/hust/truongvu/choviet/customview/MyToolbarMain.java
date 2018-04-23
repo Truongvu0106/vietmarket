@@ -5,4 +5,5 @@ package edu.hust.truongvu.choviet.customview;
  */
 
 public class MyToolbarMain {
+
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.adapter.ProductAdapter;
 import edu.hust.truongvu.choviet.entity.Product;
 
 public class ListProductActivity extends AppCompatActivity implements ListProductView{

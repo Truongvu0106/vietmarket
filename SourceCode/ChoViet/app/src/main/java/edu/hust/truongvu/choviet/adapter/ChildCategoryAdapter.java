@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.category;
+package edu.hust.truongvu.choviet.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.product.ProductAdapter;
+import edu.hust.truongvu.choviet.adapter.ProductAdapter;
 
 public class ShopActivity extends AppCompatActivity implements ShopView{
 

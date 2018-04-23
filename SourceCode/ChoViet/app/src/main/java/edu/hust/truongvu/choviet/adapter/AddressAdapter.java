@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.payment.address;
+package edu.hust.truongvu.choviet.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
