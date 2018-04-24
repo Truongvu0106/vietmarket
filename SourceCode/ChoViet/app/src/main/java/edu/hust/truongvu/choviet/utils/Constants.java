@@ -31,4 +31,31 @@ public class Constants {
         public static final String PRODUCT_ID = "product_id";
     }
 
+    public enum OrderStatus{
+        WAITING(0), SHIPPING(1), RECEIVED(2), CANCEL(3);
+        private int id;
+        OrderStatus(int id){
+            this.id = id;
+        }
+
+        public int getIdStatus(){
+            return id;
+        }
+
+        public OrderStatus getStatusById(int id){
+            switch (id){
+                case 0:
+                    return WAITING;
+                case 1:
+                    return SHIPPING;
+                case 2:
+                    return RECEIVED;
+                case 3:
+                    return CANCEL;
+                default:
+                    return null;
+            }
+        }
+    }
+
 }

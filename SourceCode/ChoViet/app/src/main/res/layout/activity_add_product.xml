@@ -25,6 +25,7 @@
                 android:textColor="@color/black"
                 android:text="@string/name"/>
             <edu.hust.truongvu.choviet.customview.MyEditText
+                android:id="@+id/edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
@@ -37,12 +38,14 @@
                 android:textColor="@color/black"
                 android:text="@string/image"/>
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small">
 
             </android.support.v7.widget.RecyclerView>
             <RelativeLayout
+                android:id="@+id/btn_add_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
@@ -87,6 +90,7 @@
                         android:textColor="@color/black"
                         android:text="@string/brand"/>
                     <Spinner
+                        android:id="@+id/spinner_brand"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/edt_height_tiny"
                         android:layout_marginTop="@dimen/margin_small">
@@ -107,6 +111,7 @@
                         android:textColor="@color/black"
                         android:text="@string/category"/>
                     <Spinner
+                        android:id="@+id/spinner_category"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/edt_height_tiny"
                         android:layout_marginTop="@dimen/margin_small">
@@ -125,6 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <edu.hust.truongvu.choviet.customview.MyEditText
+                    android:id="@+id/edt_weight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
@@ -133,6 +139,7 @@
                     android:layout_marginRight="@dimen/margin_small"
                     android:hint="@string/enter_weight"/>
                 <Spinner
+                    android:id="@+id/spinner_weight_unit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin_small"
@@ -149,6 +156,7 @@
                 android:textColor="@color/black"
                 android:text="@string/information"/>
             <edu.hust.truongvu.choviet.customview.MyEditText
+                android:id="@+id/edt_des"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
@@ -163,6 +171,7 @@
                 android:textColor="@color/black"
                 android:text="@string/stock"/>
             <edu.hust.truongvu.choviet.customview.MyEditText
+                android:id="@+id/edt_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
@@ -176,12 +185,21 @@
                 android:textColor="@color/black"
                 android:text="@string/price"/>
             <edu.hust.truongvu.choviet.customview.MyEditText
+                android:id="@+id/edt_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
                 android:inputType="number"
                 android:hint="@string/enter_price"/>
-
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="@dimen/margin_small"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:text="@string/add"/>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

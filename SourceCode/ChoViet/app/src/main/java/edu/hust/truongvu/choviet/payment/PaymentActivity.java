@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.shuhart.stepview.StepView;
 
@@ -15,7 +16,7 @@ import edu.hust.truongvu.choviet.payment.paymethod.PayMethodFragment;
 import edu.hust.truongvu.choviet.payment.transport.TransportFragment;
 
 public class PaymentActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+    private View toolbar;
     public static StepView stepView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +25,8 @@ public class PaymentActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_payment);
         stepView = findViewById(R.id.step_view);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         stepView.go(0, true);
         loadFragment(AddressFragment.getInstance());

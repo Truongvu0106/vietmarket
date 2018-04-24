@@ -12,6 +12,6 @@ public class ReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-        new MyToolbarExtra(this);
+        new MyToolbarExtra(this, "");
     }
 }

@@ -17,7 +17,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener, ProductFragment.ItemCartListener{
 
-    private Toolbar toolbar;
+    private View toolbar;
     ProductPresenterImp productPresenterImp;
     private View layoutSearch, btnCart, layoutNumberItemCart;
     private TextView tvNumberItemCart;
@@ -26,9 +26,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_product);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar = findViewById(R.id.toolbar_product);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
         layoutSearch = findViewById(R.id.layout_search);
         btnCart = findViewById(R.id.img_cart);
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);

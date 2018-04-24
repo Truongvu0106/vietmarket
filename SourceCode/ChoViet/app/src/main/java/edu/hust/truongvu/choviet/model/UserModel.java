@@ -124,6 +124,54 @@ public class UserModel {
         return user;
     }
 
+    public User getUserById(int id){
+        User user = null;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getUserByUsername");
+
+        HashMap<String, String> attrUsername = new HashMap<>();
+        attrUsername.put("id", id+"");
+
+        attrs.add(attrFunc);
+        attrs.add(attrUsername);
+
+        JsonHelper jsonHelper = new JsonHelper(PATH_USER, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("user");
+            JSONArray jsonArray = myJsonArr.getJSONArray(0);
+            JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+            String id1 = jsonObject1.getString("id");
+            String fullname = jsonObject1.getString("fullname");
+            String username1 = jsonObject1.getString("username");
+            String password = jsonObject1.getString("password");
+            String address = jsonObject1.getString("address");
+            String birthday = jsonObject1.getString("birthday");
+            String phone = jsonObject1.getString("phone");
+            String gender = jsonObject1.getString("gender");
+            String img_avatar = jsonObject1.getString("img_avatar");
+            String id_type = jsonObject1.getString("id_type");
+            String type_login = jsonObject1.getString("type_login");
+
+            user = new User(Integer.parseInt(id1), fullname, username1, password, address, birthday, phone,
+                    Integer.parseInt(gender), img_avatar, Integer.parseInt(id_type), Integer.parseInt(type_login));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return user;
+    }
+
     public boolean registerUser(User user){
         boolean flag = false;
         List<HashMap<String, String>> attrs = new ArrayList<>();

@@ -49,7 +49,7 @@
         <activity android:name=".info.InfoActivity" />
         <activity android:name=".myshop.main.MyShopActivity" />
         <activity android:name=".myshop.list_product.MyListProductActivity" />
-        <activity android:name=".myshop.list_order.MyListOrderActivity" />
+        <activity android:name=".myshop.list_order.ShopListOrderActivity" />
         <activity android:name=".myshop.report.ReportActivity" />
         <activity android:name=".myshop.add_product.AddProductActivity"></activity>
     </application>

@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.cart;
+package edu.hust.truongvu.choviet.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;

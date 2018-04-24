@@ -22,7 +22,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class ShopModel {
     public static final String SHOP_PATH = Constants.Path.MY_PATH + "shop.php";
 
-    public ArrayList<Shop> getAllShop(){
+    public ArrayList<Shop> getAllShop() {
         ArrayList<Shop> listShop = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
@@ -38,7 +38,7 @@ public class ShopModel {
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("shops");
             JSONArray jsonBrands = myJsonArr.getJSONArray(0);
-            for (int i = 0; i < jsonBrands.length(); i++){
+            for (int i = 0; i < jsonBrands.length(); i++) {
                 JSONObject jsonObject1 = jsonBrands.getJSONObject(i);
                 String id = jsonObject1.getString("id");
                 String name = jsonObject1.getString("name");
@@ -54,7 +54,7 @@ public class ShopModel {
 
                 Shop shop = new Shop(Integer.parseInt(id), name, slogan, avatar, cover,
                         Integer.parseInt(owner), address, phone, website, Float.parseFloat(rate),
-                        hightlight.matches("1")?true:false);
+                        hightlight.matches("1") ? true : false);
                 listShop.add(shop);
             }
         } catch (InterruptedException e) {
@@ -68,5 +68,55 @@ public class ShopModel {
             return new ArrayList<>();
         }
         return listShop;
+    }
+
+    public Shop getShopById(int id) {
+        Shop shop = null;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getShopById");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id", id + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrId);
+
+        JsonHelper jsonHelper = new JsonHelper(SHOP_PATH, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("shops");
+            JSONArray jsonBrands = myJsonArr.getJSONArray(0);
+            JSONObject jsonObject1 = jsonBrands.getJSONObject(0);
+
+            String id1 = jsonObject1.getString("id");
+            String name = jsonObject1.getString("name");
+            String slogan = jsonObject1.getString("slogan");
+            String avatar = jsonObject1.getString("avatar");
+            String cover = jsonObject1.getString("cover");
+            String owner = jsonObject1.getString("owner");
+            String address = jsonObject1.getString("address");
+            String phone = jsonObject1.getString("phone");
+            String website = jsonObject1.getString("website");
+            String rate = jsonObject1.getString("rate");
+            String hightlight = jsonObject1.getString("highlight");
+
+            shop = new Shop(Integer.parseInt(id1), name, slogan, avatar, cover,
+                    Integer.parseInt(owner), address, phone, website, Float.parseFloat(rate),
+                    hightlight.matches("1") ? true : false);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return shop;
     }
 }

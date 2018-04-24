@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static String USER_NAME = "";
     public static String IMAGE = "";
     public static Uri URI_IMAGE = null;
-    private Toolbar toolbar;
+    private View toolbar;
     private View search, cart, layoutNumberItemCart;
     private TextView tvNumberItemCart;
     private MainPresenterImp mainPresenterImp;
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 //        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_main);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar =  findViewById(R.id.toolbar_main);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
         search = findViewById(R.id.layout_search);
         cart = findViewById(R.id.img_cart);
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);

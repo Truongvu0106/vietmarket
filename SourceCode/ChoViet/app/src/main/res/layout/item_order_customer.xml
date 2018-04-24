@@ -2,8 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="@dimen/padding_large">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,20 +56,14 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:textColor="@color/black"
                     android:text="Điện thoại iphone"/>
-                <edu.hust.truongvu.choviet.customview.MyTextView
-                    android:id="@+id/old_price_product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginTop="@dimen/margin_tiny"
-                    android:text="100000đ"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/padding_medium"
                     android:orientation="horizontal">
                     <edu.hust.truongvu.choviet.customview.MyTextView
-                        android:id="@+id/new_price_product"
+                        android:id="@+id/price_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -78,18 +71,15 @@
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/text_size_medium"
                         android:text="123000đ"/>
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="30dp"
+                    <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:id="@+id/tv_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/bg_border_gray">
-                        <Spinner
-                            android:id="@+id/spin_number_stock"
-                            android:layout_width="100dp"
-                            android:layout_height="30dp">
-
-                        </Spinner>
-                    </LinearLayout>
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:textColor="@color/black"
+                        android:text="Number: 2"/>
 
                 </RelativeLayout>
 
@@ -99,37 +89,5 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/colorGrayLight"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small">
-            <ImageView
-                android:id="@+id/btn_delete"
-                android:layout_width="@dimen/icon_size_big"
-                android:layout_height="@dimen/icon_size_medium"
-                android:layout_alignParentRight="true"
-                android:padding="@dimen/padding_big"
-                android:src="@drawable/delete"/>
-            <FrameLayout
-                android:id="@+id/btn_like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/btn_delete">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_big"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:layout_marginRight="@dimen/margin_small"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/like_empty"/>
-                <ImageView
-                    android:id="@+id/like_fill"
-                    android:layout_width="@dimen/icon_size_big"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_medium"
-                    android:src="@drawable/like_fill"
-                    android:visibility="gone"/>
-            </FrameLayout>
-
-        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
