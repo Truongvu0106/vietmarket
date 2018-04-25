@@ -2,6 +2,9 @@ package edu.hust.truongvu.choviet.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.support.v4.content.ContextCompat;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,11 +14,13 @@ import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.model.UserModel;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -88,15 +93,21 @@ public class MyHelper {
                 .into(imageView);
     }
 
-    public static String getUserPreference(Context context){
-        SharedPreferences userPreference = context.getSharedPreferences("mylogin", MODE_PRIVATE);
-        String username = userPreference.getString("username", "");
+    public static String getUserNamePreference(Context context){
+        SharedPreferences userPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, MODE_PRIVATE);
+        String username = userPreference.getString(Constants.MyTag.USERNAME, "");
         return username;
+    }
+
+    public static int getUserIdPreference(Context context){
+        SharedPreferences userPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, MODE_PRIVATE);
+        int id = userPreference.getInt(Constants.MyTag.USERID, 0);
+        return id;
     }
 
     public static User getCurrentUser(Context context){
         UserModel userModel = new UserModel();
-        User user = userModel.getUserByUsername(getUserPreference(context));
+        User user = userModel.getUserByUsername(getUserNamePreference(context));
         if (user == null){
             Log.e("user", "null");
         }else {
@@ -119,5 +130,17 @@ public class MyHelper {
             root.setVisibility(View.VISIBLE);
             tvNumber.setText(number + "");
         }
+    }
+
+    public static String convertTimeString(long miliseconds){
+        return DateFormat.format("dd/MM/yyyy  HH:mm", new Date(miliseconds)).toString();
+    }
+
+    public static int checkPermission(String[] permissions, Context context) {
+        int permissionCheck = PackageManager.PERMISSION_GRANTED;
+        for (String permission : permissions) {
+            permissionCheck += ContextCompat.checkSelfPermission(context, permission);
+        }
+        return permissionCheck;
     }
 }

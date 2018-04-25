@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.AddressAdapter;
+import edu.hust.truongvu.choviet.dialog.InsertAddressDialog;
 import edu.hust.truongvu.choviet.payment.PaymentActivity;
 import edu.hust.truongvu.choviet.payment.PaymentPresenterImp;
 import edu.hust.truongvu.choviet.payment.PaymentView;
@@ -26,7 +27,7 @@ import edu.hust.truongvu.choviet.payment.transport.TransportFragment;
  * A simple {@link Fragment} subclass.
  */
 public class AddressFragment extends Fragment implements PaymentView, AddressView, View.OnClickListener{
-    private String selectedAddress = "";
+    public static String selectedAddress = "";
     private PaymentPresenterImp paymentPresenterImp;
     private AddressPresenterImp addressPresenterImp;
     private TextView tvuserName, tvPhone;

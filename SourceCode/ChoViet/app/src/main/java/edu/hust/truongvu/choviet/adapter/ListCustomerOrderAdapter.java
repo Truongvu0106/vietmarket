@@ -2,6 +2,7 @@ package edu.hust.truongvu.choviet.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,7 @@ public class ListCustomerOrderAdapter extends RecyclerView.Adapter<ListCustomerO
         }
 
         public void setContent(Product product){
-            Shop shop = shopModel.getShopById(product.getId());
+            Shop shop = shopModel.getShopById(product.getIdShop());
             if (shop != null){
                 MyHelper.setImagePicasso(context, imgShop, Constants.Path.MY_PATH + shop.getImgAvatar());
                 tvNameShop.setText(shop.getName());

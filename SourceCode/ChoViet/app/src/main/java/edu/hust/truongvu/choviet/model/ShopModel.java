@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,7 +77,7 @@ public class ShopModel {
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
         attrFunc.put("func", "getShopById");
-
+        Log.e("data", id+"");
         HashMap<String, String> attrId = new HashMap<>();
         attrId.put("id", id + "");
 
@@ -87,6 +89,7 @@ public class ShopModel {
 
         try {
             String data = jsonHelper.get();
+            Log.e("data", data);
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("shops");
             JSONArray jsonBrands = myJsonArr.getJSONArray(0);

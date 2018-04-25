@@ -10,6 +10,7 @@ import android.view.View;
 import com.shuhart.stepview.StepView;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.customview.MyToolbarExtra;
 import edu.hust.truongvu.choviet.payment.address.AddressFragment;
 import edu.hust.truongvu.choviet.payment.confirm.ConfirmFragment;
 import edu.hust.truongvu.choviet.payment.paymethod.PayMethodFragment;
@@ -22,12 +23,18 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        toolbar = findViewById(R.id.toolbar_payment);
+        new MyToolbarExtra(this, getString(R.string.payment), R.drawable.ic_check, new MyToolbarExtra.OnExtraToolbarListener() {
+            @Override
+            public void onMoreClick() {
+
+            }
+
+            @Override
+            public void onBackClick() {
+                backHandle();
+            }
+        });
         stepView = findViewById(R.id.step_view);
-
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         stepView.go(0, true);
         loadFragment(AddressFragment.getInstance());
     }
@@ -42,12 +49,10 @@ public class PaymentActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        int count = getFragmentManager().getBackStackEntryCount();
-//        if (count == 0) {
-//            super.onBackPressed();
-//        } else {
-//            getFragmentManager().popBackStack();
-//        }
+        backHandle();
+    }
+
+    private void backHandle(){
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame_container_payment);
         if (fragment instanceof AddressFragment){
             finish();

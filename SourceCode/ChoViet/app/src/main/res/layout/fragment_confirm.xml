@@ -33,6 +33,26 @@
                     <ImageView
                         android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
+                        android:src="@drawable/map"
+                        android:padding="@dimen/padding_tiny"/>
+                    <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_medium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="@string/empty"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
                         android:src="@drawable/truck_color"
                         android:padding="@dimen/padding_tiny"/>
                     <edu.hust.truongvu.choviet.customview.MyTextView
@@ -42,7 +62,7 @@
                         android:layout_marginLeft="@dimen/margin_medium"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_small"
-                        android:text="Giao hàng tận nơi"/>
+                        android:text="@string/empty"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -62,7 +82,7 @@
                         android:layout_marginLeft="@dimen/margin_medium"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_small"
-                        android:text="Thanh toán khi nhận hàng"/>
+                        android:text="@string/empty"/>
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -85,7 +105,7 @@
                             android:layout_marginLeft="@dimen/margin_small"
                             android:textSize="@dimen/text_size_small"
                             android:textColor="@color/colorRed"
-                            android:text="100000"/>
+                            android:text=""/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -94,7 +114,7 @@
         </LinearLayout>
     </ScrollView>
     <RelativeLayout
-        android:id="@+id/btn_address"
+        android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="@dimen/actionbar_size"
         android:layout_alignParentBottom="true"

@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/icon_size_bigger"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:padding="@dimen/padding_small">
+    android:paddingLeft="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_small"
+    android:background="@color/white">
     <ImageView
         android:id="@+id/img_product"
-        android:layout_width="@dimen/icon_size_large"
-        android:layout_height="@dimen/icon_size_bigger"
+        android:layout_width="@dimen/icon_size_bigger"
+        android:layout_height="@dimen/icon_size_big"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_small"
         android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/btn_clear"
+        android:layout_width="@dimen/icon_size_small"
+        android:layout_height="@dimen/icon_size_small"
+        android:tint="@color/grayicon"
+        android:padding="@dimen/padding_small"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_delete"/>
 </RelativeLayout>

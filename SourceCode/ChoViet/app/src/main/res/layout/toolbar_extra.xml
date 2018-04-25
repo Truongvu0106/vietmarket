@@ -37,6 +37,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true">
             <ImageView
+                android:id="@+id/img_more"
                 android:layout_width="@dimen/icon_size_medium"
                 android:layout_height="match_parent"
                 android:padding="@dimen/padding_big"

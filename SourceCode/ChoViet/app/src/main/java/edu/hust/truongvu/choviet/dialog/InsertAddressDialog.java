@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.payment.address;
+package edu.hust.truongvu.choviet.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;

@@ -8,12 +8,14 @@ public class OrderDetails {
     private int id;
     private int idOrder;
     private int idProduct;
+    private int idShop;
     private int number;
 
-    public OrderDetails(int id, int idOrder, int idProduct, int number) {
+    public OrderDetails(int id, int idOrder, int idProduct, int idShop, int number) {
         this.id = id;
         this.idOrder = idOrder;
         this.idProduct = idProduct;
+        this.idShop = idShop;
         this.number = number;
     }
 
@@ -39,6 +41,14 @@ public class OrderDetails {
 
     public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
+    }
+
+    public int getIdShop() {
+        return idShop;
+    }
+
+    public void setIdShop(int idShop) {
+        this.idShop = idShop;
     }
 
     public int getNumber() {

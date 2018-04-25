@@ -12,6 +12,15 @@ public class MyListProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list_product);
-        new MyToolbarExtra(this, "");
+        new MyToolbarExtra(this, "", 0, new MyToolbarExtra.OnExtraToolbarListener() {
+            @Override
+            public void onMoreClick() {
+            }
+
+            @Override
+            public void onBackClick() {
+                onBackPressed();
+            }
+        });
     }
 }

@@ -1,22 +1,17 @@
 package edu.hust.truongvu.choviet.main;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
-import com.facebook.FacebookSdk;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import org.json.JSONException;
@@ -24,7 +19,6 @@ import org.json.JSONObject;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
-import edu.hust.truongvu.choviet.cart.CartPresenter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.search.SearchActivity;
@@ -66,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        if (account != null){
 //            mainPresenterImp.loadInfoGoogle(account);
 //        }
-        Toast.makeText(this, "Welcome " + MyHelper.getUserPreference(this), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Welcome " + MyHelper.getUserNamePreference(this), Toast.LENGTH_SHORT).show();
 
     }
 
-//    private String getUserPreference(Context context){
+//    private String getUserNamePreference(Context context){
 //        SharedPreferences userPreference = context.getSharedPreferences("mylogin", MODE_PRIVATE);
 //        String username = userPreference.getString("username", "");
 //        return username;

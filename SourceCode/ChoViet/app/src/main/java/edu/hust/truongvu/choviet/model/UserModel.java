@@ -58,9 +58,11 @@ public class UserModel {
             if (result.matches("true")){
                 flag = true;
                 String username1 = jsonObject.getString("username");
-                SharedPreferences loginPreference = context.getSharedPreferences("mylogin", Context.MODE_PRIVATE);
+                int id = jsonObject.getInt("id");
+                SharedPreferences loginPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = loginPreference.edit();
-                editor.putString("username", username1);
+                editor.putString(Constants.MyTag.USERNAME, username1);
+                editor.putInt(Constants.MyTag.USERID, id);
                 editor.commit();
             }else {
                 flag = false;

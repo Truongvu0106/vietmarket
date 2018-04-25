@@ -37,6 +37,7 @@ public class CartModel {
         values.put(MyDb.COLUMN_PRICE, product.getPrice());
         values.put(MyDb.COLUMN_DISCOUNT, product.getDiscount());
         values.put(MyDb.COLUMN_AMOUNT, product.getAmount());
+        values.put(MyDb.COLUMN_IDSHOP, product.getIdShop());
         values.put(MyDb.COLUMN_NUMBER_SELECT, 1);
         values.put(MyDb.COLUMN_IMAGE, product.getImgs().get(0));
 
@@ -47,7 +48,7 @@ public class CartModel {
     public ArrayList<Product> getAllItemCart(){
         Cursor cursor = database.query(TABLE_NAME,
                 new String[]{MyDb.COLUMN_ID_PRODUCT, MyDb.COLUMN_NAME_PRODUCT, MyDb.COLUMN_PRICE, MyDb.COLUMN_DISCOUNT,
-                        MyDb.COLUMN_AMOUNT, MyDb.COLUMN_NUMBER_SELECT, MyDb.COLUMN_IMAGE},
+                        MyDb.COLUMN_AMOUNT, MyDb.COLUMN_IDSHOP, MyDb.COLUMN_NUMBER_SELECT, MyDb.COLUMN_IMAGE},
                 null,
                 null,
                 null,
@@ -85,6 +86,7 @@ public class CartModel {
             long price = cursor.getLong(cursor.getColumnIndex(MyDb.COLUMN_PRICE));
             int discount = cursor.getInt(cursor.getColumnIndex(MyDb.COLUMN_DISCOUNT));
             int amount = cursor.getInt(cursor.getColumnIndex(MyDb.COLUMN_AMOUNT));
+            int idShop = cursor.getInt(cursor.getColumnIndex(MyDb.COLUMN_IDSHOP));
             int number = cursor.getInt(cursor.getColumnIndex(MyDb.COLUMN_NUMBER_SELECT));
             String image = cursor.getString(cursor.getColumnIndex(MyDb.COLUMN_IMAGE));
             ArrayList<String> images = new ArrayList<>();
@@ -96,6 +98,7 @@ public class CartModel {
             product.setDiscount(discount);
             product.setImgs(images);
             product.setAmount(amount);
+            product.setIdShop(idShop);
             product.setNumberSelect(number);
 
             products.add(product);

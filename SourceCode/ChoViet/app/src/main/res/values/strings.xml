@@ -182,4 +182,12 @@
     <string name="add_photo">Add photo</string>
     <string name="enter_number">Enter number</string>
     <string name="add">Add</string>
+    <string name="empty">Empty</string>
+    <string name="payment">Payments</string>
+    <string name="m_false">False</string>
+    <string name="order_confirmed_successful">Your order has been confirmed successfully!</string>
+    <string name="upload_image">Upload Image</string>
+
+    <string name="take_picture">Take a picture</string>
+    <string name="choose_from_gallery">Choose from gallery</string>
 </resources>

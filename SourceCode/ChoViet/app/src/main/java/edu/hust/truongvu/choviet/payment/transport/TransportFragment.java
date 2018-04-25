@@ -30,7 +30,7 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
     private View btnTransport;
     private RecyclerView recyclerView;
     private TransportAdapter adapter;
-    private int idTransport = 0;
+    public static int idTransport = 0;
     public TransportFragment() {
         // Required empty public constructor
     }

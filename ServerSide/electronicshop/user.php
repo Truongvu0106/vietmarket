@@ -13,6 +13,9 @@
 		case 'getUserByUsername':
 			$func();
 			break;
+		case 'getUserById':
+			$func();
+			break;
 		case 'updateUser':
 			$func();
 			break;
@@ -33,10 +36,12 @@
 		$count = mysqli_num_rows($results);
 		if ($count >= 1) {
 			$username = "";
+			$id = 0;
 			while ($line = mysqli_fetch_array($results)) {
 				$username = $line["username"];
+				$id = $line["id_user"];
 			}
-			echo "{result : true, username : \"".$username."\" }";
+			echo "{result : true, username : \"".$username."\", id : ".$id." }";
 		}else{
 			echo "{result : false, error : ".$query."</br>".$conn->error."}";
 		}
@@ -112,6 +117,38 @@
 			$username = $_POST["username"];
 		}
 		$query = "SELECT * FROM user WHERE username = '".$username."'";
+		$results = mysqli_query($conn, $query);
+		echo "{";
+		echo "\"user\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id" => $line["id_user"], 
+					"fullname" => $line["fullname"],
+					"username" => $line["username"],
+					"password" => $line["password"],
+					"address" => $line["address"],
+					"birthday" => $line["birthday"],
+					"phone" => $line["phone"],
+					"gender" => $line["gender"],
+					"img_avatar" => $line["img_avatar"],
+					"id_type" => $line["id_type"],
+					"type_login" => $line["type_login"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+	}
+
+	function getUserById(){
+		global $conn;
+		$my_json_array = array();
+
+		if (isset($_POST["id"])) {
+			$id = $_POST["id"];
+		}
+		$query = "SELECT * FROM user WHERE id_user = '".$id."'";
 		$results = mysqli_query($conn, $query);
 		echo "{";
 		echo "\"user\":[";

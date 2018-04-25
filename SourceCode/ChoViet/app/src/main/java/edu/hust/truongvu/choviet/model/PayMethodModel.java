@@ -21,7 +21,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class PayMethodModel {
     public static final String PAY_PATH = Constants.Path.MY_PATH + "payment.php";
 
-    public ArrayList<PayMethod> getAllPayMethod(){
+    public ArrayList<PayMethod> getAllPayMethod() {
         ArrayList<PayMethod> listPaymenthods = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
@@ -37,7 +37,7 @@ public class PayMethodModel {
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("payment");
             JSONArray jsonPayments = myJsonArr.getJSONArray(0);
-            for (int i = 0; i < jsonPayments.length(); i++){
+            for (int i = 0; i < jsonPayments.length(); i++) {
                 JSONObject jsonObject1 = jsonPayments.getJSONObject(i);
                 String id = jsonObject1.getString("id");
                 String name = jsonObject1.getString("name");
@@ -58,5 +58,45 @@ public class PayMethodModel {
             return new ArrayList<>();
         }
         return listPaymenthods;
+    }
+
+    public PayMethod getPayMethodById(int id) {
+        PayMethod payMethod = null;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getPaymentById");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id", id + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrId);
+
+        JsonHelper jsonHelper = new JsonHelper(PAY_PATH, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("payment");
+            JSONArray jsonPayments = myJsonArr.getJSONArray(0);
+            JSONObject jsonObject1 = jsonPayments.getJSONObject(0);
+            String id1 = jsonObject1.getString("id");
+            String name = jsonObject1.getString("name");
+            String image = jsonObject1.getString("image");
+            String price = jsonObject1.getString("price");
+
+            payMethod = new PayMethod(Integer.parseInt(id1), name, image, Long.parseLong(price));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return payMethod;
     }
 }

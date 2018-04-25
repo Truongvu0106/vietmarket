@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,11 +29,90 @@ public class OrderModel {
         this.context = context;
     }
 
-    public ArrayList<Order> getListOrderByShop(int idShop){
-        ArrayList<Order> listOrder = new ArrayList<>();
+    public boolean insertOrder(Order order){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "addNewOrder");
+
+        ArrayList<OrderDetails> listDetails = new ArrayList<>();
+        listDetails = order.getOrderDetails();
+
+        String json = "{\"list_products\":[";
+        for (int i = 0; i < listDetails.size(); i++){
+            json += "{";
+            json += "\"id_product\" : " + listDetails.get(i).getIdProduct() + ",";
+            json += "\"id_shop\" : " + listDetails.get(i).getIdShop() + ",";
+            json += "\"number\" : " + listDetails.get(i).getNumber();
+            if (i == listDetails.size() - 1){
+                json += "}";
+            }else {
+                json += "},";
+            }
+        }
+        json += "]}";
+
+        HashMap<String, String> attrListDetailsJson = new HashMap<>();
+        attrListDetailsJson.put("list_details", json);
+
+        Log.e("myJson", json);
+
+        HashMap<String, String> attrIdCustomer = new HashMap<>();
+        attrIdCustomer.put("id_customer", order.getIdCustomer()+"");
+
+        HashMap<String, String> attrStatus = new HashMap<>();
+        attrStatus.put("status", order.getStatus() + "");
+
+        HashMap<String, String> attrTransport = new HashMap<>();
+        attrTransport.put("type_transport", order.getTypeTransport() + "");
+
+        HashMap<String, String> attrPayment = new HashMap<>();
+        attrPayment.put("type_payment", order.getTypePayment() + "");
+
+        HashMap<String, String> attrValue = new HashMap<>();
+        attrValue.put("value", order.getPrice() + "");
+
+        HashMap<String, String> attrAddress = new HashMap<>();
+        attrAddress.put("address", order.getAddress());
+
+        attrs.add(attrFucn);
+        attrs.add(attrListDetailsJson);
+        attrs.add(attrIdCustomer);
+        attrs.add(attrStatus);
+        attrs.add(attrTransport);
+        attrs.add(attrPayment);
+        attrs.add(attrValue);
+        attrs.add(attrAddress);
+
+        JsonHelper jsonHelper = new JsonHelper(ORDER_PATH, attrs);
+        jsonHelper.execute();
+        try {
+            String data = jsonHelper.get();
+            Log.e("add_order", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error_add_order", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public ArrayList<OrderDetails> getDetailsOrderByShop(int idShop){
+        ArrayList<OrderDetails> listOrder = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
-        attrFunc.put("func", "getListOrderByShopId");
+        attrFunc.put("func", "getDetailsOrderByShop");
 
         HashMap<String, String> attrShop = new HashMap<>();
         attrShop.put("id_shop", idShop+"");
@@ -46,24 +126,19 @@ public class OrderModel {
         try {
             String data = jsonHelper.get();
             JSONObject jsonObject = new JSONObject(data);
-            JSONArray myJsonArr = jsonObject.getJSONArray("orders");
+            JSONArray myJsonArr = jsonObject.getJSONArray("orderdetails");
             JSONArray jsonTransport = myJsonArr.getJSONArray(0);
             for (int i = 0; i < jsonTransport.length(); i++) {
                 JSONObject jsonObject1 = jsonTransport.getJSONObject(i);
+                String id = jsonObject1.getString("id");
                 String id_order = jsonObject1.getString("id_order");
-                String id_customer = jsonObject1.getString("id_customer");
+                String id_product = jsonObject1.getString("id_product");
                 String id_shop = jsonObject1.getString("id_shop");
-                String date_order = jsonObject1.getString("date_order");
-                String status = jsonObject1.getString("status");
-                String type_transport = jsonObject1.getString("type_transport");
-                String type_payment = jsonObject1.getString("type_payment");
-                String value = jsonObject1.getString("value");
-                String address = jsonObject1.getString("address");
+                String number = jsonObject1.getString("number");
 
-                Order order = new Order(Integer.parseInt(id_order), Integer.parseInt(id_customer), Integer.parseInt(id_shop),
-                        Long.parseLong(date_order), Integer.parseInt(status), Integer.parseInt(type_transport), Integer.parseInt(type_payment),
-                        Integer.parseInt(value), address);
-                listOrder.add(order);
+                OrderDetails orderDetails = new OrderDetails(Integer.parseInt(id), Integer.parseInt(id_order),
+                        Integer.parseInt(id_product), Integer.parseInt(id_shop), Integer.parseInt(number));
+                listOrder.add(orderDetails);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -78,7 +153,7 @@ public class OrderModel {
         return listOrder;
     }
 
-    public ArrayList<OrderDetails> getDetailsOrder(int idOrder){
+    public ArrayList<OrderDetails> getDetailsOrderById(int idOrder){
         ArrayList<OrderDetails> listOrder = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
@@ -103,10 +178,11 @@ public class OrderModel {
                 String id = jsonObject1.getString("id");
                 String id_order = jsonObject1.getString("id_order");
                 String id_product = jsonObject1.getString("id_product");
+                String id_shop = jsonObject1.getString("id_shop");
                 String number = jsonObject1.getString("number");
 
                 OrderDetails orderDetails = new OrderDetails(Integer.parseInt(id), Integer.parseInt(id_order),
-                        Integer.parseInt(id_product), Integer.parseInt(number));
+                        Integer.parseInt(id_product), Integer.parseInt(id_shop), Integer.parseInt(number));
                 listOrder.add(orderDetails);
             }
         } catch (InterruptedException e) {

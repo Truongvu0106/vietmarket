@@ -72,7 +72,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product, container, false);
 
-        username = MyHelper.getUserPreference(getContext());
+        username = MyHelper.getUserNamePreference(getContext());
 
         mViewPager = view.findViewById(R.id.img_pager);
         mIndicator = view.findViewById(R.id.img_indicator);

@@ -17,6 +17,7 @@ public class MyDb extends SQLiteOpenHelper {
     public static final String COLUMN_PRICE = "price";
     public static final String COLUMN_DISCOUNT = "discount";
     public static final String COLUMN_AMOUNT = "amount";
+    public static final String COLUMN_IDSHOP = "id_shop";
     public static final String COLUMN_NUMBER_SELECT = "number_select";
     public static final String COLUMN_IMAGE = "image";
 
@@ -34,6 +35,7 @@ public class MyDb extends SQLiteOpenHelper {
                 + COLUMN_PRICE + " real, "
                 + COLUMN_DISCOUNT + " integer, "
                 + COLUMN_AMOUNT + " integer, "
+                + COLUMN_IDSHOP + " integer, "
                 + COLUMN_NUMBER_SELECT + " integer, "
                 + COLUMN_IMAGE + " text" + ");";
         sqLiteDatabase.execSQL(query_create_table);

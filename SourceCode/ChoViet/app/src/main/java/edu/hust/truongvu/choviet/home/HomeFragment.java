@@ -23,6 +23,7 @@ import java.util.HashMap;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.BrandAdapter;
+import edu.hust.truongvu.choviet.adapter.HighlightShopAdapter;
 import edu.hust.truongvu.choviet.adapter.PopularSearchAdapter;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;

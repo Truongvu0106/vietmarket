@@ -30,7 +30,7 @@ public class PayMethodFragment extends Fragment implements PaymentView, View.OnC
     private View btnPayment;
     private RecyclerView recyclerView;
     private ListPayMethodAdapter adapter;
-    private int idMethod = 0;
+    public static int idMethod = 0;
     public PayMethodFragment() {
         // Required empty public constructor
     }

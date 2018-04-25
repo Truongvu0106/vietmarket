@@ -98,7 +98,7 @@ public class ListShopOrderAdapter extends RecyclerView.Adapter<ListShopOrderAdap
         public void setContent(final Order order){
             User user = userModel.getUserById(order.getIdCustomer());
             Transport transport = transportModel.getTransportById(order.getTypeTransport());
-            ArrayList<OrderDetails> orderDetails = orderModel.getDetailsOrder(order.getId());
+            ArrayList<OrderDetails> orderDetails = orderModel.getDetailsOrderById(order.getId());
             tvAddress.setText(order.getAddress());
 
             if (user != null){

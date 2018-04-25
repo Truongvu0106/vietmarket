@@ -8,9 +8,9 @@ public class Constants {
     public class Path{
         public static final String PATH_GENNYMOTION = "http://10.0.3.2:8080/electronicshop/";
         public static final String PATH_ANDROID_STUDIO = "http://127.0.0.1:8080/electronicshop/";
-        public static final String PATH_REAL_DEVICE = "http://192.168.100.5:8080/electronicshop/";
+        public static final String PATH_REAL_DEVICE = "http://192.168.100.2:8080/electronicshop/";
 
-        public static final String MY_PATH = PATH_GENNYMOTION;
+        public static final String MY_PATH = PATH_REAL_DEVICE;
     }
 
     public class User {
@@ -29,6 +29,9 @@ public class Constants {
 
     public class MyTag{
         public static final String PRODUCT_ID = "product_id";
+        public static final String MY_LOGIN = "mylogin";
+        public static final String USERNAME = "username";
+        public static final String USERID = "userid";
     }
 
     public enum OrderStatus{

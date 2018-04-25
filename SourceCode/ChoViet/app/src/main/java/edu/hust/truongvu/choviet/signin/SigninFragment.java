@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import java.util.Arrays;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.main.MainActivity;
 import edu.hust.truongvu.choviet.customview.MyToast;
 import edu.hust.truongvu.choviet.signup.SignupFragment;
