@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.entity.MyImage;
 
 /**
  * Created by truon on 4/25/2018.
@@ -17,12 +18,12 @@ import edu.hust.truongvu.choviet.R;
 
 public class ListAddImageAdapter extends RecyclerView.Adapter<ListAddImageAdapter.ImageViewHolder>{
     public interface ClearImageListener{
-        void onClear(Bitmap bitmap);
+        void onClear(MyImage myImage);
     }
     private ClearImageListener mListener;
-    private ArrayList<Bitmap> listBitmap;
-    public ListAddImageAdapter(ArrayList<Bitmap> listBitmap, ClearImageListener listener){
-        this.listBitmap = listBitmap;
+    private ArrayList<MyImage> listMyImage;
+    public ListAddImageAdapter(ArrayList<MyImage> listMyImage, ClearImageListener listener){
+        this.listMyImage = listMyImage;
         this.mListener = listener;
     }
 
@@ -35,13 +36,13 @@ public class ListAddImageAdapter extends RecyclerView.Adapter<ListAddImageAdapte
 
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        Bitmap bitmap = listBitmap.get(position);
-        holder.setContent(bitmap);
+        MyImage myImage = listMyImage.get(position);
+        holder.setContent(myImage);
     }
 
     @Override
     public int getItemCount() {
-        return listBitmap.size();
+        return listMyImage.size();
     }
 
     class ImageViewHolder extends RecyclerView.ViewHolder{
@@ -52,13 +53,13 @@ public class ListAddImageAdapter extends RecyclerView.Adapter<ListAddImageAdapte
             img = itemView.findViewById(R.id.img_product);
             btnClear = itemView.findViewById(R.id.btn_clear);
         }
-        public void setContent(final Bitmap bitmap){
-            img.setImageBitmap(bitmap);
+        public void setContent(final MyImage myImage){
+            img.setImageBitmap(myImage.getBitmap());
 
             btnClear.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onClear(bitmap);
+                    mListener.onClear(myImage);
                 }
             });
         }

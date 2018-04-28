@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -15,9 +15,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -25,13 +25,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.ListAddImageAdapter;
 import edu.hust.truongvu.choviet.dialog.ChooseImageDialog;
+import edu.hust.truongvu.choviet.entity.MyImage;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 
-public class AddProductActivity extends AppCompatActivity implements View.OnClickListener{
+public class AddProductActivity extends AppCompatActivity implements View.OnClickListener, AddProductView{
     private static final String[] PERMISSIONS = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -40,15 +43,17 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     private static final int REQUEST_CAMERA = 2;
     private static final int SELECT_FILE = 3;
 
-    private View btnAddPhoto;
+    private View btnAddPhoto, btnUploadImage;
     private RecyclerView recyclerImgProduct;
     private ListAddImageAdapter adapter;
-    private ArrayList<Bitmap> listBitmaps;
+    private ArrayList<MyImage> listMyImage;
+    private AddProductPresenterImp addProductPresenterImp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
+        addProductPresenterImp = new AddProductPresenterImp(this, this);
         initView();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (MyHelper.checkPermission(PERMISSIONS, this) != PackageManager.PERMISSION_GRANTED) {
@@ -60,11 +65,12 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     private void initView(){
         btnAddPhoto = findViewById(R.id.btn_add_photo);
+        btnUploadImage = findViewById(R.id.btn_upload_image);
         recyclerImgProduct = findViewById(R.id.list_image);
-        listBitmaps = new ArrayList<>();
-        adapter = new ListAddImageAdapter(listBitmaps, new ListAddImageAdapter.ClearImageListener() {
+        listMyImage = new ArrayList<>();
+        adapter = new ListAddImageAdapter(listMyImage, new ListAddImageAdapter.ClearImageListener() {
             @Override
-            public void onClear(Bitmap bitmap) {
+            public void onClear(MyImage myImage) {
 
             }
         });
@@ -72,6 +78,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         recyclerImgProduct.setAdapter(adapter);
 
         btnAddPhoto.setOnClickListener(this);
+        btnUploadImage.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +110,8 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void onCaptureImageResult(Intent data) {
+        long time = System.currentTimeMillis();
+        String name = new Random().nextInt((1000-1)+1)+1 + "_" + time;
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
@@ -119,12 +128,16 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listBitmaps.add(thumbnail);
+
+        MyImage myImage = new MyImage(name, thumbnail);
+        listMyImage.add(myImage);
         adapter.notifyDataSetChanged();
 
     }
 
     private void onSelectFromGalleryResult(Intent data) {
+        long time = System.currentTimeMillis();
+        String name = new Random().nextInt((1000-1)+1)+1 + "_" + time;
         Bitmap bm = null;
         if (data != null){
             try {
@@ -133,7 +146,8 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 e.printStackTrace();
             }
         }
-        listBitmaps.add(bm);
+        MyImage myImage = new MyImage(name, bm);
+        listMyImage.add(myImage);
         adapter.notifyDataSetChanged();
     }
 
@@ -144,6 +158,17 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             case R.id.btn_add_photo:
                 addPhoto();
                 break;
+            case R.id.btn_upload_image:
+                uploadImage();
+                break;
+        }
+    }
+
+    private void uploadImage(){
+        if (listMyImage == null || listMyImage.size() == 0){
+            Toast.makeText(this, getString(R.string.not_choose_image), Toast.LENGTH_SHORT).show();
+        }else {
+            addProductPresenterImp.upLoadImage(listMyImage);
         }
     }
 
@@ -168,4 +193,13 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+    @Override
+    public void uploadImageSuccessful() {
+        Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void uploadImageFalse() {
+        Toast.makeText(this, getString(R.string.file_size_too_large), Toast.LENGTH_SHORT);
+    }
 }

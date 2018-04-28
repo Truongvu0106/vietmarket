@@ -20,7 +20,7 @@ public class ReportActivity extends AppCompatActivity {
 
             @Override
             public void onBackClick() {
-                onBackClick();
+                onBackPressed();
             }
         });
     }
