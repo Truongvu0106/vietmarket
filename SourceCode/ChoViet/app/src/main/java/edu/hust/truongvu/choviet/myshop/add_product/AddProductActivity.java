@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.icu.text.UnicodeSetSpanner;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -16,7 +17,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -30,8 +36,13 @@ import java.util.Random;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.ListAddImageAdapter;
+import edu.hust.truongvu.choviet.adapter.SpinnerBrandAdapter;
+import edu.hust.truongvu.choviet.adapter.SpinnerCategoryAdapter;
 import edu.hust.truongvu.choviet.dialog.ChooseImageDialog;
+import edu.hust.truongvu.choviet.entity.Brand;
+import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.MyImage;
+import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 
 public class AddProductActivity extends AppCompatActivity implements View.OnClickListener, AddProductView{
@@ -43,29 +54,50 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     private static final int REQUEST_CAMERA = 2;
     private static final int SELECT_FILE = 3;
 
-    private View btnAddPhoto, btnUploadImage;
+    private EditText edtName, edtWeight, edtDes, edtStock, edtPrice;
+    private Spinner spinBrand, spinCategory, spinUnit;
+
+    private View btnAddPhoto, btnUploadImage, btnAddProduct;
     private RecyclerView recyclerImgProduct;
     private ListAddImageAdapter adapter;
+    private SpinnerBrandAdapter brandAdapter;
+    private SpinnerCategoryAdapter categoryAdapter;
     private ArrayList<MyImage> listMyImage;
     private AddProductPresenterImp addProductPresenterImp;
 
+    private String unit = "";
+    private int mCategory, mBrand;
+    private boolean isUploadImageSuccessful = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         addProductPresenterImp = new AddProductPresenterImp(this, this);
         initView();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (MyHelper.checkPermission(PERMISSIONS, this) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
             }
         }
 
+        addProductPresenterImp.initListCategory();
+        addProductPresenterImp.initListBrand();
+
     }
 
     private void initView(){
+        edtName = findViewById(R.id.edt_name);
+        edtWeight = findViewById(R.id.edt_weight);
+        edtDes = findViewById(R.id.edt_weight);
+        edtStock = findViewById(R.id.edt_stock);
+        edtPrice = findViewById(R.id.edt_price);
+        spinBrand = findViewById(R.id.spinner_brand);
+        spinCategory = findViewById(R.id.spinner_category);
+        spinUnit = findViewById(R.id.spinner_weight_unit);
         btnAddPhoto = findViewById(R.id.btn_add_photo);
         btnUploadImage = findViewById(R.id.btn_upload_image);
+        btnAddProduct = findViewById(R.id.btn_add);
         recyclerImgProduct = findViewById(R.id.list_image);
         listMyImage = new ArrayList<>();
         adapter = new ListAddImageAdapter(listMyImage, new ListAddImageAdapter.ClearImageListener() {
@@ -77,8 +109,27 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         recyclerImgProduct.setLayoutManager(new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false));
         recyclerImgProduct.setAdapter(adapter);
 
+        final ArrayList<String> listUnits = new ArrayList<>();
+        listUnits.add(getString(R.string.kg));
+        listUnits.add(getString(R.string.g));
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listUnits);
+        spinUnit.setAdapter(arrayAdapter);
+        spinUnit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                unit = listUnits.get(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         btnAddPhoto.setOnClickListener(this);
         btnUploadImage.setOnClickListener(this);
+        btnAddProduct.setOnClickListener(this);
     }
 
     @Override
@@ -161,7 +212,61 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             case R.id.btn_upload_image:
                 uploadImage();
                 break;
+            case R.id.btn_add:
+                addProduct();
+                break;
         }
+    }
+
+    private void addProduct() {
+        String name = edtName.getText().toString();
+        String weightStr = edtWeight.getText().toString();
+        String des = edtDes.getText().toString();
+        String stockStr = edtStock.getText().toString();
+        String priceStr = edtPrice.getText().toString();
+
+        if (name.matches("") || weightStr.matches("") || des.matches("") || priceStr.matches("") ){
+            Toast.makeText(this, getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!stockStr.matches("")){
+            if (unit.matches("")){
+                Toast.makeText(this, getString(R.string.not_select_unit), Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
+        if (mBrand == 0){
+            Toast.makeText(this, getString(R.string.not_select_brand), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (mCategory == 0){
+            Toast.makeText(this, getString(R.string.not_select_category), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ArrayList<String> images = new ArrayList<>();
+        if (!isUploadImageSuccessful){
+            Toast.makeText(this, getString(R.string.not_upload_image), Toast.LENGTH_SHORT).show();
+            return;
+        }else {
+            for (MyImage myImage : listMyImage){
+                images.add(myImage.getName());
+            }
+        }
+        String weight = "";
+        if (stockStr.matches("")){
+            weight = "???";
+        }else {
+            weight = weightStr + unit;
+        }
+
+        int stock = Integer.parseInt(stockStr);
+        long price = Long.parseLong(priceStr);
+        Product product = new Product(0, name, price, 0, images, des, weight, mCategory, mBrand, 0, stock, 3, false, false);
+        addProductPresenterImp.addProduct(product);
     }
 
     private void uploadImage(){
@@ -195,11 +300,67 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void uploadImageSuccessful() {
-        Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT);
+        isUploadImageSuccessful = true;
+        Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void uploadImageFalse() {
-        Toast.makeText(this, getString(R.string.file_size_too_large), Toast.LENGTH_SHORT);
+        isUploadImageSuccessful = false;
+        Toast.makeText(this, getString(R.string.file_size_too_large), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void addProductSuccessful() {
+        Toast.makeText(this, getString(R.string.add_successful), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void addProductFalse() {
+        Toast.makeText(this, getString(R.string.add_false), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loadListCategorySuccessful(final ArrayList<ChildCategory> data) {
+        categoryAdapter = new SpinnerCategoryAdapter(this, android.R.layout.simple_spinner_item, data);
+        spinCategory.setAdapter(categoryAdapter);
+        spinCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                mCategory = data.get(i).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    @Override
+    public void loadListCategoryFalse() {
+
+    }
+
+    @Override
+    public void loadListBrandSuccessful(final ArrayList<Brand> data) {
+        brandAdapter = new SpinnerBrandAdapter(this, android.R.layout.simple_spinner_item, data);
+        spinBrand.setAdapter(brandAdapter);
+        spinBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                mBrand = data.get(i).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    @Override
+    public void loadListBrandFalse() {
+
     }
 }

@@ -12,7 +12,12 @@
         android:id="@+id/frame_container_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+        <include
+            android:id="@+id/layout_err"
+            layout="@layout/layout_err"
+            android:visibility="gone"/>
+    </FrameLayout>
 
 
 

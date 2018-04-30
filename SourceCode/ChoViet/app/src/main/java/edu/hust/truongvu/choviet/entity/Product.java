@@ -1,12 +1,13 @@
 package edu.hust.truongvu.choviet.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by truon on 2/22/2018.
  */
 
-public class Product {
+public class Product implements Serializable{
     private int id;
     private String name;
     private long price;

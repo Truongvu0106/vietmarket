@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.entity.Shop;
 import edu.hust.truongvu.choviet.helper.JsonHelper;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.utils.Constants;
@@ -31,6 +32,171 @@ public class ProductModel {
         attrFunc.put("func", "getAllProduct");
 
         attrs.add(attrFunc);
+
+        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("products");
+            JSONArray jsonProducts = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonProducts.length(); i++){
+                JSONObject jsonObject1 = jsonProducts.getJSONObject(i);
+                String id = jsonObject1.getString("id");
+                String name = jsonObject1.getString("name");
+                String price = jsonObject1.getString("price");
+                String discount = jsonObject1.getString("discount");
+                String pathImage = jsonObject1.getString("image");
+                ArrayList<String> listImage = MyHelper.getListSubString(pathImage);
+                String information = jsonObject1.getString("information");
+                String weight = jsonObject1.getString("weight");
+                String type_product = jsonObject1.getString("type_product");
+                String brand = jsonObject1.getString("brand");
+                String rate = jsonObject1.getString("rate");
+                String amount = jsonObject1.getString("amount");
+                String idShop = jsonObject1.getString("id_shop");
+                String hightlight = jsonObject1.getString("highlight");
+
+                Product product = new Product(Integer.parseInt(id), name, Long.parseLong(price), Integer.parseInt(discount),
+                        listImage, information, weight, Integer.parseInt(type_product), Integer.parseInt(brand),
+                        Float.parseFloat(rate), Integer.parseInt(amount), Integer.parseInt(idShop), hightlight.matches("1")?true:false, false);
+                listProduct.add(product);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return listProduct;
+    }
+
+    public ArrayList<Product> getProductByCategory(int idCategory){
+        ArrayList<Product> listProduct = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getProductByCategory");
+
+        HashMap<String, String> attrIdCategory = new HashMap<>();
+        attrIdCategory.put("id_category", idCategory + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdCategory);
+
+        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("products");
+            JSONArray jsonProducts = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonProducts.length(); i++){
+                JSONObject jsonObject1 = jsonProducts.getJSONObject(i);
+                String id = jsonObject1.getString("id");
+                String name = jsonObject1.getString("name");
+                String price = jsonObject1.getString("price");
+                String discount = jsonObject1.getString("discount");
+                String pathImage = jsonObject1.getString("image");
+                ArrayList<String> listImage = MyHelper.getListSubString(pathImage);
+                String information = jsonObject1.getString("information");
+                String weight = jsonObject1.getString("weight");
+                String type_product = jsonObject1.getString("type_product");
+                String brand = jsonObject1.getString("brand");
+                String rate = jsonObject1.getString("rate");
+                String amount = jsonObject1.getString("amount");
+                String idShop = jsonObject1.getString("id_shop");
+                String hightlight = jsonObject1.getString("highlight");
+
+                Product product = new Product(Integer.parseInt(id), name, Long.parseLong(price), Integer.parseInt(discount),
+                        listImage, information, weight, Integer.parseInt(type_product), Integer.parseInt(brand),
+                        Float.parseFloat(rate), Integer.parseInt(amount), Integer.parseInt(idShop), hightlight.matches("1")?true:false, false);
+                listProduct.add(product);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return listProduct;
+    }
+
+    public ArrayList<Product> getProductByBrand(int idBrand){
+        ArrayList<Product> listProduct = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getProductByBrand");
+
+        HashMap<String, String> attrIdBrand = new HashMap<>();
+        attrIdBrand.put("id_brand", idBrand + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdBrand);
+
+        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        jsonHelper.execute();
+
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("products");
+            JSONArray jsonProducts = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonProducts.length(); i++){
+                JSONObject jsonObject1 = jsonProducts.getJSONObject(i);
+                String id = jsonObject1.getString("id");
+                String name = jsonObject1.getString("name");
+                String price = jsonObject1.getString("price");
+                String discount = jsonObject1.getString("discount");
+                String pathImage = jsonObject1.getString("image");
+                ArrayList<String> listImage = MyHelper.getListSubString(pathImage);
+                String information = jsonObject1.getString("information");
+                String weight = jsonObject1.getString("weight");
+                String type_product = jsonObject1.getString("type_product");
+                String brand = jsonObject1.getString("brand");
+                String rate = jsonObject1.getString("rate");
+                String amount = jsonObject1.getString("amount");
+                String idShop = jsonObject1.getString("id_shop");
+                String hightlight = jsonObject1.getString("highlight");
+
+                Product product = new Product(Integer.parseInt(id), name, Long.parseLong(price), Integer.parseInt(discount),
+                        listImage, information, weight, Integer.parseInt(type_product), Integer.parseInt(brand),
+                        Float.parseFloat(rate), Integer.parseInt(amount), Integer.parseInt(idShop), hightlight.matches("1")?true:false, false);
+                listProduct.add(product);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return listProduct;
+    }
+
+    public ArrayList<Product> getProductByIdShop(int shopId){
+        ArrayList<Product> listProduct = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getProductByShop");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("id_shop", shopId + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdShop);
 
         JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
         jsonHelper.execute();
@@ -125,5 +291,193 @@ public class ProductModel {
             return null;
         }
         return product;
+    }
+
+
+
+    public boolean addProduct(Product product){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "addProduct");
+
+        HashMap<String, String> attrName = new HashMap<>();
+        attrName.put("name_product", product.getName());
+
+        HashMap<String, String> attrPrice = new HashMap<>();
+        attrPrice.put("price", product.getPrice() + "");
+
+        String imgPath = "";
+        ArrayList<String> listImg = product.getImgs();
+        for (int i = 0; i < listImg.size(); i++){
+            if (i == (listImg.size() - 1)){
+                imgPath += listImg.get(i);
+            }else {
+                imgPath += listImg.get(i) + "@";
+            }
+        }
+
+        HashMap<String, String> attrImage = new HashMap<>();
+        attrImage.put("image", imgPath);
+
+        HashMap<String, String> attrInformation = new HashMap<>();
+        attrInformation.put("information", product.getInfomation());
+
+        HashMap<String, String> attrWeight = new HashMap<>();
+        attrWeight.put("weight", product.getWeight());
+
+        HashMap<String, String> attrTypeProduct = new HashMap<>();
+        attrTypeProduct.put("type_product", product.getTypeProduct() + "");
+
+        HashMap<String, String> attrBrand = new HashMap<>();
+        attrBrand.put("brand", product.getBrand() + "");
+
+        HashMap<String, String> attrRate = new HashMap<>();
+        attrRate.put("rate", product.getRate() + "");
+
+        HashMap<String, String> attrAmount = new HashMap<>();
+        attrAmount.put("amount", product.getAmount() + "");
+
+        HashMap<String, String> attrShop = new HashMap<>();
+        attrShop.put("id_shop", product.getIdShop() + "");
+
+        HashMap<String, String> attrHightlight = new HashMap<>();
+        attrHightlight.put("hightlight", product.isHighlight() ? 1 + "" : 0 + "");
+
+        HashMap<String, String> attrDiscount = new HashMap<>();
+        attrDiscount.put("discount", product.getDiscount() + "");
+
+
+        attrs.add(attrFucn);
+        attrs.add(attrName);
+        attrs.add(attrPrice);
+        attrs.add(attrImage);
+        attrs.add(attrInformation);
+        attrs.add(attrWeight);
+        attrs.add(attrTypeProduct);
+        attrs.add(attrBrand);
+        attrs.add(attrRate);
+        attrs.add(attrAmount);
+        attrs.add(attrShop);
+        attrs.add(attrHightlight);
+        attrs.add(attrDiscount);
+
+
+        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        jsonHelper.execute();
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error add product", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean updateProduct(Product product){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateProduct");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_product", product.getId() + "");
+
+        HashMap<String, String> attrName = new HashMap<>();
+        attrName.put("name_product", product.getName());
+
+        HashMap<String, String> attrPrice = new HashMap<>();
+        attrPrice.put("price", product.getPrice() + "");
+
+        String imgPath = "";
+        ArrayList<String> listImg = product.getImgs();
+        for (int i = 0; i < listImg.size(); i++){
+            if (i == (listImg.size() - 1)){
+                imgPath += listImg.get(i);
+            }else {
+                imgPath += listImg.get(i) + "@";
+            }
+        }
+
+        HashMap<String, String> attrImage = new HashMap<>();
+        attrImage.put("image", imgPath);
+
+        HashMap<String, String> attrInformation = new HashMap<>();
+        attrInformation.put("information", product.getInfomation());
+
+        HashMap<String, String> attrWeight = new HashMap<>();
+        attrWeight.put("weight", product.getWeight());
+
+        HashMap<String, String> attrTypeProduct = new HashMap<>();
+        attrTypeProduct.put("type_product", product.getTypeProduct() + "");
+
+        HashMap<String, String> attrBrand = new HashMap<>();
+        attrBrand.put("brand", product.getBrand() + "");
+
+        HashMap<String, String> attrRate = new HashMap<>();
+        attrRate.put("rate", product.getRate() + "");
+
+        HashMap<String, String> attrAmount = new HashMap<>();
+        attrAmount.put("amount", product.getAmount() + "");
+
+        HashMap<String, String> attrShop = new HashMap<>();
+        attrShop.put("id_shop", product.getIdShop() + "");
+
+        HashMap<String, String> attrHightlight = new HashMap<>();
+        attrHightlight.put("hightlight", product.isHighlight() ? 1 + "" : 0 + "");
+
+        HashMap<String, String> attrDiscount = new HashMap<>();
+        attrDiscount.put("discount", product.getDiscount() + "");
+
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrName);
+        attrs.add(attrPrice);
+        attrs.add(attrImage);
+        attrs.add(attrInformation);
+        attrs.add(attrWeight);
+        attrs.add(attrTypeProduct);
+        attrs.add(attrBrand);
+        attrs.add(attrRate);
+        attrs.add(attrAmount);
+        attrs.add(attrShop);
+        attrs.add(attrHightlight);
+        attrs.add(attrDiscount);
+
+
+        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        jsonHelper.execute();
+        try {
+            String data = jsonHelper.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error update product", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 }

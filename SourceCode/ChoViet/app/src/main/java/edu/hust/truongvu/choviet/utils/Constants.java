@@ -10,7 +10,7 @@ public class Constants {
         public static final String PATH_ANDROID_STUDIO = "http://127.0.0.1:8080/electronicshop/";
         public static final String PATH_REAL_DEVICE = "http://192.168.0.105:8080/electronicshop/";
 
-        public static final String MY_PATH = PATH_REAL_DEVICE;
+        public static final String MY_PATH = PATH_GENNYMOTION;
     }
 
     public class User {
@@ -28,10 +28,26 @@ public class Constants {
     }
 
     public class MyTag{
-        public static final String PRODUCT_ID = "product_id";
         public static final String MY_LOGIN = "mylogin";
         public static final String USERNAME = "username";
         public static final String USERID = "userid";
+
+
+        public static final String INTENT_PRODUCT = "intent_product";
+        public static final String INTENT_SHOP = "intent_shop";
+        public static final String INTENT_TYPE_LOAD_PRODUCT = "intent_type_load_product";
+        public static final String ID_CATEGORY = "id_category";
+        public static final String ID_BRAND = "id_brand";
+        public static final String ID_SHOP ="id_shop";
+
+        public static final int LOAD_PRODUCT_BY_CATEGORY = 1;
+        public static final int LOAD_PRODUCT_BY_BRAND = 2;
+        public static final int LOAD_PRODUCT_BY_SHOP = 3;
+        public static final int LOAD_PRODUCT_TIME_ASC = 4;
+        public static final int LOAD_PRODUCT_TIME_DESC = 5;
+        public static final int LOAD_PRODUCT_PRICE_ASC = 6;
+        public static final int LOAD_PRODUCT_PRICE_DESC = 7;
+        public static final int LOAD_PRODUCT_BY_PRICE = 8;
     }
 
     public enum OrderStatus{

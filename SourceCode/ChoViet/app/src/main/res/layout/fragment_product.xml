@@ -95,12 +95,14 @@
                         android:orientation="horizontal">
 
                         <RatingBar
+                            android:id="@+id/rating_bar"
                             style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5" />
 
                         <edu.hust.truongvu.choviet.customview.MyTextView
+                            android:id="@+id/tv_rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/margin_medium"
@@ -110,6 +112,7 @@
                 </LinearLayout>
 
                 <FrameLayout
+                    android:id="@+id/layout_discount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true">
@@ -121,6 +124,7 @@
                         android:src="@drawable/tag" />
 
                     <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:id="@+id/tv_discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -237,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/img_store"
+                        android:id="@+id/img_shop"
                         android:layout_width="@dimen/icon_size_big"
                         android:layout_height="@dimen/icon_size_big"
                         android:paddingTop="@dimen/padding_big"
@@ -245,13 +249,15 @@
                         android:paddingBottom="@dimen/padding_big"
                         android:src="@drawable/avatar"/>
                     <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:id="@+id/tv_shop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/img_store"
+                        android:layout_toRightOf="@+id/img_shop"
                         android:layout_centerVertical="true"
                         android:textColor="@color/black"
                         android:text="Shop abc"/>
                     <LinearLayout
+                        android:id="@+id/btn_view_shop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_small"
@@ -291,12 +297,14 @@
                                 android:layout_height="@dimen/icon_size_small"
                                 android:padding="@dimen/padding_small"
                                 android:src="@drawable/shopping_bag"/>
+
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_total_product_shop"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colorRed"
                                 android:layout_marginLeft="@dimen/margin_small"
-                                android:text="48"/>
+                                android:text="48"
+                                android:textColor="@color/colorRed" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -331,6 +339,7 @@
                                 android:padding="@dimen/padding_small"
                                 android:src="@drawable/star"/>
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_rate_shop"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorRed"
@@ -367,7 +376,7 @@
                     android:textSize="@dimen/text_size_medium"
                     android:text="@string/details_product"/>
                 <edu.hust.truongvu.choviet.customview.MyTextView
-                    android:id="@+id/details_product"
+                    android:id="@+id/des"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_medium"
@@ -412,6 +421,7 @@
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_category"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_tiny"
@@ -452,6 +462,7 @@
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_weight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_tiny"
@@ -492,46 +503,7 @@
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
                             <edu.hust.truongvu.choviet.customview.MyTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:text="afasdfafafsd"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0.5dp"
-                        android:background="@color/grayicon"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/padding_medium"
-                            android:layout_weight="1">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:textColor="@color/black"
-                                android:text="@string/status"/>
-                        </LinearLayout>
-                        <View
-                            android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/grayicon"/>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/padding_medium"
-                            android:layout_weight="2">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_brand"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_tiny"
@@ -572,6 +544,7 @@
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_stock"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_tiny"
@@ -612,6 +585,7 @@
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_from"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_tiny"
@@ -659,6 +633,7 @@
                                 android:layout_height="wrap_content"
                                 android:numStars="5" />
                             <edu.hust.truongvu.choviet.customview.MyTextView
+                                android:id="@+id/tv_rate_product_other"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_small"

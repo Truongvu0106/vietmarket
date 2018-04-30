@@ -19,4 +19,5 @@ public interface ProductPresenter {
     void initListSuggest();
     boolean addRate(Rate rate);
     void addToCart(Context context, Product product);
+    void initInforShop(int idShop);
 }

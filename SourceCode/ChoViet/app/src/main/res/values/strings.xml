@@ -194,4 +194,15 @@
     <string name="not_choose_image">Not choose image yet</string>
     <string name="upload_successful">Upload successful!</string>
     <string name="file_size_too_large">File size too large!</string>
+    <string name="kg">Kg</string>
+    <string name="g">g</string>
+    <string name="not_select_unit">Not select unit yet</string>
+    <string name="not_select_brand">Not select brand yet</string>
+    <string name="not_select_category">Not select category yet</string>
+    <string name="not_upload_image">Not upload image product yet</string>
+    <string name="add_successful">Add successful!</string>
+    <string name="add_false">Add false!</string>
+    <string name="no_data">No data found!</string>
+    <string name="not_connect_internet">Not connect to internet!</string>
+    <string name="try_again">Try again</string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
+import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.search.SearchActivity;
 import edu.hust.truongvu.choviet.utils.Constants;
@@ -21,16 +22,17 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     ProductPresenterImp productPresenterImp;
     private View layoutSearch, btnCart, layoutNumberItemCart;
     private TextView tvNumberItemCart;
+    private Product product;
+    private View layoutErr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
         toolbar = findViewById(R.id.toolbar_product);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
         layoutSearch = findViewById(R.id.layout_search);
         btnCart = findViewById(R.id.img_cart);
+        layoutErr = findViewById(R.id.layout_err);
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
         tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
 
@@ -39,12 +41,16 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         btnCart.setOnClickListener(this);
         layoutSearch.setOnClickListener(this);
 
-        int id = getIntent().getIntExtra(Constants.MyTag.PRODUCT_ID, 0);
-        loadFragment(ProductFragment.getInstance(productPresenterImp.getProductById(id)));
+        product = (Product) getIntent().getSerializableExtra(Constants.MyTag.INTENT_PRODUCT);
+        if (product == null){
+            layoutErr.setVisibility(View.VISIBLE);
+        }else {
+            layoutErr.setVisibility(View.GONE);
+            loadFragment(ProductFragment.getInstance(product));
+        }
     }
 
     private void loadFragment(Fragment fragment) {
-        // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container_product, fragment);
         transaction.addToBackStack(null);

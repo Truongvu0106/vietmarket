@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.shop;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.adapter.ProductAdapter;
+import edu.hust.truongvu.choviet.product.ProductActivity;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 public class ShopActivity extends AppCompatActivity implements ShopView{
 
@@ -30,7 +33,9 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
         adapter = new ProductAdapter(ShopActivity.this, listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
-
+                Intent intent = new Intent(ShopActivity.this, ProductActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_PRODUCT, product);
+                startActivity(intent);
             }
 
             @Override

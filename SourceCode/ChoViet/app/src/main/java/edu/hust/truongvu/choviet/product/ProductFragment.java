@@ -2,7 +2,9 @@ package edu.hust.truongvu.choviet.product;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +26,18 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.ImgProductPagerAdapter;
 import edu.hust.truongvu.choviet.adapter.ProductAdapter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
+import edu.hust.truongvu.choviet.entity.Brand;
+import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Rate;
+import edu.hust.truongvu.choviet.entity.Shop;
 import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
 import edu.hust.truongvu.choviet.adapter.RateProductAdapter;
 import edu.hust.truongvu.choviet.rate.RateProductDialog;
+import edu.hust.truongvu.choviet.shop.ShopActivity;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,8 +55,11 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     private ProductPresenterImp productPresenterImp;
     private CartPresenterImp cartPresenterImp;
     private RecyclerView mListRate, mListProduct, mListSuggest;
-    private View btnRate, layoutDisableRate, layoutNoRate, btnAddToCart, btnBuyNow;
-    TextView tvDisableRate;
+    private View btnRate, layoutDisableRate, layoutNoRate, btnAddToCart, btnViewShop, btnBuyNow, layoutDiscount;
+    private ImageView imgShop;
+    private TextView tvDisableRate, tvName, tvOldPrice, tvNewPrice, tvNameShop,
+            tvRate, tvTotalProduct, tvRateShop, tvDescription, tvCategory, tvWeight,
+            tvBrand, tvStock, tvFrom, tvRateOther, tvDiscount;
     private Product product;
     public ProductFragment() {
         // Required empty public constructor
@@ -71,9 +82,6 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-
-        username = MyHelper.getUserNamePreference(getContext());
-
         mViewPager = view.findViewById(R.id.img_pager);
         mIndicator = view.findViewById(R.id.img_indicator);
         mListRate = view.findViewById(R.id.list_rating);
@@ -86,16 +94,88 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         layoutNoRate = view.findViewById(R.id.layout_no_rate);
         tvDisableRate = view.findViewById(R.id.tv_disable_rate);
 
-        btnRate.setOnClickListener(this);
-        btnAddToCart.setOnClickListener(this);
-
+        username = MyHelper.getUserNamePreference(getContext());
         cartPresenterImp = new CartPresenterImp();
         productPresenterImp = new ProductPresenterImp(this);
         productPresenterImp.initListImage(product.getImgs());
         productPresenterImp.initListProduct();
         productPresenterImp.initListRate(username, product.getId());
         productPresenterImp.initListSuggest();
+
+        initView(view);
         return view;
+    }
+
+    private void initView(View view){
+        imgShop = view.findViewById(R.id.img_shop);
+        tvName = view.findViewById(R.id.details_name_product);
+        tvOldPrice= view.findViewById(R.id.details_old_price);
+        tvNewPrice = view.findViewById(R.id.details_new_price);
+        tvNameShop = view.findViewById(R.id.tv_shop);
+        tvRate = view.findViewById(R.id.tv_rating);
+        tvTotalProduct = view.findViewById(R.id.tv_total_product_shop);
+        tvRateShop = view.findViewById(R.id.tv_rate_shop);
+        tvDescription = view.findViewById(R.id.des);
+        tvCategory = view.findViewById(R.id.tv_category);
+        tvWeight = view.findViewById(R.id.tv_weight);
+        tvBrand = view.findViewById(R.id.tv_brand);
+        tvStock = view.findViewById(R.id.tv_stock);
+        tvFrom = view.findViewById(R.id.tv_from);
+        tvRateOther = view.findViewById(R.id.tv_rate_product_other);
+        btnViewShop = view.findViewById(R.id.btn_view_shop);
+        layoutDiscount = view.findViewById(R.id.layout_discount);
+        tvDiscount = view.findViewById(R.id.tv_discount);
+
+        tvName.setText(product.getName());
+        int discount = product.getDiscount();
+        if (discount == 0){
+            tvOldPrice.setVisibility(View.GONE);
+            layoutDiscount.setVisibility(View.GONE);
+            tvNewPrice.setText(MyHelper.formatMoney(product.getPrice()));
+        }else {
+            tvOldPrice.setVisibility(View.VISIBLE);
+            layoutDiscount.setVisibility(View.VISIBLE);
+            long newPrice = product.getPrice() - (product.getPrice()*discount)/100;
+
+            tvDiscount.setText("-" + discount + "%");
+            tvOldPrice.setText(MyHelper.formatMoney(product.getPrice()));
+            tvNewPrice.setText(MyHelper.formatMoney(newPrice));
+
+            tvOldPrice.setPaintFlags(tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+
+        tvRate.setText(product.getRate() + "/5");
+        tvDescription.setText(product.getInfomation());
+        tvCategory.setText(product.getTypeProduct() + "");
+
+        ChildCategory childCategory = productPresenterImp.getChildCategory(product.getTypeProduct());
+        if (childCategory == null){
+            tvCategory.setText("???");
+        }else {
+            tvCategory.setText(childCategory.getName());
+        }
+
+        if (product.getWeight().matches("")){
+            tvWeight.setText("???");
+        }else {
+            tvWeight.setText(product.getWeight());
+        }
+
+        Brand brand = productPresenterImp.getBrand(product.getBrand());
+        if (brand == null){
+            tvBrand.setText("???");
+        }else {
+            tvBrand.setText(brand.getName());
+        }
+        tvStock.setText(product.getAmount() + "");
+        tvRateOther.setText(product.getRate() + "/5");
+
+
+
+        btnRate.setOnClickListener(this);
+        btnAddToCart.setOnClickListener(this);
+        btnViewShop.setOnClickListener(this);
+        btnBuyNow.setOnClickListener(this);
     }
 
     @Override
@@ -105,7 +185,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadListImage(ArrayList<String> list) {
+    public void loadListImageSuccessful(ArrayList<String> list) {
         adapter = new ImgProductPagerAdapter(getFragmentManager(), list);
         mViewPager.setAdapter(adapter);
         mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
@@ -126,6 +206,11 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
             }
         });
+    }
+
+    @Override
+    public void loadListImageFalse() {
+
     }
 
     @Override
@@ -167,7 +252,9 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
-
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_PRODUCT, product);
+                startActivity(intent);
             }
 
             @Override
@@ -184,7 +271,9 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         ProductAdapter adapter = new ProductAdapter(getContext(), listSuggest, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
-
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_PRODUCT, product);
+                startActivity(intent);
             }
 
             @Override
@@ -206,6 +295,31 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         Toast.makeText(getContext(), getContext().getString(R.string.already_in_your_cart), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void loadInforShopSuccessful(final Shop shop) {
+        MyHelper.setImagePicasso(getContext(), imgShop, Constants.Path.MY_PATH + shop.getImgAvatar());
+        tvNameShop.setText(shop.getName());
+        tvRateShop.setText(shop.getRate() + "");
+        tvTotalProduct.setText("0");
+        tvRateShop.setText(shop.getRate() + "");
+        tvFrom.setText(shop.getAddress());
+        btnViewShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ShopActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_SHOP, shop);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    @Override
+    public void loadInforShopFalse() {
+
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -219,6 +333,8 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
                 itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
                 break;
             case R.id.btn_buy_now:
+                break;
+            case R.id.btn_view_shop:
                 break;
             default:
                 break;
