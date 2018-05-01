@@ -10,14 +10,14 @@
         android:title="@string/category" />
     <item
         android:id="@+id/nav_market"
-        android:icon="@drawable/ic_market_black"
+        android:icon="@drawable/ic_market_fill"
         android:title="@string/market"/>
-    <item
-        android:id="@+id/nav_notification"
-        android:icon="@drawable/notification"
-        android:title="@string/notification" />
+    <!--<item-->
+        <!--android:id="@+id/nav_notification"-->
+        <!--android:icon="@drawable/notification"-->
+        <!--android:title="@string/notification" />-->
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/profile"
+        android:icon="@drawable/profile_fill"
         android:title="@string/profile"/>
 </menu>

@@ -58,11 +58,11 @@ public class MainFragment extends Fragment {
                     case R.id.nav_market:
                         viewPager.setCurrentItem(2);
                         break;
-                    case R.id.nav_notification:
-                        viewPager.setCurrentItem(3);
-                        break;
+//                    case R.id.nav_notification:
+//                        viewPager.setCurrentItem(3);
+//                        break;
                     case R.id.nav_profile:
-                        viewPager.setCurrentItem(4);
+                        viewPager.setCurrentItem(3);
                         break;
                     default:
                         viewPager.setCurrentItem(0);

@@ -15,7 +15,7 @@ import edu.hust.truongvu.choviet.shop.ListShopFragment;
  */
 
 public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 4;
     public MainViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -29,9 +29,9 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
                 return CategoryFragment.newInstance();
             case 2:
                 return ListShopFragment.getInstance();
+//            case 3:
+//                return NotificationFragment.newInstance();
             case 3:
-                return NotificationFragment.newInstance();
-            case 4:
                 return ProfileFragment.newInstance();
             default:
                 return null;

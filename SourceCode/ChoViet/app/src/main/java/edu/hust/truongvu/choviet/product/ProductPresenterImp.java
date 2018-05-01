@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.product;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -113,6 +114,7 @@ public class ProductPresenterImp implements ProductPresenter{
             productView.loadInforShopFalse();
         }else {
             productView.loadInforShopSuccessful(shop);
+
         }
     }
 

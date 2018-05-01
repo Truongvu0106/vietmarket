@@ -10,7 +10,8 @@ import edu.hust.truongvu.choviet.entity.ParentCategory;
  */
 
 public interface CategoryView {
-    void loadParentCategory(ArrayList<ParentCategory> parentCategories);
-    void loadChildCategory(ArrayList<ChildCategory> childCategories);
-    void onLoadError(String err);
+    void loadParentCategorySuccessful(ArrayList<ParentCategory> parentCategories);
+    void loadParentCategoryFalse();
+    void loadChildCategorySuccessful(ArrayList<ChildCategory> childCategories);
+    void loadChildCategoryFalse();
 }

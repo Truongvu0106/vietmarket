@@ -69,6 +69,7 @@ public class BrandModel {
         attrId.put("id_brand", idBrand + "");
 
         attrs.add(attrFunc);
+        attrs.add(attrId);
 
         JsonHelper jsonHelper = new JsonHelper(BRAND_PATH, attrs);
         jsonHelper.execute();

@@ -25,17 +25,16 @@ import edu.hust.truongvu.choviet.utils.Constants;
  */
 
 public class CategoryModel {
-    public static String PATH_PARENT = Constants.Path.MY_PATH + "categoryparent.php";
-    public static String PATH_CHILD = Constants.Path.MY_PATH + "categorychild.php";
-    public static String PATH_CATEGORY = Constants.Path.MY_PATH + "category.php";
+    public static String CATEGORY_PATH = Constants.Path.MY_PATH + "category.php";
 
     public ArrayList<ChildCategory> getListChildCategory(){
         ArrayList<ChildCategory> childCategories = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunction = new HashMap<>();
         attrFunction.put("func", "getListChildCategory");
+        attrs.add(attrFunction);
         try {
-            JsonHelper jsonHelper = new JsonHelper(PATH_CHILD, attrs);
+            JsonHelper jsonHelper = new JsonHelper(CATEGORY_PATH, attrs);
             jsonHelper.execute();
             String results = jsonHelper.get();
             JSONObject jsonObject = new JSONObject(results);
@@ -65,10 +64,9 @@ public class CategoryModel {
             attrFunction.put("func", "getListParentCategory");
             attrs.add(attrFunction);
 
-            JsonHelper jsonHelper = new JsonHelper(PATH_PARENT, attrs);
+            JsonHelper jsonHelper = new JsonHelper(CATEGORY_PATH, attrs);
             jsonHelper.execute();
             String results = jsonHelper.get();
-            Log.e("parent_category", results);
             JSONObject jsonObject = new JSONObject(results);
             JSONArray jsonCategories = jsonObject.getJSONArray("parent_category");
             JSONArray myJsonArr = jsonCategories.getJSONArray(0);
@@ -77,7 +75,6 @@ public class CategoryModel {
                 String id = data.getString("id");
                 String name = data.getString("name");
                 String img = data.getString("image");
-                Log.e("path", img);
                 ParentCategory parentCategory = new ParentCategory(Integer.parseInt(id), name, R.drawable.cate_dodientu, img);
                 parentCategories.add(parentCategory);
             }
@@ -99,13 +96,13 @@ public class CategoryModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_CATEGORY, attrs);
+        JsonHelper jsonHelper = new JsonHelper(CATEGORY_PATH, attrs);
         jsonHelper.execute();
 
         try {
             String data = jsonHelper.get();
             JSONObject jsonObject = new JSONObject(data);
-            JSONArray myJsonArr = jsonObject.getJSONArray("product");
+            JSONArray myJsonArr = jsonObject.getJSONArray("child_category");
             JSONArray jsonArray = myJsonArr.getJSONArray(0);
             JSONObject jsonObject1 = jsonArray.getJSONObject(0);
             String id = jsonObject1.getString("id");

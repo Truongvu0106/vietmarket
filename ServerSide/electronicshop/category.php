@@ -27,7 +27,10 @@
 		echo "\"parent_category\":[";
 		if ($results_parent) {
 			while ($line = mysqli_fetch_array($results_parent)) {
-				array_push($my_json_array, array("id" => $line["id_type_parent"], "name" => $line["name_type_parent"], "image" => $line["image"]));
+				array_push($my_json_array, array(
+					"id" => $line["id_type_parent"], 
+					"name" => $line["name_type_parent"], 
+					"image" => $line["image"]));
 			}
 			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
 		}
@@ -38,7 +41,7 @@
 	function getListChildCategory(){
 		global $conn;
 		$query = "SELECT * FROM type_child";
-		$results = mysqli_query($myConn, $query);
+		$results = mysqli_query($conn, $query);
 		$my_json_array = array();
 		echo "{";
 		echo "\"child_category\":[";

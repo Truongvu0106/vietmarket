@@ -103,6 +103,8 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         productPresenterImp.initListSuggest();
 
         initView(view);
+        productPresenterImp.initInforShop(product.getIdShop());
+
         return view;
     }
 

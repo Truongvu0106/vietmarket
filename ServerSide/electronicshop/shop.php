@@ -48,8 +48,6 @@
 			$idShop = $_POST["id"];
 		}
 
-		// $idShop = $_GET["id"];
-
 		$query = "SELECT * FROM shop WHERE id_shop = ".$idShop;
 		$results = mysqli_query($conn, $query);
 		$my_json_array = array();

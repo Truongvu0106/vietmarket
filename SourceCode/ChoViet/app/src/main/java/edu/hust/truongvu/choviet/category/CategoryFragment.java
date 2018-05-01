@@ -58,8 +58,7 @@ public class CategoryFragment extends Fragment implements CategoryView{
     }
 
     @Override
-    public void loadParentCategory(ArrayList<ParentCategory> parentCategories) {
-        Log.e("Data Parent", parentCategories.size() + "");
+    public void loadParentCategorySuccessful(ArrayList<ParentCategory> parentCategories) {
         parentAdapter = new ParentCategoryAdapter(getContext(), parentCategories, new ParentCategoryAdapter.ParentCategoryListener() {
             @Override
             public void onResult(ParentCategory category) {
@@ -71,7 +70,13 @@ public class CategoryFragment extends Fragment implements CategoryView{
     }
 
     @Override
-    public void loadChildCategory(ArrayList<ChildCategory> childCategories) {
+    public void loadParentCategoryFalse() {
+
+    }
+
+
+    @Override
+    public void loadChildCategorySuccessful(ArrayList<ChildCategory> childCategories) {
         childAdapter = new ChildCategoryAdapter(getContext(), childCategories, new ChildCategoryAdapter.ChildCategoryListener() {
             @Override
             public void onResult(ChildCategory category) {
@@ -86,7 +91,8 @@ public class CategoryFragment extends Fragment implements CategoryView{
     }
 
     @Override
-    public void onLoadError(String err) {
+    public void loadChildCategoryFalse() {
 
     }
+
 }

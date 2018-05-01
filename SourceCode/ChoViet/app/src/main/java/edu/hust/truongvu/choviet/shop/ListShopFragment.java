@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.ListShopAdapter;
 import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +50,7 @@ public class ListShopFragment extends Fragment implements ListShopView{
             @Override
             public void onResults(Shop shop) {
                 Intent intent = new Intent(getActivity(), ShopActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_SHOP, shop);
                 startActivity(intent);
             }
 
