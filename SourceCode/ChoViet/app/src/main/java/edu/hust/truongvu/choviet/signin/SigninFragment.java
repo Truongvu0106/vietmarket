@@ -44,9 +44,9 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
     private static final int SIGN_IN_GOOGLE = 9999;
 
     EditText username, password;
-    TextView signup;
+    View signup;
     View signin, signInFacebook, signInGplus;
-    LinearLayout root;
+    View root;
     private Animation animation;
     private static View view;
     private FragmentManager fragmentManager;

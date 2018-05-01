@@ -220,16 +220,18 @@
             android:id="@+id/btn_add_new_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/colorRed"
-            app:fab_colorPressed="@color/colorRed"
+            android:src="@drawable/ic_add_product"
+            app:fab_colorNormal="@color/white"
+            app:fab_colorPressed="@color/white"
             fab:fab_size="mini"
             fab:fab_label="@string/add_new_product"/>
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/btn_edit_information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/colorGreen"
-            app:fab_colorPressed="@color/colorGreen"
+            android:src="@drawable/ic_edit_information"
+            app:fab_colorNormal="@color/white"
+            app:fab_colorPressed="@color/white"
             fab:fab_size="mini"
             fab:fab_label="@string/edit_information"/>
     </com.github.clans.fab.FloatingActionMenu>

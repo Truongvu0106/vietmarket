@@ -15,14 +15,12 @@ import edu.hust.truongvu.choviet.helper.Utils;
 public class StartActivity extends AppCompatActivity {
 
     private static FragmentManager fragmentManager;
-    ImageView close;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_start);
-        close = (ImageView) findViewById(R.id.close_activity);
         fragmentManager = getSupportFragmentManager();
 
         if (savedInstanceState == null){
@@ -31,12 +29,6 @@ public class StartActivity extends AppCompatActivity {
         }
 
 
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
     }
 

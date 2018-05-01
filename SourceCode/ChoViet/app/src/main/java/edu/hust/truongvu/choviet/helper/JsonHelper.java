@@ -25,7 +25,7 @@ import java.util.Map;
 public class JsonHelper extends AsyncTask<String, Void, String> {
     private String path;
     private List<HashMap<String, String>> attrs;
-    private StringBuilder data;
+    private StringBuilder data = new StringBuilder();
 
     public JsonHelper(String path){
         this.path = path;

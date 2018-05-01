@@ -11,7 +11,8 @@
     <string name="password">Password</string>
     <string name="forgot_pass">Forgot password?</string>
     <string name="signin">Sign In</string>
-    <string name="not_have_acc">Not have an account?Sign up here.</string>
+    <string name="not_have_acc">Not have an account?</string>
+    <string name="sign_up_here">Sign up here.</string>
     <string name="sign_in_facebook">Sign in with Facebook</string>
     <string name="sign_in_google">Sign in with Google+</string>
 
@@ -195,7 +196,7 @@
     <string name="upload_successful">Upload successful!</string>
     <string name="file_size_too_large">File size too large!</string>
     <string name="kg">Kg</string>
-    <string name="g">g</string>
+    <string name="g">gam</string>
     <string name="not_select_unit">Not select unit yet</string>
     <string name="not_select_brand">Not select brand yet</string>
     <string name="not_select_category">Not select category yet</string>
@@ -205,4 +206,17 @@
     <string name="no_data">No data found!</string>
     <string name="not_connect_internet">Not connect to internet!</string>
     <string name="try_again">Try again</string>
+
+    <!-- dialog -->
+    <string name="order_by">Order by:</string>
+    <string name="lastest">Lastest</string>
+    <string name="oldest">Oldest</string>
+    <string name="price_low_hight">Price: cheap - expensive</string>
+    <string name="price_hight_low">Price: expensive - cheap</string>
+    <string name="filter">Filter:</string>
+    <string name="all">All</string>
+    <string name="apply">Apply</string>
+    <string name="price_a">Price</string>
+
+    <string name="or">OR</string>
 </resources>

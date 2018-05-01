@@ -1,156 +1,190 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_signin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_medium"
     android:background="@color/white"
     android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <ImageView
-            android:layout_width="@dimen/icon_size_huge"
-            android:layout_height="@dimen/icon_size_huge"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:padding="@dimen/padding_large"
-            android:src="@drawable/logo_notext"/>
-    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/icon_size_large"
+        android:layout_height="@dimen/icon_size_large"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/padding_large"
+        android:layout_marginTop="@dimen/margin_huge"
+        android:src="@drawable/logo_notext" />
+
 
     <LinearLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_centerInParent="true"
-        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/margin_big"
-        android:layout_marginRight="@dimen/margin_big"
-        android:orientation="vertical" >
-        <android.support.design.widget.TextInputLayout
-            android:singleLine="true"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/padding_big"
+        android:paddingRight="@dimen/padding_big"
+        android:paddingTop="@dimen/padding_medium">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/icon_size_medium"
+                android:layout_height="@dimen/icon_size_medium"
+                android:padding="@dimen/padding_medium"
+                android:tint="@color/grayicon"
+                android:src="@drawable/email"/>
             <edu.hust.truongvu.choviet.customview.MyClearEditText
                 android:id="@+id/signin_username"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edt_height_medium"
-                android:textSize="@dimen/text_size_medium"
-                android:hint="@string/username"/>
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:singleLine="true"
+                android:layout_height="@dimen/actionbar_size"
+                android:background="@android:color/transparent"
+                android:hint="@string/email"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:textSize="@dimen/text_size_small" />
+        </LinearLayout>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0.3dp"
+            android:background="@color/colorGray" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/icon_size_medium"
+                android:layout_height="@dimen/icon_size_medium"
+                android:padding="@dimen/padding_medium"
+                android:tint="@color/grayicon"
+                android:src="@drawable/lock"/>
             <edu.hust.truongvu.choviet.customview.MyPwEditText
                 android:id="@+id/signin_password"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edt_height_medium"
-                android:textSize="@dimen/text_size_medium"
-                app:hide="true"
-                android:hint="@string/password"/>
-        </android.support.design.widget.TextInputLayout>
-        <RelativeLayout
+                android:layout_height="@dimen/actionbar_size"
+                android:background="@android:color/transparent"
+                android:hint="@string/password"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:textSize="@dimen/text_size_small"
+                app:hide="true" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorGray" />
+
+        <Button
             android:id="@+id/loginBtn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/edt_height_medium"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@drawable/bg_btn_login"
+            android:layout_height="@dimen/actionbar_size"
+            android:layout_marginLeft="@dimen/margin_big"
+            android:layout_marginRight="@dimen/margin_big"
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@color/colorPrimaryDark"
             android:text="@string/signin"
-            android:textColor="@color/white"
-            android:textAllCaps="false">
-            <edu.hust.truongvu.choviet.customview.MyTextView
-                android:layout_width="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="@color/white"></Button>
+
+        <edu.hust.truongvu.choviet.customview.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="OR"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/login_with_facebook"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/signin"
-                android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-        <LinearLayout
-            android:id="@+id/login_with_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edt_height_medium"
-            android:background="@drawable/bg_facebook"
-            android:layout_marginTop="@dimen/margin_huge"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageView
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <RelativeLayout
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:src="@drawable/facebook_logo"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
-            </RelativeLayout>
-            <RelativeLayout
+                    android:background="@drawable/bg_facebook">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/padding_big"
+                        android:src="@drawable/facebook_logo" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/login_with_gplus"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:paddingLeft="50dp"
-                android:layout_weight="3">
-                <edu.hust.truongvu.choviet.customview.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_small"
-                    android:text="@string/sign_in_facebook"/>
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/login_with_gplus"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edt_height_medium"
-            android:background="@drawable/bg_gplus"
-            android:layout_marginTop="@dimen/margin_small"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageView
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RelativeLayout
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
-                    android:src="@drawable/gplus_logo"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:paddingLeft="50dp"
-                android:layout_weight="3">
-                <edu.hust.truongvu.choviet.customview.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_small"
-                    android:text="@string/sign_in_google"/>
-            </RelativeLayout>
+                    android:background="@drawable/bg_gplus">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/padding_big"
+                        android:src="@drawable/gplus_logo" />
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large">
+
+            <LinearLayout
                 android:id="@+id/createAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_gravity="center"
-                android:padding="@dimen/padding_medium"
-                android:text="@string/not_have_acc"
-                android:textColor="@color/grayicon"
-                android:textSize="@dimen/text_size_small" />
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_medium">
+
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/not_have_acc"
+                    android:textColor="@color/grayicon"
+                    android:textSize="@dimen/text_size_small" />
+
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:text="@string/sign_up_here"
+                    android:textColor="@color/colorPrimaryDark" />
+            </LinearLayout>
+
         </RelativeLayout>
 
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

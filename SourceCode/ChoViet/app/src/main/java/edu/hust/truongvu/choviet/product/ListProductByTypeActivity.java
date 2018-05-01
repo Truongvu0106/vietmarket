@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.product;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.adapter.ProductAdapter;
+import edu.hust.truongvu.choviet.dialog.FilterProductDialog;
+import edu.hust.truongvu.choviet.dialog.SortProductDialog;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.utils.Constants;
 
@@ -101,9 +105,48 @@ public class ListProductByTypeActivity extends AppCompatActivity implements List
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_filter:
+                filter();
                 break;
             case R.id.btn_sort:
+                sort();
                 break;
         }
+    }
+
+    private void sort(){
+        SortProductDialog dialog = new SortProductDialog(ListProductByTypeActivity.this, new SortProductDialog.SortListener() {
+            @Override
+            public void onSortTimeOldToNew() {
+
+            }
+
+            @Override
+            public void onSortTimeNewToOld() {
+
+            }
+
+            @Override
+            public void onSortMoneyCheapToExps() {
+
+            }
+
+            @Override
+            public void onSortMoneyExpsToCheap() {
+
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    private void filter(){
+        FilterProductDialog dialog = new FilterProductDialog(ListProductByTypeActivity.this, new FilterProductDialog.FilterListener() {
+            @Override
+            public void onApplyFilter(int category, int brand, int price) {
+
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }

@@ -54,9 +54,9 @@ public class AddProductPresenterImp implements AddProductPresenter, UploadImageH
     public void initListCategory() {
         ArrayList<ChildCategory> data = categoryModel.getListChildCategory();
         if (data == null || data.size() == 0){
-            view.loadListCategorySuccessful(data);
-        }else {
             view.loadListCategoryFalse();
+        }else {
+            view.loadListCategorySuccessful(data);
         }
     }
 
@@ -64,9 +64,9 @@ public class AddProductPresenterImp implements AddProductPresenter, UploadImageH
     public void initListBrand() {
         ArrayList<Brand> data = brandModel.getListBrand();
         if (data == null || data.size() == 0){
-            view.loadListBrandSuccessful(data);
-        }else {
             view.loadListBrandFalse();
+        }else {
+            view.loadListBrandSuccessful(data);
         }
     }
 
