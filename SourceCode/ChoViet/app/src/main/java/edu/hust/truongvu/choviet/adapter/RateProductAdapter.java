@@ -60,7 +60,7 @@ public class RateProductAdapter extends RecyclerView.Adapter<RateProductAdapter.
             ratingBar = itemView.findViewById(R.id.customer_rate);
         }
         public void setContent(Rate productRate){
-            UserModel userModel = new UserModel();
+            UserModel userModel = new UserModel(context);
             User user = userModel.getUserByUsername(productRate.getUserName());
             MyHelper.loadImageUser(context, imageView, user.getAvatar());
             tvName.setText(user.getFullname());

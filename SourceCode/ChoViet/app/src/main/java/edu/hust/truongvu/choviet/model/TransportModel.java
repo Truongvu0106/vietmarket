@@ -23,10 +23,6 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class TransportModel {
     private static final String TRANSPORT_PATH = Constants.Path.MY_PATH + "transport.php";
     private Context context;
-    public TransportModel(){
-
-    }
-
     public TransportModel(Context context){
         this.context = context;
     }
@@ -39,7 +35,7 @@ public class TransportModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(TRANSPORT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, TRANSPORT_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -82,7 +78,7 @@ public class TransportModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(TRANSPORT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, TRANSPORT_PATH, attrs);
         jsonHelper.execute();
 
         try {

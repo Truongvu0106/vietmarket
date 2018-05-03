@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.home;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,9 +20,11 @@ import edu.hust.truongvu.choviet.model.ShopModel;
 public class HomePresenterImp implements HomePresenter {
 
     private HomeView homeView;
+    private Context mContext;
 
-    public HomePresenterImp(HomeView homeView){
+    public HomePresenterImp(Context context, HomeView homeView){
         this.homeView = homeView;
+        this.mContext = context;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class HomePresenterImp implements HomePresenter {
 
     @Override
     public void initListBrand() {
-        BrandModel brandModel = new BrandModel();
+        BrandModel brandModel = new BrandModel(mContext);
         ArrayList<Brand> listBrand = brandModel.getListBrand();
         homeView.loadBrand(listBrand);
     }
@@ -56,7 +60,7 @@ public class HomePresenterImp implements HomePresenter {
 
     @Override
     public void initListStore() {
-        ShopModel model = new ShopModel();
+        ShopModel model = new ShopModel(mContext);
         ArrayList<Shop> listShop = model.getAllShop();
 
         homeView.loadListHighlightStore(listShop);
@@ -64,13 +68,13 @@ public class HomePresenterImp implements HomePresenter {
 
     @Override
     public void initListProduct() {
-        ProductModel model = new ProductModel();
+        ProductModel model = new ProductModel(mContext);
         homeView.loadListHighlightProduct(model.getAllProduct());
     }
 
     @Override
     public void initListSuggest() {
-        ProductModel model = new ProductModel();
+        ProductModel model = new ProductModel(mContext);
         homeView.loadListSuggest(model.getAllProduct());
     }
 }

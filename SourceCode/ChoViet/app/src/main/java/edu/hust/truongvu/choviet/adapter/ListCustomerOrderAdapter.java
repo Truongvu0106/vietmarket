@@ -62,7 +62,7 @@ public class ListCustomerOrderAdapter extends RecyclerView.Adapter<ListCustomerO
             tvNameProduct = itemView.findViewById(R.id.name_product);
             tvPrice = itemView.findViewById(R.id.price_product);
             tvNumber = itemView.findViewById(R.id.tv_number);
-            shopModel = new ShopModel();
+            shopModel = new ShopModel(context);
         }
 
         public void setContent(Product product){

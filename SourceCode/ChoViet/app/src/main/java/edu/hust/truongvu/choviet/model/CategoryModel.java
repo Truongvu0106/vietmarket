@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -26,6 +27,10 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class CategoryModel {
     public static String CATEGORY_PATH = Constants.Path.MY_PATH + "category.php";
+    private Context mContext;
+    public CategoryModel(Context context){
+        this.mContext = context;
+    }
 
     public ArrayList<ChildCategory> getListChildCategory(){
         ArrayList<ChildCategory> childCategories = new ArrayList<>();
@@ -34,7 +39,7 @@ public class CategoryModel {
         attrFunction.put("func", "getListChildCategory");
         attrs.add(attrFunction);
         try {
-            JsonHelper jsonHelper = new JsonHelper(CATEGORY_PATH, attrs);
+            JsonHelper jsonHelper = new JsonHelper(mContext, CATEGORY_PATH, attrs);
             jsonHelper.execute();
             String results = jsonHelper.get();
             JSONObject jsonObject = new JSONObject(results);
@@ -64,7 +69,7 @@ public class CategoryModel {
             attrFunction.put("func", "getListParentCategory");
             attrs.add(attrFunction);
 
-            JsonHelper jsonHelper = new JsonHelper(CATEGORY_PATH, attrs);
+            JsonHelper jsonHelper = new JsonHelper(mContext, CATEGORY_PATH, attrs);
             jsonHelper.execute();
             String results = jsonHelper.get();
             JSONObject jsonObject = new JSONObject(results);
@@ -96,7 +101,7 @@ public class CategoryModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(CATEGORY_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, CATEGORY_PATH, attrs);
         jsonHelper.execute();
 
         try {

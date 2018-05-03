@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.product;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Product;
@@ -12,10 +14,12 @@ import edu.hust.truongvu.choviet.model.ProductModel;
 public class ListProductByTypePresenterImp implements ListProductByTypePresenter {
     private ListProductByTypeView listProductByTypeView;
     private ProductModel productModel;
+    private Context mContext;
 
-    public ListProductByTypePresenterImp(ListProductByTypeView listProductByTypeView){
+    public ListProductByTypePresenterImp(Context context, ListProductByTypeView listProductByTypeView){
         this.listProductByTypeView = listProductByTypeView;
-        productModel = new ProductModel();
+        this.mContext = context;
+        productModel = new ProductModel(mContext);
     }
 
 

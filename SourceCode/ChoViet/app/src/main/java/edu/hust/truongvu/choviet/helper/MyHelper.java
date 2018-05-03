@@ -73,8 +73,8 @@ public class MyHelper {
         }
         Picasso.with(context)
                 .load(path)
-                .placeholder(R.drawable.loading)
-                .error(R.drawable.error)
+                .placeholder(R.drawable.img_loading)
+                .error(R.drawable.img_error)
                 .resize(150, 150)
                 .centerCrop()
                 .into(imageView);
@@ -106,7 +106,7 @@ public class MyHelper {
     }
 
     public static User getCurrentUser(Context context){
-        UserModel userModel = new UserModel();
+        UserModel userModel = new UserModel(context);
         User user = userModel.getUserByUsername(getUserNamePreference(context));
         if (user == null){
             Log.e("user", "null");

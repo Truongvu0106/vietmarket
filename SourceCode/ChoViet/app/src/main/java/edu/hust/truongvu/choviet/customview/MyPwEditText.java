@@ -53,8 +53,8 @@ public class MyPwEditText extends EditText {
             TypedArray array = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.MyPwEditText, 0, 0);
             this.useHide = array.getBoolean(R.styleable.MyPwEditText_hide, true);
         }
-        drawableHide = ContextCompat.getDrawable(getContext(), R.drawable.ic_not_visible).mutate();
-        drawableShow = ContextCompat.getDrawable(getContext(), R.drawable.ic_visible).mutate();
+        drawableHide = ContextCompat.getDrawable(getContext(), R.drawable.ic_in_visibility).mutate();
+        drawableShow = ContextCompat.getDrawable(getContext(), R.drawable.ic_visibility).mutate();
         setup();
     }
 

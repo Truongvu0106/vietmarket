@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.helper;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 
@@ -18,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.hust.truongvu.choviet.R;
+
 /**
  * Created by truon on 3/9/2018.
  */
@@ -26,20 +30,24 @@ public class JsonHelper extends AsyncTask<String, Void, String> {
     private String path;
     private List<HashMap<String, String>> attrs;
     private StringBuilder data = new StringBuilder();
+    private Context mContext;
+    private ProgressDialog dialog;
 
-    public JsonHelper(String path){
+    public JsonHelper(Context context, String path){
         this.path = path;
+        this.mContext = context;
     }
 
-    public JsonHelper(String path, List<HashMap<String, String>> attrs){
+    public JsonHelper(Context context, String path, List<HashMap<String, String>> attrs){
         this.path = path;
         this.attrs = attrs;
+        this.mContext = context;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-
+        dialog = ProgressDialog.show(mContext, null, mContext.getString(R.string.please_wait));
     }
 
     @Override
@@ -64,6 +72,9 @@ public class JsonHelper extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        if (dialog.isShowing()){
+            dialog.dismiss();
+        }
     }
 
     private String doGet(HttpURLConnection httpURLConnection){

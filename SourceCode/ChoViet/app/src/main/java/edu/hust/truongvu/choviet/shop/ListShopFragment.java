@@ -39,7 +39,7 @@ public class ListShopFragment extends Fragment implements ListShopView{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_shop, container, false);
         recyclerView = view.findViewById(R.id.list_shop);
-        listShopPresenterImp = new ListShopPresenterImp(this);
+        listShopPresenterImp = new ListShopPresenterImp(getContext(),this);
         listShopPresenterImp.initListShop();
         return view;
     }

@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.shop;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Shop;
@@ -11,14 +13,16 @@ import edu.hust.truongvu.choviet.model.ShopModel;
 
 public class ListShopPresenterImp implements ListShopPresenter{
     private ListShopView listShopView;
+    private Context mContext;
 
-    public ListShopPresenterImp(ListShopView listShopView){
+    public ListShopPresenterImp(Context context, ListShopView listShopView){
         this.listShopView = listShopView;
+        this.mContext = context;
     }
 
     @Override
     public void initListShop() {
-        ShopModel model = new ShopModel();
+        ShopModel model = new ShopModel(mContext);
         ArrayList<Shop> data = model.getAllShop();
         listShopView.loadListShop(data);
     }

@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
         mListHighlightProduct = view.findViewById(R.id.list_hightlight_product);
         mListHighlightStore = view.findViewById(R.id.list_highlight_store);
         mListSuggest = view.findViewById(R.id.list_suggest);
-        homePresenterImp = new HomePresenterImp(this);
+        homePresenterImp = new HomePresenterImp(getContext(),this);
         homePresenterImp.initBanner();
         homePresenterImp.initListSearch();
         homePresenterImp.initListBrand();

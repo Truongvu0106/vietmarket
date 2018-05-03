@@ -217,6 +217,10 @@
     <string name="all">All</string>
     <string name="apply">Apply</string>
     <string name="price_a">Price</string>
+    <string name="choose_category">Choose category</string>
+    <string name="choose_price">Choose price</string>
+    <string name="less_than">Less than</string>
+    <string name="more_than">More than</string>
 
     <string name="or">OR</string>
 </resources>

@@ -48,7 +48,7 @@ public class PayMethodFragment extends Fragment implements PaymentView, View.OnC
         btnPayment = view.findViewById(R.id.btn_payment);
         recyclerView = view.findViewById(R.id.list_payment);
         paymentPresenterImp = new PaymentPresenterImp(this);
-        payMethodPresenterImp = new PayMethodPresenterImp(this);
+        payMethodPresenterImp = new PayMethodPresenterImp(getContext(), this);
 
         payMethodPresenterImp.initListPayMethod();
 

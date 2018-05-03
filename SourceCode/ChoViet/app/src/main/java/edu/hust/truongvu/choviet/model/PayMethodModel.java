@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +22,10 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class PayMethodModel {
     public static final String PAY_PATH = Constants.Path.MY_PATH + "payment.php";
-
+    private Context mContext;
+    public PayMethodModel(Context context){
+        this.mContext = context;
+    }
     public ArrayList<PayMethod> getAllPayMethod() {
         ArrayList<PayMethod> listPaymenthods = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -29,7 +34,7 @@ public class PayMethodModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(PAY_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PAY_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -72,7 +77,7 @@ public class PayMethodModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(PAY_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PAY_PATH, attrs);
         jsonHelper.execute();
 
         try {

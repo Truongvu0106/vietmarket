@@ -31,7 +31,7 @@ public class ListProductByTypeActivity extends AppCompatActivity implements List
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_product_by_type);
-        presenterImp = new ListProductByTypePresenterImp(this);
+        presenterImp = new ListProductByTypePresenterImp(this,this);
         options = getIntent().getIntExtra(Constants.MyTag.INTENT_TYPE_LOAD_PRODUCT, 0);
 
         initView();

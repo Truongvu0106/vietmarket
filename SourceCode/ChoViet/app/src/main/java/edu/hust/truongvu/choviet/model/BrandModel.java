@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +22,11 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class BrandModel {
     public static final String BRAND_PATH = Constants.Path.MY_PATH + "brand.php";
+    private Context mContext;
+
+    public BrandModel(Context context){
+        this.mContext = context;
+    }
 
     public ArrayList<Brand> getListBrand() {
         ArrayList<Brand> listBrand = new ArrayList<>();
@@ -29,7 +36,7 @@ public class BrandModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(BRAND_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, BRAND_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -71,7 +78,7 @@ public class BrandModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(BRAND_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, BRAND_PATH, attrs);
         jsonHelper.execute();
 
         try {

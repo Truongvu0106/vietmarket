@@ -96,7 +96,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
         username = MyHelper.getUserNamePreference(getContext());
         cartPresenterImp = new CartPresenterImp();
-        productPresenterImp = new ProductPresenterImp(this);
+        productPresenterImp = new ProductPresenterImp(getContext(), this);
         productPresenterImp.initListImage(product.getImgs());
         productPresenterImp.initListProduct();
         productPresenterImp.initListRate(username, product.getId());

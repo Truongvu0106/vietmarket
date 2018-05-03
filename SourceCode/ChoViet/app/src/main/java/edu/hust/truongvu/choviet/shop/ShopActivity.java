@@ -33,7 +33,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
         recyclerView = findViewById(R.id.list_product);
         initView();
         shop = (Shop) getIntent().getSerializableExtra(Constants.MyTag.INTENT_SHOP);
-        shopPresenterImp = new ShopPresenterImp(this);
+        shopPresenterImp = new ShopPresenterImp(this, this);
         shopPresenterImp.initInforShop(shop);
     }
 

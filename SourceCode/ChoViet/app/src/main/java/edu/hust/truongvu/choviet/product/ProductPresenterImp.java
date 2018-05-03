@@ -22,6 +22,7 @@ import edu.hust.truongvu.choviet.model.ShopModel;
  */
 
 public class ProductPresenterImp implements ProductPresenter{
+    private Context mContext;
     private ProductView productView;
     private RateModel rateModel;
     private ProductModel productModel;
@@ -29,23 +30,25 @@ public class ProductPresenterImp implements ProductPresenter{
     private ShopModel shopModel;
     private CategoryModel categoryModel;
     private BrandModel brandModel;
-    public ProductPresenterImp(){
-        rateModel = new RateModel();
-        productModel = new ProductModel();
+    public ProductPresenterImp(Context context){
+        this.mContext = context;
+        rateModel = new RateModel(mContext);
+        productModel = new ProductModel(mContext);
         cartModel = new CartModel();
-        shopModel = new ShopModel();
-        categoryModel = new CategoryModel();
-        brandModel = new BrandModel();
+        shopModel = new ShopModel(mContext);
+        categoryModel = new CategoryModel(mContext);
+        brandModel = new BrandModel(mContext);
     }
 
-    public ProductPresenterImp(ProductView productView){
+    public ProductPresenterImp(Context context, ProductView productView){
         this.productView = productView;
-        rateModel = new RateModel();
-        productModel = new ProductModel();
+        this.mContext = context;
+        rateModel = new RateModel(mContext);
+        productModel = new ProductModel(mContext);
         cartModel = new CartModel();
-        shopModel = new ShopModel();
-        categoryModel = new CategoryModel();
-        brandModel = new BrandModel();
+        shopModel = new ShopModel(mContext);
+        categoryModel = new CategoryModel(mContext);
+        brandModel = new BrandModel(mContext);
     }
 
     public ChildCategory getChildCategory(int idCategory){

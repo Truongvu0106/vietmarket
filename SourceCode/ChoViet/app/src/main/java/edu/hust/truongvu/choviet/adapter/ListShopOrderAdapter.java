@@ -124,7 +124,7 @@ public class ListShopOrderAdapter extends RecyclerView.Adapter<ListShopOrderAdap
             }
 
             ArrayList<Product> listProduct = new ArrayList<>();
-            ProductModel productModel = new ProductModel();
+            ProductModel productModel = new ProductModel(mContext);
 
             ArrayList<Integer> listNumber = new ArrayList<>();
 

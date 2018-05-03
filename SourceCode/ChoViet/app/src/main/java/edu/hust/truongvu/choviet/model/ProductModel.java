@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -25,6 +26,10 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class ProductModel {
     public static final String PRODUCT_PATH = Constants.Path.MY_PATH + "product.php";
 
+    private Context mContext;
+    public ProductModel(Context context){
+        this.mContext = context;
+    }
     public ArrayList<Product> getAllProduct(){
         ArrayList<Product> listProduct = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -33,7 +38,7 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -88,7 +93,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdCategory);
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -143,7 +148,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdBrand);
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -198,7 +203,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdShop);
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -253,7 +258,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -364,7 +369,7 @@ public class ProductModel {
         attrs.add(attrDiscount);
 
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();
@@ -459,7 +464,7 @@ public class ProductModel {
         attrs.add(attrDiscount);
 
 
-        JsonHelper jsonHelper = new JsonHelper(PRODUCT_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();

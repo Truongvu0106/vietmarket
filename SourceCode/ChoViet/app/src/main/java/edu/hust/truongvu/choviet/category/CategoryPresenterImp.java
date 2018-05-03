@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.category;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -27,9 +28,11 @@ public class CategoryPresenterImp implements CategoryPresenter {
     public static ArrayList<ChildCategory> childCategories;
     private CategoryModel categoryModel;
     private CategoryView categoryView;
-    public CategoryPresenterImp(CategoryView categoryView){
+    private Context mContext;
+    public CategoryPresenterImp(Context context, CategoryView categoryView){
         this.categoryView = categoryView;
-        categoryModel = new CategoryModel();
+        this.mContext = context;
+        categoryModel = new CategoryModel(mContext);
 
     }
 

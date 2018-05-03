@@ -24,9 +24,6 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class UserModel {
     public static final String PATH_USER = Constants.Path.MY_PATH + "user.php";
     private Context context;
-    public UserModel(){
-
-    }
 
     public UserModel(Context context){
         this.context = context;
@@ -48,7 +45,7 @@ public class UserModel {
         attrs.add(attrUsername);
         attrs.add(attrPassword);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_USER, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
         jsonHelper.execute();
 
         try {
@@ -90,7 +87,7 @@ public class UserModel {
         attrs.add(attrFunc);
         attrs.add(attrUsername);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_USER, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
         jsonHelper.execute();
 
         try {
@@ -138,7 +135,7 @@ public class UserModel {
         attrs.add(attrFunc);
         attrs.add(attrUsername);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_USER, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
         jsonHelper.execute();
 
         try {
@@ -203,7 +200,7 @@ public class UserModel {
         attrs.add(attrPhone);
         attrs.add(attrTypeUser);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_USER, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();
@@ -274,7 +271,7 @@ public class UserModel {
         attrs.add(attrTypeUser);
         attrs.add(attrTypeLogin);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_USER, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();

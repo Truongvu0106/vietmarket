@@ -4,16 +4,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/signup_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        android:padding="@dimen/padding_medium"
+        android:paddingLeft="@dimen/padding_medium"
+        android:paddingRight="@dimen/padding_medium"
         android:weightSum="4">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -22,8 +21,9 @@
                 android:layout_width="@dimen/icon_size_large"
                 android:layout_height="@dimen/icon_size_large"
                 android:layout_centerInParent="true"
+                android:padding="@dimen/padding_large"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo_notext" />
 
         </RelativeLayout>
 
@@ -33,6 +33,9 @@
             android:layout_marginLeft="@dimen/margin_medium"
             android:layout_marginRight="@dimen/margin_medium"
             android:layout_weight="3"
+            android:paddingLeft="@dimen/padding_big"
+            android:paddingRight="@dimen/padding_big"
+            android:paddingTop="@dimen/padding_medium"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,26 +46,26 @@
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
                     android:padding="@dimen/padding_medium"
-                    android:tint="@color/colorPrimaryDark"
-                    android:layout_marginTop="@dimen/margin_small"
+                    android:tint="@color/grayicon"
                     android:src="@drawable/full_name"/>
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_tiny"
-                    android:layout_marginTop="@dimen/margin_tiny">
+
                     <edu.hust.truongvu.choviet.customview.MyEditText
                         android:id="@+id/signup_username"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/actionbar_size"
                         android:hint="@string/full_name"
                         android:singleLine="true"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:gravity="center_vertical"
+                        android:background="@android:color/transparent"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_medium" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="@dimen/text_size_small" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,26 +74,25 @@
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
                     android:padding="@dimen/padding_medium"
-                    android:tint="@color/colorPrimaryDark"
-                    android:layout_marginTop="@dimen/margin_small"
+                    android:tint="@color/grayicon"
                     android:src="@drawable/email"/>
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_tiny"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_tiny">
+
                     <edu.hust.truongvu.choviet.customview.MyEditText
                         android:id="@+id/signup_email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/actionbar_size"
                         android:gravity="center_vertical"
                         android:singleLine="true"
+                        android:layout_marginLeft="@dimen/margin_small"
                         android:hint="@string/email"
+                        android:background="@android:color/transparent"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_medium" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="@dimen/text_size_small" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,27 +101,26 @@
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
                     android:padding="@dimen/padding_medium"
-                    android:tint="@color/colorPrimaryDark"
-                    android:layout_marginTop="@dimen/margin_small"
+                    android:tint="@color/grayicon"
                     android:src="@drawable/ic_phone"/>
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_tiny"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_tiny">
+
                     <edu.hust.truongvu.choviet.customview.MyEditText
                         android:id="@+id/signup_phone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/actionbar_size"
                         android:gravity="center_vertical"
                         android:singleLine="true"
                         android:inputType="number"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:background="@android:color/transparent"
                         android:hint="@string/phone"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_medium" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="@dimen/text_size_small" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,27 +130,26 @@
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
                     android:padding="@dimen/padding_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:tint="@color/colorPrimaryDark"
+                    android:tint="@color/grayicon"
                     android:src="@drawable/lock"/>
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_tiny"
-                    android:layout_marginTop="@dimen/margin_tiny">
-                    <edu.hust.truongvu.choviet.customview.MyPwEditText
+
+                    <edu.hust.truongvu.choviet.customview.MyEditText
                         android:id="@+id/signup_password"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/actionbar_size"
                         android:gravity="center_vertical"
                         android:singleLine="true"
+                        android:layout_marginLeft="@dimen/margin_small"
                         app:hide="true"
+                        android:background="@android:color/transparent"
                         android:hint="@string/password"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_medium" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="@dimen/text_size_small" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,52 +160,53 @@
                     android:layout_height="@dimen/icon_size_medium"
                     android:padding="@dimen/padding_medium"
                     android:src="@drawable/lock"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:tint="@color/colorPrimaryDark"/>
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_tiny"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_tiny">
-                    <edu.hust.truongvu.choviet.customview.MyPwEditText
+                    android:tint="@color/grayicon"/>
+
+                    <edu.hust.truongvu.choviet.customview.MyEditText
                         android:id="@+id/retype_pass"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/actionbar_size"
                         android:gravity="center_vertical"
                         android:singleLine="true"
                         app:hide="true"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:background="@android:color/transparent"
                         android:hint="@string/retype_pass"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_medium" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="@dimen/text_size_small" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
             <edu.hust.truongvu.choviet.customview.MyButton
                 android:id="@+id/signUpBtn"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edt_height_medium"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_height="@dimen/actionbar_size"
+                android:layout_marginTop="@dimen/margin_huge"
                 android:background="@color/colorSecond"
                 android:padding="@dimen/padding_big"
                 android:text="@string/signup"
+                android:layout_marginLeft="@dimen/margin_big"
+                android:layout_marginRight="@dimen/margin_big"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_medium"
                 android:textStyle="bold" />
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
                 <LinearLayout
                     android:id="@+id/already_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
                     android:padding="@dimen/padding_medium"
+                    android:layout_marginBottom="@dimen/margin_medium"
                     android:orientation="horizontal">
                     <edu.hust.truongvu.choviet.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_medium"
                         android:text="@string/have_acc"
                         android:textColor="@color/grayicon"
                         android:textSize="@dimen/text_size_small" />
@@ -213,6 +214,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/sign_in_here"
+                        android:layout_marginLeft="@dimen/margin_small"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/text_size_small"/>
                 </LinearLayout>

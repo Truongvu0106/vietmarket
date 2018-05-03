@@ -50,7 +50,7 @@ public class CategoryFragment extends Fragment implements CategoryView{
         View view = inflater.inflate(R.layout.fragment_category, container, false);
         mListParentCategory = view.findViewById(R.id.list_parent_category);
         mListChildCategory = view.findViewById(R.id.list_child_category);
-        categoryPresenterImp = new CategoryPresenterImp(this);
+        categoryPresenterImp = new CategoryPresenterImp(getContext(), this);
         categoryPresenterImp.initChildCategory();
         categoryPresenterImp.initChildCategoryById(1);
         categoryPresenterImp.initParentCategory();

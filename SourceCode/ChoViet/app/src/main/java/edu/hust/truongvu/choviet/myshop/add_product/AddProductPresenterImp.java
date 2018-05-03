@@ -29,9 +29,9 @@ public class AddProductPresenterImp implements AddProductPresenter, UploadImageH
         this.mContext = context;
         this.view = view;
         uploadImageHelper = new UploadImageHelper(context, this);
-        brandModel = new BrandModel();
-        categoryModel = new CategoryModel();
-        productModel = new ProductModel();
+        brandModel = new BrandModel(context);
+        categoryModel = new CategoryModel(context);
+        productModel = new ProductModel(context);
     }
 
     @Override

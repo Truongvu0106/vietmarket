@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.rate;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.entity.Rate;
@@ -11,14 +13,16 @@ import edu.hust.truongvu.choviet.model.RateModel;
 
 public class RatePresenterImp implements RatePresenter{
     private RateView rateView;
+    private Context mContext;
 
-    public RatePresenterImp(RateView rateView){
+    public RatePresenterImp(Context context, RateView rateView){
         this.rateView = rateView;
+        this.mContext = context;
     }
 
     @Override
     public void insertRate() {
-        RateModel rateModel = new RateModel();
+        RateModel rateModel = new RateModel(mContext);
         if (rateModel.addRate(null)){
             rateView.insertRateSuccessful();
         }else {
@@ -28,7 +32,7 @@ public class RatePresenterImp implements RatePresenter{
 
     @Override
     public void loadRate(int idProduct) {
-        RateModel rateModel = new RateModel();
+        RateModel rateModel = new RateModel(mContext);
         ArrayList<Rate> data = rateModel.loadListRate(idProduct);
         rateView.loadListRateSuccessful(data);
     }

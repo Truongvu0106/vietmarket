@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -23,7 +24,10 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class RateModel {
     public static final String PATH_RATE = Constants.Path.MY_PATH + "rate.php";
-
+    private Context context;
+    public RateModel(Context context){
+        this.context = context;
+    }
     public boolean addRate(Rate rate){
         boolean flag = false;
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -53,7 +57,7 @@ public class RateModel {
         attrs.add(attrContent);
         attrs.add(attrStar);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_RATE, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_RATE, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();
@@ -86,7 +90,7 @@ public class RateModel {
         attrs.add(attrFunction);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_RATE, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_RATE, attrs);
         jsonHelper.execute();
         try {
             String results = jsonHelper.get();
@@ -135,7 +139,7 @@ public class RateModel {
         attrs.add(attrIdProduct);
         attrs.add(attrUser);
 
-        JsonHelper jsonHelper = new JsonHelper(PATH_RATE, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, PATH_RATE, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();

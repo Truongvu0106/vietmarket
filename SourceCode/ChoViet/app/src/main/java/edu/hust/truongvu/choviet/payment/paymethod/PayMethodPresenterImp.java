@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.payment.paymethod;
 
+import android.content.Context;
+
 import edu.hust.truongvu.choviet.model.PayMethodModel;
 
 /**
@@ -9,9 +11,11 @@ import edu.hust.truongvu.choviet.model.PayMethodModel;
 public class PayMethodPresenterImp implements PayMethodPresenter {
     private PayMethodView payMethodView;
     private PayMethodModel model;
-    public PayMethodPresenterImp(PayMethodView payMethodView){
+    private Context mContext;
+    public PayMethodPresenterImp(Context context, PayMethodView payMethodView){
         this.payMethodView = payMethodView;
-        model = new PayMethodModel();
+        this.mContext = context;
+        model = new PayMethodModel(mContext);
     }
 
     @Override

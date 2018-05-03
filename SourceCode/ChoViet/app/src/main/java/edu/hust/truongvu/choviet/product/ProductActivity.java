@@ -36,7 +36,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
         tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
 
-        productPresenterImp = new ProductPresenterImp();
+        productPresenterImp = new ProductPresenterImp(this);
 
         btnCart.setOnClickListener(this);
         layoutSearch.setOnClickListener(this);

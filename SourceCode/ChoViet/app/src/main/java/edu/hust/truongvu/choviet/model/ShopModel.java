@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -23,6 +24,10 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class ShopModel {
     public static final String SHOP_PATH = Constants.Path.MY_PATH + "shop.php";
+    private Context mContext;
+    public ShopModel(Context context){
+        this.mContext = context;
+    }
 
     public ArrayList<Shop> getAllShop() {
         ArrayList<Shop> listShop = new ArrayList<>();
@@ -32,7 +37,7 @@ public class ShopModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(SHOP_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, SHOP_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -83,7 +88,7 @@ public class ShopModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(SHOP_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(mContext, SHOP_PATH, attrs);
         jsonHelper.execute();
 
         try {

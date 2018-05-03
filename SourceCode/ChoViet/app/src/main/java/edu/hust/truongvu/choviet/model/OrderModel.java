@@ -24,7 +24,7 @@ import edu.hust.truongvu.choviet.utils.Constants;
 
 public class OrderModel {
     public static final String ORDER_PATH = Constants.Path.MY_PATH + "order.php";
-    Context context;
+    private Context context;
     public OrderModel(Context context){
         this.context = context;
     }
@@ -85,7 +85,7 @@ public class OrderModel {
         attrs.add(attrValue);
         attrs.add(attrAddress);
 
-        JsonHelper jsonHelper = new JsonHelper(ORDER_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, ORDER_PATH, attrs);
         jsonHelper.execute();
         try {
             String data = jsonHelper.get();
@@ -120,7 +120,7 @@ public class OrderModel {
         attrs.add(attrFunc);
         attrs.add(attrShop);
 
-        JsonHelper jsonHelper = new JsonHelper(ORDER_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, ORDER_PATH, attrs);
         jsonHelper.execute();
 
         try {
@@ -165,7 +165,7 @@ public class OrderModel {
         attrs.add(attrFunc);
         attrs.add(attrShop);
 
-        JsonHelper jsonHelper = new JsonHelper(ORDER_PATH, attrs);
+        JsonHelper jsonHelper = new JsonHelper(context, ORDER_PATH, attrs);
         jsonHelper.execute();
 
         try {

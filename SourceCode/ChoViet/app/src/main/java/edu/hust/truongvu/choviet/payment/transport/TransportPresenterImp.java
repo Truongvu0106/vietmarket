@@ -1,5 +1,7 @@
 package edu.hust.truongvu.choviet.payment.transport;
 
+import android.content.Context;
+
 import edu.hust.truongvu.choviet.model.TransportModel;
 
 /**
@@ -9,10 +11,12 @@ import edu.hust.truongvu.choviet.model.TransportModel;
 public class TransportPresenterImp implements TransportPresenter {
     private TransportView transportView;
     private TransportModel transportModel;
+    private Context mContext;
 
-    public TransportPresenterImp(TransportView transportView){
+    public TransportPresenterImp(Context context, TransportView transportView){
         this.transportView = transportView;
-        transportModel = new TransportModel();
+        this.mContext = context;
+        transportModel = new TransportModel(mContext);
     }
 
     @Override

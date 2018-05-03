@@ -50,7 +50,7 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
         recyclerView = view.findViewById(R.id.list_transport);
 
         paymentPresenterImp = new PaymentPresenterImp(this);
-        transportPresenterImp = new TransportPresenterImp(this);
+        transportPresenterImp = new TransportPresenterImp(getContext(), this);
         transportPresenterImp.initListTransport();
         btnTransport.setOnClickListener(this);
         return view;

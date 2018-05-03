@@ -31,8 +31,8 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
         this.context = context;
         this.confirmView = confirmView;
         cartModel = new CartModel();
-        transportModel = new TransportModel();
-        payMethodModel = new PayMethodModel();
+        transportModel = new TransportModel(context);
+        payMethodModel = new PayMethodModel(context);
         orderModel = new OrderModel(context);
     }
 
