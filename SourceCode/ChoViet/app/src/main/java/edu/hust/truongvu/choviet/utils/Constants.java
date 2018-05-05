@@ -34,6 +34,7 @@ public class Constants {
 
 
         public static final String INTENT_PRODUCT = "intent_product";
+        public static final String INTENT_LIST_PRODUCT = "intent_list_product";
         public static final String INTENT_SHOP = "intent_shop";
         public static final String INTENT_TYPE_LOAD_PRODUCT = "intent_type_load_product";
         public static final String ID_CATEGORY = "id_category";
@@ -48,6 +49,12 @@ public class Constants {
         public static final int LOAD_PRODUCT_PRICE_ASC = 6;
         public static final int LOAD_PRODUCT_PRICE_DESC = 7;
         public static final int LOAD_PRODUCT_BY_PRICE = 8;
+
+        public static final int LOAD_LIST_PRODUCT_HIGHLIGHT = 1;
+        public static final int LOAD_LIST_PRODUCT_LASTEST = 2;
+        public static final int LOAD_LIST_PRODUCT_OTHER = 3;
+        public static final int NONE_ORDER_BY_PRICE = 0;
+
     }
 
     public enum OrderStatus{

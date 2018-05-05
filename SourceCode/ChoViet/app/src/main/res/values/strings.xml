@@ -171,7 +171,7 @@
     <string name="other">Other</string>
     <string name="update_status">Update status</string>
     <string name="delete">Delete</string>
-    
+
     <string name="name">Name:</string>
     <string name="price">Price:</string>
     <string name="image">Image:</string>
@@ -223,4 +223,6 @@
     <string name="more_than">More than</string>
 
     <string name="or">OR</string>
+
+    <string name="do_you_want_clear_filter">Do you want clear all filter?</string>
 </resources>

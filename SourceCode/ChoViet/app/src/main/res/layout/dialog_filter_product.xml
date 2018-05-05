@@ -19,14 +19,14 @@
             android:textSize="@dimen/text_size_tiny"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorPrimaryDark"
+            android:layout_marginBottom="@dimen/margin_small"
             android:text="@string/filter"/>
         <RelativeLayout
             android:id="@+id/btn_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/padding_medium"
-            android:paddingBottom="@dimen/padding_medium"
-            android:layout_marginTop="@dimen/margin_small">
+            android:paddingBottom="@dimen/padding_medium">
             <ImageView
                 android:id="@+id/ic_next_a"
                 android:layout_width="@dimen/icon_size_medium"

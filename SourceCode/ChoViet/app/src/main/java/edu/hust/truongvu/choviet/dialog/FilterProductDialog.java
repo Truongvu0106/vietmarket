@@ -14,6 +14,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.PriceFilter;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 5/1/2018.
@@ -21,16 +22,20 @@ import edu.hust.truongvu.choviet.entity.PriceFilter;
 
 public class FilterProductDialog extends AlertDialog implements View.OnClickListener{
     public interface FilterListener{
-        void onApplyFilter(int category, int brand, int price);
+        void onApplyFilter(int category, int brand, PriceFilter priceFilter);
     }
     private View btnCategory, btnBrand, btnPrice, btnCancel, btnApply;
     private TextView tvCategory, tvBrand, tvPrice;
     private FilterListener mLitener;
+    private int idCategory = 0, idBrand = 0;
+    private PriceFilter mPriceFilter = null;
     private Context mContext;
-    public FilterProductDialog(Context context, FilterListener listener) {
+    private int mType;
+    public FilterProductDialog(Context context, int type, FilterListener listener) {
         super(context);
         this.mContext = context;
         this.mLitener = listener;
+        this.mType = type;
     }
 
     @Override
@@ -45,6 +50,17 @@ public class FilterProductDialog extends AlertDialog implements View.OnClickList
         tvCategory = findViewById(R.id.tv_category);
         tvBrand = findViewById(R.id.tv_brand);
         tvPrice = findViewById(R.id.tv_price);
+
+        if (mType == Constants.MyTag.LOAD_PRODUCT_BY_CATEGORY){
+            btnCategory.setVisibility(View.GONE);
+            btnBrand.setVisibility(View.VISIBLE);
+        }else if (mType == Constants.MyTag.LOAD_PRODUCT_BY_BRAND){
+            btnBrand.setVisibility(View.GONE);
+            btnCategory.setVisibility(View.VISIBLE);
+        }else {
+            btnBrand.setVisibility(View.VISIBLE);
+            btnCategory.setVisibility(View.VISIBLE);
+        }
 
         btnCategory.setOnClickListener(this);
         btnBrand.setOnClickListener(this);
@@ -69,22 +85,28 @@ public class FilterProductDialog extends AlertDialog implements View.OnClickList
                 dismiss();
                 break;
             case R.id.btn_apply:
+                dismiss();
+                mLitener.onApplyFilter(idCategory, idBrand, mPriceFilter);
                 break;
             default:
                 break;
         }
     }
 
+
+
     private void chooseCategory(){
         CategoryDialog dialog = new CategoryDialog(mContext, new CategoryDialog.CategoryDialogListener() {
             @Override
             public void onClickAll() {
                 tvCategory.setText(mContext.getString(R.string.all));
+                idCategory = 0;
             }
 
             @Override
             public void onChooseCategory(ChildCategory childCategory) {
                 tvCategory.setText(childCategory.getName());
+                idCategory = childCategory.getId();
             }
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -96,11 +118,13 @@ public class FilterProductDialog extends AlertDialog implements View.OnClickList
             @Override
             public void onClickAll() {
                 tvBrand.setText(mContext.getString(R.string.all));
+                idBrand = 0;
             }
 
             @Override
             public void onChooseBrand(Brand brand) {
                 tvBrand.setText(brand.getName());
+                idBrand = brand.getId();
             }
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -112,11 +136,13 @@ public class FilterProductDialog extends AlertDialog implements View.OnClickList
             @Override
             public void onClickAll() {
                 tvPrice.setText(mContext.getString(R.string.all));
+                mPriceFilter = null;
             }
 
             @Override
             public void onChoosePrice(PriceFilter priceFilter) {
                 tvPrice.setText(priceFilter.getTxtDisPlay());
+                mPriceFilter = priceFilter;
             }
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

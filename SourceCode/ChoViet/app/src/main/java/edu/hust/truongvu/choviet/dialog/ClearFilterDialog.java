@@ -4,33 +4,31 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import edu.hust.truongvu.choviet.R;
 
 /**
- * Created by truon on 3/25/2018.
+ * Created by truon on 5/5/2018.
  */
 
-public class DeleteItemCartDialog extends AlertDialog{
-    public interface DeleteItemCartListener{
-        void onDelete(int id_product);
+public class ClearFilterDialog extends AlertDialog {
+
+    public interface ClearFilterListener{
+        void onClear();
     }
-    private int id_product;
     private Context context;
-    private DeleteItemCartListener myListener;
+    private ClearFilterListener myListener;
     private View tvYes, tvCancel;
-    public DeleteItemCartDialog(Context context, int id_product, DeleteItemCartListener listener) {
+    public ClearFilterDialog(Context context, ClearFilterListener listener) {
         super(context);
         this.context = context;
-        this.id_product = id_product;
         this.myListener = listener;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_delete_item_cart);
+        setContentView(R.layout.dialog_clear_filter);
         tvCancel = findViewById(R.id.btn_cancel);
         tvYes = findViewById(R.id.btn_yes);
 
@@ -44,7 +42,7 @@ public class DeleteItemCartDialog extends AlertDialog{
         tvYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myListener.onDelete(id_product);
+                myListener.onClear();
                 dismiss();
             }
         });

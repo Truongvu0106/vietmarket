@@ -7,11 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +18,7 @@ import edu.hust.truongvu.choviet.adapter.ChildCategoryAdapter;
 import edu.hust.truongvu.choviet.adapter.ParentCategoryAdapter;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
-import edu.hust.truongvu.choviet.product.ListProductByTypeActivity;
+import edu.hust.truongvu.choviet.product.ListProductActivity;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -80,7 +78,7 @@ public class CategoryFragment extends Fragment implements CategoryView{
         childAdapter = new ChildCategoryAdapter(getContext(), childCategories, new ChildCategoryAdapter.ChildCategoryListener() {
             @Override
             public void onResult(ChildCategory category) {
-                Intent intent = new Intent(getActivity(), ListProductByTypeActivity.class);
+                Intent intent = new Intent(getActivity(), ListProductActivity.class);
                 intent.putExtra(Constants.MyTag.INTENT_TYPE_LOAD_PRODUCT, Constants.MyTag.LOAD_PRODUCT_BY_CATEGORY);
                 intent.putExtra(Constants.MyTag.ID_CATEGORY, category.getId());
                 startActivity(intent);

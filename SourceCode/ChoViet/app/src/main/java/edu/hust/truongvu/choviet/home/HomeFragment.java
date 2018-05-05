@@ -29,7 +29,7 @@ import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.product.ListProductByTypeActivity;
+import edu.hust.truongvu.choviet.product.ListProductActivity;
 import edu.hust.truongvu.choviet.product.ProductActivity;
 import edu.hust.truongvu.choviet.adapter.ProductAdapter;
 import edu.hust.truongvu.choviet.shop.ShopActivity;
@@ -38,9 +38,13 @@ import edu.hust.truongvu.choviet.utils.Constants;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements HomeView, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class HomeFragment extends Fragment implements HomeView,
+        BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener,
+        View.OnClickListener{
     private HomePresenterImp homePresenterImp;
     private SliderLayout mSliderLayout;
+    private View btnLoadMoreHighLightProduct;
+    private ArrayList<Product> listHighlight = new ArrayList<>();
 
     private RecyclerView mListPopularSearch, mListBrand, mListHighlightProduct,
             mListHighlightStore, mListSuggest;
@@ -66,6 +70,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
         mListHighlightProduct = view.findViewById(R.id.list_hightlight_product);
         mListHighlightStore = view.findViewById(R.id.list_highlight_store);
         mListSuggest = view.findViewById(R.id.list_suggest);
+        btnLoadMoreHighLightProduct = view.findViewById(R.id.more_highlight_product);
         homePresenterImp = new HomePresenterImp(getContext(),this);
         homePresenterImp.initBanner();
         homePresenterImp.initListSearch();
@@ -73,6 +78,8 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
         homePresenterImp.initListProduct();
         homePresenterImp.initListStore();
         homePresenterImp.initListSuggest();
+
+        btnLoadMoreHighLightProduct.setOnClickListener(this);
         return view;
     }
 
@@ -103,7 +110,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
         BrandAdapter adapter = new BrandAdapter(getContext(), listBrand, new BrandAdapter.BrandListener() {
             @Override
             public void onClick(Brand brand) {
-                Intent intent = new Intent(getActivity(), ListProductByTypeActivity.class);
+                Intent intent = new Intent(getActivity(), ListProductActivity.class);
                 intent.putExtra(Constants.MyTag.INTENT_TYPE_LOAD_PRODUCT, Constants.MyTag.LOAD_PRODUCT_BY_BRAND);
                 intent.putExtra(Constants.MyTag.ID_BRAND, brand.getId());
                 startActivity(intent);
@@ -136,6 +143,7 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
 
     @Override
     public void loadListHighlightProduct(ArrayList<Product> listProduct) {
+        listHighlight = listProduct;
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -193,5 +201,16 @@ public class HomeFragment extends Fragment implements HomeView, BaseSliderView.O
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.more_highlight_product:
+                Intent intent = new Intent(getContext(), ListProductActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, listHighlight);
+                startActivity(intent);
+                break;
+        }
     }
 }
