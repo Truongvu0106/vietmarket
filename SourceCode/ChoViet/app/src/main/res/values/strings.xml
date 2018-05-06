@@ -66,7 +66,11 @@
     <string name="more">More</string>
     <string name="highlights_store">Highlights stores</string>
     <string name="highlights_products">Highlights products</string>
+    <string name="lastest_products">Lastest products</string>
     <string name="suggest_products">Suggest products</string>
+    <string name="load_more">Load more</string>
+    <string name="search_something">Search something...</string>
+    <string name="empty_content">Empty content</string>
 
     <!-- profile -->
     <string name="your_order">Your order</string>
@@ -104,6 +108,8 @@
     <string name="item_has_been_removed">Item has been removed!</string>
     <string name="remove_false">Remove false</string>
     <string name="cart_empty">Your cart is empty</string>
+    <string name="add_to_your_wishlist">Added to your wishlist</string>
+    <string name="remove_from_your_wishlist">Removed from your wishlist</string>
 
     <!-- cart -->
     <string name="carry_out_payment">Carry out payment</string>
@@ -223,6 +229,7 @@
     <string name="more_than">More than</string>
 
     <string name="or">OR</string>
-
     <string name="do_you_want_clear_filter">Do you want clear all filter?</string>
+
+    <string name="wishlist">Your wishlist</string>
 </resources>

@@ -105,7 +105,12 @@ public class ListProductActivity extends AppCompatActivity implements ListProduc
                     }
 
                     @Override
-                    public void onLikeClick() {
+                    public void onLikeClick(int idUser, Product product) {
+
+                    }
+
+                    @Override
+                    public void onUnlikeClick(int idUser, Product product) {
 
                     }
                 });
@@ -145,12 +150,12 @@ public class ListProductActivity extends AppCompatActivity implements ListProduc
         ClearFilterDialog dialog = new ClearFilterDialog(this, new ClearFilterDialog.ClearFilterListener() {
             @Override
             public void onClear() {
-                if (options != 0){
+//                if (options != 0){
                     presenterImp.initListProductByOptions(false, Constants.MyTag.NONE_ORDER_BY_PRICE,
                             0, 0, null, originalData);
-                }else {
-                    presenterImp.initListProductByData(originalData);
-                }
+//                }else {
+//                    presenterImp.initListProductByData(originalData);
+//                }
 
                 btnClearFilter.setVisibility(View.GONE);
             }

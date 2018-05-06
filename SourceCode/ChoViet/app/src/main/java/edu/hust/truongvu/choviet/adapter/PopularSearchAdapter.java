@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
  * Created by truon on 2/22/2018.
@@ -18,9 +21,11 @@ import edu.hust.truongvu.choviet.entity.PopularSearch;
 
 public class PopularSearchAdapter extends RecyclerView.Adapter<PopularSearchAdapter.PopularSearchHolder>{
     private ArrayList<PopularSearch> data;
+    private Context mContext;
 
-    public PopularSearchAdapter(ArrayList<PopularSearch> data){
+    public PopularSearchAdapter(Context context, ArrayList<PopularSearch> data){
         this.data = data;
+        this.mContext = context;
     }
 
     @Override
@@ -54,7 +59,7 @@ public class PopularSearchAdapter extends RecyclerView.Adapter<PopularSearchAdap
 
         public void setContent(PopularSearch data){
             textView.setText(data.getKeySearch());
-            imageView.setImageResource(data.getImg());
+            MyHelper.setImagePicasso(mContext, imageView, Constants.Path.MY_PATH + data.getImg());
         }
     }
 }

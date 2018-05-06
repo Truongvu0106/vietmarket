@@ -84,7 +84,12 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
             }
 
             @Override
-            public void onLikeClick() {
+            public void onLikeClick(int idUser, Product product) {
+
+            }
+
+            @Override
+            public void onUnlikeClick(int idUser, Product product) {
 
             }
         });

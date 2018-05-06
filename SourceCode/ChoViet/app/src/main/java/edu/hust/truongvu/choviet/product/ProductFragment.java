@@ -260,7 +260,12 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
             }
 
             @Override
-            public void onLikeClick() {
+            public void onLikeClick(int idUser, Product product) {
+
+            }
+
+            @Override
+            public void onUnlikeClick(int idUser, Product product) {
 
             }
         });
@@ -279,7 +284,12 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
             }
 
             @Override
-            public void onLikeClick() {
+            public void onLikeClick(int idUser, Product product) {
+
+            }
+
+            @Override
+            public void onUnlikeClick(int idUser, Product product) {
 
             }
         });

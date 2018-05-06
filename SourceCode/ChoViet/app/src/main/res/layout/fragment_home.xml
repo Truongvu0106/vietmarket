@@ -151,7 +151,7 @@
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_medium"
+                    android:textSize="@dimen/text_size_small"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSecondDark"
@@ -177,7 +177,7 @@
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_medium"
+                    android:textSize="@dimen/text_size_small"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSecondDark"
@@ -203,9 +203,10 @@
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_medium"
+                    android:textSize="@dimen/text_size_small"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:textAllCaps="true"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/colorSecondDark"
                     android:text="@string/highlights_store"/>
                 <LinearLayout
@@ -213,8 +214,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/padding_medium"
-                    android:paddingBottom="@dimen/padding_medium"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/padding_small"
+                    android:paddingBottom="@dimen/padding_small"
                     android:paddingLeft="@dimen/padding_big"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/margin_small"
@@ -223,9 +225,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_tiny"
+                        android:layout_marginRight="@dimen/margin_small"
                         android:text="@string/more"/>
                     <ImageView
-                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
                         android:padding="@dimen/padding_tiny"
                         android:src="@drawable/next"/>
@@ -251,7 +255,8 @@
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_medium"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSecondDark"
@@ -261,8 +266,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/padding_medium"
-                    android:paddingBottom="@dimen/padding_medium"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/padding_small"
+                    android:paddingBottom="@dimen/padding_small"
                     android:paddingLeft="@dimen/padding_big"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/margin_small"
@@ -271,11 +277,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:textSize="@dimen/text_size_tiny"
                         android:text="@string/more"/>
                     <ImageView
-                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
-                        android:padding="@dimen/padding_tiny"
+                        android:padding="@dimen/padding_small"
                         android:src="@drawable/next"/>
                 </LinearLayout>
             </RelativeLayout>
@@ -299,18 +307,84 @@
                 <edu.hust.truongvu.choviet.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_medium"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorSecondDark"
+                    android:text="@string/lastest_products"/>
+                <LinearLayout
+                    android:id="@+id/more_lastest_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/padding_small"
+                    android:paddingBottom="@dimen/padding_small"
+                    android:paddingLeft="@dimen/padding_big"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:background="@drawable/bg_color">
+                    <edu.hust.truongvu.choviet.customview.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="@dimen/margin_small"
+                        android:textSize="@dimen/text_size_tiny"
+                        android:text="@string/more"/>
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:padding="@dimen/padding_small"
+                        android:src="@drawable/next"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_lastest_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium">
+                <edu.hust.truongvu.choviet.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSecondDark"
                     android:text="@string/suggest_products"/>
             </RelativeLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_suggest"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_suggest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
 
-            </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/more_suggest"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionbar_size"
+                android:background="@color/colorPrimaryDark"
+                android:layout_margin="@dimen/margin_medium"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:text="@string/load_more"/>
         </LinearLayout>
     </LinearLayout>
 

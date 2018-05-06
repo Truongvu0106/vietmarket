@@ -8,8 +8,10 @@ import java.util.HashMap;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
+import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
 import edu.hust.truongvu.choviet.model.BrandModel;
+import edu.hust.truongvu.choviet.model.PopularSearchModel;
 import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.ShopModel;
 
@@ -21,10 +23,17 @@ public class HomePresenterImp implements HomePresenter {
 
     private HomeView homeView;
     private Context mContext;
-
+    private BrandModel brandModel;
+    private ShopModel shopModel;
+    private ProductModel productModel;
+    private PopularSearchModel popularSearchModel;
     public HomePresenterImp(Context context, HomeView homeView){
         this.homeView = homeView;
         this.mContext = context;
+        brandModel = new BrandModel(mContext);
+        shopModel = new ShopModel(mContext);
+        productModel = new ProductModel(mContext);
+        popularSearchModel = new PopularSearchModel(mContext);
     }
 
     @Override
@@ -34,47 +43,66 @@ public class HomePresenterImp implements HomePresenter {
         hashMap.put("banner 2", R.drawable.banner_two);
         hashMap.put("banner 3", R.drawable.banner_three);
         hashMap.put("banner 4", R.drawable.banner_four);
-        homeView.loadBanner(hashMap);
+        homeView.loadBannerSuccessful(hashMap);
     }
 
     @Override
     public void initListBrand() {
-        BrandModel brandModel = new BrandModel(mContext);
         ArrayList<Brand> listBrand = brandModel.getListBrand();
-        homeView.loadBrand(listBrand);
+        if (listBrand == null || listBrand.size() == 0){
+            homeView.loadListBrandFalse();
+        }else {
+            homeView.loadListBrandSuccessful(listBrand);
+        }
     }
 
     @Override
     public void initListSearch() {
-        ArrayList<PopularSearch> list = new ArrayList<>();
-        list.add(new PopularSearch(0, "giày dép", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "quần áo", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "điện thoại", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "tai nghe", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "iphone", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "áo khoác", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "tivi", R.drawable.giaydep));
-        list.add(new PopularSearch(0, "laptop", R.drawable.giaydep));
-        homeView.loadListPopularSearch(list);
+        ArrayList<PopularSearch> list = popularSearchModel.getAllPopularSearch();
+        if (list == null || list.size() == 0){
+            homeView.loadListPopularSearchFalse();
+        }else {
+            homeView.loadListPopularSearchSuccessful(list);
+        }
     }
 
     @Override
-    public void initListStore() {
-        ShopModel model = new ShopModel(mContext);
-        ArrayList<Shop> listShop = model.getAllShop();
-
-        homeView.loadListHighlightStore(listShop);
+    public void initListHighlightShop() {
+        ArrayList<Shop> listShop = shopModel.getAllShop();
+        if (listShop == null || listShop.size() == 0){
+            homeView.loadListHighlightShopFalse();
+        }else {
+            homeView.loadListHighlightShopSuccessful(listShop);
+        }
     }
 
     @Override
-    public void initListProduct() {
-        ProductModel model = new ProductModel(mContext);
-        homeView.loadListHighlightProduct(model.getAllProduct());
+    public void initListHighlightProduct() {
+        ArrayList<Product> data = productModel.getProductHighlight();
+        if (data == null || data.size() == 0){
+            homeView.loadListHighlightProductFalse();
+        }else {
+            homeView.loadListHighlightProductSuccessful(data);
+        }
+    }
+
+    @Override
+    public void initListLastestProduct() {
+        ArrayList<Product> data = productModel.getProductLastest();
+        if (data == null || data.size() == 0){
+            homeView.loadListLastestProductFalse();
+        }else {
+            homeView.loadListLastestProductSuccessful(data);
+        }
     }
 
     @Override
     public void initListSuggest() {
-        ProductModel model = new ProductModel(mContext);
-        homeView.loadListSuggest(model.getAllProduct());
+        ArrayList<Product> data = productModel.getAllProduct();
+        if (data == null || data.size() == 0){
+            homeView.loadListSuggestProductFalse();
+        }else {
+            homeView.loadListSuggestProductSuccessful(data);
+        }
     }
 }

@@ -13,10 +13,24 @@ import edu.hust.truongvu.choviet.entity.Shop;
  */
 
 public interface HomeView {
-    void loadBanner(HashMap<String, Integer> hashMap);
-    void loadBrand(ArrayList<Brand> listBrand);
-    void loadListPopularSearch(ArrayList<PopularSearch> listSearch);
-    void loadListHighlightStore(ArrayList<Shop> listShop);
-    void loadListHighlightProduct(ArrayList<Product> listProduct);
-    void loadListSuggest(ArrayList<Product> listProduct);
+    void loadBannerSuccessful(HashMap<String, Integer> hashMap);
+    void loadBannerFalse();
+
+    void loadListBrandSuccessful(ArrayList<Brand> listBrand);
+    void loadListBrandFalse();
+
+    void loadListPopularSearchSuccessful(ArrayList<PopularSearch> listSearch);
+    void loadListPopularSearchFalse();
+
+    void loadListHighlightShopSuccessful(ArrayList<Shop> listShop);
+    void loadListHighlightShopFalse();
+
+    void loadListHighlightProductSuccessful(ArrayList<Product> listProduct);
+    void loadListHighlightProductFalse();
+
+    void loadListLastestProductSuccessful(ArrayList<Product> data);
+    void loadListLastestProductFalse();
+
+    void loadListSuggestProductSuccessful(ArrayList<Product> listProduct);
+    void loadListSuggestProductFalse();
 }

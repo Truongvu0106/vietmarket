@@ -9,12 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.model.ProductModel;
+import edu.hust.truongvu.choviet.model.UserModel;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -24,16 +28,19 @@ import edu.hust.truongvu.choviet.utils.Constants;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductHolder>{
     public interface ProductListener{
         void onProductResult(Product product);
-        void onLikeClick();
+        void onLikeClick(int idUser, Product product);
+        void onUnlikeClick(int idUser, Product product);
     }
     private ProductListener myListener;
     private ArrayList<Product> data;
     private Context context;
+    private ProductModel productModel;
 
     public ProductAdapter(Context context, ArrayList<Product> data, ProductListener listener){
         this.data = data;
         this.myListener = listener;
         this.context = context;
+        productModel = new ProductModel(context);
     }
 
     @Override
@@ -60,6 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         private TextView tvDiscount, tvName, tvOldPrice, tvNewPrice;
         private View layoutDiscount, layoutLike;
         private RatingBar ratingBar;
+        private boolean isLiked = false;
         public ProductHolder(View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.img_product);
@@ -76,6 +84,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         }
 
         public void setContent(final Product product){
+            final int currentUserId = MyHelper.getUserIdPreference(context);
             tvName.setText(product.getName());
 
             int discount = product.getDiscount();
@@ -91,6 +100,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
                 tvOldPrice.setText(MyHelper.formatMoney(oldPrice));
                 tvNewPrice.setText(MyHelper.formatMoney(newPrice));
             }
+            isLiked = productModel.isLiked(currentUserId, product.getId());
+            if (isLiked){
+                imgLikeFill.setVisibility(View.VISIBLE);
+            }else {
+                imgLikeFill.setVisibility(View.GONE);
+            }
+
             MyHelper.setImagePicasso(context, imgProduct, Constants.Path.MY_PATH + product.getImgs().get(0).trim());
             ratingBar.setRating(product.getRate());
 
@@ -104,7 +120,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             layoutLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    myListener.onLikeClick();
+                    if (isLiked){
+                        imgLikeFill.setVisibility(View.GONE);
+                        if (productModel.unlikeProduct(currentUserId, product.getId())){
+                            Toast.makeText(context, context.getString(R.string.remove_from_your_wishlist), Toast.LENGTH_SHORT).show();
+                        }
+                        myListener.onUnlikeClick(currentUserId, product);
+                    }else {
+                        imgLikeFill.setVisibility(View.VISIBLE);
+                        if (productModel.likeProduct(currentUserId, product.getId())){
+                            Toast.makeText(context, context.getString(R.string.add_to_your_wishlist), Toast.LENGTH_SHORT).show();
+                        }
+                        myListener.onLikeClick(currentUserId, product);
+                    }
                 }
             });
         }

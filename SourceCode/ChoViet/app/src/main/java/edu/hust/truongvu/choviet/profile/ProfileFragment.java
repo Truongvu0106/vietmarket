@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.myshop.main.MyShopActivity;
+import edu.hust.truongvu.choviet.wishlist.WishListProductActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,6 +109,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
             case R.id.btn_your_order:
                 break;
             case R.id.btn_your_wishlist:
+                startActivity(new Intent(getActivity(), WishListProductActivity.class));
                 break;
             case R.id.btn_your_favorite_shop:
                 break;

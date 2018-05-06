@@ -7,9 +7,9 @@ package edu.hust.truongvu.choviet.entity;
 public class PopularSearch {
     private int id;
     private String keySearch;
-    private int img;
+    private String img;
 
-    public PopularSearch(int id, String keySearch, int img) {
+    public PopularSearch(int id, String keySearch, String img) {
         this.id = id;
         this.keySearch = keySearch;
         this.img = img;
@@ -31,11 +31,11 @@ public class PopularSearch {
         this.keySearch = keySearch;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 }

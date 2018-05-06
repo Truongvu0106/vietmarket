@@ -43,11 +43,15 @@ public class HomeFragment extends Fragment implements HomeView,
         View.OnClickListener{
     private HomePresenterImp homePresenterImp;
     private SliderLayout mSliderLayout;
-    private View btnLoadMoreHighLightProduct;
-    private ArrayList<Product> listHighlight = new ArrayList<>();
+    private View btnLoadMoreHighLightShop, btnLoadMoreHighLightProduct,
+            btnLoadMoreLastestProduct, btnLoadMoreSuggestProduct;
+    private ArrayList<Product> mlistHighlightProduct = new ArrayList<>(),
+            mListLastestProduct = new ArrayList<>(),
+            mListSuggestProduct = new ArrayList<>();
+    private ArrayList<Shop> mListHighLightShop = new ArrayList<>();
 
-    private RecyclerView mListPopularSearch, mListBrand, mListHighlightProduct,
-            mListHighlightStore, mListSuggest;
+    private RecyclerView mRecyclerPopularSearch, mRecyclerBrand, mRecyclerHighlightProduct,
+            mRecyclerHighlightShop, mRecyclerLastestProduct, mRecyclerSuggestProduct;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,26 +69,34 @@ public class HomeFragment extends Fragment implements HomeView,
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mSliderLayout = view.findViewById(R.id.slider);
-        mListPopularSearch = view.findViewById(R.id.list_popular_search);
-        mListBrand = view.findViewById(R.id.list_brand);
-        mListHighlightProduct = view.findViewById(R.id.list_hightlight_product);
-        mListHighlightStore = view.findViewById(R.id.list_highlight_store);
-        mListSuggest = view.findViewById(R.id.list_suggest);
+        mRecyclerPopularSearch = view.findViewById(R.id.list_popular_search);
+        mRecyclerBrand = view.findViewById(R.id.list_brand);
+        mRecyclerHighlightShop = view.findViewById(R.id.list_highlight_store);
+        mRecyclerHighlightProduct = view.findViewById(R.id.list_hightlight_product);
+        mRecyclerLastestProduct = view.findViewById(R.id.list_lastest_product);
+        mRecyclerSuggestProduct = view.findViewById(R.id.list_suggest);
+        btnLoadMoreHighLightShop = view.findViewById(R.id.more_highlight_store);
         btnLoadMoreHighLightProduct = view.findViewById(R.id.more_highlight_product);
+        btnLoadMoreLastestProduct = view.findViewById(R.id.more_lastest_product);
+        btnLoadMoreSuggestProduct = view.findViewById(R.id.more_suggest);
         homePresenterImp = new HomePresenterImp(getContext(),this);
         homePresenterImp.initBanner();
         homePresenterImp.initListSearch();
         homePresenterImp.initListBrand();
-        homePresenterImp.initListProduct();
-        homePresenterImp.initListStore();
+        homePresenterImp.initListHighlightProduct();
+        homePresenterImp.initListHighlightShop();
+        homePresenterImp.initListLastestProduct();
         homePresenterImp.initListSuggest();
 
+        btnLoadMoreHighLightShop.setOnClickListener(this);
         btnLoadMoreHighLightProduct.setOnClickListener(this);
+        btnLoadMoreLastestProduct.setOnClickListener(this);
+        btnLoadMoreSuggestProduct.setOnClickListener(this);
         return view;
     }
 
     @Override
-    public void loadBanner(HashMap<String, Integer> hashMap) {
+    public void loadBannerSuccessful(HashMap<String, Integer> hashMap) {
         for(String name : hashMap.keySet()){
             TextSliderView textSliderView = new TextSliderView(getContext());
             textSliderView
@@ -106,7 +118,12 @@ public class HomeFragment extends Fragment implements HomeView,
     }
 
     @Override
-    public void loadBrand(ArrayList<Brand> listBrand) {
+    public void loadBannerFalse() {
+
+    }
+
+    @Override
+    public void loadListBrandSuccessful(ArrayList<Brand> listBrand) {
         BrandAdapter adapter = new BrandAdapter(getContext(), listBrand, new BrandAdapter.BrandListener() {
             @Override
             public void onClick(Brand brand) {
@@ -116,19 +133,29 @@ public class HomeFragment extends Fragment implements HomeView,
                 startActivity(intent);
             }
         });
-        mListBrand.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false));
-        mListBrand.setAdapter(adapter);
+        mRecyclerBrand.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false));
+        mRecyclerBrand.setAdapter(adapter);
     }
 
     @Override
-    public void loadListPopularSearch(ArrayList<PopularSearch> list) {
-        PopularSearchAdapter adapter = new PopularSearchAdapter(list);
-        mListPopularSearch.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        mListPopularSearch.setAdapter(adapter);
+    public void loadListBrandFalse() {
+
     }
 
     @Override
-    public void loadListHighlightStore(ArrayList<Shop> listShop) {
+    public void loadListPopularSearchSuccessful(ArrayList<PopularSearch> list) {
+        PopularSearchAdapter adapter = new PopularSearchAdapter(getContext(), list);
+        mRecyclerPopularSearch.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        mRecyclerPopularSearch.setAdapter(adapter);
+    }
+
+    @Override
+    public void loadListPopularSearchFalse() {
+
+    }
+
+    @Override
+    public void loadListHighlightShopSuccessful(ArrayList<Shop> listShop) {
         HighlightShopAdapter adapter = new HighlightShopAdapter(getContext(), listShop, new HighlightShopAdapter.StoreListener() {
             @Override
             public void onStoreResult(Shop shop) {
@@ -137,13 +164,18 @@ public class HomeFragment extends Fragment implements HomeView,
                 startActivity(intent);
             }
         });
-        mListHighlightStore.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        mListHighlightStore.setAdapter(adapter);
+        mRecyclerHighlightShop.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        mRecyclerHighlightShop.setAdapter(adapter);
     }
 
     @Override
-    public void loadListHighlightProduct(ArrayList<Product> listProduct) {
-        listHighlight = listProduct;
+    public void loadListHighlightShopFalse() {
+
+    }
+
+    @Override
+    public void loadListHighlightProductSuccessful(ArrayList<Product> listProduct) {
+        mlistHighlightProduct = listProduct;
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -153,16 +185,27 @@ public class HomeFragment extends Fragment implements HomeView,
             }
 
             @Override
-            public void onLikeClick() {
+            public void onLikeClick(int idUser, Product product) {
                 Toast.makeText(getContext(), "Like Click", Toast.LENGTH_SHORT).show();
             }
+
+            @Override
+            public void onUnlikeClick(int idUser, Product product) {
+
+            }
         });
-        mListHighlightProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        mListHighlightProduct.setAdapter(adapter);
+        mRecyclerHighlightProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        mRecyclerHighlightProduct.setAdapter(adapter);
     }
 
     @Override
-    public void loadListSuggest(ArrayList<Product> listProduct) {
+    public void loadListHighlightProductFalse() {
+
+    }
+
+    @Override
+    public void loadListLastestProductSuccessful(ArrayList<Product> listProduct) {
+        mListLastestProduct = listProduct;
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -172,15 +215,52 @@ public class HomeFragment extends Fragment implements HomeView,
             }
 
             @Override
-            public void onLikeClick() {
-                Toast.makeText(getContext(), "Like Click", Toast.LENGTH_SHORT).show();
+            public void onLikeClick(int idUser, Product product) {
+
+            }
+
+            @Override
+            public void onUnlikeClick(int idUser, Product product) {
+
             }
         });
-        mListSuggest.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-        mListSuggest.setAdapter(adapter);
+        mRecyclerLastestProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        mRecyclerLastestProduct.setAdapter(adapter);
     }
 
+    @Override
+    public void loadListLastestProductFalse() {
 
+    }
+
+    @Override
+    public void loadListSuggestProductSuccessful(ArrayList<Product> listProduct) {
+        mListSuggestProduct = listProduct;
+        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
+            @Override
+            public void onProductResult(Product product) {
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra(Constants.MyTag.INTENT_PRODUCT, product);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLikeClick(int idUser, Product product) {
+            }
+
+            @Override
+            public void onUnlikeClick(int idUser, Product product) {
+
+            }
+        });
+        mRecyclerSuggestProduct.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+        mRecyclerSuggestProduct.setAdapter(adapter);
+    }
+
+    @Override
+    public void loadListSuggestProductFalse() {
+
+    }
 
 
     @Override
@@ -206,10 +286,22 @@ public class HomeFragment extends Fragment implements HomeView,
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.more_highlight_store:
+                break;
             case R.id.more_highlight_product:
                 Intent intent = new Intent(getContext(), ListProductActivity.class);
-                intent.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, listHighlight);
+                intent.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, mlistHighlightProduct);
                 startActivity(intent);
+                break;
+            case R.id.more_lastest_product:
+                Intent intent1 = new Intent(getContext(), ListProductActivity.class);
+                intent1.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, mListLastestProduct);
+                startActivity(intent1);
+                break;
+            case R.id.more_suggest:
+                Intent intent2 = new Intent(getContext(), ListProductActivity.class);
+                intent2.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, mListSuggestProduct);
+                startActivity(intent2);
                 break;
         }
     }

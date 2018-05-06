@@ -24,9 +24,121 @@
 		case 'updateProduct':
 			$func();
 			break;
+		case 'getProductLastest':
+			$func();
+			break;
+		case 'getProductHighlight':
+			$func();
+			break;
+		case 'searchProductByName':
+			$func();
+			break;
+		case 'isLiked':
+			$func();
+			break;
+		case 'like':
+			$func();
+			break;
+		case 'unLike':
+			$func();
+			break;
+		case 'getListLikedProduct':
+			$func();
+			break;
 		default:
 			# code...
 			break;
+	}
+
+	function searchProductByName(){
+		global $conn;
+		$search = $_POST["search"];
+		$query = "SELECT * FROM product WHERE name_product LIKE '%".$search."%'";
+		$results = mysqli_query($conn, $query);
+		$my_json_array = array();
+		echo "{";
+		echo "\"products\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id" => $line["id_product"], 
+					"name" => $line["name_product"],
+					"price" => $line["price"],
+					"image" => $line["image"],
+					"information" => $line["information"],
+					"weight" => $line["weight"],
+					"type_product" => $line["type_product"],
+					"brand" => $line["brand"],
+					"rate" => $line["rate"],
+					"amount" => $line["amount"],
+					"id_shop" => $line["id_shop"],
+					"highlight" => $line["hightlight"],
+					"discount" => $line["discount"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+	}
+
+	function getProductLastest(){
+		global $conn;
+		$query = "SELECT * FROM product ORDER BY id_product DESC";
+		$results = mysqli_query($conn, $query);
+		$my_json_array = array();
+		echo "{";
+		echo "\"products\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id" => $line["id_product"], 
+					"name" => $line["name_product"],
+					"price" => $line["price"],
+					"image" => $line["image"],
+					"information" => $line["information"],
+					"weight" => $line["weight"],
+					"type_product" => $line["type_product"],
+					"brand" => $line["brand"],
+					"rate" => $line["rate"],
+					"amount" => $line["amount"],
+					"id_shop" => $line["id_shop"],
+					"highlight" => $line["hightlight"],
+					"discount" => $line["discount"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+	}
+
+	function getProductHighlight(){
+		global $conn;
+		$query = "SELECT * FROM product ORDER BY rate DESC";
+		$results = mysqli_query($conn, $query);
+		$my_json_array = array();
+		echo "{";
+		echo "\"products\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id" => $line["id_product"], 
+					"name" => $line["name_product"],
+					"price" => $line["price"],
+					"image" => $line["image"],
+					"information" => $line["information"],
+					"weight" => $line["weight"],
+					"type_product" => $line["type_product"],
+					"brand" => $line["brand"],
+					"rate" => $line["rate"],
+					"amount" => $line["amount"],
+					"id_shop" => $line["id_shop"],
+					"highlight" => $line["hightlight"],
+					"discount" => $line["discount"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
 	}
 
 	function getAllProduct(){
@@ -284,6 +396,92 @@
 			]);
 		}
 
+		mysqli_close($conn);
+	}
+
+	function isLiked(){
+		global $conn;
+		if (isset($_POST["idUser"]) || isset($_POST["idProduct"])) {
+			$idUser = $_POST["idUser"];
+			$idProduct = $_POST["idProduct"];
+		}
+
+		$query = "SELECT * FROM product_like WHERE id_customer='".$idUser."' AND id_product='".$idProduct."'";
+		$results = mysqli_query($conn, $query);
+		$count = mysqli_num_rows($results);
+		if ($count >= 1) {
+			echo "{result : true}";
+		}else{
+			echo "{result : false}";
+		}
+		mysqli_close($conn);
+	}
+
+	function like(){
+		global $conn;
+		if (isset($_POST["idUser"]) || isset($_POST["idProduct"])) {
+			$idUser = $_POST["idUser"];
+			$idProduct = $_POST["idProduct"];
+		}
+
+		$query = "INSERT INTO product_like (id_customer, id_product) 
+		VALUES ('".$idUser."',
+				'".$idProduct."')"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "like successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error.""
+			]);
+		}
+
+		mysqli_close($conn);
+	}
+
+	function unLike(){
+		global $conn;
+		if (isset($_POST["idUser"]) || isset($_POST["idProduct"])) {
+			$idUser = $_POST["idUser"];
+			$idProduct = $_POST["idProduct"];
+		}
+
+		$query = "DELETE FROM product_like WHERE id_customer = ".$idUser." AND id_product =".$idProduct.""; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "unlike successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error.""
+			]);
+		}
+	}
+
+	function getListLikedProduct(){
+		global $conn;
+		$my_json_array = array();
+
+		if (isset($_POST["idUser"])) {
+			$idUser = $_POST["idUser"];
+		}
+		$query = "SELECT * FROM product_like WHERE id_customer = ".$idUser;
+		$results = mysqli_query($conn, $query);
+		echo "{";
+		echo "\"products\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id_product" => $line["id_product"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
 		mysqli_close($conn);
 	}
 

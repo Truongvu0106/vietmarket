@@ -73,5 +73,27 @@
 		echo "]}";
 		mysqli_close($conn);
 	}
+
+	function isFollowing(){
+		global $conn;
+		if (isset($_POST["idUser"]) || isset($_POST["idShop"])) {
+			$idUser = $_POST["idUser"];
+			$idShop = $_POST["idShop"];
+		}
+
+		$query = "SELECT * FROM shop_follow WHERE id_user='".$idUser."' AND id_shop='".$idShop."'";
+		$results = mysqli_query($conn, $query);
+		$count = mysqli_num_rows($results);
+		if ($count >= 1) {
+			echo json_encode([
+				"result" => "true"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false"
+			]);
+		}
+		mysqli_close($conn);
+	}
 	
 ?>

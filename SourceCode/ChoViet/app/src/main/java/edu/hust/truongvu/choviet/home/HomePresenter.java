@@ -8,7 +8,8 @@ public interface HomePresenter {
     void initBanner();
     void initListBrand();
     void initListSearch();
-    void initListStore();
-    void initListProduct();
+    void initListHighlightShop();
+    void initListHighlightProduct();
+    void initListLastestProduct();
     void initListSuggest();
 }

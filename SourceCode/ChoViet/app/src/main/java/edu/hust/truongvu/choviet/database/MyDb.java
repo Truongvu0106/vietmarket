@@ -21,6 +21,10 @@ public class MyDb extends SQLiteOpenHelper {
     public static final String COLUMN_NUMBER_SELECT = "number_select";
     public static final String COLUMN_IMAGE = "image";
 
+    public static final String TABLE_RECENT_SEARCH = "recent_search";
+    public static final String COLUMN_ID_SEARCH = "id_search";
+    public static final String COLUMN_CONTENT_SEARCH = "content_search";
+
     private Context context;
     public MyDb(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -29,7 +33,7 @@ public class MyDb extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query_create_table = "create table " + TABLE_NAME + " ("
+        String query_create_table_cart = "create table " + TABLE_NAME + " ("
                 + COLUMN_ID_PRODUCT + " integer primary key, "
                 + COLUMN_NAME_PRODUCT + " text, "
                 + COLUMN_PRICE + " real, "
@@ -38,12 +42,18 @@ public class MyDb extends SQLiteOpenHelper {
                 + COLUMN_IDSHOP + " integer, "
                 + COLUMN_NUMBER_SELECT + " integer, "
                 + COLUMN_IMAGE + " text" + ");";
-        sqLiteDatabase.execSQL(query_create_table);
+
+        String query_create_table_search = "create table " + TABLE_RECENT_SEARCH + " ("
+                + COLUMN_ID_SEARCH + " integer primary key autoincrement, "
+                + COLUMN_CONTENT_SEARCH + " text" + ");";
+        sqLiteDatabase.execSQL(query_create_table_cart);
+        sqLiteDatabase.execSQL(query_create_table_search);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("drop table if exists " + TABLE_NAME);
+        sqLiteDatabase.execSQL("drop table if exists " + TABLE_RECENT_SEARCH);
         onCreate(sqLiteDatabase);
     }
 }

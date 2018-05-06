@@ -55,6 +55,7 @@
         <activity android:name=".myshop.list_order.ShopListOrderActivity" />
         <activity android:name=".myshop.report.ReportActivity" />
         <activity android:name=".myshop.add_product.AddProductActivity" />
+        <activity android:name=".wishlist.WishListProductActivity"></activity>
     </application>
 
 </manifest>

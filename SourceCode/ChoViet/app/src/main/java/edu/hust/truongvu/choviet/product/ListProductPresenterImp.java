@@ -120,6 +120,7 @@ public class ListProductPresenterImp implements ListProductPresenter {
             if (priceFilter != null){
                 long from = priceFilter.getPriceFrom();
                 long to = priceFilter.getPriceTo();
+                Log.e("tr_prive", from + " - " + to);
                 if (from == 0){
                     for (Product product : data){
                         if (product.getPrice() <= to){
@@ -139,6 +140,9 @@ public class ListProductPresenterImp implements ListProductPresenter {
                         }
                     }
                 }
+            }else {
+                Log.e("tr_prive", "price null");
+
             }
 
             if (sortByPrice != Constants.MyTag.NONE_ORDER_BY_PRICE && results.size() != 0){
