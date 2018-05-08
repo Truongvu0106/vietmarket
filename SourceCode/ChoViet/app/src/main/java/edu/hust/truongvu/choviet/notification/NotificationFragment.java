@@ -13,7 +13,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.adapter.NotificationAdapter;
 import edu.hust.truongvu.choviet.entity.MyNotification;
 
 /**

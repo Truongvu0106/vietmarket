@@ -1,7 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
 import android.content.Context;
-import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,10 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -34,9 +31,9 @@ public class PopularSearchModel {
         attrFunction.put("func", "getAllPopularSearch");
         attrs.add(attrFunction);
         try {
-            JsonHelper jsonHelper = new JsonHelper(mContext, POPULAR_SEARCH_PATH, attrs);
-            jsonHelper.execute();
-            String results = jsonHelper.get();
+            MyService myService = new MyService(mContext, POPULAR_SEARCH_PATH, attrs);
+            myService.execute();
+            String results = myService.get();
             JSONObject jsonObject = new JSONObject(results);
             JSONArray jsonCategories = jsonObject.getJSONArray("popular_search");
             JSONArray myJsonArr = jsonCategories.getJSONArray(0);

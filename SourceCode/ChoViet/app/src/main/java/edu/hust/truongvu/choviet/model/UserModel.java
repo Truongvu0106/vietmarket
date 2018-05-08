@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import edu.hust.truongvu.choviet.entity.User;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -45,11 +45,11 @@ public class UserModel {
         attrs.add(attrUsername);
         attrs.add(attrPassword);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_USER, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -87,11 +87,11 @@ public class UserModel {
         attrs.add(attrFunc);
         attrs.add(attrUsername);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_USER, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("user");
             JSONArray jsonArray = myJsonArr.getJSONArray(0);
@@ -135,11 +135,11 @@ public class UserModel {
         attrs.add(attrFunc);
         attrs.add(attrUsername);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_USER, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("user");
             JSONArray jsonArray = myJsonArr.getJSONArray(0);
@@ -200,10 +200,10 @@ public class UserModel {
         attrs.add(attrPhone);
         attrs.add(attrTypeUser);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_USER, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -271,10 +271,10 @@ public class UserModel {
         attrs.add(attrTypeUser);
         attrs.add(attrTypeLogin);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_USER, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_USER, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             Log.e("update_user", data);
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");

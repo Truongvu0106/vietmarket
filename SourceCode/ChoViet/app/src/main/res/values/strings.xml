@@ -169,7 +169,7 @@
     <string name="edit_information">Edit information</string>
     <string name="number">Number</string>
 
-    <string name="customer">Customer</string>
+    <string name="user">Customer</string>
 
     <string name="waiting">Waiting</string>
     <string name="shipping">Shipping</string>

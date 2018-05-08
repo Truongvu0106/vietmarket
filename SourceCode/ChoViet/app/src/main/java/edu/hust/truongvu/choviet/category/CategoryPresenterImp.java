@@ -1,19 +1,11 @@
 package edu.hust.truongvu.choviet.category;
 
 import android.content.Context;
-import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
 import edu.hust.truongvu.choviet.model.CategoryModel;
 import edu.hust.truongvu.choviet.utils.Constants;
 

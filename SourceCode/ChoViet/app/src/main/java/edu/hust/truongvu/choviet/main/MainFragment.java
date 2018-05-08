@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.adapter.MainViewPagerAdapter;
 import edu.hust.truongvu.choviet.helper.BottomNavigationViewHelper;
 
 /**

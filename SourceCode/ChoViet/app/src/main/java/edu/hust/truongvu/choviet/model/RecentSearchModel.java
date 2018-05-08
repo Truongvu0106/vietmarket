@@ -7,12 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.database.MyDb;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.database_local.MyDb;
 
-import static edu.hust.truongvu.choviet.database.MyDb.COLUMN_ID_SEARCH;
-import static edu.hust.truongvu.choviet.database.MyDb.TABLE_NAME;
-import static edu.hust.truongvu.choviet.database.MyDb.TABLE_RECENT_SEARCH;
+import static edu.hust.truongvu.choviet.database_local.MyDb.COLUMN_ID_SEARCH;
+import static edu.hust.truongvu.choviet.database_local.MyDb.TABLE_RECENT_SEARCH;
 
 /**
  * Created by truon on 5/6/2018.

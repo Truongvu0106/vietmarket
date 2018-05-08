@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorGray"
-    tools:context="edu.hust.truongvu.choviet.payment.PaymentActivity">
+    tools:context="edu.hust.truongvu.choviet.order.PaymentActivity">
     <include
         android:id="@+id/toolbar_payment"
         layout="@layout/toolbar_extra"/>

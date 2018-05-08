@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:fillViewport="true"
-    tools:context=".activity.StartActivity">
-
+    tools:context=".startup.StartActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

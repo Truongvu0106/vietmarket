@@ -27,20 +27,20 @@
             <!-- <category andrnotename="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".activity.StartActivity">
+        <activity android:name=".startup.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".product.ProductActivity" />
+        <activity android:name=".product.details_product.ProductActivity" />
         <activity android:name=".cart.CartActivity" />
-        <activity android:name=".payment.PaymentActivity" />
+        <activity android:name=".order.PaymentActivity" />
         <activity android:name=".search.SearchActivity" />
-        <activity android:name=".shop.ShopActivity" />
-        <activity android:name=".product.ListProductActivity" />
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name=".shop.details_shop.ShopActivity" />
+        <activity android:name=".product.list_product.ListProductActivity" />
+        <activity android:name=".startup.SplashActivity">
 
             <!-- <intent-filter> -->
             <!-- <action andrnotename="android.intent.action.MAIN" /> -->
@@ -49,13 +49,12 @@
             <!-- <category andrnotename="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".info.InfoActivity" />
-        <activity android:name=".myshop.main.MyShopActivity" />
-        <activity android:name=".myshop.list_product.ShopListProductActivity" />
-        <activity android:name=".myshop.list_order.ShopListOrderActivity" />
-        <activity android:name=".myshop.report.ReportActivity" />
-        <activity android:name=".myshop.add_product.AddProductActivity" />
-        <activity android:name=".wishlist.WishListProductActivity"></activity>
+        <activity android:name=".user.myshop.MyShopActivity" />
+        <activity android:name=".user.myshop.list_product.ShopListProductActivity" />
+        <activity android:name=".user.myshop.list_order.ShopListOrderActivity" />
+        <activity android:name=".user.myshop.report.ReportActivity" />
+        <activity android:name=".user.myshop.add_product.AddProductActivity" />
+        <activity android:name=".user.wishlist.WishListProductActivity"></activity>
     </application>
 
 </manifest>

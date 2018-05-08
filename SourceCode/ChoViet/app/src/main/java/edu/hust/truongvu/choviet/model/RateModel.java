@@ -12,10 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.ParentCategory;
 import edu.hust.truongvu.choviet.entity.Rate;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -57,10 +55,10 @@ public class RateModel {
         attrs.add(attrContent);
         attrs.add(attrStar);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_RATE, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_RATE, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -90,10 +88,10 @@ public class RateModel {
         attrs.add(attrFunction);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_RATE, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_RATE, attrs);
+        myService.execute();
         try {
-            String results = jsonHelper.get();
+            String results = myService.get();
             Log.e("rate", results);
             JSONObject jsonObject = new JSONObject(results);
             JSONArray jsonArrays = jsonObject.getJSONArray("rate");
@@ -139,10 +137,10 @@ public class RateModel {
         attrs.add(attrIdProduct);
         attrs.add(attrUser);
 
-        JsonHelper jsonHelper = new JsonHelper(context, PATH_RATE, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, PATH_RATE, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){

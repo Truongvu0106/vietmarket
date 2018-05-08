@@ -14,8 +14,7 @@ import java.util.concurrent.ExecutionException;
 
 import edu.hust.truongvu.choviet.entity.Order;
 import edu.hust.truongvu.choviet.entity.OrderDetails;
-import edu.hust.truongvu.choviet.entity.Transport;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -85,10 +84,10 @@ public class OrderModel {
         attrs.add(attrValue);
         attrs.add(attrAddress);
 
-        JsonHelper jsonHelper = new JsonHelper(context, ORDER_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             Log.e("add_order", data);
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
@@ -120,11 +119,11 @@ public class OrderModel {
         attrs.add(attrFunc);
         attrs.add(attrShop);
 
-        JsonHelper jsonHelper = new JsonHelper(context, ORDER_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("orderdetails");
             JSONArray jsonTransport = myJsonArr.getJSONArray(0);
@@ -165,11 +164,11 @@ public class OrderModel {
         attrs.add(attrFunc);
         attrs.add(attrShop);
 
-        JsonHelper jsonHelper = new JsonHelper(context, ORDER_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("orderdetails");
             JSONArray jsonTransport = myJsonArr.getJSONArray(0);

@@ -1,7 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,12 +12,9 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
-import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -39,9 +35,9 @@ public class CategoryModel {
         attrFunction.put("func", "getListChildCategory");
         attrs.add(attrFunction);
         try {
-            JsonHelper jsonHelper = new JsonHelper(mContext, CATEGORY_PATH, attrs);
-            jsonHelper.execute();
-            String results = jsonHelper.get();
+            MyService myService = new MyService(mContext, CATEGORY_PATH, attrs);
+            myService.execute();
+            String results = myService.get();
             JSONObject jsonObject = new JSONObject(results);
             JSONArray jsonCategories = jsonObject.getJSONArray("child_category");
             JSONArray myJsonArr = jsonCategories.getJSONArray(0);
@@ -69,9 +65,9 @@ public class CategoryModel {
             attrFunction.put("func", "getListParentCategory");
             attrs.add(attrFunction);
 
-            JsonHelper jsonHelper = new JsonHelper(mContext, CATEGORY_PATH, attrs);
-            jsonHelper.execute();
-            String results = jsonHelper.get();
+            MyService myService = new MyService(mContext, CATEGORY_PATH, attrs);
+            myService.execute();
+            String results = myService.get();
             JSONObject jsonObject = new JSONObject(results);
             JSONArray jsonCategories = jsonObject.getJSONArray("parent_category");
             JSONArray myJsonArr = jsonCategories.getJSONArray(0);
@@ -101,11 +97,11 @@ public class CategoryModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, CATEGORY_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, CATEGORY_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("child_category");
             JSONArray jsonArray = myJsonArr.getJSONArray(0);

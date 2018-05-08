@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorGrayLight"
-    tools:context="edu.hust.truongvu.choviet.myshop.add_product.AddProductActivity">
+    tools:context=".user.myshop.add_product.AddProductActivity">
     <include
         layout="@layout/toolbar_extra"/>
     <android.support.v4.widget.NestedScrollView

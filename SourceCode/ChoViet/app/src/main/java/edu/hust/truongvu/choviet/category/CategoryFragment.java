@@ -14,11 +14,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.adapter.ChildCategoryAdapter;
-import edu.hust.truongvu.choviet.adapter.ParentCategoryAdapter;
 import edu.hust.truongvu.choviet.entity.ChildCategory;
 import edu.hust.truongvu.choviet.entity.ParentCategory;
-import edu.hust.truongvu.choviet.product.ListProductActivity;
+import edu.hust.truongvu.choviet.product.list_product.ListProductActivity;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**

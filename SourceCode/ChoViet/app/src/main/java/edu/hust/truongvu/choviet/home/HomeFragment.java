@@ -22,17 +22,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.adapter.BrandAdapter;
-import edu.hust.truongvu.choviet.adapter.HighlightShopAdapter;
-import edu.hust.truongvu.choviet.adapter.PopularSearchAdapter;
 import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.PopularSearch;
 import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.product.ListProductActivity;
-import edu.hust.truongvu.choviet.product.ProductActivity;
-import edu.hust.truongvu.choviet.adapter.ProductAdapter;
-import edu.hust.truongvu.choviet.shop.ShopActivity;
+import edu.hust.truongvu.choviet.product.list_product.ListProductActivity;
+import edu.hust.truongvu.choviet.product.details_product.ProductActivity;
+import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
+import edu.hust.truongvu.choviet.shop.details_shop.ShopActivity;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -156,7 +153,7 @@ public class HomeFragment extends Fragment implements HomeView,
 
     @Override
     public void loadListHighlightShopSuccessful(ArrayList<Shop> listShop) {
-        HighlightShopAdapter adapter = new HighlightShopAdapter(getContext(), listShop, new HighlightShopAdapter.StoreListener() {
+        HighlightShopAdapter adapter = new HighlightShopAdapter(getContext(), listShop, new HighlightShopAdapter.ShopListener() {
             @Override
             public void onStoreResult(Shop shop) {
                 Intent intent = new Intent(getActivity(), ShopActivity.class);

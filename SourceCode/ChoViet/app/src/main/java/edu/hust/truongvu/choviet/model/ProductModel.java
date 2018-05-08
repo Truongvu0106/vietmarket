@@ -1,7 +1,6 @@
 package edu.hust.truongvu.choviet.model;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -13,10 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import edu.hust.truongvu.choviet.entity.Brand;
 import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.utils.Constants;
 
@@ -39,11 +36,11 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -90,11 +87,11 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -141,11 +138,11 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -196,11 +193,11 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdCategory);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -251,11 +248,11 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdBrand);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -306,11 +303,11 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdShop);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -361,11 +358,11 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("product");
             JSONArray jsonArray = myJsonArr.getJSONArray(0);
@@ -470,10 +467,10 @@ public class ProductModel {
         attrs.add(attrDiscount);
 
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -565,10 +562,10 @@ public class ProductModel {
         attrs.add(attrDiscount);
 
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -599,11 +596,11 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdShop);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -659,11 +656,11 @@ public class ProductModel {
         attrs.add(attrIdUser);
         attrs.add(attrIdProduct);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -698,11 +695,11 @@ public class ProductModel {
         attrs.add(attrIdUser);
         attrs.add(attrIdProduct);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -738,11 +735,11 @@ public class ProductModel {
         attrs.add(attrIdUser);
         attrs.add(attrIdProduct);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -773,11 +770,11 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdUser);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, PRODUCT_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);

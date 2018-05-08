@@ -12,10 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import edu.hust.truongvu.choviet.entity.Product;
 import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
-import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -37,11 +35,11 @@ public class ShopModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, SHOP_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("shops");
             JSONArray jsonBrands = myJsonArr.getJSONArray(0);
@@ -88,11 +86,11 @@ public class ShopModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, SHOP_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             Log.e("data_shop", data);
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("shops");

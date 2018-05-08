@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.helper.JsonHelper;
+import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.utils.Constants;
 
 /**
@@ -36,11 +35,11 @@ public class BrandModel {
 
         attrs.add(attrFunc);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, BRAND_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, BRAND_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("brand");
             JSONArray jsonBrands = myJsonArr.getJSONArray(0);
@@ -78,11 +77,11 @@ public class BrandModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        JsonHelper jsonHelper = new JsonHelper(mContext, BRAND_PATH, attrs);
-        jsonHelper.execute();
+        MyService myService = new MyService(mContext, BRAND_PATH, attrs);
+        myService.execute();
 
         try {
-            String data = jsonHelper.get();
+            String data = myService.get();
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("brand");
             JSONArray jsonBrands = myJsonArr.getJSONArray(0);
