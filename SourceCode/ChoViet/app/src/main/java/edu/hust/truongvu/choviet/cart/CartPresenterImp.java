@@ -27,7 +27,11 @@ public class CartPresenterImp implements CartPresenter {
     public void initListItemCart(Context context) {
         cartModel.openDatabase(context);
         ArrayList<Product> list = cartModel.getAllItemCart();
-        cartView.loadCartItem(list);
+        if (list == null || list.size() == 0){
+            cartView.loadCartItemFalse();
+        }else {
+            cartView.loadCartItemSuccessful(list);
+        }
         cartModel.closeDatabse();
     }
 
@@ -47,8 +51,10 @@ public class CartPresenterImp implements CartPresenter {
         cartModel.openDatabase(context);
         if (cartModel.updateNumberOfItem(id_product, number)){
             Log.e("update", "true");
+            cartView.updateNumberSuccessful();
         }else {
             Log.e("update", "false");
+            cartView.updateNumberFalse();
         }
         cartModel.closeDatabse();
     }

@@ -27,7 +27,7 @@ public class ProductPresenterImp implements ProductPresenter{
     private ProductModel productModel;
     private CartModel cartModel;
     private ShopModel shopModel;
-    private CategoryModel categoryModel;
+//    private CategoryModel categoryModel;
     private BrandModel brandModel;
     public ProductPresenterImp(Context context){
         this.mContext = context;
@@ -35,7 +35,7 @@ public class ProductPresenterImp implements ProductPresenter{
         productModel = new ProductModel(mContext);
         cartModel = new CartModel();
         shopModel = new ShopModel(mContext);
-        categoryModel = new CategoryModel(mContext);
+//        categoryModel = new CategoryModel(mContext);
         brandModel = new BrandModel(mContext);
     }
 
@@ -46,23 +46,18 @@ public class ProductPresenterImp implements ProductPresenter{
         productModel = new ProductModel(mContext);
         cartModel = new CartModel();
         shopModel = new ShopModel(mContext);
-        categoryModel = new CategoryModel(mContext);
+//        categoryModel = new CategoryModel(mContext);
         brandModel = new BrandModel(mContext);
     }
 
-    public ChildCategory getChildCategory(int idCategory){
-        ChildCategory childCategory = categoryModel.getChildCategoryById(idCategory);
-        return childCategory;
-    }
+//    public ChildCategory getChildCategory(int idCategory){
+//        ChildCategory childCategory = categoryModel.getChildCategoryById(idCategory);
+//        return childCategory;
+//    }
 
     public Brand getBrand(int idBrand){
         Brand brand = brandModel.getBrandById(idBrand);
         return brand;
-    }
-
-    @Override
-    public Product getProductById(int id) {
-        return productModel.getProductById(id);
     }
 
     @Override
@@ -77,20 +72,32 @@ public class ProductPresenterImp implements ProductPresenter{
     @Override
     public void initListRate(String username, int id_product) {
         ArrayList<Rate> listProductRate = rateModel.loadListRate(id_product);
-        productView.loadListRate(listProductRate);
+        if (listProductRate == null || listProductRate.size() == 0){
+            productView.loadListRateFalse();
+        }else {
+            productView.loadListRateSuccessful(listProductRate);
+        }
         productView.setEnableRate(rateModel.isRated(username, id_product));
     }
 
     @Override
-    public void initListProduct() {
+    public void initListProductOther(int idShop) {
         ArrayList<Product> listProduct = productModel.getAllProduct();
-        productView.loadListProduct(listProduct);
+        if (listProduct == null || listProduct.size() == 0){
+            productView.loadListProductOtherFalse();
+        }else {
+            productView.loadListProductOtherSuccessful(listProduct);
+        }
     }
 
     @Override
-    public void initListSuggest() {
+    public void initListProductSuggest(int idCategory) {
         ArrayList<Product> listProduct = productModel.getAllProduct();
-        productView.loadListSuggest(listProduct);
+        if (listProduct == null || listProduct.size() == 0) {
+            productView.loadListProductSuggestFalse();
+        }else {
+            productView.loadLisProductSuggestSuccessful(listProduct);
+        }
     }
 
     @Override

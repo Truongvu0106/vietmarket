@@ -12,11 +12,10 @@ import edu.hust.truongvu.choviet.entity.Rate;
  */
 
 public interface ProductPresenter {
-    Product getProductById(int id);
     void initListImage(ArrayList<String> imgs);
     void initListRate(String username, int id_product);
-    void initListProduct();
-    void initListSuggest();
+    void initListProductOther(int idShop);
+    void initListProductSuggest(int idCategory);
     boolean addRate(Rate rate);
     void addToCart(Context context, Product product);
     void initInforShop(int idShop);

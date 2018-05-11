@@ -21,11 +21,21 @@ public class CategoryPresenterImp implements CategoryPresenter {
     private CategoryModel categoryModel;
     private CategoryView categoryView;
     private Context mContext;
+
+    public CategoryPresenterImp(Context context){
+        this.mContext = context;
+        categoryModel = new CategoryModel(mContext);
+    }
+
     public CategoryPresenterImp(Context context, CategoryView categoryView){
         this.categoryView = categoryView;
         this.mContext = context;
         categoryModel = new CategoryModel(mContext);
+    }
 
+    public ChildCategory getChildCategory(int idCategory){
+        ChildCategory childCategory = categoryModel.getChildCategoryById(idCategory);
+        return childCategory;
     }
 
 

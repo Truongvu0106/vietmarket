@@ -23,6 +23,7 @@ import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.category.CategoryPresenterImp;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.entity.Brand;
@@ -52,6 +53,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     private ViewPager mViewPager;
     private ViewPagerIndicator mIndicator;
     private ImgProductPagerAdapter adapter;
+    private CategoryPresenterImp categoryPresenterImp;
     private ProductPresenterImp productPresenterImp;
     private CartPresenterImp cartPresenterImp;
     private RecyclerView mListRate, mListProduct, mListSuggest;
@@ -97,10 +99,11 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         username = MyHelper.getUserNamePreference(getContext());
         cartPresenterImp = new CartPresenterImp();
         productPresenterImp = new ProductPresenterImp(getContext(), this);
+        categoryPresenterImp = new CategoryPresenterImp(getContext());
         productPresenterImp.initListImage(product.getImgs());
-        productPresenterImp.initListProduct();
+        productPresenterImp.initListProductOther(0);
         productPresenterImp.initListRate(username, product.getId());
-        productPresenterImp.initListSuggest();
+        productPresenterImp.initListProductSuggest(0);
 
         initView(view);
         productPresenterImp.initInforShop(product.getIdShop());
@@ -150,7 +153,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         tvDescription.setText(product.getInfomation());
         tvCategory.setText(product.getTypeProduct() + "");
 
-        ChildCategory childCategory = productPresenterImp.getChildCategory(product.getTypeProduct());
+        ChildCategory childCategory = categoryPresenterImp.getChildCategory(product.getTypeProduct());
         if (childCategory == null){
             tvCategory.setText("???");
         }else {
@@ -216,7 +219,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadListRate(ArrayList<Rate> listRate) {
+    public void loadListRateSuccessful(ArrayList<Rate> listRate) {
         if (listRate.size() == 0){
             layoutNoRate.setVisibility(View.VISIBLE);
         }else {
@@ -225,6 +228,11 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
             mListRate.setLayoutManager(new LinearLayoutManager(getContext()));
             mListRate.setAdapter(adapter);
         }
+
+    }
+
+    @Override
+    public void loadListRateFalse() {
 
     }
 
@@ -250,7 +258,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadListProduct(ArrayList<Product> listProduct) {
+    public void loadListProductOtherSuccessful(ArrayList<Product> listProduct) {
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -274,7 +282,12 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadListSuggest(ArrayList<Product> listSuggest) {
+    public void loadListProductOtherFalse() {
+
+    }
+
+    @Override
+    public void loadLisProductSuggestSuccessful(ArrayList<Product> listSuggest) {
         ProductAdapter adapter = new ProductAdapter(getContext(), listSuggest, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -295,6 +308,11 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         });
         mListSuggest.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mListSuggest.setAdapter(adapter);
+    }
+
+    @Override
+    public void loadListProductSuggestFalse() {
+
     }
 
     @Override

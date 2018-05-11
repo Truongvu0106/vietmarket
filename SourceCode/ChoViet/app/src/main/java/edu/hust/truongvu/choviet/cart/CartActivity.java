@@ -50,7 +50,7 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
     }
 
     @Override
-    public void loadCartItem(ArrayList<Product> listProduct) {
+    public void loadCartItemSuccessful(ArrayList<Product> listProduct) {
         CartAdapter adapter = new CartAdapter(this, listProduct, new CartAdapter.CartItemListener() {
             @Override
             public void onClick(Product product) {
@@ -86,6 +86,11 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
         mListItem.setAdapter(adapter);
     }
 
+    @Override
+    public void loadCartItemFalse() {
+
+    }
+
 
     @Override
     public void deleteSuccessful() {
@@ -102,6 +107,16 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
     public void updateTotalMoney(long money) {
         totalMoney = money;
         tvTotal.setText(MyHelper.formatMoney(totalMoney));
+    }
+
+    @Override
+    public void updateNumberSuccessful() {
+
+    }
+
+    @Override
+    public void updateNumberFalse() {
+
     }
 
     @Override

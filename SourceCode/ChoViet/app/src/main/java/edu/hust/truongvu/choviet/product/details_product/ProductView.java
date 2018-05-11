@@ -14,12 +14,16 @@ public interface ProductView {
     void loadListImageSuccessful(ArrayList<String> list);
     void loadListImageFalse();
 
-    void loadListRate(ArrayList<Rate> listRate);
+    void loadListRateSuccessful(ArrayList<Rate> listRate);
+    void loadListRateFalse();
+
     void setEnableRate(boolean isRated);
 
-    void loadListProduct(ArrayList<Product> listProduct);
+    void loadListProductOtherSuccessful(ArrayList<Product> listProduct);
+    void loadListProductOtherFalse();
 
-    void loadListSuggest(ArrayList<Product> listSuggest);
+    void loadLisProductSuggestSuccessful(ArrayList<Product> listSuggest);
+    void loadListProductSuggestFalse();
 
     void addToCartSuccessful();
     void addToCartFalse();

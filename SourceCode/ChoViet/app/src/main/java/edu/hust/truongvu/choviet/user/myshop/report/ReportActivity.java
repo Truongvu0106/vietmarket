@@ -6,7 +6,7 @@ import android.os.Bundle;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.customview.MyToolbarExtra;
 
-public class ReportActivity extends AppCompatActivity {
+public class ReportActivity extends AppCompatActivity implements ReportView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

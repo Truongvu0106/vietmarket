@@ -6,7 +6,7 @@ import android.os.Bundle;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.customview.MyToolbarExtra;
 
-public class ShopListOrderActivity extends AppCompatActivity {
+public class ShopListOrderActivity extends AppCompatActivity implements ShopListOrderView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

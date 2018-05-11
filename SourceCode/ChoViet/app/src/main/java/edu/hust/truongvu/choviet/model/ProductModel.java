@@ -22,9 +22,9 @@ import edu.hust.truongvu.choviet.utils.Constants;
  */
 
 public class ProductModel {
-    public static final String PRODUCT_PATH = Constants.Path.MY_PATH + "product.php";
-
+    private static final String PRODUCT_PATH = Constants.Path.MY_PATH + "product.php";
     private Context mContext;
+    private MyService myService;
     public ProductModel(Context context){
         this.mContext = context;
     }
@@ -36,7 +36,7 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -87,7 +87,7 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -138,7 +138,7 @@ public class ProductModel {
 
         attrs.add(attrFunc);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -193,7 +193,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdCategory);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -248,7 +248,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdBrand);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -303,7 +303,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdShop);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -358,7 +358,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrId);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -467,7 +467,7 @@ public class ProductModel {
         attrs.add(attrDiscount);
 
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
         try {
             String data = myService.get();
@@ -562,7 +562,7 @@ public class ProductModel {
         attrs.add(attrDiscount);
 
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
         try {
             String data = myService.get();
@@ -596,7 +596,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdShop);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -656,7 +656,7 @@ public class ProductModel {
         attrs.add(attrIdUser);
         attrs.add(attrIdProduct);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -695,7 +695,7 @@ public class ProductModel {
         attrs.add(attrIdUser);
         attrs.add(attrIdProduct);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -735,7 +735,7 @@ public class ProductModel {
         attrs.add(attrIdUser);
         attrs.add(attrIdProduct);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
@@ -770,7 +770,7 @@ public class ProductModel {
         attrs.add(attrFunc);
         attrs.add(attrIdUser);
 
-        MyService myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
         myService.execute();
 
         try {
