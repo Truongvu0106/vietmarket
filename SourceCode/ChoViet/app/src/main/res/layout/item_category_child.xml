@@ -20,7 +20,7 @@
                 android:layout_height="80dp"
                 android:padding="@dimen/padding_medium"
                 android:src="@drawable/iphone"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/name_child_category"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"

@@ -4,8 +4,8 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.PopularSearch;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.PopularSearch;
+import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.model.PopularSearchModel;
 import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.RecentSearchModel;

@@ -25,7 +25,7 @@
                 android:alpha="0.6"
                 android:padding="@dimen/padding_medium"
                 android:background="@color/black">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/text_popular_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

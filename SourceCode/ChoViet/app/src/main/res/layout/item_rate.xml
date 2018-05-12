@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_medium"
             android:orientation="vertical">
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/name_customer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,14 +44,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5" />
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/date_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
                 android:layout_marginTop="@dimen/margin_tiny"
                 android:text="26-2-2018"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/customer_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="Sản phẩm rất tốt"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/customer_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

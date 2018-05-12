@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import edu.hust.truongvu.choviet.entity.Rate;
+import edu.hust.truongvu.choviet.model.entity.Rate;
 import edu.hust.truongvu.choviet.services.MyService;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 3/22/2018.

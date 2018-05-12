@@ -21,7 +21,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_medium">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                         android:src="@drawable/ic_transport"
                         android:tint="@color/colorPrimaryDark"
                         android:layout_alignBottom="@+id/tv_title"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                         android:layout_alignBottom="@+id/tv_title"
                         android:text="20000d"/>
                 </RelativeLayout>
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/tv_note"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

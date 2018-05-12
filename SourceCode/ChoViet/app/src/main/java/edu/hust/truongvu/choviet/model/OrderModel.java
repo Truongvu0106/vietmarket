@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import edu.hust.truongvu.choviet.entity.Order;
-import edu.hust.truongvu.choviet.entity.OrderDetails;
+import edu.hust.truongvu.choviet.model.entity.Order;
+import edu.hust.truongvu.choviet.model.entity.OrderDetails;
 import edu.hust.truongvu.choviet.services.MyService;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 4/24/2018.

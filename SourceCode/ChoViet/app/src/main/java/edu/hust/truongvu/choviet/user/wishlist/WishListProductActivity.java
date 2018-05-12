@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
-import edu.hust.truongvu.choviet.customview.MyToolbarExtra;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
+import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.product.details_product.ProductActivity;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 public class WishListProductActivity extends AppCompatActivity implements WishListProductView{
 

@@ -10,8 +10,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.product.list_product.PriceAdapter;
-import edu.hust.truongvu.choviet.entity.PriceFilter;
+import edu.hust.truongvu.choviet.model.entity.PriceFilter;
 
 /**
  * Created by truon on 5/3/2018.

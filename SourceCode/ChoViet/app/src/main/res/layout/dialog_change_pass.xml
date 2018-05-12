@@ -11,14 +11,14 @@
         android:background="@drawable/bg_white"
         android:padding="@dimen/margin_medium"
         android:orientation="vertical">
-        <edu.hust.truongvu.choviet.customview.MyPwEditText
+        <edu.hust.truongvu.choviet.helper.customview.MyPwEditText
             android:id="@+id/edt_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hide="true"
             android:textSize="@dimen/text_size_medium"
             android:hint="@string/password"/>
-        <edu.hust.truongvu.choviet.customview.MyPwEditText
+        <edu.hust.truongvu.choviet.helper.customview.MyPwEditText
             android:id="@+id/edt_repass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorBlueDark"
                 android:layout_weight="2">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"

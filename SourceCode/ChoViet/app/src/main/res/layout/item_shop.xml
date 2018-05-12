@@ -41,14 +41,14 @@
                             android:scaleType="fitCenter"
                             android:adjustViewBounds="false"/>
                     </LinearLayout>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/name_store"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/margin_small"
                         android:text="Adidas Shop"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/slogan_store"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"

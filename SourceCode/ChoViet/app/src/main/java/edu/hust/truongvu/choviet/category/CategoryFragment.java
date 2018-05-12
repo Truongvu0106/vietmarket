@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.ParentCategory;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.ParentCategory;
 import edu.hust.truongvu.choviet.product.list_product.ListProductActivity;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

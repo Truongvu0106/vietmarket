@@ -43,7 +43,7 @@
                 android:padding="@dimen/padding_huge"
                 android:src="@drawable/settings"/>
         </LinearLayout>
-        <edu.hust.truongvu.choviet.customview.MyTextView
+        <edu.hust.truongvu.choviet.helper.customview.MyTextView
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_donhang"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option1"
@@ -107,7 +107,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_spyeuthich"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option2"
@@ -137,7 +137,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_gianhangyeuthich"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option3"
@@ -167,7 +167,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_cuahangcuaban"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option4"
@@ -200,7 +200,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_taikhoan"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option5"
@@ -230,7 +230,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_caidat"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option6"
@@ -260,7 +260,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:padding="@dimen/padding_large"
                         android:src="@drawable/prof_vechungtoi"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/img_option7"

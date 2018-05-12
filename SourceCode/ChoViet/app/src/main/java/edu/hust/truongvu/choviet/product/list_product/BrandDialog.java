@@ -10,8 +10,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.product.list_product.ListFilterBrandAdapter;
-import edu.hust.truongvu.choviet.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.Brand;
 import edu.hust.truongvu.choviet.model.BrandModel;
 
 /**

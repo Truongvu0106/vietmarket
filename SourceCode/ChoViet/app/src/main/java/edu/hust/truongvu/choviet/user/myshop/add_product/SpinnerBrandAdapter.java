@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.Brand;
 
 /**
  * Created by truon on 4/30/2018.

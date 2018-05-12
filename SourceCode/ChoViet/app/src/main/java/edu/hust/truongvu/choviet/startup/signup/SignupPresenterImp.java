@@ -6,9 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.model.UserModel;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 2/21/2018.

@@ -2,9 +2,9 @@ package edu.hust.truongvu.choviet.product.details_product;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Rate;
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Rate;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 
 /**
  * Created by truon on 2/26/2018.

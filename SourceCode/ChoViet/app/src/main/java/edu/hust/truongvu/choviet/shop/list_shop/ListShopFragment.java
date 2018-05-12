@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.shop.details_shop.ShopActivity;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

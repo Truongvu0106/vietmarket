@@ -4,14 +4,12 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.model.BrandModel;
 import edu.hust.truongvu.choviet.model.CartModel;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Rate;
-import edu.hust.truongvu.choviet.model.CategoryModel;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Rate;
 import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.RateModel;
 import edu.hust.truongvu.choviet.model.ShopModel;

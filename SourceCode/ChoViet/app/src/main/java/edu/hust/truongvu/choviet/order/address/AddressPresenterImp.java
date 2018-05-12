@@ -2,7 +2,7 @@ package edu.hust.truongvu.choviet.order.address;
 
 import android.content.Context;
 
-import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.UserModel;
 

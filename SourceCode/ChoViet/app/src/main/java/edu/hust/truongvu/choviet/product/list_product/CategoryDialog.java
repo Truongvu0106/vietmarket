@@ -10,8 +10,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.product.list_product.ListFilterCategoryAdapter;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
 import edu.hust.truongvu.choviet.model.CategoryModel;
 
 /**

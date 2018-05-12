@@ -58,7 +58,7 @@
                     android:padding="@dimen/padding_medium"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/store"/>
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_1"
@@ -80,7 +80,7 @@
                     android:padding="@dimen/padding_medium"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/discount"/>
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_2"
@@ -107,7 +107,7 @@
                     android:padding="@dimen/padding_medium"
                     android:src="@drawable/promotion" />
 
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_3"
@@ -128,7 +128,7 @@
                     android:padding="@dimen/padding_medium"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/category_color"/>
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_4"
@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
@@ -174,7 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
@@ -200,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
@@ -221,7 +221,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:background="@drawable/bg_color">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -252,7 +252,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
@@ -273,7 +273,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:background="@drawable/bg_color">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -304,7 +304,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
@@ -325,7 +325,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:background="@drawable/bg_color">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -356,7 +356,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"

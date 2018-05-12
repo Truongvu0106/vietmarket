@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.model.ShopModel;
 
 /**

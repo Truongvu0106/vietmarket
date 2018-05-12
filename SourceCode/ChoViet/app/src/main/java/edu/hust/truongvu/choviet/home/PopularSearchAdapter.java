@@ -11,9 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.PopularSearch;
+import edu.hust.truongvu.choviet.model.entity.PopularSearch;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 2/22/2018.

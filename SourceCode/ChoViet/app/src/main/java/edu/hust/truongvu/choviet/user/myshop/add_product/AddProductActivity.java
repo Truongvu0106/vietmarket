@@ -31,11 +31,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.dialog.ChooseImageDialog;
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.MyImage;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.MyImage;
+import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 
 public class AddProductActivity extends AppCompatActivity implements View.OnClickListener, AddProductView{

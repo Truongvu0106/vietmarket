@@ -19,8 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.MyImage;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.model.entity.MyImage;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 4/28/2018.

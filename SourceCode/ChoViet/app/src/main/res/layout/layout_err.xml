@@ -39,7 +39,7 @@
                 android:paddingBottom="@dimen/padding_medium"
                 android:paddingLeft="@dimen/padding_large"
                 android:paddingRight="@dimen/padding_large">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"

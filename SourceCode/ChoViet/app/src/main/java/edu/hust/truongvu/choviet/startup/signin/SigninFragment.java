@@ -27,10 +27,10 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.main.MainActivity;
-import edu.hust.truongvu.choviet.customview.MyToast;
+import edu.hust.truongvu.choviet.init.MainActivity;
+import edu.hust.truongvu.choviet.helper.customview.MyToast;
 import edu.hust.truongvu.choviet.startup.signup.SignupFragment;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

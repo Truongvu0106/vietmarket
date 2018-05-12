@@ -13,17 +13,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Order;
-import edu.hust.truongvu.choviet.entity.OrderDetails;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Transport;
-import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.model.entity.Order;
+import edu.hust.truongvu.choviet.model.entity.OrderDetails;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Transport;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.OrderModel;
 import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.TransportModel;
 import edu.hust.truongvu.choviet.model.UserModel;
-import edu.hust.truongvu.choviet.utils.Constants.OrderStatus;
+import edu.hust.truongvu.choviet.helper.Constants.OrderStatus;
 
 
 /**

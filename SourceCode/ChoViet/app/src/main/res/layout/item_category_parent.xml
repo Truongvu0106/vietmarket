@@ -11,7 +11,7 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/cate_thethao"
         android:padding="@dimen/padding_big"/>
-    <edu.hust.truongvu.choviet.customview.MyTextView
+    <edu.hust.truongvu.choviet.helper.customview.MyTextView
         android:id="@+id/name_parent_category"
         android:layout_width="match_parent"
         android:layout_height="30dp"

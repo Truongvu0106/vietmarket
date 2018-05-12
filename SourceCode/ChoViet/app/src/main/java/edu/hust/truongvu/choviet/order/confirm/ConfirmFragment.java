@@ -14,16 +14,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Order;
-import edu.hust.truongvu.choviet.entity.OrderDetails;
-import edu.hust.truongvu.choviet.entity.PayMethod;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Transport;
+import edu.hust.truongvu.choviet.model.entity.Order;
+import edu.hust.truongvu.choviet.model.entity.OrderDetails;
+import edu.hust.truongvu.choviet.model.entity.PayMethod;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Transport;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.order.address.AddressFragment;
 import edu.hust.truongvu.choviet.order.paymethod.PayMethodFragment;
 import edu.hust.truongvu.choviet.order.transport.TransportFragment;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

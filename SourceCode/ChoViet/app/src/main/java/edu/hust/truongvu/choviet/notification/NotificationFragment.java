@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.MyNotification;
+import edu.hust.truongvu.choviet.model.entity.MyNotification;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Transport;
+import edu.hust.truongvu.choviet.model.entity.Transport;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
 import edu.hust.truongvu.choviet.order.paymethod.PayMethodFragment;
 import edu.hust.truongvu.choviet.order.PaymentPresenterImp;

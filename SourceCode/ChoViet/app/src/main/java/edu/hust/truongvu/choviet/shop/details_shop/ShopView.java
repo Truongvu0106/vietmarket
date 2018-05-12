@@ -2,8 +2,8 @@ package edu.hust.truongvu.choviet.shop.details_shop;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 
 /**
  * Created by truon on 3/8/2018.

@@ -19,7 +19,7 @@
                 android:layout_height="@dimen/icon_size_big"
                 android:padding="@dimen/padding_big"
                 android:src="@drawable/avatar"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/name_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/name_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/padding_medium"
                     android:orientation="horizontal">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/price_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/text_size_medium"
                         android:text="123000đ"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/tv_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

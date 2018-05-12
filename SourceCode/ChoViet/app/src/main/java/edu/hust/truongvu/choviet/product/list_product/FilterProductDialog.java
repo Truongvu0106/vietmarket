@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.PriceFilter;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.PriceFilter;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 5/1/2018.

@@ -32,7 +32,7 @@
                 android:layout_weight="3"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/title_sum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                     android:textColor="@color/black"
                     android:layout_marginLeft="@dimen/margin_medium"
                     android:text="@string/summary"/>
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/tv_total_money"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:layout_margin="@dimen/margin_small"
                 android:background="@drawable/bg_blue_dark"
                 android:padding="@dimen/padding_small">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/carry_out_payment"

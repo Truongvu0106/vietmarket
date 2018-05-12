@@ -7,12 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.Volley;
-
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.Brand;
 
 /**
  * Created by truon on 5/3/2018.

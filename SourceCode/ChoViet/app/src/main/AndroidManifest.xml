@@ -18,7 +18,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".init.MainActivity">
 
             <!-- <intent-filter> -->
             <!-- <action andrnotename="android.intent.action.MAIN" /> -->
@@ -54,7 +54,8 @@
         <activity android:name=".user.myshop.list_order.ShopListOrderActivity" />
         <activity android:name=".user.myshop.report.ReportActivity" />
         <activity android:name=".user.myshop.add_product.AddProductActivity" />
-        <activity android:name=".user.wishlist.WishListProductActivity"></activity>
+        <activity android:name=".user.wishlist.WishListProductActivity" />
+        <activity android:name=".user.info_user.InfoUserActivity"></activity>
     </application>
 
 </manifest>

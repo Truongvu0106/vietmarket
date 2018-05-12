@@ -3,10 +3,10 @@ package edu.hust.truongvu.choviet.home;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.PopularSearch;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.PopularSearch;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 
 /**
  * Created by truon on 2/21/2018.

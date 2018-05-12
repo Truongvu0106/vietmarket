@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 4/17/2018.

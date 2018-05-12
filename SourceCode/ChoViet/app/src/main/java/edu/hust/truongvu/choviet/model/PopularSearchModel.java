@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import edu.hust.truongvu.choviet.entity.PopularSearch;
+import edu.hust.truongvu.choviet.model.entity.PopularSearch;
 import edu.hust.truongvu.choviet.services.MyService;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 5/6/2018.

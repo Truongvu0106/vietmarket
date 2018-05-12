@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.search.SearchActivity;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener, ProductFragment.ItemCartListener{
 

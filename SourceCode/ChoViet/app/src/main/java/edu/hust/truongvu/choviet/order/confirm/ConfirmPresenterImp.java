@@ -5,10 +5,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Order;
-import edu.hust.truongvu.choviet.entity.PayMethod;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Transport;
+import edu.hust.truongvu.choviet.model.entity.Order;
+import edu.hust.truongvu.choviet.model.entity.PayMethod;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Transport;
 import edu.hust.truongvu.choviet.model.CartModel;
 import edu.hust.truongvu.choviet.model.OrderModel;
 import edu.hust.truongvu.choviet.model.PayMethodModel;

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.MyNotification;
+import edu.hust.truongvu.choviet.model.entity.MyNotification;
 
 /**
  * Created by truon on 2/25/2018.

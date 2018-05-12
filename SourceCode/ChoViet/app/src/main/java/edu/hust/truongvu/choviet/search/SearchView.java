@@ -2,8 +2,8 @@ package edu.hust.truongvu.choviet.search;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.PopularSearch;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.PopularSearch;
+import edu.hust.truongvu.choviet.model.entity.Product;
 
 /**
  * Created by truon on 5/6/2018.

@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.User;
-import edu.hust.truongvu.choviet.entity.Rate;
+import edu.hust.truongvu.choviet.model.entity.User;
+import edu.hust.truongvu.choviet.model.entity.Rate;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.UserModel;
 

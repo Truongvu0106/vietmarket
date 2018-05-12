@@ -11,9 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.PayMethod;
+import edu.hust.truongvu.choviet.model.entity.PayMethod;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 3/29/2018.

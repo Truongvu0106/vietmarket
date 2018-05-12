@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
 
 /**
  * Created by truon on 5/3/2018.

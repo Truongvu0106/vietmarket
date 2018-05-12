@@ -22,14 +22,14 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_weight="4">
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/title_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/black"
                 android:text="Hoạt động"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/content_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

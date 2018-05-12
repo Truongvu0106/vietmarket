@@ -2,7 +2,7 @@ package edu.hust.truongvu.choviet.order.transport;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Transport;
+import edu.hust.truongvu.choviet.model.entity.Transport;
 
 /**
  * Created by truon on 3/27/2018.

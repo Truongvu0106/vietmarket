@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.ParentCategory;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.ParentCategory;
 import edu.hust.truongvu.choviet.services.MyService;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 4/30/2018.

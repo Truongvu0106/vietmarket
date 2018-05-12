@@ -4,10 +4,10 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.ParentCategory;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.ParentCategory;
 import edu.hust.truongvu.choviet.model.CategoryModel;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * Created by truon on 2/22/2018.

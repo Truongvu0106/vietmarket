@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

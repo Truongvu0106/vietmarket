@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_medium"
                 android:layout_weight="5">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

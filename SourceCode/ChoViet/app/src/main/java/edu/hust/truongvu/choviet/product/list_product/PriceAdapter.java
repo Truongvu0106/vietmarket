@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.PriceFilter;
+import edu.hust.truongvu.choviet.model.entity.PriceFilter;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 
 /**

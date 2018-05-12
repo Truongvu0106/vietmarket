@@ -46,7 +46,7 @@
                     android:padding="@dimen/padding_medium"
                     android:tint="@color/grayicon"
                     android:src="@drawable/email"/>
-                <edu.hust.truongvu.choviet.customview.MyClearEditText
+                <edu.hust.truongvu.choviet.helper.customview.MyClearEditText
                     android:id="@+id/signin_username"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/actionbar_size"
@@ -70,7 +70,7 @@
                     android:padding="@dimen/padding_medium"
                     android:tint="@color/grayicon"
                     android:src="@drawable/lock"/>
-                <edu.hust.truongvu.choviet.customview.MyEditText
+                <edu.hust.truongvu.choviet.helper.customview.MyEditText
                     android:id="@+id/signin_password"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/actionbar_size"
@@ -86,7 +86,7 @@
                 android:layout_height="0.5dp"
                 android:background="@color/colorGray" />
 
-            <edu.hust.truongvu.choviet.customview.MyButton
+            <edu.hust.truongvu.choviet.helper.customview.MyButton
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/actionbar_size"
@@ -96,9 +96,9 @@
                 android:background="@color/colorPrimaryDark"
                 android:text="@string/signin"
                 android:textAllCaps="false"
-                android:textColor="@color/white"></edu.hust.truongvu.choviet.customview.MyButton>
+                android:textColor="@color/white"></edu.hust.truongvu.choviet.helper.customview.MyButton>
 
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -175,7 +175,7 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_medium">
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -183,7 +183,7 @@
                         android:textColor="@color/grayicon"
                         android:textSize="@dimen/text_size_small" />
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_small"

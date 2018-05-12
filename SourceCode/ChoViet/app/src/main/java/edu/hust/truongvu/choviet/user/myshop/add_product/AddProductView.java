@@ -2,8 +2,8 @@ package edu.hust.truongvu.choviet.user.myshop.add_product;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
 
 /**
  * Created by truon on 4/28/2018.

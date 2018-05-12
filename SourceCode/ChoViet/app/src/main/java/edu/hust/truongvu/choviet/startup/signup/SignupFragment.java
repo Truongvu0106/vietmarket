@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.startup.signin.SigninFragment;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

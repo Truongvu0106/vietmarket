@@ -58,7 +58,7 @@
                     android:paddingBottom="@dimen/padding_small"
                     android:paddingTop="@dimen/padding_small">
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/details_name_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -72,13 +72,13 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:orientation="horizontal">
 
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:id="@+id/details_old_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20000d" />
 
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:id="@+id/details_new_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:numStars="5" />
 
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:id="@+id/tv_rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                         android:tint="@color/colorYellow"
                         android:src="@drawable/tag" />
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/tv_discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -173,13 +173,13 @@
                             android:visibility="gone" />
                     </FrameLayout>
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_small"
                         android:text="@string/like" />
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_big"
@@ -202,13 +202,13 @@
                         android:layout_height="@dimen/icon_size_medium"
                         android:padding="@dimen/padding_medium"
                         android:src="@drawable/comment" />
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_small"
                         android:text="@string/comment" />
 
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_big"
@@ -248,7 +248,7 @@
                         android:paddingRight="@dimen/padding_big"
                         android:paddingBottom="@dimen/padding_big"
                         android:src="@drawable/avatar"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/tv_shop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -269,7 +269,7 @@
                         android:paddingLeft="@dimen/padding_large"
                         android:paddingRight="@dimen/padding_large"
                         android:paddingTop="@dimen/padding_medium">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/margin_small"
@@ -298,7 +298,7 @@
                                 android:padding="@dimen/padding_small"
                                 android:src="@drawable/shopping_bag"/>
 
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_total_product_shop"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -309,7 +309,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_small"
@@ -338,7 +338,7 @@
                                 android:layout_height="@dimen/icon_size_small"
                                 android:padding="@dimen/padding_small"
                                 android:src="@drawable/star"/>
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_rate_shop"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -349,7 +349,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_small"
@@ -368,14 +368,14 @@
                 android:paddingLeft="@dimen/padding_medium"
                 android:paddingRight="@dimen/padding_medium"
                 android:paddingBottom="@dimen/padding_big">
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginLeft="@dimen/margin_medium"
                     android:textSize="@dimen/text_size_medium"
                     android:text="@string/details_product"/>
-                <edu.hust.truongvu.choviet.customview.MyTextView
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/des"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -402,7 +402,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="1">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -420,7 +420,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_category"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -443,7 +443,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="1">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -461,7 +461,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_weight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="1">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -502,7 +502,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_brand"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -525,7 +525,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="1">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -543,7 +543,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_stock"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -566,7 +566,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="1">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -584,7 +584,7 @@
                             android:gravity="center_vertical"
                             android:padding="@dimen/padding_medium"
                             android:layout_weight="2">
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_from"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -615,7 +615,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_medium"
@@ -632,14 +632,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:numStars="5" />
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:id="@+id/tv_rate_product_other"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_small"
                                 android:text="4.9/5"
                                 android:textColor="@color/colorRed" />
-                            <edu.hust.truongvu.choviet.customview.MyTextView
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/margin_small"
@@ -653,7 +653,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/margin_small"
                         android:orientation="horizontal">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
@@ -677,7 +677,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -708,7 +708,7 @@
                         android:layout_marginRight="@dimen/margin_small"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:background="@drawable/bg_border_color">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_medium"
@@ -727,7 +727,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:visibility="gone"
                         android:background="@drawable/bg_gray_dark">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:id="@+id/tv_disable_rate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -751,7 +751,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_medium"
@@ -766,7 +766,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/margin_small"
                         android:orientation="horizontal">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
@@ -801,7 +801,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_medium"
@@ -816,7 +816,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/margin_small"
                         android:orientation="horizontal">
-                        <edu.hust.truongvu.choviet.customview.MyTextView
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
@@ -868,7 +868,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorRed"
             android:layout_weight="2">
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_medium"

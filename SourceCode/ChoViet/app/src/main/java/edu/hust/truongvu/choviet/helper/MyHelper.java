@@ -18,9 +18,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.model.UserModel;
-import edu.hust.truongvu.choviet.utils.Constants;
 
 import static android.content.Context.MODE_PRIVATE;
 

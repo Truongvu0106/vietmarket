@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.customview.MyToolbarExtra;
+import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
 
 public class ShopListProductActivity extends AppCompatActivity implements ShopListProductView{
 

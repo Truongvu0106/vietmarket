@@ -17,7 +17,7 @@
             android:layout_height="@dimen/icon_size_big"
             android:scaleType="centerCrop"
             android:src="@drawable/giaydep"/>
-        <edu.hust.truongvu.choviet.customview.MyTextView
+        <edu.hust.truongvu.choviet.helper.customview.MyTextView
             android:id="@+id/tv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.MyImage;
+import edu.hust.truongvu.choviet.model.entity.MyImage;
 
 /**
  * Created by truon on 4/25/2018.

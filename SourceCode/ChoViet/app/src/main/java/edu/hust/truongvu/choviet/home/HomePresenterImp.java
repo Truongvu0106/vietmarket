@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.PopularSearch;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.PopularSearch;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.model.BrandModel;
 import edu.hust.truongvu.choviet.model.PopularSearchModel;
 import edu.hust.truongvu.choviet.model.ProductModel;

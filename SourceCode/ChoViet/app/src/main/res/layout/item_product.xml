@@ -34,7 +34,7 @@
                         android:layout_height="@dimen/icon_size_big"
                         android:tint="@color/colorYellow"
                         android:src="@drawable/tag"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/tv_discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                         android:text="-25%"/>
                 </FrameLayout>
             </FrameLayout>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/name_product"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -54,13 +54,13 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:text="Giày dép cao cấp aaaaaaaaaaa"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/olđ_price_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_small"
                 android:text="20 000đ"/>
-            <edu.hust.truongvu.choviet.customview.MyTextView
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/new_price_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                         android:padding="@dimen/padding_small"
                         android:layout_marginLeft="@dimen/margin_small"
                         android:src="@drawable/comment"/>
-                    <edu.hust.truongvu.choviet.customview.MyTextView
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="(100)"/>

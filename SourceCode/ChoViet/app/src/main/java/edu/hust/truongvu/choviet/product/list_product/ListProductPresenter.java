@@ -2,8 +2,8 @@ package edu.hust.truongvu.choviet.product.list_product;
 
 import java.util.ArrayList;
 
-import edu.hust.truongvu.choviet.entity.PriceFilter;
-import edu.hust.truongvu.choviet.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.PriceFilter;
+import edu.hust.truongvu.choviet.model.entity.Product;
 
 /**
  * Created by truon on 3/8/2018.

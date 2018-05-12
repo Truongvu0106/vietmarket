@@ -26,19 +26,19 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.category.CategoryPresenterImp;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
-import edu.hust.truongvu.choviet.entity.Brand;
-import edu.hust.truongvu.choviet.entity.ChildCategory;
-import edu.hust.truongvu.choviet.entity.Product;
-import edu.hust.truongvu.choviet.entity.Rate;
-import edu.hust.truongvu.choviet.entity.Shop;
-import edu.hust.truongvu.choviet.entity.User;
+import edu.hust.truongvu.choviet.model.entity.Brand;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Rate;
+import edu.hust.truongvu.choviet.model.entity.Shop;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
 import edu.hust.truongvu.choviet.product.rate.RateProductAdapter;
 import edu.hust.truongvu.choviet.product.list_product.ImgProductPagerAdapter;
 import edu.hust.truongvu.choviet.product.rate.RateProductDialog;
 import edu.hust.truongvu.choviet.shop.details_shop.ShopActivity;
-import edu.hust.truongvu.choviet.utils.Constants;
+import edu.hust.truongvu.choviet.helper.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
