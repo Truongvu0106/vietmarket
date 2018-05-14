@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,14 +20,16 @@ import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.product.details_product.ProductActivity;
 import edu.hust.truongvu.choviet.helper.Constants;
 
-public class ShopActivity extends AppCompatActivity implements ShopView{
+public class ShopActivity extends AppCompatActivity implements ShopView, View.OnClickListener{
 
     private RecyclerView recyclerView;
     private ProductAdapter adapter;
-    private ShopPresenterImp shopPresenterImp;
+    private ShopPresenter shopPresenter;
     Shop shop;
     private ImageView avatarShop;
     private TextView tvName, tvSlogan, tvNumProduct, tvRate, tvAddress, tvPhone, tvWebsite;
+    private View btnFollow, layoutFollowed;
+    boolean mIsFollowing = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +37,8 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
         recyclerView = findViewById(R.id.list_product);
         initView();
         shop = (Shop) getIntent().getSerializableExtra(Constants.MyTag.INTENT_SHOP);
-        shopPresenterImp = new ShopPresenterImp(this, this);
-        shopPresenterImp.initInforShop(shop);
+        shopPresenter = new ShopPresenterImp(this, this);
+        shopPresenter.initInforShop(shop);
     }
 
     private void initView(){
@@ -46,11 +50,13 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
         tvAddress = findViewById(R.id.tv_address);
         tvPhone = findViewById(R.id.tv_phone);
         tvWebsite = findViewById(R.id.tv_website);
+        btnFollow = findViewById(R.id.btn_follow);
+        layoutFollowed = findViewById(R.id.layout_followed);
     }
 
     @Override
     public void loadInforShopSuccessful(Shop shop) {
-        shopPresenterImp.initListProduct(shop.getId());
+        shopPresenter.initListProduct(shop.getId());
         MyHelper.setImagePicasso(ShopActivity.this, avatarShop, Constants.Path.MY_PATH + shop.getImgAvatar());
         tvName.setText(shop.getName());
         tvSlogan.setText(shop.getSlogan());
@@ -59,6 +65,8 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
         tvAddress.setText(shop.getAddress());
         tvPhone.setText(shop.getPhone());
         tvWebsite.setText(shop.getWebsite());
+        shopPresenter.checkFollowing(MyHelper.getUserIdPreference(this), shop.getId());
+        btnFollow.setOnClickListener(this);
     }
 
     @Override
@@ -71,6 +79,36 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
         tvAddress.setText("???");
         tvPhone.setText("???");
         tvWebsite.setText("???");
+    }
+
+    @Override
+    public void initFollow(boolean isFollowing) {
+        mIsFollowing = isFollowing;
+        if (mIsFollowing){
+            layoutFollowed.setVisibility(View.VISIBLE);
+        }else {
+            layoutFollowed.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void followSuccessful() {
+        Toast.makeText(this, getString(R.string.added_to_your_following), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void followFalse() {
+        Toast.makeText(this, getString(R.string.follow_false), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void unFollowSuccessful() {
+        Toast.makeText(this, getString(R.string.remove_from_your_following), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void unFollowFalse() {
+        Toast.makeText(this, getString(R.string.unfollow_false), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -99,6 +137,30 @@ public class ShopActivity extends AppCompatActivity implements ShopView{
 
     @Override
     public void loadListProductByShopFalse() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_follow:
+                handleFollowAction();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void handleFollowAction(){
+        if (shop != null){
+            if (mIsFollowing){
+                layoutFollowed.setVisibility(View.GONE);
+                shopPresenter.unFollow(MyHelper.getUserIdPreference(this), shop.getId());
+            }else {
+                layoutFollowed.setVisibility(View.VISIBLE);
+                shopPresenter.follow(MyHelper.getUserIdPreference(this), shop.getId());
+            }
+        }
 
     }
 }

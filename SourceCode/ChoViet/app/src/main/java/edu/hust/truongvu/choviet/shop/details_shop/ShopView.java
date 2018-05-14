@@ -15,4 +15,12 @@ public interface ShopView {
 
     void loadInforShopSuccessful(Shop shop);
     void loadInforShopFalse();
+
+    void initFollow(boolean isFollowing);
+
+    void followSuccessful();
+    void followFalse();
+
+    void unFollowSuccessful();
+    void unFollowFalse();
 }

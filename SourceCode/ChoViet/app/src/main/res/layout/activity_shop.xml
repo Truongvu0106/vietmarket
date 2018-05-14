@@ -42,21 +42,42 @@
                         android:scaleType="fitCenter"
                         android:background="@drawable/bg_white_border"
                         android:src="@drawable/nikon"/>
-                    <LinearLayout
+                    <RelativeLayout
                         android:id="@+id/btn_follow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingTop="@dimen/padding_medium"
-                        android:paddingBottom="@dimen/padding_medium"
-                        android:background="@drawable/bg_border_gray"
                         android:layout_marginTop="@dimen/margin_medium">
-                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:text="@string/follow"/>
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:paddingTop="@dimen/padding_medium"
+                            android:paddingBottom="@dimen/padding_medium"
+                            android:background="@drawable/bg_border_gray">
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:text="@string/follow"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/layout_followed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/padding_medium"
+                            android:paddingBottom="@dimen/padding_medium"
+                            android:background="@drawable/bg_color"
+                            android:visibility="gone">
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:text="@string/follow"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"

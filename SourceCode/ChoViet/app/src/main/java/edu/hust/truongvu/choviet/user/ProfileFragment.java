@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.user.followingshop.FollowingShopActivity;
 import edu.hust.truongvu.choviet.user.myshop.MyShopActivity;
 import edu.hust.truongvu.choviet.user.wishlist.WishListProductActivity;
 
@@ -112,6 +113,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
                 startActivity(new Intent(getActivity(), WishListProductActivity.class));
                 break;
             case R.id.btn_your_favorite_shop:
+                startActivity(new Intent(getActivity(), FollowingShopActivity.class));
                 break;
             case R.id.btn_your_shop:
                 startActivity(new Intent(getActivity(), MyShopActivity.class));

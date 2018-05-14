@@ -9,4 +9,10 @@ import edu.hust.truongvu.choviet.model.entity.Shop;
 public interface ShopPresenter {
     void initListProduct(int idShop);
     void initInforShop(Shop shop);
+
+    void checkFollowing(int idUser, int idShop);
+
+    void follow(int idUser, int idShop);
+
+    void unFollow(int idUser, int idShop);
 }

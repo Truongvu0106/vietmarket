@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.helper.Constants;
@@ -23,6 +24,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
 public class ShopModel {
     public static final String SHOP_PATH = Constants.Path.MY_PATH + "shop.php";
     private Context mContext;
+    private MyService myService;
     public ShopModel(Context context){
         this.mContext = context;
     }
@@ -123,5 +125,175 @@ public class ShopModel {
             return null;
         }
         return shop;
+    }
+
+    public boolean isFollowing(int idShop, int idUser){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> func = new HashMap<>();
+        func.put("func", "isFollowing");
+
+        HashMap<String, String> attrIdUser = new HashMap<>();
+        attrIdUser.put("idUser", idUser+"");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("idShop", idShop+"");
+
+        attrs.add(func);
+        attrs.add(attrIdUser);
+        attrs.add(attrIdShop);
+
+        myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean follow(int idShop, int idUser){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> func = new HashMap<>();
+        func.put("func", "follow");
+
+        HashMap<String, String> attrIdUser = new HashMap<>();
+        attrIdUser.put("idUser", idUser+"");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("idShop", idShop+"");
+
+        attrs.add(func);
+        attrs.add(attrIdUser);
+        attrs.add(attrIdShop);
+
+        myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            Log.e("follow", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error_follow", jsonObject.getString("message"));
+            }
+        } catch (InterruptedException e) {
+            Log.e("error_follow", e.toString());
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            Log.e("error_follow", e.toString());
+            e.printStackTrace();
+        } catch (JSONException e) {
+            Log.e("error_follow", e.toString());
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean unFollow(int idShop, int idUser){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> func = new HashMap<>();
+        func.put("func", "unFollow");
+
+        HashMap<String, String> attrIdUser = new HashMap<>();
+        attrIdUser.put("idUser", idUser+"");
+
+        HashMap<String, String> attrIdProduct = new HashMap<>();
+        attrIdProduct.put("idShop", idShop+"");
+
+        attrs.add(func);
+        attrs.add(attrIdUser);
+        attrs.add(attrIdProduct);
+
+        myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            Log.e("unfollow", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error_unfollow", jsonObject.getString("message"));
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public ArrayList<Shop> getListShopFollowing(int idUser){
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getListShopFollow");
+
+        HashMap<String, String> attrIdUser = new HashMap<>();
+        attrIdUser.put("idUser", idUser + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdUser);
+
+        myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            Log.e("list_follow", data);
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("shops");
+            JSONArray jsonShops = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonShops.length(); i++){
+                JSONObject jsonObject1 = jsonShops.getJSONObject(i);
+                String id = jsonObject1.getString("id_shop");
+                listIdShop.add(Integer.parseInt(id));
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+
+        ArrayList<Shop> results = new ArrayList<>();
+        Log.e("list_follow", listIdShop.size() + "");
+        for (int i = 0; i < listIdShop.size(); i++){
+            Shop shop = getShopById(listIdShop.get(i));
+            results.add(shop);
+        }
+        return results;
     }
 }

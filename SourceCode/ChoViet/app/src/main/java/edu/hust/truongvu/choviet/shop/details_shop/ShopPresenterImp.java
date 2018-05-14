@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import edu.hust.truongvu.choviet.model.ShopModel;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.model.ProductModel;
@@ -15,12 +16,14 @@ import edu.hust.truongvu.choviet.model.ProductModel;
 public class ShopPresenterImp implements ShopPresenter {
     private ShopView shopView;
     private ProductModel productModel;
+    private ShopModel shopModel;
     private Context mContext;
 
     public ShopPresenterImp(Context context, ShopView shopView){
         this.shopView = shopView;
         this.mContext = context;
         productModel = new ProductModel(mContext);
+        shopModel = new ShopModel(mContext);
     }
 
 
@@ -41,6 +44,30 @@ public class ShopPresenterImp implements ShopPresenter {
             shopView.loadInforShopFalse();
         }else {
             shopView.loadInforShopSuccessful(shop);
+        }
+    }
+
+    @Override
+    public void checkFollowing(int idUser, int idShop) {
+        boolean isFollowing = shopModel.isFollowing(idShop, idUser);
+        shopView.initFollow(isFollowing);
+    }
+
+    @Override
+    public void follow(int idUser, int idShop) {
+        if (shopModel.follow(idShop, idUser)){
+            shopView.followSuccessful();
+        }else {
+            shopView.followFalse();
+        }
+    }
+
+    @Override
+    public void unFollow(int idUser, int idShop) {
+        if (shopModel.unFollow(idShop, idUser)){
+            shopView.unFollowSuccessful();
+        }else {
+            shopView.unFollowFalse();
         }
     }
 }

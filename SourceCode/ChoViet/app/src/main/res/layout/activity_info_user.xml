@@ -21,16 +21,32 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/padding_big"
                 android:focusable="true"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:focusableInTouchMode="true"
                 android:orientation="vertical">
                 <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_tiny"
+                    android:textColor="@color/grayicon"
+                    android:text="@string/username"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
                     android:textColor="@color/black"
+                    android:text="truongvu0106@gmail.com"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_medium"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:textColor="@color/grayicon"
                     android:text="@string/full_name"/>
                 <edu.hust.truongvu.choviet.helper.customview.MyEditText
-                    android:id="@+id/edt_name"
+                    android:id="@+id/edt_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small" />
@@ -39,7 +55,24 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_tiny"
                     android:layout_marginTop="@dimen/margin_small"
+                    android:textColor="@color/grayicon"
+                    android:text="@string/password"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
                     android:textColor="@color/black"
+                    android:inputType="textPassword"
+                    android:paddingTop="@dimen/padding_big"
+                    android:paddingBottom="@dimen/padding_medium"
+                    android:text="@string/full_name"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:textColor="@color/grayicon"
                     android:text="@string/phone"/>
                 <edu.hust.truongvu.choviet.helper.customview.MyEditText
                     android:id="@+id/edt_phone"
@@ -51,54 +84,66 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_tiny"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:textColor="@color/black"
+                    android:textColor="@color/grayicon"
                     android:text="@string/address"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyEditText
-                    android:id="@+id/edt_des"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:lines="3"
-                    android:gravity="center_vertical" />
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_tiny"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:textColor="@color/black"
-                    android:text="@string/stock"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyEditText
-                    android:id="@+id/edt_stock"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:inputType="number"
-                    android:hint="@string/enter_number"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_tiny"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:textColor="@color/black"
-                    android:text="@string/price"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyEditText
-                    android:id="@+id/edt_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:inputType="number"
-                    android:hint="@string/enter_price"/>
-                <Button
-                    android:id="@+id/btn_add"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimaryDark"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:text="@string/add"/>
+                    android:layout_marginTop="@dimen/margin_small">
 
+                </android.support.v7.widget.RecyclerView>
+                <RelativeLayout
+                    android:id="@+id/btn_add_new_addres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_big"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@drawable/bg_border_gray">
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_centerInParent="true"
+                        android:text="@string/add_new_address"/>
+                </RelativeLayout>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:textColor="@color/grayicon"
+                    android:text="@string/gender"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black"
+                    android:paddingTop="@dimen/padding_big"
+                    android:paddingBottom="@dimen/padding_medium"
+                    android:text="@string/not_set"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorGrayLight"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:textColor="@color/grayicon"
+                    android:text="@string/birthday"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black"
+                    android:paddingTop="@dimen/padding_big"
+                    android:paddingBottom="@dimen/padding_medium"
+                    android:text="@string/not_set"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

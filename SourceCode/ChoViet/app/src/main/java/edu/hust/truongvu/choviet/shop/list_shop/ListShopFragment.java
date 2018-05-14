@@ -45,6 +45,12 @@ public class ListShopFragment extends Fragment implements ListShopView{
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        listShopPresenterImp.initListShop();
+    }
+
+    @Override
     public void loadListShop(ArrayList<Shop> listShop) {
         adapter = new ListShopAdapter(getContext(), listShop, new ListShopAdapter.ShopListener() {
             @Override
@@ -55,9 +61,16 @@ public class ListShopFragment extends Fragment implements ListShopView{
             }
 
             @Override
-            public void onFollow(Shop shop) {
+            public void onFollow(Shop shop, int idUser) {
 
             }
+
+            @Override
+            public void onUnFollow(Shop shop, int idUser) {
+
+            }
+
+
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);

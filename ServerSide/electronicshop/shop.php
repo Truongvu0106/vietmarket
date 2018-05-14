@@ -9,6 +9,18 @@
 		case 'getShopById':
 			$func();
 			break;
+		case 'isFollowing':
+			$func();
+			break;
+		case 'follow':
+			$func();
+			break;
+		case 'unFollow':
+			$func();
+			break;
+		case 'getListShopFollow':
+			$func();
+			break;
 		default:
 			# code...
 			break;
@@ -93,6 +105,74 @@
 				"result" => "false"
 			]);
 		}
+		mysqli_close($conn);
+	}
+
+	function follow(){
+		global $conn;
+		if (isset($_POST["idShop"]) || isset($_POST["idUser"])) {
+			$idShop = $_POST["idShop"];
+			$idUser = $_POST["idUser"];
+		}
+
+		$query = "INSERT INTO shop_follow (id_shop, id_user) 
+		VALUES ('".$idShop."',
+				'".$idUser."')"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "follow successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error.""
+			]);
+		}
+
+		mysqli_close($conn);
+	}
+
+	function unFollow(){
+		global $conn;
+		if (isset($_POST["idShop"]) || isset($_POST["idUser"])) {
+			$idShop = $_POST["idShop"];
+			$idUser = $_POST["idUser"];
+		}
+
+		$query = "DELETE FROM shop_follow WHERE id_shop = ".$idShop." AND id_user =".$idUser.""; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "unfollow successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error.""
+			]);
+		}
+	}
+
+	function getListShopFollow(){
+		global $conn;
+		$my_json_array = array();
+
+		if (isset($_POST["idUser"])) {
+			$idUser = $_POST["idUser"];
+		}
+		$query = "SELECT * FROM shop_follow WHERE id_user = ".$idUser;
+		$results = mysqli_query($conn, $query);
+		echo "{";
+		echo "\"shops\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id_shop" => $line["id_shop"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
 		mysqli_close($conn);
 	}
 	

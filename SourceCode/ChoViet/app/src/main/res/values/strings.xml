@@ -76,10 +76,11 @@
     <string name="your_order">Your order</string>
     <string name="your_wishlist">Your wishlist</string>
     <string name="your_store">Your shop</string>
-    <string name="your_favorite_shop">Your favorite shop</string>
+    <string name="your_favorite_shop">Your following shop</string>
     <string name="settings">Settings</string>
     <string name="account">Account</string>
     <string name="about_us">About us</string>
+    <string name="user_information">User information</string>
 
     <!-- product -->
     <string name="like">Like</string>
@@ -129,6 +130,11 @@
 
     <!-- Shop -->
     <string name="follow">Follow</string>
+    <string name="added_to_your_following">Added to your list follow</string>
+    <string name="follow_false">Follow false</string>
+    <string name="remove_from_your_following">Remove from your list follow</string>
+    <string name="unfollow_false">Unfollow false</string>
+    <string name="following_shop">Following shops</string>
 
     <!-- Rate -->
     <string name="rate_title">Title</string>
@@ -232,4 +238,5 @@
     <string name="do_you_want_clear_filter">Do you want clear all filter?</string>
 
     <string name="wishlist">Your wishlist</string>
+
 </resources>
