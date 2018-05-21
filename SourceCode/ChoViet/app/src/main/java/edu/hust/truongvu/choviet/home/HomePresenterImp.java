@@ -56,6 +56,14 @@ public class HomePresenterImp implements HomePresenter {
         }
     }
 
+    public void initListBrand(ArrayList<Brand> data){
+        if (data == null || data.size() == 0){
+            homeView.loadListBrandFalse();
+        }else {
+            homeView.loadListBrandSuccessful(data);
+        }
+    }
+
     @Override
     public void initListSearch() {
         ArrayList<PopularSearch> list = popularSearchModel.getAllPopularSearch();
@@ -73,6 +81,14 @@ public class HomePresenterImp implements HomePresenter {
             homeView.loadListHighlightShopFalse();
         }else {
             homeView.loadListHighlightShopSuccessful(listShop);
+        }
+    }
+
+    public void initListHighLightShop(ArrayList<Shop> data){
+        if (data == null || data.size() == 0){
+            homeView.loadListHighlightShopFalse();
+        }else {
+            homeView.loadListHighlightShopSuccessful(data);
         }
     }
 

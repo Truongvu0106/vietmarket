@@ -56,7 +56,9 @@
         <activity android:name=".user.myshop.add_product.AddProductActivity" />
         <activity android:name=".user.wishlist.WishListProductActivity" />
         <activity android:name=".user.info_user.InfoUserActivity" />
-        <activity android:name=".user.followingshop.FollowingShopActivity"></activity>
+        <activity android:name=".user.followingshop.FollowingShopActivity" />
+        <activity android:name=".user.myshop.registershop.RegisterShopActivity" />
+        <activity android:name=".order.address.GuessInfoActivity"></activity>
     </application>
 
 </manifest>

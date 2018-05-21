@@ -13,14 +13,15 @@ public class SigninPresenterImp implements SigninPresenter {
 
     private Context context;
     private SigninView signinView;
+    private UserModel userModel;
     public SigninPresenterImp(Context context, SigninView signinView){
         this.signinView = signinView;
         this.context = context;
+        userModel = new UserModel(context);
     }
 
     @Override
     public void signin(String username, String password) {
-        UserModel userModel = new UserModel(context);
         if (username.trim().equals("") || password.trim().equals("") ||
                 username.length() == 0 || password.length() == 0){
             signinView.onError(context.getString(R.string.please_enter_signin));

@@ -296,4 +296,8 @@ public class ShopModel {
         }
         return results;
     }
+
+    public boolean registerShop(Shop shop){
+        return true;
+    }
 }

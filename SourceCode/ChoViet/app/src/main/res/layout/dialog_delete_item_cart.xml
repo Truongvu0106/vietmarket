@@ -58,7 +58,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
                     android:text="@string/cancel"
-                    android:textStyle="bold"
                     android:layout_centerInParent="true"
                     android:padding="@dimen/padding_small"
                     android:textColor="@color/colorPrimaryDark" />

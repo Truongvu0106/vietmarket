@@ -189,6 +189,8 @@
     <string name="image">Image:</string>
     <string name="information">Description</string>
     <string name="enter_name">Enter name</string>
+    <string name="enter_phone">Enter phone number</string>
+    <string name="enter_address">Enter address</string>
     <string name="enter_information">Enter description</string>
     <string name="enter_weight">Enter weight</string>
     <string name="enter_price">Enter price</string>
@@ -239,4 +241,17 @@
 
     <string name="wishlist">Your wishlist</string>
 
+    <string name="register">Register</string>
+    <string name="name_shop">Name shop</string>
+    <string name="slogan">Slogan</string>
+    <string name="avatar">Avatar</string>
+    <string name="cover">Cover</string>
+    <string name="website">Website</string>
+    <string name="register_shop">Register shop</string>
+
+    <string name="you_have_not_sign_in">You have not signed in yet</string>
+    <string name="sign_in_now">Sign in now</string>
+    <string name="continue_as_guess">Continue as guess</string>
+
+    <string name="enter_your_information">Enter your information</string>
 </resources>
