@@ -1,6 +1,9 @@
 package edu.hust.truongvu.choviet.shop.list_shop;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,8 @@ import edu.hust.truongvu.choviet.model.ShopModel;
 import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.Constants;
+import edu.hust.truongvu.choviet.startup.StartActivity;
+import edu.hust.truongvu.choviet.user.ProfileCheckDialog;
 
 /**
  * Created by truon on 3/7/2018.
@@ -103,19 +108,36 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
             btnFollow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (isLiked){
-                        layoutFollowed.setVisibility(View.GONE);
-                        if (shopModel.unFollow(shop.getId(), currentUserId)){
-                            Toast.makeText(context, context.getString(R.string.remove_from_your_following), Toast.LENGTH_SHORT).show();
+                    if (currentUserId != 0){
+                        if (isLiked){
+                            layoutFollowed.setVisibility(View.GONE);
+                            if (shopModel.unFollow(shop.getId(), currentUserId)){
+                                Toast.makeText(context, context.getString(R.string.remove_from_your_following), Toast.LENGTH_SHORT).show();
+                            }
+                            myListener.onUnFollow(shop, currentUserId);
+                        }else {
+                            layoutFollowed.setVisibility(View.VISIBLE);
+                            if (shopModel.follow(shop.getId(), currentUserId)){
+                                Toast.makeText(context, context.getString(R.string.added_to_your_following), Toast.LENGTH_SHORT).show();
+                            }
+                            myListener.onFollow(shop, currentUserId);
                         }
-                        myListener.onUnFollow(shop, currentUserId);
                     }else {
-                        layoutFollowed.setVisibility(View.VISIBLE);
-                        if (shopModel.follow(shop.getId(), currentUserId)){
-                            Toast.makeText(context, context.getString(R.string.added_to_your_following), Toast.LENGTH_SHORT).show();
-                        }
-                        myListener.onFollow(shop, currentUserId);
+                        ProfileCheckDialog dialog = new ProfileCheckDialog(context, new ProfileCheckDialog.ProfileCheckListener() {
+                            @Override
+                            public void login() {
+                                context.startActivity(new Intent(context, StartActivity.class));
+                            }
+
+                            @Override
+                            public void continueAsGuess() {
+
+                            }
+                        });
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
                     }
+
                 }
             });
         }

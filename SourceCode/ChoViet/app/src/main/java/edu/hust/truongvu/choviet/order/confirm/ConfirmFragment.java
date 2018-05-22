@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.order.confirm;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.init.MainActivity;
 import edu.hust.truongvu.choviet.model.entity.Order;
 import edu.hust.truongvu.choviet.model.entity.OrderDetails;
 import edu.hust.truongvu.choviet.model.entity.PayMethod;
@@ -37,7 +39,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     private ConfirmPresenterImp confirmPresenterImp;
     private long summary = 0;
     private int idTransport, idPayment;
-    private String mAddress = "";
+    private String mAddress = "", mName = "", mPhone = "";
     private ArrayList<OrderDetails> listOrderDetails;
     public ConfirmFragment() {
         // Required empty public constructor
@@ -64,15 +66,18 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
         btnConfirm.setOnClickListener(this);
 
         confirmPresenterImp = new ConfirmPresenterImp(getContext(), this);
-        confirmPresenterImp.initView(AddressFragment.selectedAddress, TransportFragment.idTransport, PayMethodFragment.idMethod);
+        confirmPresenterImp.initView(AddressFragment.mName, AddressFragment.mPhone, AddressFragment.selectedAddress,
+                TransportFragment.idTransport, PayMethodFragment.idMethod);
         return view;
     }
 
     @Override
-    public void loadViewSuccess(Transport transport, PayMethod payMethod, String address, ArrayList<Product> list) {
+    public void loadViewSuccess(Transport transport, PayMethod payMethod, String name, String phone, String address, ArrayList<Product> list) {
         idPayment = payMethod.getId();
         idTransport = transport.getId();
         mAddress = address;
+        mName = name;
+        mPhone = phone;
 
         tvAddress.setText(address);
         tvPayment.setText(payMethod.getName());
@@ -108,6 +113,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     @Override
     public void addOrderSuccessful() {
         Toast.makeText(getContext(), getContext().getString(R.string.order_confirmed_successful), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), MainActivity.class));
     }
 
     @Override
@@ -125,7 +131,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     }
 
     private void confirm(){
-        Order order = new Order(0, MyHelper.getUserIdPreference(getContext()), System.currentTimeMillis(),
+        Order order = new Order(0, mName, mPhone, System.currentTimeMillis(),
                 Constants.OrderStatus.WAITING.getIdStatus(), idTransport, idPayment, summary, mAddress);
         order.setOrderDetails(listOrderDetails);
         confirmPresenterImp.confirmOrder(order);

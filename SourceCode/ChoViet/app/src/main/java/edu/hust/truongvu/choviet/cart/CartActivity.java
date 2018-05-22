@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.cart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,7 +17,11 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
+import edu.hust.truongvu.choviet.order.address.GuessInfoActivity;
+import edu.hust.truongvu.choviet.startup.StartActivity;
+import edu.hust.truongvu.choviet.user.ProfileCheckDialog;
 
 public class CartActivity extends AppCompatActivity implements CartView, View.OnClickListener{
 
@@ -123,8 +128,23 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
         int id = view.getId();
         switch (id){
             case R.id.btn_pay:
+                User user = MyHelper.getCurrentUser(CartActivity.this);
                 if (totalMoney == 0){
                     Toast.makeText(this, getString(R.string.cart_empty), Toast.LENGTH_SHORT).show();
+                }else if (user == null){
+                    ProfileCheckDialog dialog = new ProfileCheckDialog(CartActivity.this, new ProfileCheckDialog.ProfileCheckListener() {
+                        @Override
+                        public void login() {
+                            startActivity(new Intent(CartActivity.this, StartActivity.class));
+                        }
+
+                        @Override
+                        public void continueAsGuess() {
+                            startActivity(new Intent(CartActivity.this, GuessInfoActivity.class));
+                        }
+                    });
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
                 }else {
                     startActivity(new Intent(CartActivity.this, PaymentActivity.class));
                 }

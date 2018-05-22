@@ -1,7 +1,10 @@
 package edu.hust.truongvu.choviet.product.list_product;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +17,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.cart.CartActivity;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.helper.Constants;
+import edu.hust.truongvu.choviet.model.entity.User;
+import edu.hust.truongvu.choviet.order.address.GuessInfoActivity;
+import edu.hust.truongvu.choviet.startup.StartActivity;
+import edu.hust.truongvu.choviet.user.ProfileCheckDialog;
 
 /**
  * Created by truon on 2/23/2018.
@@ -118,19 +126,37 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             layoutLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (isLiked){
-                        imgLikeFill.setVisibility(View.GONE);
-                        if (productModel.unlikeProduct(currentUserId, product.getId())){
-                            Toast.makeText(context, context.getString(R.string.remove_from_your_wishlist), Toast.LENGTH_SHORT).show();
+                    User user = MyHelper.getCurrentUser(context);
+                    if (currentUserId != 0){
+                        if (isLiked){
+                            imgLikeFill.setVisibility(View.GONE);
+                            if (productModel.unlikeProduct(currentUserId, product.getId())){
+                                Toast.makeText(context, context.getString(R.string.remove_from_your_wishlist), Toast.LENGTH_SHORT).show();
+                            }
+                            myListener.onUnlikeClick(currentUserId, product);
+                        }else {
+                            imgLikeFill.setVisibility(View.VISIBLE);
+                            if (productModel.likeProduct(currentUserId, product.getId())){
+                                Toast.makeText(context, context.getString(R.string.add_to_your_wishlist), Toast.LENGTH_SHORT).show();
+                            }
+                            myListener.onLikeClick(currentUserId, product);
                         }
-                        myListener.onUnlikeClick(currentUserId, product);
                     }else {
-                        imgLikeFill.setVisibility(View.VISIBLE);
-                        if (productModel.likeProduct(currentUserId, product.getId())){
-                            Toast.makeText(context, context.getString(R.string.add_to_your_wishlist), Toast.LENGTH_SHORT).show();
-                        }
-                        myListener.onLikeClick(currentUserId, product);
+                        ProfileCheckDialog dialog = new ProfileCheckDialog(context, new ProfileCheckDialog.ProfileCheckListener() {
+                            @Override
+                            public void login() {
+                                context.startActivity(new Intent(context, StartActivity.class));
+                            }
+
+                            @Override
+                            public void continueAsGuess() {
+
+                            }
+                        });
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
                     }
+
                 }
             });
         }

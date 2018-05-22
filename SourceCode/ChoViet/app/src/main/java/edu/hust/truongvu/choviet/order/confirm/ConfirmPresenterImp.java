@@ -37,7 +37,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
     }
 
     @Override
-    public void initView(String address, int idTransport, int idPayMethod) {
+    public void initView(String name, String phone, String address, int idTransport, int idPayMethod) {
         cartModel.openDatabase(context);
         ArrayList<Product> listProduct = new ArrayList<>();
         listProduct = cartModel.getAllItemCart();
@@ -54,7 +54,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
             }
             confirmView.loadViewFalse();
         }else {
-            confirmView.loadViewSuccess(transport, payMethod, address, listProduct);
+            confirmView.loadViewSuccess(transport, payMethod, name, phone, address, listProduct);
         }
     }
 
@@ -62,6 +62,13 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
     public void confirmOrder(Order order) {
         if (orderModel.insertOrder(order)){
             confirmView.addOrderSuccessful();
+            cartModel.openDatabase(context);
+            if (cartModel.deleteAllItemCart()){
+                Log.e("cart", "delete all successful");
+            }else {
+                Log.e("cart", "delete all false");
+            }
+            cartModel.closeDatabse();
         }else {
             confirmView.addOrderFalse();
         }

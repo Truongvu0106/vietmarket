@@ -47,7 +47,7 @@ public class MyService extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        dialog = ProgressDialog.show(mContext, null, mContext.getString(R.string.please_wait));
+//        dialog = ProgressDialog.show(mContext, null, mContext.getString(R.string.please_wait));
     }
 
     @Override
@@ -72,9 +72,9 @@ public class MyService extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if (dialog.isShowing()){
-            dialog.dismiss();
-        }
+//        if (dialog.isShowing()){
+//            dialog.dismiss();
+//        }
     }
 
     private String doGet(HttpURLConnection httpURLConnection){

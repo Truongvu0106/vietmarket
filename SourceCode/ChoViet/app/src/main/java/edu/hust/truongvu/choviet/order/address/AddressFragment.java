@@ -16,6 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.Constants;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
 import edu.hust.truongvu.choviet.order.PaymentPresenterImp;
 import edu.hust.truongvu.choviet.order.PaymentView;
@@ -26,12 +29,14 @@ import edu.hust.truongvu.choviet.order.transport.TransportFragment;
  */
 public class AddressFragment extends Fragment implements PaymentView, AddressView, View.OnClickListener{
     public static String selectedAddress = "";
+    public static String mName = "", mPhone = "";
     private PaymentPresenterImp paymentPresenterImp;
     private AddressPresenterImp addressPresenterImp;
     private TextView tvuserName, tvPhone;
     private View btnNext, btnInsertAddress;
     private RecyclerView recyclerView;
     private AddressAdapter adapter;
+    private User user;
     public AddressFragment() {
         // Required empty public constructor
     }
@@ -56,8 +61,28 @@ public class AddressFragment extends Fragment implements PaymentView, AddressVie
         paymentPresenterImp = new PaymentPresenterImp(this);
         addressPresenterImp = new AddressPresenterImp(getContext(), this);
 
-        addressPresenterImp.initUser();
-        addressPresenterImp.initListAddress();
+        user = MyHelper.getCurrentUser(getContext());
+        if (user != null){
+            btnInsertAddress.setVisibility(View.VISIBLE);
+            addressPresenterImp.initUser(user);
+            addressPresenterImp.initListAddress(user);
+
+            mName = user.getFullname();
+            mPhone = user.getPhone();
+        }else {
+            btnInsertAddress.setVisibility(View.GONE);
+            String name = getActivity().getIntent().getStringExtra(GuessInfoActivity.GUESS_NAME);
+            String phone = getActivity().getIntent().getStringExtra(GuessInfoActivity.GUESS_PHONE);
+            String address = getActivity().getIntent().getStringExtra(GuessInfoActivity.GUESS_ADDRESS);
+
+            mName = name;
+            mPhone = phone;
+            selectedAddress = address;
+
+            addressPresenterImp.initGuess(name, phone);
+            addressPresenterImp.initAddressGuess(address);
+        }
+
 
         btnNext.setOnClickListener(this);
         btnInsertAddress.setOnClickListener(this);
@@ -118,7 +143,7 @@ public class AddressFragment extends Fragment implements PaymentView, AddressVie
 
     @Override
     public void insertSuccessful() {
-        addressPresenterImp.initListAddress();
+        addressPresenterImp.initListAddress(user);
     }
 
     @Override

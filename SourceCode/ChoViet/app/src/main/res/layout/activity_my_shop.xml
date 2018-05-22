@@ -8,231 +8,268 @@
     android:orientation="vertical"
     android:background="@color/colorGrayLight"
     tools:context=".shop.details_shop.ShopActivity">
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layout_infor"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <FrameLayout
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-                <ImageView
-                    android:id="@+id/img_cover_shop"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/giaydep"
-                    android:scaleType="centerCrop"/>
-            </LinearLayout>
-            <LinearLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
-                android:orientation="horizontal">
+                android:background="@color/white">
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="@dimen/margin_big">
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp">
                     <ImageView
-                        android:id="@+id/img_avater_shop"
-                        android:layout_width="70dp"
-                        android:layout_height="80dp"
-                        android:padding="@dimen/padding_small"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/bg_white_border"
-                        android:src="@drawable/nikon"/>
+                        android:id="@+id/img_cover_shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/giaydep"
+                        android:scaleType="centerCrop"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="@dimen/margin_medium">
-
-                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                        android:id="@+id/tv_name_store"
+                    android:layout_marginTop="90dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_medium"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:text="Nikon Store"/>
-                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                        android:id="@+id/tv_slogan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:text="Nang niu ban chan Viet"/>
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/margin_big">
+                        <ImageView
+                            android:id="@+id/img_avater_shop"
+                            android:layout_width="70dp"
+                            android:layout_height="80dp"
+                            android:padding="@dimen/padding_small"
+                            android:scaleType="fitCenter"
+                            android:background="@drawable/bg_white_border"
+                            android:src="@drawable/nikon"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:orientation="horizontal">
-                        <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="@dimen/margin_medium">
+
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:id="@+id/tv_name_store"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="@dimen/icon_size_small"
-                                android:layout_height="@dimen/icon_size_small"
-                                android:paddingTop="@dimen/padding_small"
-                                android:paddingBottom="@dimen/padding_small"
-                                android:paddingRight="@dimen/padding_small"
-                                android:src="@drawable/shopping_bag"/>
-                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                                android:id="@+id/number_products"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorRed"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:text="48"/>
-                        </LinearLayout>
-                        <LinearLayout
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_medium"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="Nikon Store"/>
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:id="@+id/tv_slogan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:layout_marginLeft="@dimen/margin_big"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="Nang niu ban chan Viet"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_marginBottom="@dimen/margin_small"
                             android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="@dimen/icon_size_small"
-                                android:layout_height="@dimen/icon_size_small"
-                                android:paddingTop="@dimen/padding_small"
-                                android:paddingBottom="@dimen/padding_small"
-                                android:paddingRight="@dimen/padding_small"
-                                android:src="@drawable/star"/>
-                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                                android:id="@+id/rate_shop"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colorRed"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:text="4.8"/>
-                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_small"
+                                    android:layout_height="@dimen/icon_size_small"
+                                    android:paddingTop="@dimen/padding_small"
+                                    android:paddingBottom="@dimen/padding_small"
+                                    android:paddingRight="@dimen/padding_small"
+                                    android:src="@drawable/shopping_bag"/>
+                                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                    android:id="@+id/number_products"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorRed"
+                                    android:layout_marginLeft="@dimen/margin_tiny"
+                                    android:text="48"/>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/margin_small"
-                                android:text="@string/rates"/>
+                                android:gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/margin_big"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_small"
+                                    android:layout_height="@dimen/icon_size_small"
+                                    android:paddingTop="@dimen/padding_small"
+                                    android:paddingBottom="@dimen/padding_small"
+                                    android:paddingRight="@dimen/padding_small"
+                                    android:src="@drawable/star"/>
+                                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                    android:id="@+id/rate_shop"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorRed"
+                                    android:layout_marginLeft="@dimen/margin_tiny"
+                                    android:text="4.8"/>
+                                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_small"
+                                    android:text="@string/rates"/>
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </FrameLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:paddingTop="@dimen/padding_small"
-            android:paddingBottom="@dimen/padding_small"
-            android:paddingRight="@dimen/padding_small"
-            android:paddingLeft="@dimen/padding_medium"
-            android:layout_marginTop="@dimen/margin_small">
+            </FrameLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/ic_address"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingBottom="@dimen/padding_small"
+                android:paddingRight="@dimen/padding_small"
+                android:paddingLeft="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/margin_small">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:text="Nha N1, chung cu Dong Tau"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="@dimen/margin_small"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/ic_phone"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:padding="@dimen/padding_big"
+                        android:src="@drawable/ic_address"/>
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:text="Nha N1, chung cu Dong Tau"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:text="0983815459"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="@dimen/margin_small"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/ic_website"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:padding="@dimen/padding_big"
+                        android:src="@drawable/ic_phone"/>
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:text="0983815459"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:text="www.hust.edu.vn"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:padding="@dimen/padding_big"
+                        android:src="@drawable/ic_website"/>
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginLeft="@dimen/margin_small"
+                        android:text="www.hust.edu.vn"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                </LinearLayout>
             </LinearLayout>
+            <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+                android:id="@+id/pager_options"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:icvp_center_page_scale_offset="30dp"
+                app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+                app:icvp_max_page_scale="0.8"
+                app:icvp_medium_scaled="true"
+                app:icvp_min_page_scale="0.5"
+                app:icvp_min_page_scale_offset="5dp"
+                app:icvp_scroll_duration="500"/>
+
         </LinearLayout>
-        <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
-            android:id="@+id/pager_options"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:icvp_center_page_scale_offset="30dp"
-            app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
-            app:icvp_max_page_scale="0.8"
-            app:icvp_medium_scaled="true"
-            app:icvp_min_page_scale="0.5"
-            app:icvp_min_page_scale_offset="5dp"
-            app:icvp_scroll_duration="500"/>
-
-    </LinearLayout>
-    <com.github.clans.fab.FloatingActionMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="@dimen/margin_small"
-        android:layout_marginBottom="@dimen/margin_medium"
-        fab:menu_showShadow="true"
-        fab:menu_shadowColor="#66000000"
-        fab:menu_fab_size="normal"
-        fab:menu_colorNormal="@color/colorBlue"
-        fab:menu_colorPressed="@color/colorBlueDark">
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/btn_add_new_product"
+        <com.github.clans.fab.FloatingActionMenu
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_product"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white"
-            fab:fab_size="mini"
-            fab:fab_label="@string/add_new_product"/>
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/btn_edit_information"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_medium"
+            fab:menu_showShadow="true"
+            fab:menu_shadowColor="#66000000"
+            fab:menu_fab_size="normal"
+            fab:menu_colorNormal="@color/colorBlue"
+            fab:menu_colorPressed="@color/colorBlueDark">
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/btn_add_new_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_product"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white"
+                fab:fab_size="mini"
+                fab:fab_label="@string/add_new_product"/>
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/btn_edit_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit_information"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white"
+                fab:fab_size="mini"
+                fab:fab_label="@string/edit_information"/>
+        </com.github.clans.fab.FloatingActionMenu>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_err"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/white">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit_information"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white"
-            fab:fab_size="mini"
-            fab:fab_label="@string/edit_information"/>
-    </com.github.clans.fab.FloatingActionMenu>
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="@dimen/icon_size_large"
+                android:layout_height="@dimen/icon_size_large"
+                android:padding="@dimen/padding_large"
+                android:src="@drawable/ic_register_shop"/>
+            <Button
+                android:id="@+id/btn_register_now"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/register_now"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_color"/>
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

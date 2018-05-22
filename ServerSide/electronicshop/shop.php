@@ -21,9 +21,89 @@
 		case 'getListShopFollow':
 			$func();
 			break;
+		case 'getShopByOwner':
+			$func();
+			break;
+		case 'registerShop':
+			$func();
+			break;
 		default:
 			# code...
 			break;
+	}
+
+	function registerShop(){
+		global $conn;
+		if (isset($_POST["name_shop"]) || isset($_POST["slogan"]) || isset($_POST["img_avatar"]) || isset($_POST["img_cover"]) || isset($_POST["id_owner"]) || isset($_POST["address"]) || isset($_POST["phone"]) || isset($_POST["website"]) || isset($_POST["rate"]) || isset($_POST["highlight"])) {
+			$name = $_POST["name_shop"];
+			$slogan = $_POST["slogan"];
+			$avatar = $_POST["img_avatar"];
+			$cover = $_POST["img_cover"];
+			$owner = $_POST["id_owner"];
+			$address = $_POST["address"];
+			$phone = $_POST["phone"];
+			$website = $_POST["website"];
+			$rate = $_POST["rate"];
+			$highlight = $_POST["highlight"];
+		}
+		
+		$query = "INSERT INTO shop (name_shop, slogan, img_avatar, img_cover, id_owner, address, phone, website, rate, highlight) 
+		VALUES ('".$name."',
+				'".$slogan."',
+				'".$avatar."',
+				'".$cover."',
+				'".$owner."',
+				'".$address."',
+				'".$phone."',
+				'".$website."',
+				'".$rate."',
+				'".$highlight."')"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "insert product successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn);
+	}
+
+	function getShopByOwner(){
+		global $conn;
+		if (isset($_POST["id_owner"])) {
+			$idOwner = $_POST["id_owner"];
+		}
+
+		$query = "SELECT * FROM shop WHERE id_owner = ".$idOwner;
+		$results = mysqli_query($conn, $query);
+		$my_json_array = array();
+		echo "{";
+		echo "\"shop\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id" => $line["id_shop"], 
+					"name" => $line["name_shop"],
+					"slogan" => $line["slogan"],
+					"avatar" => $line["img_avatar"],
+					"cover" => $line["img_cover"],
+					"owner" => $line["id_owner"],
+					"address" => $line["address"],
+					"phone" => $line["phone"],
+					"website" => $line["website"],
+					"rate" => $line["rate"],
+					"highlight" => $line["highlight"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+
 	}
 
 	function getAllShop(){

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.model.entity.Brand;
 import edu.hust.truongvu.choviet.model.entity.ChildCategory;
 import edu.hust.truongvu.choviet.model.entity.MyImage;
@@ -20,6 +21,7 @@ import edu.hust.truongvu.choviet.model.ProductModel;
  */
 
 public class AddProductPresenterImp implements AddProductPresenter, UploadImageListener {
+    public static final String UPLOAD_IMG_URL = Constants.Path.MY_PATH + "uploadImageProduct.php";
     private AddProductView view;
     private Context mContext;
     private UploadImageService uploadImageService;
@@ -29,7 +31,7 @@ public class AddProductPresenterImp implements AddProductPresenter, UploadImageL
     public AddProductPresenterImp(Context context, AddProductView view){
         this.mContext = context;
         this.view = view;
-        uploadImageService = new UploadImageService(context, this);
+        uploadImageService = new UploadImageService(context, this, UPLOAD_IMG_URL);
         brandModel = new BrandModel(context);
         categoryModel = new CategoryModel(context);
         productModel = new ProductModel(context);

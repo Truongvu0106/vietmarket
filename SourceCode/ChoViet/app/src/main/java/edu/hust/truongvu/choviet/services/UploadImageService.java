@@ -27,13 +27,14 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class UploadImageService {
-    public static final String UPLOAD_IMG_URL = Constants.Path.MY_PATH + "uploadimage.php";
     private UploadImageListener mListener;
     private Context mContext;
+    private String PATH;
 
-    public UploadImageService(Context context, UploadImageListener uploadImageListener){
+    public UploadImageService(Context context, UploadImageListener uploadImageListener, String PATH){
         this.mListener = uploadImageListener;
         this.mContext = context;
+        this.PATH = PATH;
     }
 
     public void uploadImageVolley(final MyImage myImage){
@@ -42,7 +43,7 @@ public class UploadImageService {
         }else {
             final ProgressDialog pd = ProgressDialog.show(mContext, null, mContext.getString(R.string.please_wait));
             final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-            StringRequest request = new StringRequest(Request.Method.POST, UPLOAD_IMG_URL, new Response.Listener<String>() {
+            StringRequest request = new StringRequest(Request.Method.POST, PATH, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     pd.dismiss();

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -29,15 +30,21 @@ public class RecentSearchModel {
     }
 
     public ArrayList<String> getListRecentSearch(){
-        Cursor cursor = database.query(TABLE_RECENT_SEARCH,
-                new String[]{MyDb.COLUMN_ID_SEARCH, MyDb.COLUMN_CONTENT_SEARCH},
-                null,
-                null,
-                null,
-                null,
-                COLUMN_ID_SEARCH + " DESC",
-                5+"");
-        return convertCursorToRecentSearch(cursor);
+        try{
+            Cursor cursor = database.query(TABLE_RECENT_SEARCH,
+                    new String[]{MyDb.COLUMN_ID_SEARCH, MyDb.COLUMN_CONTENT_SEARCH},
+                    null,
+                    null,
+                    null,
+                    null,
+                    COLUMN_ID_SEARCH + " DESC",
+                    5+"");
+            return convertCursorToRecentSearch(cursor);
+        }catch (Exception e){
+            Log.e("err_db", e.toString());
+            return new ArrayList<>();
+        }
+
     }
 
     public boolean addRecentSearch(String txt){

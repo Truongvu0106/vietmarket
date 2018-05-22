@@ -2,6 +2,8 @@ package edu.hust.truongvu.choviet.user.info_user;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,12 +19,13 @@ import java.util.Calendar;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
+import edu.hust.truongvu.choviet.init.MainActivity;
 
 public class InfoUserActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView tvUseName, tvPass, tvGender, tvBirthDay;
     private EditText edtFullName, edtPhone;
     private RecyclerView recyclerView;
-    private View btnAddAddress;
+    private View btnAddAddress, btnSignout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +54,13 @@ public class InfoUserActivity extends AppCompatActivity implements View.OnClickL
         edtPhone = findViewById(R.id.edt_phone);
         recyclerView = findViewById(R.id.list_address);
         btnAddAddress = findViewById(R.id.btn_add_new_addres);
+        btnSignout = findViewById(R.id.btn_logout);
 
         tvPass.setOnClickListener(this);
         tvGender.setOnClickListener(this);
         tvBirthDay.setOnClickListener(this);
         btnAddAddress.setOnClickListener(this);
+        btnSignout.setOnClickListener(this);
     }
 
     @Override
@@ -72,9 +77,28 @@ public class InfoUserActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_add_new_addres:
                 break;
+            case R.id.btn_logout:
+                logout();
             default:
                 break;
         }
+    }
+
+    private void logout(){
+        LogoutDialog dialog = new LogoutDialog(InfoUserActivity.this, new LogoutDialog.LogoutListener() {
+            @Override
+            public void onLogout() {
+                SharedPreferences loginPreference = InfoUserActivity.this.getSharedPreferences(Constants.MyTag.MY_LOGIN, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = loginPreference.edit();
+                editor.putString(Constants.MyTag.USERNAME, "");
+                editor.putInt(Constants.MyTag.USERID, 0);
+                editor.commit();
+                startActivity(new Intent(InfoUserActivity.this, MainActivity.class));
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
     }
 
     private void changePassClick(){

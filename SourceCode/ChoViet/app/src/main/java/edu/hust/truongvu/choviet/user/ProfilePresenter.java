@@ -7,4 +7,5 @@ package edu.hust.truongvu.choviet.user;
 public interface ProfilePresenter {
     void getAccessTokenFacebook();
     void setupWithGoogle();
+    void initInforUser();
 }

@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.init.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,7 +24,8 @@ public class SplashActivity extends AppCompatActivity {
         logo = findViewById(R.id.layout_logo);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.splash_anim);
         logo.startAnimation(animation);
-        final Intent intent = new Intent(SplashActivity.this, StartActivity.class);
+        final Intent intent1 = new Intent(SplashActivity.this, StartActivity.class);
+        final Intent intent2 = new Intent(SplashActivity.this, MainActivity.class);
         Thread timer = new Thread(){
             public void run(){
                 try{
@@ -31,7 +34,12 @@ public class SplashActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 finally {
-                    startActivity(intent);
+                    if (MyHelper.getCurrentUser(SplashActivity.this) == null){
+                        startActivity(intent1);
+                    }else {
+                        startActivity(intent2);
+                    }
+
                     finish();
                 }
             }

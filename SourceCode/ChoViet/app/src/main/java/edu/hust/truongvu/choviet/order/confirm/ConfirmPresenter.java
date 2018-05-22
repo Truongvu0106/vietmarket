@@ -7,6 +7,6 @@ import edu.hust.truongvu.choviet.model.entity.Order;
  */
 
 public interface ConfirmPresenter {
-    void initView(String address, int idTransport, int idPayMethod);
+    void initView(String name, String phone, String address, int idTransport, int idPayMethod);
     void confirmOrder(Order order);
 }

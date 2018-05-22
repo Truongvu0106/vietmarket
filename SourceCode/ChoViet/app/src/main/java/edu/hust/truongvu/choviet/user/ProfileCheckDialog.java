@@ -36,6 +36,7 @@ public class ProfileCheckDialog extends AlertDialog{
             @Override
             public void onClick(View view) {
                 mListener.login();
+                dismiss();
             }
         });
 
@@ -43,6 +44,7 @@ public class ProfileCheckDialog extends AlertDialog{
             @Override
             public void onClick(View view) {
                 mListener.continueAsGuess();
+                dismiss();
             }
         });
     }

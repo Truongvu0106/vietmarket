@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        if (account != null){
 //            mainPresenterImp.loadInfoGoogle(account);
 //        }
-        Toast.makeText(this, "Welcome " + MyHelper.getUserNamePreference(this), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Welcome " + MyHelper.getUserNamePreference(this), Toast.LENGTH_SHORT).show();
 
     }
 

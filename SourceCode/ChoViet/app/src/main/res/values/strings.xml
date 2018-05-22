@@ -242,16 +242,21 @@
     <string name="wishlist">Your wishlist</string>
 
     <string name="register">Register</string>
+    <string name="register_now">Register now</string>
     <string name="name_shop">Name shop</string>
     <string name="slogan">Slogan</string>
     <string name="avatar">Avatar</string>
     <string name="cover">Cover</string>
     <string name="website">Website</string>
     <string name="register_shop">Register shop</string>
+    <string name="register_successful">Register successful!</string>
+    <string name="register_false">Register false!</string>
 
     <string name="you_have_not_sign_in">You have not signed in yet</string>
     <string name="sign_in_now">Sign in now</string>
-    <string name="continue_as_guess">Continue as guess</string>
+    <string name="continue_as_guess">Continue as guest</string>
 
     <string name="enter_your_information">Enter your information</string>
+    <string name="sign_out">Sign out</string>
+    <string name="do_you_want_to_logout">Do you want to sign out?</string>
 </resources>

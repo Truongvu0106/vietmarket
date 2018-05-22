@@ -22,6 +22,8 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class ProductModel {
+    public static final String IMAGE_ROOT = "/img/product/";
+    public static final String IMAGE_EXTEND = ".jpeg";
     private static final String PRODUCT_PATH = Constants.Path.MY_PATH + "product.php";
     private Context mContext;
     private MyService myService;
@@ -415,9 +417,9 @@ public class ProductModel {
         ArrayList<String> listImg = product.getImgs();
         for (int i = 0; i < listImg.size(); i++){
             if (i == (listImg.size() - 1)){
-                imgPath += listImg.get(i);
+                imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND;
             }else {
-                imgPath += listImg.get(i) + "@";
+                imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND + "@";
             }
         }
 

@@ -1,7 +1,10 @@
 package edu.hust.truongvu.choviet.user;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +17,12 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.Constants;
+import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.model.entity.User;
+import edu.hust.truongvu.choviet.startup.StartActivity;
 import edu.hust.truongvu.choviet.user.followingshop.FollowingShopActivity;
+import edu.hust.truongvu.choviet.user.info_user.InfoUserActivity;
 import edu.hust.truongvu.choviet.user.myshop.MyShopActivity;
 import edu.hust.truongvu.choviet.user.wishlist.WishListProductActivity;
 
@@ -24,9 +32,11 @@ import edu.hust.truongvu.choviet.user.wishlist.WishListProductActivity;
 public class ProfileFragment extends Fragment implements View.OnClickListener, ProfileView{
 
     private View btnEditProfile, btnSetting, btnYourOrder, btnYourWishlist,
-            btnYourFavoriteShop, btnYourShop, btnAccount, btnSettingTwo, btnAboutUs;
+            btnYourFavoriteShop, btnYourShop, btnAccount, btnSettingTwo, btnAboutUs, btnSignInNow;
+    private View layoutInfor, layoutErr;
     private ImageView imgProfile;
     private TextView tvName;
+    private ProfilePresenter profilePresenter;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -49,11 +59,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
 //        }else {
 //            loadFacebook(MainActivity.IMAGE, MainActivity.USER_NAME);
 //        }
+        profilePresenter = new ProfilePresenterImp(getContext(), this);
+        profilePresenter.initInforUser();
 
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        profilePresenter.initInforUser();
+    }
+
     private void initView(View view){
+        layoutInfor = view.findViewById(R.id.layout_infor);
+        layoutErr = view.findViewById(R.id.layout_err);
         btnEditProfile = view.findViewById(R.id.btn_edit_profile);
         btnSetting = view.findViewById(R.id.btn_setting);
         btnYourOrder = view.findViewById(R.id.btn_your_order);
@@ -63,6 +83,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         btnAccount = view.findViewById(R.id.btn_account);
         btnSettingTwo = view.findViewById(R.id.btn_setting_two);
         btnAboutUs = view.findViewById(R.id.btn_about_us);
+        btnSignInNow = view.findViewById(R.id.btn_signin_now);
         imgProfile = view.findViewById(R.id.profile_image);
         tvName = view.findViewById(R.id.tv_username);
 
@@ -75,6 +96,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         btnAccount.setOnClickListener(this);
         btnSettingTwo.setOnClickListener(this);
         btnAboutUs.setOnClickListener(this);
+        btnSignInNow.setOnClickListener(this);
+
     }
 
     private void loadFacebook(String image, String name){
@@ -119,10 +142,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
                 startActivity(new Intent(getActivity(), MyShopActivity.class));
                 break;
             case R.id.btn_account:
+                startActivity(new Intent(getActivity(), InfoUserActivity.class));
                 break;
             case R.id.btn_setting_two:
                 break;
             case R.id.btn_about_us:
+                break;
+            case R.id.btn_signin_now:
+                startActivity(new Intent(getActivity(), StartActivity.class));
                 break;
             default:
                 break;
@@ -137,5 +164,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
     @Override
     public void initLayoutWithGoogle() {
 
+    }
+
+    @Override
+    public void loadInforUserSucessful(User user) {
+        layoutInfor.setVisibility(View.VISIBLE);
+        layoutErr.setVisibility(View.GONE);
+        tvName.setText(user.getFullname());
+        MyHelper.loadImageUser(getContext(), imgProfile, Constants.Path.MY_PATH + user.getAvatar());
+    }
+
+    @Override
+    public void loadInforUserFalse() {
+        layoutInfor.setVisibility(View.GONE);
+        layoutErr.setVisibility(View.VISIBLE);
     }
 }

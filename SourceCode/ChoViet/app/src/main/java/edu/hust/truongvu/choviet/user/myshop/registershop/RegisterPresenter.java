@@ -1,5 +1,8 @@
 package edu.hust.truongvu.choviet.user.myshop.registershop;
 
+import java.util.ArrayList;
+
+import edu.hust.truongvu.choviet.model.entity.MyImage;
 import edu.hust.truongvu.choviet.model.entity.Shop;
 
 /**
@@ -8,4 +11,5 @@ import edu.hust.truongvu.choviet.model.entity.Shop;
 
 public interface RegisterPresenter {
     void register(Shop shop);
+    void uploadImage(ArrayList<MyImage> data);
 }

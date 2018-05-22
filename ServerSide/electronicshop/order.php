@@ -19,9 +19,10 @@
 
 	function addNewOrder(){
 		global $conn;
-		if (isset($_POST["list_details"]) || isset($_POST["id_customer"]) || isset($_POST["status"]) || isset($_POST["type_transport"]) || isset($_POST["type_payment"]) || isset($_POST["value"]) || isset($_POST["address"])) {
+		if (isset($_POST["list_details"]) || isset($_POST["full_name"]) || isset($_POST["phone"]) || isset($_POST["status"]) || isset($_POST["type_transport"]) || isset($_POST["type_payment"]) || isset($_POST["value"]) || isset($_POST["address"])) {
 			$listDetails = $_POST["list_details"];
-			$idCustomer = $_POST["id_customer"];
+			$fullname = $_POST["full_name"];
+			$phone = $_POST["phone"];
 			$dateOrder = round(microtime(true) * 1000);
 			$status = $_POST["status"];
 			$typeTransport = $_POST["type_transport"];
@@ -30,8 +31,9 @@
 			$address = $_POST["address"];
 		}
 		
-		$query = "INSERT INTO product_order (id_customer, date_order, status, type_transport, type_payment, value, address) 
-		VALUES ('".$idCustomer."',
+		$query = "INSERT INTO product_order (fullname, phone, date_order, status, type_transport, type_payment, value, address) 
+		VALUES ('".$fullname."',
+				'".$phone."',
 				'".$dateOrder."',
 				'".$status."',
 				'".$typeTransport."',

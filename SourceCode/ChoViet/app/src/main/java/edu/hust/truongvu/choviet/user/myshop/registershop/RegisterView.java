@@ -7,4 +7,7 @@ package edu.hust.truongvu.choviet.user.myshop.registershop;
 public interface RegisterView {
     void resgisterSuccessful();
     void registerFalse();
+
+    void uploadImageSucessful();
+    void uploadImageFalse();
 }

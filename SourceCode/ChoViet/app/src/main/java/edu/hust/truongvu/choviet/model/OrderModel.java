@@ -57,8 +57,11 @@ public class OrderModel {
 
         Log.e("myJson", json);
 
-        HashMap<String, String> attrIdCustomer = new HashMap<>();
-        attrIdCustomer.put("id_customer", order.getIdCustomer()+"");
+        HashMap<String, String> attrNameCustomer = new HashMap<>();
+        attrNameCustomer.put("full_name", order.getFullName());
+
+        HashMap<String, String> attrPhoneCustomer = new HashMap<>();
+        attrPhoneCustomer.put("phone", order.getPhone());
 
         HashMap<String, String> attrStatus = new HashMap<>();
         attrStatus.put("status", order.getStatus() + "");
@@ -77,7 +80,8 @@ public class OrderModel {
 
         attrs.add(attrFucn);
         attrs.add(attrListDetailsJson);
-        attrs.add(attrIdCustomer);
+        attrs.add(attrNameCustomer);
+        attrs.add(attrPhoneCustomer);
         attrs.add(attrStatus);
         attrs.add(attrTransport);
         attrs.add(attrPayment);

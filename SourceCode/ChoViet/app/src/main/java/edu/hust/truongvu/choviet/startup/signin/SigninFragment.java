@@ -40,7 +40,7 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
 
     EditText username, password;
     View signup;
-    View signin, signInFacebook, signInGplus;
+    View signin, signInFacebook, signInGplus, continueAsGuest;
     View root;
     private Animation animation;
     private static View view;
@@ -93,11 +93,13 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
         signin = view.findViewById(R.id.loginBtn);
         signInFacebook = view.findViewById(R.id.login_with_facebook);
         signInGplus = view.findViewById(R.id.login_with_gplus);
+        continueAsGuest = view.findViewById(R.id.continue_as_guest);
 
         signup.setOnClickListener(this);
         signin.setOnClickListener(this);
         signInFacebook.setOnClickListener(this);
         signInGplus.setOnClickListener(this);
+        continueAsGuest.setOnClickListener(this);
         fragmentManager = getActivity().getSupportFragmentManager();
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
@@ -134,6 +136,11 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
             case R.id.login_with_gplus:
 //                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
 //                startActivityForResult(signInIntent, SIGN_IN_GOOGLE);
+                break;
+            case R.id.continue_as_guest:
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                break;
+            default:
                 break;
         }
     }

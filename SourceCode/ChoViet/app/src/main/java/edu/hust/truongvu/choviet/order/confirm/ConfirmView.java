@@ -11,7 +11,8 @@ import edu.hust.truongvu.choviet.model.entity.Transport;
  */
 
 public interface ConfirmView {
-    void loadViewSuccess(Transport transport, PayMethod payMethod, String address, ArrayList<Product> list);
+    void loadViewSuccess(Transport transport, PayMethod payMethod, String name, String phone,
+                         String address, ArrayList<Product> list);
     void loadViewFalse();
 
     void addOrderSuccessful();

@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.shop.details_shop;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +21,8 @@ import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.product.details_product.ProductActivity;
 import edu.hust.truongvu.choviet.helper.Constants;
+import edu.hust.truongvu.choviet.startup.StartActivity;
+import edu.hust.truongvu.choviet.user.ProfileCheckDialog;
 
 public class ShopActivity extends AppCompatActivity implements ShopView, View.OnClickListener{
 
@@ -152,15 +156,33 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     }
 
     private void handleFollowAction(){
-        if (shop != null){
-            if (mIsFollowing){
-                layoutFollowed.setVisibility(View.GONE);
-                shopPresenter.unFollow(MyHelper.getUserIdPreference(this), shop.getId());
-            }else {
-                layoutFollowed.setVisibility(View.VISIBLE);
-                shopPresenter.follow(MyHelper.getUserIdPreference(this), shop.getId());
+        int currentUserId = MyHelper.getUserIdPreference(this);
+        if (currentUserId != 0){
+            if (shop != null){
+                if (mIsFollowing){
+                    layoutFollowed.setVisibility(View.GONE);
+                    shopPresenter.unFollow(currentUserId, shop.getId());
+                }else {
+                    layoutFollowed.setVisibility(View.VISIBLE);
+                    shopPresenter.follow(currentUserId, shop.getId());
+                }
             }
+        }else {
+            ProfileCheckDialog dialog = new ProfileCheckDialog(this, new ProfileCheckDialog.ProfileCheckListener() {
+                @Override
+                public void login() {
+                    startActivity(new Intent(ShopActivity.this, StartActivity.class));
+                }
+
+                @Override
+                public void continueAsGuess() {
+
+                }
+            });
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
         }
+
 
     }
 }
