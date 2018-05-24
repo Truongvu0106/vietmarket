@@ -9,10 +9,17 @@ import android.graphics.Bitmap;
 public class MyImage {
     private String name;
     private Bitmap bitmap;
+    private String path;
 
     public MyImage(String name, Bitmap bitmap) {
         this.name = name;
         this.bitmap = bitmap;
+    }
+
+    public MyImage(String name, Bitmap bitmap, String path){
+        this.name = name;
+        this.bitmap = bitmap;
+        this.path = path;
     }
 
     public String getName() {
@@ -29,5 +36,13 @@ public class MyImage {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

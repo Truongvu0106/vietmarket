@@ -51,6 +51,7 @@
                 android:padding="@dimen/padding_medium"
                 android:layout_marginTop="@dimen/margin_small"
                 android:textSize="@dimen/text_size_small"
+                android:inputType="number"
                 android:background="@android:color/transparent" />
             <View
                 android:layout_width="match_parent"

@@ -19,16 +19,15 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
-        <com.github.clans.fab.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_add"
+            android:layout_width="@dimen/icon_size_large"
+            android:layout_height="@dimen/icon_size_large"
             android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/margin_big"
             android:src="@drawable/ic_add"
-            android:layout_alignParentRight="true"
-            app:fab_colorNormal="@color/colorBlue"
-            app:fab_colorPressed="@color/colorBlueDark"
-            fab:fab_size="normal"
-            app:fab_label="" />
+            android:tint="@color/white"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
 

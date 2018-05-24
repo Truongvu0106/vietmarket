@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.user.myshop.list_order;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.model.entity.Order;
 import edu.hust.truongvu.choviet.model.entity.OrderDetails;
 import edu.hust.truongvu.choviet.model.entity.Product;
@@ -32,7 +35,7 @@ import edu.hust.truongvu.choviet.helper.Constants.OrderStatus;
 
 public class ListShopOrderAdapter extends RecyclerView.Adapter<ListShopOrderAdapter.ShopListOrderViewHolder>{
     public interface ShopListOrderListener{
-        void onUpdateStatus(int id);
+        void onUpdateStatus(Order order, Constants.OrderStatus status);
         void onDelete(int id);
     }
 
@@ -142,7 +145,14 @@ public class ListShopOrderAdapter extends RecyclerView.Adapter<ListShopOrderAdap
             btnUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onUpdateStatus(order.getId());
+                    UpdateStatusOrderDialog dialog = new UpdateStatusOrderDialog(mContext, new UpdateStatusOrderDialog.UpdateStatusListener() {
+                        @Override
+                        public void onClick(OrderStatus status) {
+                            mListener.onUpdateStatus(order, status);
+                        }
+                    });
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
                 }
             });
 

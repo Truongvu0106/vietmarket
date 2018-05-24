@@ -19,14 +19,14 @@
                 android:layout_width="@dimen/icon_size_big"
                 android:layout_height="@dimen/icon_size_big"
                 android:padding="@dimen/padding_big"
-                android:src="@drawable/avatar"/>
+                android:src="@drawable/img_error"/>
             <edu.hust.truongvu.choviet.helper.customview.MyTextView
                 android:id="@+id/name_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_small"
                 android:textColor="@color/black"
-                android:text="shop abc"/>
+                android:text=""/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:layout_height="@dimen/icon_size_large"
                 android:padding="@dimen/padding_big"
                 android:scaleType="fitCenter"
-                android:src="@drawable/iphone"/>
+                android:src="@drawable/img_error"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -56,14 +56,14 @@
                     android:textSize="@dimen/text_size_small"
                     android:layout_marginTop="@dimen/margin_small"
                     android:textColor="@color/black"
-                    android:text="Điện thoại iphone"/>
+                    android:text=""/>
                 <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:id="@+id/old_price_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
                     android:layout_marginTop="@dimen/margin_tiny"
-                    android:text="100000đ"/>
+                    android:text=""/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                         android:textStyle="bold"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/text_size_medium"
-                        android:text="123000đ"/>
+                        android:text=""/>
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="30dp"

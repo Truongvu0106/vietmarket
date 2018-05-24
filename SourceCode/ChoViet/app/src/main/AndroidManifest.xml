@@ -60,7 +60,8 @@
         <activity android:name=".user.followingshop.FollowingShopActivity" />
         <activity android:name=".user.myshop.registershop.RegisterShopActivity" />
         <activity android:name=".order.address.GuessInfoActivity" />
-        <activity android:name=".user.myshop.info_shop.InforShopActivity"></activity>
+        <activity android:name=".user.myshop.info_shop.InforShopActivity" />
+
         <receiver
             android:name=".helper.ConnectivityReceiver"
             android:enabled="true">
@@ -68,6 +69,8 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".user.myshop.update_product.UpdateProductActivity"></activity>
     </application>
 
 </manifest>

@@ -96,7 +96,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
             OrderDetails orderDetails = new OrderDetails(0, 0, idProduct, idShop, number);
             listOrderDetails.add(orderDetails);
             //caculate summary
-            long price = product.getPrice() - (product.getPrice()*product.getDiscount())/100;
+            long price = (product.getPrice() - (product.getPrice()*product.getDiscount())/100)*product.getNumberSelect();
             summary += price;
         }
 

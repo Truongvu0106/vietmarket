@@ -113,6 +113,7 @@ public class MyShopActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void loadShopSuccessful(Shop shop) {
+        ID_SHOP = shop.getId();
         layoutInfor.setVisibility(View.VISIBLE);
         layoutErr.setVisibility(View.GONE);
         MyHelper.setImagePicasso(this, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());

@@ -31,6 +31,8 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
 
     private long totalMoney = 0;
     private CartPresenterImp cartPresenterImp;
+    private ArrayList<Product> mListProduct = new ArrayList<>();
+    CartAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,24 +56,33 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
     }
 
     @Override
-    public void loadCartItemSuccessful(ArrayList<Product> listProduct) {
-        CartAdapter adapter = new CartAdapter(this, listProduct, new CartAdapter.CartItemListener() {
+    public void loadCartItemSuccessful(final ArrayList<Product> listProduct) {
+        mListProduct = listProduct;
+        adapter = new CartAdapter(this, mListProduct, new CartAdapter.CartItemListener() {
             @Override
             public void onClick(Product product) {
 
             }
 
             @Override
-            public void onLike(Product product) {
+            public void onLike(int idUser, Product product) {
 
             }
 
             @Override
-            public void onDelete(Product product) {
+            public void onUnlike(int idUser, Product product) {
+
+            }
+
+
+            @Override
+            public void onDelete(final Product product) {
                 DeleteItemCartDialog deleteItemCartDialog = new DeleteItemCartDialog(CartActivity.this, product.getId(), new DeleteItemCartDialog.DeleteItemCartListener() {
                     @Override
                     public void onDelete(int id_product) {
                         cartPresenterImp.deleteItemCart(CartActivity.this, id_product);
+                        mListProduct.remove(product);
+                        adapter.notifyDataSetChanged();
                         MyHelper.setViewCart(layoutNumberItemCart, tvNumberItemCart, cartPresenterImp.getNumberItemCart(CartActivity.this));
                     }
                 });
@@ -100,6 +111,7 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
     public void deleteSuccessful() {
         Toast.makeText(this, getString(R.string.item_has_been_removed), Toast.LENGTH_SHORT).show();
         cartPresenterImp.initListItemCart(this);
+        cartPresenterImp.calculateTotal(this);
     }
 
     @Override
@@ -129,7 +141,7 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
         switch (id){
             case R.id.btn_pay:
                 User user = MyHelper.getCurrentUser(CartActivity.this);
-                if (totalMoney == 0){
+                if (totalMoney == 0 || mListProduct.size() == 0){
                     Toast.makeText(this, getString(R.string.cart_empty), Toast.LENGTH_SHORT).show();
                 }else if (user == null){
                     ProfileCheckDialog dialog = new ProfileCheckDialog(CartActivity.this, new ProfileCheckDialog.ProfileCheckListener() {

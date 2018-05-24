@@ -310,6 +310,7 @@ public class ProductModel {
 
         try {
             String data = myService.get();
+            Log.e("shop_product", data);
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("products");
             JSONArray jsonProducts = myJsonArr.getJSONArray(0);
@@ -416,10 +417,19 @@ public class ProductModel {
         String imgPath = "";
         ArrayList<String> listImg = product.getImgs();
         for (int i = 0; i < listImg.size(); i++){
+            String name = listImg.get(i);
             if (i == (listImg.size() - 1)){
-                imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND;
+                if (name.contains(".")){
+                    imgPath += IMAGE_ROOT + listImg.get(i);
+                }else {
+                    imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND;
+                }
             }else {
-                imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND + "@";
+                if (name.contains(".")){
+                    imgPath += IMAGE_ROOT + listImg.get(i) + "@";
+                }else {
+                    imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND + "@";
+                }
             }
         }
 
@@ -510,13 +520,22 @@ public class ProductModel {
         String imgPath = "";
         ArrayList<String> listImg = product.getImgs();
         for (int i = 0; i < listImg.size(); i++){
+            String name = listImg.get(i);
             if (i == (listImg.size() - 1)){
-                imgPath += listImg.get(i);
+                if (name.contains(".")){
+                    imgPath += IMAGE_ROOT + listImg.get(i);
+                }else {
+                    imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND;
+                }
             }else {
-                imgPath += listImg.get(i) + "@";
+                if (name.contains(".")){
+                    imgPath += IMAGE_ROOT + listImg.get(i) + "@";
+                }else {
+                    imgPath += IMAGE_ROOT + listImg.get(i) + IMAGE_EXTEND + "@";
+                }
             }
         }
-
+        Log.e("tr_imag", imgPath);
         HashMap<String, String> attrImage = new HashMap<>();
         attrImage.put("image", imgPath);
 
@@ -568,6 +587,7 @@ public class ProductModel {
         myService.execute();
         try {
             String data = myService.get();
+            Log.e("tr_update", data);
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){

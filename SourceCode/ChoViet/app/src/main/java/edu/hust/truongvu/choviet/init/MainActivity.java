@@ -17,14 +17,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.hust.truongvu.choviet.MyApplication;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
 import edu.hust.truongvu.choviet.cart.CartPresenter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
+import edu.hust.truongvu.choviet.helper.ConnectivityReceiver;
 import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.helper.customview.MyLayoutError;
 import edu.hust.truongvu.choviet.search.SearchActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainView{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainView, ConnectivityReceiver.ConnectivityReceiverListener{
 
     public static String USER_NAME = "";
     public static String IMAGE = "";
@@ -36,20 +39,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CartPresenter cartPresenterImp;
     private AccessToken accessToken;
     private AccessTokenTracker accessTokenTracker;
+    View container, layoutErr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+        new MyLayoutError(this, true, getString(R.string.not_connect_internet), R.drawable.no_wifi,
+                new MyLayoutError.ErrorListener() {
+                    @Override
+                    public void onTryAgain() {
+                        checkConnection();
+                    }
+                });
         toolbar =  findViewById(R.id.toolbar_main);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        container = findViewById(R.id.frame_container);
+        layoutErr = findViewById(R.id.layout_err);
+
         search = findViewById(R.id.layout_search);
         cart = findViewById(R.id.img_cart);
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
         tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
 
-        loadFragment(MainFragment.newInstance());
+        checkConnection();
 
         search.setOnClickListener(this);
         cart.setOnClickListener(this);
@@ -76,6 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStart() {
         super.onStart();
         MyHelper.setViewCart(layoutNumberItemCart, tvNumberItemCart, cartPresenterImp.getNumberItemCart(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().setConnectivityListener(this);
     }
 
     private void loadFragment(Fragment fragment) {
@@ -130,6 +148,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (account != null){
             USER_NAME = account.getDisplayName();
             URI_IMAGE = account.getPhotoUrl();
+        }
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        setView(isConnected);
+    }
+
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        setView(isConnected);
+    }
+
+    private void setView(boolean isConnected){
+        if (isConnected){
+            container.setVisibility(View.VISIBLE);
+            layoutErr.setVisibility(View.GONE);
+            loadFragment(MainFragment.newInstance());
+        }else {
+            container.setVisibility(View.GONE);
+            layoutErr.setVisibility(View.VISIBLE);
         }
     }
 }

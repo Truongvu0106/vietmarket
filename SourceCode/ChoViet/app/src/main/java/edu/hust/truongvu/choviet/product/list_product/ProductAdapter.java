@@ -126,7 +126,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             layoutLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    User user = MyHelper.getCurrentUser(context);
                     if (currentUserId != 0){
                         if (isLiked){
                             imgLikeFill.setVisibility(View.GONE);

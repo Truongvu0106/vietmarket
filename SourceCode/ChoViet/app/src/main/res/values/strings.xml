@@ -92,6 +92,7 @@
     <string name="weight">Weight</string>
     <string name="status">Status</string>
     <string name="stock">Stock</string>
+    <string name="sold">Sold</string>
     <string name="from">From</string>
     <string name="rating_product">Rating product</string>
     <string name="view_all">View all</string>
@@ -172,6 +173,7 @@
     <string name="report">Report</string>
     <string name="edit">Edit</string>
     <string name="add_new_product">Add new product</string>
+    <string name="update_product">Update product</string>
     <string name="edit_information">Edit information</string>
     <string name="number">Number</string>
 
@@ -206,6 +208,7 @@
     <string name="take_picture">Take a picture</string>
     <string name="choose_from_gallery">Choose from gallery</string>
     <string name="please_wait">Please wait...</string>
+    <string name="no_new_photo_to_upload">No new photo to upload</string>
     <string name="not_choose_image">Not choose image yet</string>
     <string name="upload_successful">Upload successful!</string>
     <string name="file_size_too_large">File size too large!</string>
@@ -217,6 +220,8 @@
     <string name="not_upload_image">Not upload image product yet</string>
     <string name="add_successful">Add successful!</string>
     <string name="add_false">Add false!</string>
+    <string name="update_successful">Update successful!</string>
+    <string name="update_false">Update false!</string>
     <string name="no_data">No data found!</string>
     <string name="not_connect_internet">Not connect to internet!</string>
     <string name="try_again">Try again</string>
@@ -259,4 +264,9 @@
     <string name="enter_your_information">Enter your information</string>
     <string name="sign_out">Sign out</string>
     <string name="do_you_want_to_logout">Do you want to sign out?</string>
+
+    <string name="add_discount">Add discount</string>
+
+    <string name="shop_report">Shop report</string>
+    <string name="overview_report">Overview report</string>
 </resources>

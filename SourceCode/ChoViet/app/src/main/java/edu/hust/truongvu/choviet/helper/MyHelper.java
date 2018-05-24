@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.model.entity.MyImage;
 import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.model.UserModel;
 
@@ -141,5 +142,46 @@ public class MyHelper {
             permissionCheck += ContextCompat.checkSelfPermission(context, permission);
         }
         return permissionCheck;
+    }
+
+    public static String getWeight(String weight){
+        if (weight.matches("")){
+            return 0 + "";
+        }
+        String[] strings = weight.split(" ");
+        if (strings.length == 2){
+            return strings[0];
+        }else {
+            return weight;
+        }
+    }
+
+    public static String getUnit(String weight){
+        if (weight.matches("")){
+            return "Kg";
+        }
+        String[] strings = weight.split(" ");
+        if (strings.length == 2){
+            return strings[1];
+        }else {
+            return "Kg";
+        }
+    }
+
+    public static MyImage convertPathToMyImage(String path){
+        if (path.matches("")){
+            return null;
+        }
+        String[] strings = path.split("/");
+        MyImage myImage = new MyImage(strings[strings.length - 1], null, path);
+        return myImage;
+    }
+
+    public static String convertPathToName(String path){
+        if (path.matches("")){
+            return "";
+        }
+        String[] strings = path.split("/");
+        return strings[strings.length - 1];
     }
 }

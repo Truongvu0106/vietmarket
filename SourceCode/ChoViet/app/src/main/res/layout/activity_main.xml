@@ -9,11 +9,20 @@
     <include
         android:id="@+id/toolbar_main"
         layout="@layout/toolbar_main"/>
-    <FrameLayout
-        android:id="@+id/frame_container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        <include
+            android:id="@+id/layout_err"
+            layout="@layout/layout_err"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
 
 
 

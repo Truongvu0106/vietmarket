@@ -12,10 +12,9 @@ public class ShopListOrderActivity extends AppCompatActivity implements ShopList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list_order);
-        new MyToolbarExtra(this, "", 0, new MyToolbarExtra.OnExtraToolbarListener() {
+        new MyToolbarExtra(this, getString(R.string.list_order), 0, new MyToolbarExtra.OnExtraToolbarListener() {
             @Override
             public void onMoreClick() {
-
             }
 
             @Override
@@ -23,5 +22,6 @@ public class ShopListOrderActivity extends AppCompatActivity implements ShopList
                 onBackPressed();
             }
         });
+
     }
 }
