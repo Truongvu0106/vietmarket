@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2018 at 03:24 AM
+-- Generation Time: May 26, 2018 at 06:07 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -52,19 +52,19 @@ CREATE TABLE `brand` (
 
 INSERT INTO `brand` (`id_brand`, `name_brand`, `img_brand`) VALUES
 (1, 'Apple', '/img/brand/apple.png'),
-(2, 'Samsung', '/img/brand/samsung.png'),
-(3, 'Sony', '/img/brand/sony.png'),
-(4, 'Xiaomi', '/img/brand/xiaomi.png'),
+(2, 'Xiaomi', '/img/brand/xiaomi.png'),
+(3, 'LG', '/img/brand/lg.png'),
+(4, 'Canon', '/img/brand/canon.png'),
 (5, 'Hp', '/img/brand/hp.png'),
 (6, 'Dell', '/img/brand/dell.png'),
-(7, 'Canon', '/img/brand/canon.png'),
+(7, 'Samsung', '/img/brand/samsung1.png'),
 (8, 'Nikon', '/img/brand/nikon.jpg'),
 (9, 'Acer', '/img/brand/acer.png'),
 (10, 'Asus', '/img/brand/asus.png'),
 (11, 'Lenovo', '/img/brand/lenovo.png'),
 (12, 'Blackberry', '/img/brand/blackberry.png'),
 (13, 'Fuljifilm', '/img/brand/fuljifilm.png'),
-(14, 'LG', '/img/brand/lg.png'),
+(14, 'Sony', '/img/brand/sony.png'),
 (15, 'Hitachi', '/img/brand/hitachi.png'),
 (16, 'Mitsubishi', '/img/brand/mitsubishi.png'),
 (17, 'Oppo', '/img/brand/oppo.png'),
@@ -125,6 +125,7 @@ CREATE TABLE `order_details` (
   `id` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
   `number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -146,8 +147,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `name`, `image`, `price`) VALUES
-(1, 'Thẻ tín dụng, ghi nợ', '/img/payment/ic_creditcard.png', '20000'),
-(2, 'Thanh toán khi nhận hàng', '/img/payment/ic_cod.png', '20000');
+(1, 'Thẻ tín dụng, ghi nợ', '/img/payment/ic_creditcard.png', '0'),
+(2, 'Thanh toán khi nhận hàng', '/img/payment/ic_cod.png', '0');
 
 -- --------------------------------------------------------
 
@@ -160,6 +161,22 @@ CREATE TABLE `popular_search` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `image` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `popular_search`
+--
+
+INSERT INTO `popular_search` (`id`, `name`, `image`) VALUES
+(1, 'điện thoại', '/img/popularsearch/dienthoai.jpg'),
+(2, 'laptop', '/img/popularsearch/laptop.jpg'),
+(3, 'máy tính', '/img/popularsearch/maytinh.jpg'),
+(4, 'cây máy tính', '/img/popularsearch/caymaytinh.jpg'),
+(5, 'màn hình', '/img/popularsearch/maytinh.jpg'),
+(6, 'máy ảnh', '/img/popularsearch/maytinh.jpg'),
+(7, 'máy giặt', '/img/popularsearch/maytinh.jpg'),
+(8, 'tivi', '/img/popularsearch/maytinh.jpg'),
+(9, 'macbook', '/img/popularsearch/maytinh.jpg'),
+(10, 'loa', '/img/popularsearch/maytinh.jpg');
 
 -- --------------------------------------------------------
 
@@ -178,6 +195,7 @@ CREATE TABLE `product` (
   `brand` int(11) NOT NULL,
   `rate` float NOT NULL,
   `amount` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
   `hightlight` int(1) NOT NULL,
   `discount` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -186,11 +204,11 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `name_product`, `price`, `image`, `information`, `weight`, `type_product`, `brand`, `rate`, `amount`, `hightlight`, `discount`) VALUES
-(1, 'Laptop HP envy', '20000000', '/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg', 'Sản phẩm máy tính laptop văn phòng do hãng HP sản xuất', '2kg', 2, 5, 4.3, 10, 1, 25),
-(2, 'Latop HP pavilion', '15000000', '/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg', 'Sản phẩm máy tính laptop văn phòng do hãng HP sản xuất', '1.5kg', 2, 5, 4.4, 10, 1, 0),
-(3, 'Laptop Asus ROG', '35000000', '/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg', 'Sản phẩm laptop gaming của hãng Asus', '3kg', 3, 10, 4.5, 10, 1, 20),
-(4, 'Điện thoại Asus Zenfone max', '5000000', '/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg@/img/product/giaydep.jpg', 'Điện thoại smartphone thế hệ thứ 5 do hãng Asus sản xuất', '200mg', 1, 10, 4, 10, 1, 0);
+INSERT INTO `product` (`id_product`, `name_product`, `price`, `image`, `information`, `weight`, `type_product`, `brand`, `rate`, `amount`, `id_shop`, `hightlight`, `discount`) VALUES
+(1, 'Laptop HP envy', '20000000', '/img/product/hp_envy.jpg@/img/product/hp_envy.jpg@/img/product/hp_envy.jpg@/img/product/hp_envy.jpg', 'Sản phẩm máy tính laptop văn phòng do hãng HP sản xuất', '2 Kg', 2, 5, 4.3, 10, 3, 1, 25),
+(2, 'Latop HP pavilio', '15000000', '/img/product/hp_pavilion.jpg@/img/product/hp_pavilion.jpg@/img/product/hp_pavilion.jpg', 'Sản phẩm máy tính laptop văn phòng do hãng HP sản xuất', '1.5KgKgKg', 2, 5, 4.4, 10, 3, 0, 0),
+(3, 'Laptop Asus ROG', '35000000', '/img/product/asus_rog.jpg@/img/product/asus_rog.jpg@/img/product/asus_rog.jpg@/img/product/asus_rog.jpg', 'Sản phẩm laptop gaming của hãng Asus', '3 Kg', 3, 10, 4.5, 7, 4, 1, 20),
+(4, 'Điện thoại Asus Zenfone max', '5000000', '/img/product/asus_zenmax.jpg@/img/product/asus_zenmax.jpg@/img/product/asus_zenmax.jpg@/img/product/asus_zenmax.jpg', 'Điện thoại smartphone thế hệ thứ 5 do hãng Asus sản xuất', '200 gam', 1, 10, 4, 10, 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -219,10 +237,17 @@ CREATE TABLE `product_details` (
 --
 
 CREATE TABLE `product_like` (
-  `id` int(11) NOT NULL,
   `id_customer` int(11) NOT NULL,
   `id_product` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `product_like`
+--
+
+INSERT INTO `product_like` (`id_customer`, `id_product`) VALUES
+(2, 3),
+(5, 3);
 
 -- --------------------------------------------------------
 
@@ -232,12 +257,15 @@ CREATE TABLE `product_like` (
 
 CREATE TABLE `product_order` (
   `id_order` int(11) NOT NULL,
-  `id_customer` int(11) NOT NULL,
-  `id_shop` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `fullname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `date_order` bigint(20) NOT NULL,
-  `state` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   `type_transport` int(11) NOT NULL,
-  `type_payment` int(11) NOT NULL
+  `type_payment` int(11) NOT NULL,
+  `value` decimal(10,0) NOT NULL,
+  `address` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -288,7 +316,8 @@ INSERT INTO `rate` (`id_product`, `user_rate`, `title`, `content`, `star`, `date
 (1, 'truong@gmail.com', 'acv', 'acv', 2, 'sdasd'),
 (1, 'truong1@gmail.com', 'dasd', 'dasda', 4, 'dasdasd'),
 (2, 'truong@gmail.com', 'dasdad', 'dasdad', 4, 'dasdad'),
-(3, 'truong@gmail.com', 'San pham tot', 'okeeeee', 4.5, '24/03/2018');
+(3, 'truong@gmail.com', 'San pham tot', 'okeeeee', 4.5, '24/03/2018'),
+(4, 'truong@gmail.com', 'hello', 'dasdads', 4, '03/05/2018');
 
 -- --------------------------------------------------------
 
@@ -315,8 +344,9 @@ CREATE TABLE `shop` (
 --
 
 INSERT INTO `shop` (`id_shop`, `name_shop`, `slogan`, `img_avatar`, `img_cover`, `id_owner`, `address`, `phone`, `website`, `rate`, `highlight`) VALUES
-(3, 'Hp Shop', 'Make it matter', '/img/shop/hp.png', '/img/shop/giaydep.jpg', 2, 'abc', '10234', 'abc.com', 4.5, 1),
-(4, 'Asus Shop', 'In search of incredible', '/img/shop/asus.png', '/img/shop/giaydep.jpg', 5, 'abc', '12345', 'abc.com', 4.4, 1);
+(3, 'Hp Shop', 'Make it matter', '/img/shop/hp.png', '/img/shop/hp_cover.jpg', 2, '74 Cửa Bắc, Ba Đình, TP. Hà Nội', '02462627095', 'https://support.hp.com.vn', 4.5, 1),
+(4, 'Asus Shop', 'In search of incredible', '/img/shop/asus1.png', '/img/shop/asus_bg.jpg', 5, 'abc', '12345', 'abc.com', 4.4, 1),
+(5, 'Nikon shop', 'At the heart of the image', '/img/shop/nikon.jpg', '/img/shop/nikon_bg.jpg', 11, 'dasdasdasd', '6267317686', 'abc.com', 4.3, 1);
 
 -- --------------------------------------------------------
 
@@ -338,10 +368,18 @@ CREATE TABLE `shop_details` (
 --
 
 CREATE TABLE `shop_follow` (
-  `id` int(11) NOT NULL,
   `id_shop` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `shop_follow`
+--
+
+INSERT INTO `shop_follow` (`id_shop`, `id_user`) VALUES
+(3, 2),
+(4, 2),
+(4, 5);
 
 -- --------------------------------------------------------
 
@@ -375,14 +413,14 @@ CREATE TABLE `type_child` (
   `id_type_child` int(11) NOT NULL,
   `name_type_child` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `id_type_parent` int(11) NOT NULL,
-  `image` text COLLATE utf8_unicode_ci NOT NULL
+  `image_cate` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `type_child`
 --
 
-INSERT INTO `type_child` (`id_type_child`, `name_type_child`, `id_type_parent`, `image`) VALUES
+INSERT INTO `type_child` (`id_type_child`, `name_type_child`, `id_type_parent`, `image_cate`) VALUES
 (1, 'Điện thoại', 1, '/img/category/child_dienthoai.png'),
 (2, 'Laptop văn phòng', 1, '/img/category/child_laptop_vanphong.png'),
 (3, 'Latop Gaming', 1, '/img/category/child_laptop_gaming.png'),
@@ -420,8 +458,7 @@ INSERT INTO `type_child` (`id_type_child`, `name_type_child`, `id_type_parent`, 
 (37, 'Phụ kiện điện thoại', 11, '/img/category/child_phukiendienthoai.png'),
 (38, 'Phụ kiện máy tính', 11, '/img/category/child_phukienmaytinh.png'),
 (39, 'Phụ kiện máy ảnh', 11, '/img/category/child_phukienmayanh.png'),
-(40, 'Phụ kiện bếp', 11, 'abc'),
-(41, 'aaa', 1, 'abc');
+(42, 'hello', 11, '/img/category/bg_login.jpg');
 
 -- --------------------------------------------------------
 
@@ -542,7 +579,8 @@ ALTER TABLE `notification`
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`,`id_order`,`id_product`),
   ADD KEY `fk_order_details` (`id_order`),
-  ADD KEY `fk_order_product` (`id_product`);
+  ADD KEY `fk_order_product` (`id_product`),
+  ADD KEY `fk_details_shop` (`id_shop`);
 
 --
 -- Indexes for table `payment`
@@ -562,7 +600,8 @@ ALTER TABLE `popular_search`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`),
   ADD KEY `fk_brand` (`brand`),
-  ADD KEY `fk_type_product` (`type_product`);
+  ADD KEY `fk_type_product` (`type_product`),
+  ADD KEY `fk_product_shop` (`id_shop`);
 
 --
 -- Indexes for table `product_details`
@@ -574,17 +613,16 @@ ALTER TABLE `product_details`
 -- Indexes for table `product_like`
 --
 ALTER TABLE `product_like`
-  ADD PRIMARY KEY (`id`,`id_customer`,`id_product`),
-  ADD KEY `fk_product_like` (`id_product`),
-  ADD KEY `fk_customer_like` (`id_customer`);
+  ADD PRIMARY KEY (`id_customer`,`id_product`),
+  ADD KEY `fk_product_like` (`id_product`);
 
 --
 -- Indexes for table `product_order`
 --
 ALTER TABLE `product_order`
   ADD PRIMARY KEY (`id_order`),
-  ADD KEY `fk_order_shop` (`id_shop`),
-  ADD KEY `fk_order_customer` (`id_customer`);
+  ADD KEY `fk_order_transport` (`type_transport`),
+  ADD KEY `fk_order_payment` (`type_payment`);
 
 --
 -- Indexes for table `promotion`
@@ -625,8 +663,7 @@ ALTER TABLE `shop_details`
 -- Indexes for table `shop_follow`
 --
 ALTER TABLE `shop_follow`
-  ADD PRIMARY KEY (`id`,`id_shop`,`id_user`),
-  ADD KEY `fk_shop_follow` (`id_shop`),
+  ADD PRIMARY KEY (`id_shop`,`id_user`),
   ADD KEY `fk_customer_follow` (`id_user`);
 
 --
@@ -695,7 +732,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `payment`
 --
@@ -705,22 +742,17 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `popular_search`
 --
 ALTER TABLE `popular_search`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `product_like`
---
-ALTER TABLE `product_like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `promotion`
 --
@@ -730,16 +762,11 @@ ALTER TABLE `promotion`
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `id_shop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_shop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `shop_details`
 --
 ALTER TABLE `shop_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `shop_follow`
---
-ALTER TABLE `shop_follow`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `transport`
@@ -750,7 +777,7 @@ ALTER TABLE `transport`
 -- AUTO_INCREMENT for table `type_child`
 --
 ALTER TABLE `type_child`
-  MODIFY `id_type_child` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_type_child` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `type_parent`
 --
@@ -776,6 +803,7 @@ ALTER TABLE `comment`
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
+  ADD CONSTRAINT `fk_details_shop` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`),
   ADD CONSTRAINT `fk_order_details` FOREIGN KEY (`id_order`) REFERENCES `product_order` (`id_order`),
   ADD CONSTRAINT `fk_order_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`);
 
@@ -784,6 +812,7 @@ ALTER TABLE `order_details`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `fk_brand` FOREIGN KEY (`brand`) REFERENCES `brand` (`id_brand`),
+  ADD CONSTRAINT `fk_product_shop` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`),
   ADD CONSTRAINT `fk_type_product` FOREIGN KEY (`type_product`) REFERENCES `type_child` (`id_type_child`);
 
 --
@@ -803,8 +832,8 @@ ALTER TABLE `product_like`
 -- Constraints for table `product_order`
 --
 ALTER TABLE `product_order`
-  ADD CONSTRAINT `fk_order_customer` FOREIGN KEY (`id_customer`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `fk_order_shop` FOREIGN KEY (`id_shop`) REFERENCES `shop` (`id_shop`);
+  ADD CONSTRAINT `fk_order_payment` FOREIGN KEY (`type_payment`) REFERENCES `payment` (`id`),
+  ADD CONSTRAINT `fk_order_transport` FOREIGN KEY (`type_transport`) REFERENCES `transport` (`id`);
 
 --
 -- Constraints for table `promotion_details`
