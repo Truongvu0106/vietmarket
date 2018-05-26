@@ -23,6 +23,7 @@ import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.cart.CartActivity;
 import edu.hust.truongvu.choviet.category.CategoryPresenterImp;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
@@ -179,7 +180,6 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
         btnRate.setOnClickListener(this);
         btnAddToCart.setOnClickListener(this);
-        btnViewShop.setOnClickListener(this);
         btnBuyNow.setOnClickListener(this);
     }
 
@@ -359,16 +359,37 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
                 rate();
                 break;
             case R.id.btn_add_to_cart:
-                productPresenterImp.addToCart(getContext(), product);
-                itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
+                addToCart();
                 break;
             case R.id.btn_buy_now:
-                break;
-            case R.id.btn_view_shop:
+                buyNow();
                 break;
             default:
                 break;
         }
+    }
+
+    private void addToCart(){
+        if (product.getAmount() <= 0){
+            Toast.makeText(getContext(), getContext().getString(R.string.out_of_stock), Toast.LENGTH_SHORT).show();
+        }else {
+            productPresenterImp.addToCart(getContext(), product);
+            itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
+        }
+    }
+
+    private void buyNow(){
+        if (product.getAmount() <= 0){
+            Toast.makeText(getContext(), getContext().getString(R.string.out_of_stock), Toast.LENGTH_SHORT).show();
+        }else {
+            productPresenterImp.addToCart(getContext(), product);
+            itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
+            startActivity(new Intent(getActivity(), CartActivity.class));
+        }
+    }
+
+    private void viewShop(){
+
     }
 
     private void rate(){

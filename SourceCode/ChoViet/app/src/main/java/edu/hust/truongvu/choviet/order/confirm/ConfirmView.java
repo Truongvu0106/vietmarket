@@ -17,4 +17,7 @@ public interface ConfirmView {
 
     void addOrderSuccessful();
     void addOrderFalse();
+
+    void updateStockSuccessful();
+    void updateStockFalse();
 }

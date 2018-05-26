@@ -30,7 +30,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     private ProductAdapter adapter;
     private ShopPresenter shopPresenter;
     Shop shop;
-    private ImageView avatarShop;
+    private ImageView avatarShop, coverShop;
     private TextView tvName, tvSlogan, tvNumProduct, tvRate, tvAddress, tvPhone, tvWebsite;
     private View btnFollow, layoutFollowed;
     boolean mIsFollowing = false;
@@ -47,6 +47,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
 
     private void initView(){
         avatarShop = findViewById(R.id.img_avatar_shop);
+        coverShop = findViewById(R.id.img_cover_shop);
         tvName = findViewById(R.id.tv_name_store);
         tvSlogan = findViewById(R.id.tv_slogan);
         tvNumProduct = findViewById(R.id.number_products);
@@ -62,6 +63,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     public void loadInforShopSuccessful(Shop shop) {
         shopPresenter.initListProduct(shop.getId());
         MyHelper.setImagePicasso(ShopActivity.this, avatarShop, Constants.Path.MY_PATH + shop.getImgAvatar());
+        MyHelper.setImagePicasso(ShopActivity.this, coverShop, Constants.Path.MY_PATH + shop.getImgCover());
         tvName.setText(shop.getName());
         tvSlogan.setText(shop.getSlogan());
         tvNumProduct.setText("0");

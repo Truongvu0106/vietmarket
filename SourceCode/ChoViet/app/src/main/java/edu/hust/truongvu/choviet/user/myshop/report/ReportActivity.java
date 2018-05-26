@@ -10,16 +10,18 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
+import edu.hust.truongvu.choviet.user.myshop.MyShopActivity;
 
 public class ReportActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ReportPagerAdapter adapter;
+    private int idShop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-        new MyToolbarExtra(this, "", 0, new MyToolbarExtra.OnExtraToolbarListener() {
+        new MyToolbarExtra(this, getString(R.string.report), 0, new MyToolbarExtra.OnExtraToolbarListener() {
             @Override
             public void onMoreClick() {
 
@@ -32,9 +34,10 @@ public class ReportActivity extends AppCompatActivity {
         });
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.viewpager);
+        idShop = getIntent().getIntExtra(MyShopActivity.TAG_SHOP, 0);
 
         ArrayList<Fragment> listFragment = new ArrayList<>();
-        listFragment.add(ShopReportFragment.getInstance());
+        listFragment.add(ShopReportFragment.getInstance(idShop));
         listFragment.add(OverviewReportFragment.getInstance());
 
         ArrayList<String> listTitle = new ArrayList<>();

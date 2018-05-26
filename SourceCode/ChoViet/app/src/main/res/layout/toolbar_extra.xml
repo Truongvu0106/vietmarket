@@ -6,7 +6,6 @@
     android:layout_height="@dimen/actionbar_size"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     android:gravity="center_vertical"
-    android:elevation="@dimen/margin_small"
     android:orientation="vertical"
     android:background="@color/white">
     <RelativeLayout

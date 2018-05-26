@@ -30,4 +30,6 @@ public interface ProductView {
 
     void loadInforShopSuccessful(Shop shop);
     void loadInforShopFalse();
+
+
 }

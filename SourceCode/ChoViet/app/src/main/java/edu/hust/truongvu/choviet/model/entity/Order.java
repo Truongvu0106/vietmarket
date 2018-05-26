@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Order {
     private int id;
+    private int idUser;
     private String fullName;
     private String phone;
     private long dateOrder;
@@ -19,8 +20,9 @@ public class Order {
 
     private ArrayList<OrderDetails> orderDetails;
 
-    public Order(int id, String fullName, String phone, long dateOrder, int status, int typeTransport, int typePayment, long price, String address) {
+    public Order(int id, int idUser, String fullName, String phone, long dateOrder, int status, int typeTransport, int typePayment, long price, String address) {
         this.id = id;
+        this.idUser = idUser;
         this.fullName = fullName;
         this.phone = phone;
         this.dateOrder = dateOrder;
@@ -51,6 +53,14 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getFullName() {

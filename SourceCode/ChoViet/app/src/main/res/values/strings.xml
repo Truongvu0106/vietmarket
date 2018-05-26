@@ -104,6 +104,7 @@
     <string name="login_to_rate">Sign in to rate</string>
     <string name="not_log_in">You are not login yet</string>
     <string name="added_to_your_cart">Added to your cart</string>
+    <string name="out_of_stock">Out of stock</string>
     <string name="already_in_your_cart">This item already in your cart</string>
     <string name="do_you_really_want_to_delete">Do you really want to remove this item?</string>
     <string name="yes">Yes</string>

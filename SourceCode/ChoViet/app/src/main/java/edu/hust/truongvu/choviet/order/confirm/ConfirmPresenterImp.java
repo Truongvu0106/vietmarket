@@ -5,7 +5,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.entity.Order;
+import edu.hust.truongvu.choviet.model.entity.OrderDetails;
 import edu.hust.truongvu.choviet.model.entity.PayMethod;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.model.entity.Transport;
@@ -25,6 +27,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
     private TransportModel transportModel;
     private PayMethodModel payMethodModel;
     private OrderModel orderModel;
+    private ProductModel productModel;
 
 
     public ConfirmPresenterImp(Context context, ConfirmView confirmView){
@@ -34,6 +37,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
         transportModel = new TransportModel(context);
         payMethodModel = new PayMethodModel(context);
         orderModel = new OrderModel(context);
+        productModel = new ProductModel(context);
     }
 
     @Override
@@ -71,6 +75,32 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
             cartModel.closeDatabse();
         }else {
             confirmView.addOrderFalse();
+        }
+    }
+
+    @Override
+    public void updateStockProduct(ArrayList<OrderDetails> data) {
+        Log.e("tr", "update stock");
+        if (data == null || data.isEmpty()){
+            confirmView.updateStockFalse();
+            return;
+        }
+        boolean isSuccessful = true;
+        for (OrderDetails details : data){
+            Product mProduct = productModel.getProductById(details.getIdProduct());
+            int newStock = mProduct.getAmount() - details.getNumber();
+            if(productModel.updateStockProduct(details.getIdProduct(), newStock)){
+                isSuccessful = true;
+            }else {
+                isSuccessful = false;
+                break;
+            }
+        }
+
+        if (isSuccessful){
+            confirmView.updateStockSuccessful();
+        }else {
+            confirmView.updateStockFalse();
         }
     }
 }

@@ -40,7 +40,7 @@ public class HomePresenterImp implements HomePresenter {
     public void initBanner() {
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("banner 1", R.drawable.banner_one);
-        hashMap.put("banner 2", R.drawable.banner_two);
+        hashMap.put("Thế giới công nghệ", R.drawable.banner_two);
         hashMap.put("banner 3", R.drawable.banner_three);
         hashMap.put("banner 4", R.drawable.banner_four);
         homeView.loadBannerSuccessful(hashMap);

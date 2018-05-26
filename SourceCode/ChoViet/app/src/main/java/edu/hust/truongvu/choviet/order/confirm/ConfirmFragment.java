@@ -113,12 +113,25 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     @Override
     public void addOrderSuccessful() {
         Toast.makeText(getContext(), getContext().getString(R.string.order_confirmed_successful), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getActivity(), MainActivity.class));
+        confirmPresenterImp.updateStockProduct(listOrderDetails);
+
     }
 
     @Override
     public void addOrderFalse() {
         Toast.makeText(getContext(), getContext().getString(R.string.m_false), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void updateStockSuccessful() {
+        Toast.makeText(getContext(), getContext().getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), MainActivity.class));
+    }
+
+    @Override
+    public void updateStockFalse() {
+        Toast.makeText(getContext(), getContext().getString(R.string.update_false), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), MainActivity.class));
     }
 
     @Override
@@ -131,7 +144,8 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     }
 
     private void confirm(){
-        Order order = new Order(0, mName, mPhone, System.currentTimeMillis(),
+        int currentUserId = MyHelper.getUserIdPreference(getContext());
+        Order order = new Order(0, currentUserId, mName, mPhone, System.currentTimeMillis(),
                 Constants.OrderStatus.WAITING.getIdStatus(), idTransport, idPayment, summary, mAddress);
         order.setOrderDetails(listOrderDetails);
         confirmPresenterImp.confirmOrder(order);

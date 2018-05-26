@@ -606,6 +606,46 @@ public class ProductModel {
         return flag;
     }
 
+    public boolean updateStockProduct(int idProduct, int newNumber){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateStock");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_product", idProduct + "");
+
+        HashMap<String, String> attrNumber = new HashMap<>();
+        attrNumber.put("number", newNumber + "");
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrNumber);
+
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            Log.e("tr_update_stock", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error update product", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
     public ArrayList<Product> searchProductByName(String search){
         ArrayList<Product> listProduct = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
