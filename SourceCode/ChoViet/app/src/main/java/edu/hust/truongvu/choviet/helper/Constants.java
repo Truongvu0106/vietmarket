@@ -10,7 +10,7 @@ public class Constants {
         public static final String PATH_ANDROID_STUDIO = "http://127.0.0.1:8080/electronicshop/";
         public static final String PATH_REAL_DEVICE = "http://192.168.100.5:8080/electronicshop/";
 
-        public static final String MY_PATH = PATH_REAL_DEVICE;
+        public static final String MY_PATH = PATH_GENNYMOTION;
     }
 
     public class User {
@@ -37,6 +37,7 @@ public class Constants {
         public static final String MY_LOGIN = "mylogin";
         public static final String USERNAME = "username";
         public static final String USERID = "userid";
+        public static final String USERTYPE = "usertype";
 
 
         public static final String INTENT_PRODUCT = "intent_product";

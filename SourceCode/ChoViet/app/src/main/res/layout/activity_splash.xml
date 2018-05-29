@@ -16,6 +16,6 @@
         <ImageView
             android:layout_width="@dimen/icon_size_huge"
             android:layout_height="@dimen/icon_size_huge"
-            android:src="@drawable/logo_slogan"/>
+            android:src="@drawable/logo_notext"/>
     </LinearLayout>
 </RelativeLayout>

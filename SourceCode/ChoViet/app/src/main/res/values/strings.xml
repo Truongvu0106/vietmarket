@@ -105,6 +105,18 @@
     <string name="not_log_in">You are not login yet</string>
     <string name="added_to_your_cart">Added to your cart</string>
     <string name="out_of_stock">Out of stock</string>
+    <string name="total_product">Total product</string>
+    <string name="total_user">Total user</string>
+    <string name="your_product_total_product">Your products/Total products</string>
+    <string name="your_order_total_order">Your orders/Total orders</string>
+    <string name="top_product">Top product</string>
+    <string name="your_shop_rank">Your shop rank</string>
+    <string name="hall_of_fame">Hall of fame</string>
+    <string name="total_shop">Total shop</string>
+    <string name="total_order">Total order</string>
+    <string name="top_rate">Top rate</string>
+    <string name="most_like">Most like</string>
+    <string name="best_sell">Best sell</string>
     <string name="already_in_your_cart">This item already in your cart</string>
     <string name="do_you_really_want_to_delete">Do you really want to remove this item?</string>
     <string name="yes">Yes</string>
@@ -270,4 +282,26 @@
 
     <string name="shop_report">Shop report</string>
     <string name="overview_report">Overview report</string>
+
+    <string name="month">Month</string>
+    <string name="number_order">Number of order</string>
+    <string name="January">Jan</string>
+    <string name="February">Feb</string>
+    <string name="March">Mar</string>
+    <string name="April">Apr</string>
+    <string name="May">May</string>
+    <string name="June">Jun</string>
+    <string name="July">Jul</string>
+    <string name="August">Aug</string>
+    <string name="September">Sep</string>
+    <string name="October">Oct</string>
+    <string name="November">Nov</string>
+    <string name="December">Dec</string>
+
+    <string name="manage_banner">Manage banner</string>
+    <string name="manage_user">Manage user</string>
+    <string name="manage_category">Manage category</string>
+    <string name="add_prodmotion">Add promotion</string>
+    <string name="extend">Extend</string>
+    <string name="hello">Hello!</string>
 </resources>

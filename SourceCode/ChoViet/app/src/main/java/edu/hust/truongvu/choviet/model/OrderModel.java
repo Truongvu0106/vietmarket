@@ -115,6 +115,52 @@ public class OrderModel {
         return flag;
     }
 
+    public ArrayList<Order> getAllOrder(){
+        ArrayList<Order> listOrder = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getAllOrder");
+        attrs.add(attrFunc);
+
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("orders");
+            JSONArray jsonTransport = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonTransport.length(); i++) {
+                JSONObject jsonObject1 = jsonTransport.getJSONObject(i);
+                String id = jsonObject1.getString("id_order");
+                String id_user = jsonObject1.getString("id_user");
+                String fullname = jsonObject1.getString("fullname");
+                String phone = jsonObject1.getString("phone");
+                String date_order = jsonObject1.getString("date_order");
+                String status = jsonObject1.getString("status");
+                String type_transport = jsonObject1.getString("type_transport");
+                String type_payment = jsonObject1.getString("type_payment");
+                String value = jsonObject1.getString("value");
+                String address = jsonObject1.getString("address");
+
+                Order order = new Order(Integer.parseInt(id), Integer.parseInt(id_user), fullname,
+                        phone, Long.parseLong(date_order), Integer.parseInt(status), Integer.parseInt(type_transport),
+                        Integer.parseInt(type_payment), Long.parseLong(value), address);
+                listOrder.add(order);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return listOrder;
+    }
+
     public ArrayList<OrderDetails> getDetailsOrderByShop(int idShop){
         ArrayList<OrderDetails> listOrder = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -203,5 +249,86 @@ public class OrderModel {
             return new ArrayList<>();
         }
         return listOrder;
+    }
+
+    public int countProductInOrder(int idShop, int idProduct){
+        int number = 0;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "countProductInOrder");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("id_shop", idShop + "");
+
+        HashMap<String, String> attrIdProduct = new HashMap<>();
+        attrIdProduct.put("id_product", idProduct + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdShop);
+        attrs.add(attrIdProduct);
+
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
+    }
+
+    public int countOrdeByTime(int idShop, long start, long end){
+        int number = 0;
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "countOrderByTime");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("id_shop", idShop + "");
+
+        HashMap<String, String> attrStartDate = new HashMap<>();
+        attrStartDate.put("start_date", start + "");
+
+        HashMap<String, String> attrEndDate = new HashMap<>();
+        attrEndDate.put("end_date", end + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdShop);
+        attrs.add(attrStartDate);
+        attrs.add(attrEndDate);
+
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
     }
 }

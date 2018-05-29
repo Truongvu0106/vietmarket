@@ -24,6 +24,8 @@ public class Product implements Serializable{
     private boolean isLike;
 
     private int numberSelect;
+    private int countLike;
+    private int countInOrder;
 
     public Product(){
 
@@ -166,5 +168,21 @@ public class Product implements Serializable{
 
     public void setNumberSelect(int numberSelect) {
         this.numberSelect = numberSelect;
+    }
+
+    public int getCountLike() {
+        return countLike;
+    }
+
+    public void setCountLike(int countLike) {
+        this.countLike = countLike;
+    }
+
+    public int getCountInOrder() {
+        return countInOrder;
+    }
+
+    public void setCountInOrder(int countInOrder) {
+        this.countInOrder = countInOrder;
     }
 }

@@ -11,6 +11,8 @@ public class ChildCategory {
     private int img;
     private String path_img;
 
+    private int numberProduct;
+
     public ChildCategory(int id, String name, int idParent, int img) {
         this.id = id;
         this.name = name;
@@ -64,5 +66,13 @@ public class ChildCategory {
 
     public void setPath_img(String path_img) {
         this.path_img = path_img;
+    }
+
+    public int getNumberProduct() {
+        return numberProduct;
+    }
+
+    public void setNumberProduct(int numberProduct) {
+        this.numberProduct = numberProduct;
     }
 }

@@ -6,6 +6,9 @@
 		case 'getAllShop':
 			$func();
 			break;
+		case 'getTopShop':
+			$func();
+			break;
 		case 'getShopById':
 			$func();
 			break;
@@ -25,6 +28,9 @@
 			$func();
 			break;
 		case 'registerShop':
+			$func();
+			break;
+		case 'getNumberUserFollowing':
 			$func();
 			break;
 		default:
@@ -109,6 +115,34 @@
 	function getAllShop(){
 		global $conn;
 		$query = "SELECT * FROM shop";
+		$results = mysqli_query($conn, $query);
+		$my_json_array = array();
+		echo "{";
+		echo "\"shops\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id" => $line["id_shop"], 
+					"name" => $line["name_shop"],
+					"slogan" => $line["slogan"],
+					"avatar" => $line["img_avatar"],
+					"cover" => $line["img_cover"],
+					"owner" => $line["id_owner"],
+					"address" => $line["address"],
+					"phone" => $line["phone"],
+					"website" => $line["website"],
+					"rate" => $line["rate"],
+					"highlight" => $line["highlight"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+	}
+
+	function getTopShop(){
+		global $conn;
+		$query = "SELECT * FROM shop ORDER BY rate DESC";
 		$results = mysqli_query($conn, $query);
 		$my_json_array = array();
 		echo "{";
@@ -253,6 +287,21 @@
 			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
 		}
 		echo "]}";
+		mysqli_close($conn);
+	}
+
+	function getNumberUserFollowing(){
+		global $conn;
+		if (isset($_POST["id_shop"])) {
+			$idShop = $_POST["id_shop"];
+		}
+
+		$query = "SELECT * FROM shop_follow WHERE id_shop = ".$idShop;
+		$results = mysqli_query($conn, $query);
+		$count = mysqli_num_rows($results);
+		echo json_encode([
+			"number" => $count
+			]);
 		mysqli_close($conn);
 	}
 	

@@ -864,6 +864,116 @@ public class ProductModel {
         return results;
     }
 
+    public int countLikeProduct(int idProduct){
+        int number = 0;
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "countLikeProduct");
 
+        HashMap<String, String> attrIdProduct = new HashMap<>();
+        attrIdProduct.put("id_product", idProduct + "");
 
+        attrs.add(attrFunc);
+        attrs.add(attrIdProduct);
+
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
+    }
+
+    public int countProductByBrand(int idShop, int idBrand){
+        int number = 0;
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "countProductByBrand");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("id_shop", idShop + "");
+
+        HashMap<String, String> attrIdBrand = new HashMap<>();
+        attrIdBrand.put("id_brand", idBrand + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdShop);
+        attrs.add(attrIdBrand);
+
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
+    }
+
+    public int countProductByCategory(int idShop, int idCategory){
+        int number = 0;
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "countProductByCategory");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("id_shop", idShop + "");
+
+        HashMap<String, String> attrIdCategory = new HashMap<>();
+        attrIdCategory.put("id_category", idCategory + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdShop);
+        attrs.add(attrIdCategory);
+
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
+    }
 }

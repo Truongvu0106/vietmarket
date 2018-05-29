@@ -2,6 +2,7 @@ package edu.hust.truongvu.choviet.startup.signin;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -27,10 +29,14 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.admin.MainAdminActivity;
 import edu.hust.truongvu.choviet.init.MainActivity;
 import edu.hust.truongvu.choviet.helper.customview.MyToast;
+import edu.hust.truongvu.choviet.model.UserModel;
 import edu.hust.truongvu.choviet.startup.signup.SignupFragment;
 import edu.hust.truongvu.choviet.helper.Constants;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -148,13 +154,20 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
     @Override
     public void onSuccess() {
         Log.e("login", "success");
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
+        SharedPreferences sharePreference = getContext().getSharedPreferences(Constants.MyTag.MY_LOGIN, MODE_PRIVATE);
+        int type = sharePreference.getInt(Constants.MyTag.USERTYPE, 0);
+        Log.e("user_type", UserModel.USERTYPE + "");
+        if (type == UserModel.USERTYPE){
+            startActivity(new Intent(getActivity(), MainAdminActivity.class));
+        }else {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
     public void onError(String error) {
-        new MyToast().Show_Toast(getActivity(), view, getString(R.string.wrong_signin));
+        Toast.makeText(getContext(), getString(R.string.wrong_signin), Toast.LENGTH_SHORT).show();
         Log.e("error_signin", error);
         root.startAnimation(animation);
     }

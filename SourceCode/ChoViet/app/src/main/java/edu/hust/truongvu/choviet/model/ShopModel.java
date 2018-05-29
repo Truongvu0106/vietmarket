@@ -79,6 +79,54 @@ public class ShopModel {
         return listShop;
     }
 
+    public ArrayList<Shop> getTopShop(){
+        ArrayList<Shop> listShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getTopShop");
+
+        attrs.add(attrFunc);
+
+        MyService myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("shops");
+            JSONArray jsonBrands = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonBrands.length(); i++) {
+                JSONObject jsonObject1 = jsonBrands.getJSONObject(i);
+                String id = jsonObject1.getString("id");
+                String name = jsonObject1.getString("name");
+                String slogan = jsonObject1.getString("slogan");
+                String avatar = jsonObject1.getString("avatar");
+                String cover = jsonObject1.getString("cover");
+                String owner = jsonObject1.getString("owner");
+                String address = jsonObject1.getString("address");
+                String phone = jsonObject1.getString("phone");
+                String website = jsonObject1.getString("website");
+                String rate = jsonObject1.getString("rate");
+                String hightlight = jsonObject1.getString("highlight");
+
+                Shop shop = new Shop(Integer.parseInt(id), name, slogan, avatar, cover,
+                        Integer.parseInt(owner), address, phone, website, Float.parseFloat(rate),
+                        hightlight.matches("1") ? true : false);
+                listShop.add(shop);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return listShop;
+    }
+
     public Shop getShopById(int id) {
         Shop shop = null;
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -347,6 +395,42 @@ public class ShopModel {
             results.add(shop);
         }
         return results;
+    }
+
+    public int getNumberCustomerFollowing(int idShop){
+        int number = 0;
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getNumberUserFollowing");
+
+        HashMap<String, String> attrIdShop = new HashMap<>();
+        attrIdShop.put("id_shop", idShop + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdShop);
+
+        myService = new MyService(mContext, SHOP_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            Log.e("shop_follow", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
     }
 
     public boolean registerShop(Shop shop){

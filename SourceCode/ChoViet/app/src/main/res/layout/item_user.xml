@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar_user"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/icon_size_bigger"
+            android:padding="@dimen/margin_medium"
+            android:src="@drawable/user_default"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="3">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black"
+                    android:text="truong@gmail.com"/>
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_fullname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black"
+                    android:text="vu xuan truong"/>
+            </LinearLayout>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="Phone: 0983815459"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/black"
+                android:lines="2"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="Address: dasdasd"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGray"/>
+
+</LinearLayout>

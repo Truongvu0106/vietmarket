@@ -4,210 +4,380 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="edu.hust.truongvu.choviet.user.myshop.report.ShopReportFragment">
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/margin_big">
+
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:id="@+id/tv_total_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/total_shop"
+                    android:textColor="@color/colorPrimaryDark" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_small"
+                                    android:layout_height="@dimen/icon_size_small"
+                                    android:src="@drawable/shopping_bag" />
+
+                                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_small"
+                                    android:text="@string/total_product"
+                                    android:textColor="@color/grayicon"
+                                    android:textSize="@dimen/text_size_small" />
+                            </LinearLayout>
+
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:id="@+id/total_product"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/margin_small"
+                                android:text="0"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/text_size_large" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <lecho.lib.hellocharts.view.PieChartView
+                            android:id="@+id/pieChartProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/icon_size_large" />
+
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pieChartProduct"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@string/your_product_total_product"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_tiny" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <lecho.lib.hellocharts.view.PieChartView
+                            android:id="@+id/pieChartOrder"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/icon_size_large" />
+
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pieChartOrder"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@string/your_order_total_order"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_tiny" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_small"
+                                    android:layout_height="@dimen/icon_size_small"
+                                    android:src="@drawable/copy" />
+
+                                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_small"
+                                    android:text="@string/total_order"
+                                    android:textColor="@color/grayicon"
+                                    android:textSize="@dimen/text_size_small" />
+                            </LinearLayout>
+
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:id="@+id/total_order"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/margin_small"
+                                android:text="0"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/text_size_large" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingTop="@dimen/padding_big"
                 android:paddingBottom="@dimen/padding_big"
-                android:background="@color/white">
+                android:paddingTop="@dimen/padding_big">
+
                 <edu.hust.truongvu.choviet.helper.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/text_size_small"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="@dimen/margin_small"
-                    android:text="Top product"/>
+                    android:text="@string/hall_of_fame"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_small" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_weight="1">
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:layout_weight="1">
+
                             <ImageView
-                                android:layout_width="@dimen/icon_size_small"
-                                android:layout_height="@dimen/icon_size_small"
-                                android:padding="@dimen/padding_small"
-                                android:src="@drawable/star_yellow"/>
+                                android:layout_width="@dimen/icon_size_big"
+                                android:layout_height="@dimen/icon_size_big"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/margin_big"
+                                android:padding="@dimen/padding_big"
+                                android:src="@drawable/gold_medal" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
                             <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:id="@+id/tv_first"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:textSize="@dimen/text_size_tiny"
-                                android:textColor="@color/grayicon"
-                                android:layout_gravity="center_vertical"
-                                android:text="Top rate"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="@dimen/icon_size_bigger"
-                            android:layout_height="@dimen/icon_size_big"
-                            android:scaleType="centerCrop"
-                            android:layout_marginTop="@dimen/margin_tiny"
-                            android:src="@drawable/giaydep"/>
-                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:lines="2"
-                            android:padding="@dimen/padding_medium"
-                            android:textSize="@dimen/text_size_tiny"
-                            android:textColor="@color/black"
-                            android:text="dasdadashkjhkhkhjhkjhkjhkh"/>
+                                android:layout_marginLeft="@dimen/margin_medium" />
+                        </RelativeLayout>
+
+
                     </LinearLayout>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray"
-                        android:layout_marginTop="@dimen/margin_large"
-                        android:layout_marginBottom="@dimen/margin_huge"/>
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_weight="1">
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:layout_weight="1">
+
                             <ImageView
-                                android:layout_width="@dimen/icon_size_small"
-                                android:layout_height="@dimen/icon_size_small"
-                                android:padding="@dimen/padding_small"
-                                android:src="@drawable/like_red"/>
+                                android:layout_width="@dimen/icon_size_big"
+                                android:layout_height="@dimen/icon_size_big"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/margin_big"
+                                android:padding="@dimen/padding_big"
+                                android:src="@drawable/silver_medal" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
                             <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:id="@+id/tv_second"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:textSize="@dimen/text_size_tiny"
-                                android:textColor="@color/grayicon"
-                                android:layout_gravity="center_vertical"
-                                android:text="Most like"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="@dimen/icon_size_bigger"
-                            android:layout_height="@dimen/icon_size_big"
-                            android:scaleType="centerCrop"
-                            android:layout_marginTop="@dimen/margin_tiny"
-                            android:src="@drawable/giaydep"/>
-                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:lines="2"
-                            android:padding="@dimen/padding_medium"
-                            android:textSize="@dimen/text_size_tiny"
-                            android:textColor="@color/black"
-                            android:text="dasdadashkjhkhkhjhkjhkjhkh"/>
+                                android:layout_marginLeft="@dimen/margin_medium" />
+                        </RelativeLayout>
                     </LinearLayout>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray"
-                        android:layout_marginTop="@dimen/margin_large"
-                        android:layout_marginBottom="@dimen/margin_huge"/>
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_weight="1">
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:layout_weight="1">
                             <ImageView
-                                android:layout_width="@dimen/icon_size_small"
-                                android:layout_height="@dimen/icon_size_small"
-                                android:padding="@dimen/padding_small"
-                                android:src="@drawable/cart_green"/>
+                                android:layout_width="@dimen/icon_size_big"
+                                android:layout_height="@dimen/icon_size_big"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/margin_big"
+                                android:padding="@dimen/padding_big"
+                                android:src="@drawable/bronze_medal" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
                             <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:id="@+id/tv_third"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/margin_tiny"
-                                android:textSize="@dimen/text_size_tiny"
-                                android:textColor="@color/grayicon"
-                                android:layout_gravity="center_vertical"
-                                android:text="Best sell"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="@dimen/icon_size_bigger"
-                            android:layout_height="@dimen/icon_size_big"
-                            android:scaleType="centerCrop"
-                            android:layout_marginTop="@dimen/margin_tiny"
-                            android:src="@drawable/giaydep"/>
-                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:lines="2"
-                            android:padding="@dimen/padding_medium"
-                            android:textSize="@dimen/text_size_tiny"
-                            android:textColor="@color/black"
-                            android:text="dasdadashkjhkhkhjhkjhkjhkh"/>
+                                android:layout_marginLeft="@dimen/margin_medium" />
+                        </RelativeLayout>
                     </LinearLayout>
+
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_your_shop_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_big"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/black"
+                        android:text="Your shop rank: #2"/>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_big"
                 android:background="@color/white"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/margin_big">
+                android:orientation="horizontal">
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_medium"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:paddingBottom="@dimen/margin_small"
+                    android:paddingLeft="@dimen/margin_medium"
+                    android:paddingRight="@dimen/margin_medium">
+
                     <lecho.lib.hellocharts.view.PieChartView
+                        android:id="@+id/chart_brand"
                         android:layout_width="match_parent"
-                        android:layout_centerInParent="true"
-                        android:layout_height="@dimen/icon_size_huge" >
-                    </lecho.lib.hellocharts.view.PieChartView>
+                        android:layout_height="@dimen/icon_size_huge"
+                        android:layout_centerInParent="true"></lecho.lib.hellocharts.view.PieChartView>
+
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/chart_brand"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:text="@string/brand"
+                        android:textSize="@dimen/text_size_small" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_medium"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:paddingBottom="@dimen/margin_small"
+                    android:paddingLeft="@dimen/margin_medium"
+                    android:paddingRight="@dimen/margin_medium">
+
                     <lecho.lib.hellocharts.view.PieChartView
+                        android:id="@+id/chart_category"
                         android:layout_width="match_parent"
-                        android:layout_centerInParent="true"
-                        android:layout_height="@dimen/icon_size_huge" >
-                    </lecho.lib.hellocharts.view.PieChartView>
+                        android:layout_height="@dimen/icon_size_huge"
+                        android:layout_centerInParent="true"></lecho.lib.hellocharts.view.PieChartView>
+
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/chart_category"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:text="@string/category"
+                        android:textSize="@dimen/text_size_small" />
                 </RelativeLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_big"
                 android:background="@color/white"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/margin_big">
+                android:orientation="horizontal">
+
                 <lecho.lib.hellocharts.view.LineChartView
-                    android:id="@+id/chart"
+                    android:id="@+id/chart_line"
                     android:layout_width="match_parent"
-                    android:padding="@dimen/margin_medium"
-                    android:layout_height="200dp" >
-                </lecho.lib.hellocharts.view.LineChartView>
+                    android:layout_height="200dp"
+                    android:padding="@dimen/margin_medium"></lecho.lib.hellocharts.view.LineChartView>
             </LinearLayout>
         </LinearLayout>
 

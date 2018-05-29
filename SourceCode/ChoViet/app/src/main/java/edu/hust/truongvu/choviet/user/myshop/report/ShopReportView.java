@@ -9,6 +9,10 @@ import lecho.lib.hellocharts.model.PieChartData;
  */
 
 public interface ShopReportView {
+    void loadTotalProduct(int number);
+    void loadRate(float rate);
+    void loadNumberFollow(int number);
+
     void loadTopRateProductSucessful(Product product);
     void loadTopRateProductFalse();
 

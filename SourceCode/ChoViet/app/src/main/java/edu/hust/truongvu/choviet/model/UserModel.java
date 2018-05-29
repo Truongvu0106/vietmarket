@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.model.entity.ChildCategory;
 import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.services.MyService;
 import edu.hust.truongvu.choviet.helper.Constants;
@@ -24,10 +26,12 @@ import edu.hust.truongvu.choviet.helper.Constants;
 public class UserModel {
     public static final String PATH_USER = Constants.Path.MY_PATH + "user.php";
     private Context context;
+    public static int USERTYPE = 0;
 
     public UserModel(Context context){
         this.context = context;
     }
+
     public boolean checkLogin(String username, String password){
         boolean flag = false;
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -56,10 +60,13 @@ public class UserModel {
                 flag = true;
                 String username1 = jsonObject.getString("username");
                 int id = jsonObject.getInt("id");
+                int type = jsonObject.getInt("type");
                 SharedPreferences loginPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = loginPreference.edit();
                 editor.putString(Constants.MyTag.USERNAME, username1);
                 editor.putInt(Constants.MyTag.USERID, id);
+                editor.putInt(Constants.MyTag.USERNAME, type);
+                USERTYPE = type;
                 editor.commit();
             }else {
                 flag = false;
@@ -73,6 +80,44 @@ public class UserModel {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public ArrayList<User> getAllMember(){
+        ArrayList<User> listUser = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunction = new HashMap<>();
+        attrFunction.put("func", "getAllMember");
+        attrs.add(attrFunction);
+        try {
+            MyService myService = new MyService(context, PATH_USER, attrs);
+            myService.execute();
+            String results = myService.get();
+            JSONObject jsonObject = new JSONObject(results);
+            JSONArray jsonCategories = jsonObject.getJSONArray("users");
+            JSONArray myJsonArr = jsonCategories.getJSONArray(0);
+            for (int i = 0; i < myJsonArr.length(); i++){
+                JSONObject data = myJsonArr.getJSONObject(i);
+                String id_user = data.getString("id_user");
+                String fullname = data.getString("fullname");
+                String username = data.getString("username");
+                String password = data.getString("password");
+                String address = data.getString("address");
+                String birthday = data.getString("birthday");
+                String phone = data.getString("phone");
+                String gender = data.getString("gender");
+                String img_avatar = data.getString("img_avatar");
+                String id_type = data.getString("id_type");
+                String type_login = data.getString("type_login");
+
+                User user = new User(Integer.parseInt(id_user), fullname, username, password, address, birthday, phone,
+                        Integer.parseInt(gender), img_avatar, Integer.parseInt(id_type), Integer.parseInt(type_login));
+                listUser.add(user);
+            }
+
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+        return listUser;
     }
 
     public User getUserByUsername(String username){

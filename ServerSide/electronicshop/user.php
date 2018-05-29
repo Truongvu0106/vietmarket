@@ -4,6 +4,9 @@
 	$func = $_POST["func"];
 
 	switch ($func) {
+		case 'getAllMember':
+			$func();
+			break;
 		case 'registerUser':
 			$func();
 			break;
@@ -24,6 +27,34 @@
 			break;
 	}
 
+	function getAllMember(){
+		global $conn;
+		$query_parent = "SELECT * FROM user WHERE id_type = 2";
+		$results_parent = mysqli_query($conn, $query_parent);
+		$my_json_array = array();
+		echo "{";
+		echo "\"users\":[";
+		if ($results_parent) {
+			while ($line = mysqli_fetch_array($results_parent)) {
+				array_push($my_json_array, array(
+					"id_user" => $line["id_user"], 
+					"fullname" => $line["fullname"], 
+					"username" => $line["username"], 
+					"password" => $line["password"], 
+					"address" => $line["address"], 
+					"birthday" => $line["birthday"], 
+					"phone" => $line["phone"], 
+					"gender" => $line["gender"], 
+					"img_avatar" => $line["img_avatar"], 
+					"id_type" => $line["id_type"], 
+					"type_login" => $line["type_login"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+	}
+
 	function checkLogin(){
 		global $conn;
 		if (isset($_POST["username"]) || isset($_POST["password"])) {
@@ -37,11 +68,19 @@
 		if ($count >= 1) {
 			$username = "";
 			$id = 0;
+			$type = 0;
 			while ($line = mysqli_fetch_array($results)) {
 				$username = $line["username"];
 				$id = $line["id_user"];
+				$type = $line["id_type"];
 			}
 			echo "{result : true, username : \"".$username."\", id : ".$id." }";
+			echo json_encode([
+				"result" => "true",
+				"username" => $username,
+				"id" => $id,
+				"type" => $type
+			]);
 		}else{
 			echo "{result : false, error : ".$query."</br>".$conn->error."}";
 		}

@@ -9,6 +9,8 @@ public class Brand {
     private String name;
     private String logo;
 
+    private int numberProduct;
+
     public Brand(int id, String name, String logo) {
         this.id = id;
         this.name = name;
@@ -37,5 +39,13 @@ public class Brand {
 
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public int getNumberProduct() {
+        return numberProduct;
+    }
+
+    public void setNumberProduct(int numberProduct) {
+        this.numberProduct = numberProduct;
     }
 }

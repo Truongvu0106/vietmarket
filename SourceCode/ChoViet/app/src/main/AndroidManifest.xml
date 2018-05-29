@@ -70,7 +70,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".user.myshop.update_product.UpdateProductActivity"></activity>
+        <activity android:name=".user.myshop.update_product.UpdateProductActivity" />
+        <activity android:name=".admin.MainAdminActivity"></activity>
     </application>
 
 </manifest>

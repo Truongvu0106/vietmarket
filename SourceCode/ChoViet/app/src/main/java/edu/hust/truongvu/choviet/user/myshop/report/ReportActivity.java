@@ -38,7 +38,7 @@ public class ReportActivity extends AppCompatActivity {
 
         ArrayList<Fragment> listFragment = new ArrayList<>();
         listFragment.add(ShopReportFragment.getInstance(idShop));
-        listFragment.add(OverviewReportFragment.getInstance());
+        listFragment.add(OverviewReportFragment.getInstance(idShop));
 
         ArrayList<String> listTitle = new ArrayList<>();
         listTitle.add(getString(R.string.shop_report));

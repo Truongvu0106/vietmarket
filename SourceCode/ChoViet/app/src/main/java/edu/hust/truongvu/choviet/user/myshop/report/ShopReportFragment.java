@@ -24,10 +24,10 @@ import lecho.lib.hellocharts.view.PieChartView;
  */
 public class ShopReportFragment extends Fragment implements ShopReportView{
     private ImageView imgToprate, imgMostLike, imgBestSell;
-    private TextView tvToprate, tvMostlike, tvBestsell;
+    private TextView tvToprate, tvMostlike, tvBestsell, tvTotalProduct, tvNumberFollow, tvRate;
     private PieChartView pieChartBrand, pieChartCategory;
     private LineChartView lineChartView;
-    private ShopReportPresenter shopReportPresenter;
+    private ReportPresenter reportPresenter;
     private int idShop;
 
     public static ShopReportFragment getInstance(int idShop){
@@ -47,11 +47,14 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_shop_report, container, false);
         initView(view);
-        shopReportPresenter = new ShopReportPresenterImp(getContext(), this);
-        shopReportPresenter.initLineChart(idShop);
-        shopReportPresenter.initTopProduct(idShop);
-        shopReportPresenter.initPieChartBrand(idShop);
-        shopReportPresenter.initPieChartCategory(idShop);
+        reportPresenter = new ShopReportPresenterImp(getContext(), this, idShop);
+        reportPresenter.initTotalProduct();
+        reportPresenter.initRate();
+        reportPresenter.initNumberFollow();
+        reportPresenter.initLineChart();
+        reportPresenter.initTopProduct();
+        reportPresenter.initPieChartBrand();
+        reportPresenter.initPieChartCategory();
         return view;
     }
 
@@ -62,10 +65,28 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
         tvToprate = view.findViewById(R.id.name_toprate);
         tvMostlike = view.findViewById(R.id.name_mostlike);
         tvBestsell = view.findViewById(R.id.name_bestsell);
+        tvTotalProduct = view.findViewById(R.id.tv_total_product);
+        tvNumberFollow = view.findViewById(R.id.tv_user_follow);
+        tvRate = view.findViewById(R.id.tv_rate);
 
         pieChartBrand = view.findViewById(R.id.chart_brand);
         pieChartCategory = view.findViewById(R.id.chart_category);
         lineChartView = view.findViewById(R.id.chart_line);
+    }
+
+    @Override
+    public void loadTotalProduct(int number) {
+        tvTotalProduct.setText(getString(R.string.total_product) + ": " + number);
+    }
+
+    @Override
+    public void loadRate(float rate) {
+        tvRate.setText(rate + "");
+    }
+
+    @Override
+    public void loadNumberFollow(int number) {
+        tvNumberFollow.setText(number + "");
     }
 
     @Override
@@ -76,7 +97,8 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadTopRateProductFalse() {
-
+        imgToprate.setImageResource(R.drawable.img_error);
+        tvToprate.setText(getString(R.string.no_data));
     }
 
     @Override
@@ -87,7 +109,8 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadMostLikeProductFalse() {
-
+        imgMostLike.setImageResource(R.drawable.img_error);
+        tvMostlike.setText(getString(R.string.no_data));
     }
 
     @Override
@@ -98,7 +121,8 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadBestSellProductFalse() {
-
+        imgBestSell.setImageResource(R.drawable.img_error);
+        tvBestsell.setText(getString(R.string.no_data));
     }
 
     @Override
@@ -125,9 +149,10 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadLineChartSucessful(LineChartData data) {
-        lineChartView.setLineChartData(data);
         lineChartView.setZoomEnabled(true);
         lineChartView.setZoomType(ZoomType.HORIZONTAL_AND_VERTICAL);
+        lineChartView.setLineChartData(data);
+
     }
 
     @Override
