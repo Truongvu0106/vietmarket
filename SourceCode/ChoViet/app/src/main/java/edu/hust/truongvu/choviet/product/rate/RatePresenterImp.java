@@ -33,7 +33,7 @@ public class RatePresenterImp implements RatePresenter{
     @Override
     public void loadRate(int idProduct) {
         RateModel rateModel = new RateModel(mContext);
-        ArrayList<Rate> data = rateModel.loadListRate(idProduct);
+        ArrayList<Rate> data = rateModel.getListRate(idProduct);
         rateView.loadListRateSuccessful(data);
     }
 }

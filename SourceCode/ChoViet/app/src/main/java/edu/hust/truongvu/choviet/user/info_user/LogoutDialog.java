@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.cart.DeleteItemCartDialog;
 
 /**
  * Created by truon on 5/22/2018.

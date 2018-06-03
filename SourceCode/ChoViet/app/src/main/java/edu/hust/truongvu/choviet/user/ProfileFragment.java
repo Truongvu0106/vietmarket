@@ -23,6 +23,7 @@ import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.startup.StartActivity;
 import edu.hust.truongvu.choviet.user.followingshop.FollowingShopActivity;
 import edu.hust.truongvu.choviet.user.info_user.InfoUserActivity;
+import edu.hust.truongvu.choviet.user.myorder.MyOrderActivity;
 import edu.hust.truongvu.choviet.user.myshop.MyShopActivity;
 import edu.hust.truongvu.choviet.user.wishlist.WishListProductActivity;
 
@@ -30,9 +31,10 @@ import edu.hust.truongvu.choviet.user.wishlist.WishListProductActivity;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment implements View.OnClickListener, ProfileView{
-
+    public static final String OPTION_TAG = "option_tag";
     private View btnEditProfile, btnSetting, btnYourOrder, btnYourWishlist,
             btnYourFavoriteShop, btnYourShop, btnAccount, btnSettingTwo, btnAboutUs, btnSignInNow;
+    private View orderWaiting, orderShipping, orderReceived, orderCancel;
     private View layoutInfor, layoutErr;
     private ImageView imgProfile;
     private TextView tvName;
@@ -86,6 +88,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         btnSignInNow = view.findViewById(R.id.btn_signin_now);
         imgProfile = view.findViewById(R.id.profile_image);
         tvName = view.findViewById(R.id.tv_username);
+        orderWaiting = view.findViewById(R.id.order_wait);
+        orderShipping = view.findViewById(R.id.order_ship);
+        orderReceived = view.findViewById(R.id.order_receive);
+        orderCancel = view.findViewById(R.id.order_cancel);
 
         btnEditProfile.setOnClickListener(this);
         btnSetting.setOnClickListener(this);
@@ -97,7 +103,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         btnSettingTwo.setOnClickListener(this);
         btnAboutUs.setOnClickListener(this);
         btnSignInNow.setOnClickListener(this);
-
+        orderWaiting.setOnClickListener(this);
+        orderShipping.setOnClickListener(this);
+        orderReceived.setOnClickListener(this);
+        orderCancel.setOnClickListener(this);
     }
 
     private void loadFacebook(String image, String name){
@@ -131,6 +140,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
             case R.id.btn_setting:
                 break;
             case R.id.btn_your_order:
+                startOrderAvtivity(Constants.OrderStatus.WAITING.getIdStatus());
                 break;
             case R.id.btn_your_wishlist:
                 startActivity(new Intent(getActivity(), WishListProductActivity.class));
@@ -151,9 +161,27 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
             case R.id.btn_signin_now:
                 startActivity(new Intent(getActivity(), StartActivity.class));
                 break;
+            case R.id.order_wait:
+                startOrderAvtivity(Constants.OrderStatus.WAITING.getIdStatus());
+                break;
+            case R.id.order_ship:
+                startOrderAvtivity(Constants.OrderStatus.SHIPPING.getIdStatus());
+                break;
+            case R.id.order_receive:
+                startOrderAvtivity(Constants.OrderStatus.RECEIVED.getIdStatus());
+                break;
+            case R.id.order_cancel:
+                startOrderAvtivity(Constants.OrderStatus.CANCEL.getIdStatus());
+                break;
             default:
                 break;
         }
+    }
+
+    private void startOrderAvtivity(int code){
+        Intent intent = new Intent(getActivity(), MyOrderActivity.class);
+        intent.putExtra(OPTION_TAG, code);
+        startActivity(intent);
     }
 
     @Override

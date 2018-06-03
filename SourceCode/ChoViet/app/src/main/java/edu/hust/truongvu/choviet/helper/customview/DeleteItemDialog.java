@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.cart;
+package edu.hust.truongvu.choviet.helper.customview;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,18 +12,18 @@ import edu.hust.truongvu.choviet.R;
  * Created by truon on 3/25/2018.
  */
 
-public class DeleteItemCartDialog extends AlertDialog{
+public class DeleteItemDialog extends AlertDialog{
     public interface DeleteItemCartListener{
-        void onDelete(int id_product);
+        void onDelete(int id);
     }
-    private int id_product;
+    private int id;
     private Context context;
     private DeleteItemCartListener myListener;
     private View tvYes, tvCancel;
-    public DeleteItemCartDialog(Context context, int id_product, DeleteItemCartListener listener) {
+    public DeleteItemDialog(Context context, int id, DeleteItemCartListener listener) {
         super(context);
         this.context = context;
-        this.id_product = id_product;
+        this.id = id;
         this.myListener = listener;
     }
 
@@ -44,7 +44,7 @@ public class DeleteItemCartDialog extends AlertDialog{
         tvYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myListener.onDelete(id_product);
+                myListener.onDelete(id);
                 dismiss();
             }
         });

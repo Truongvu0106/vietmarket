@@ -48,6 +48,9 @@
 		case 'updateStock':
 			$func();
 			break;
+		case 'updateRate':
+			$func();
+			break;
 		case 'countLikeProduct':
 			$func();
 			break;
@@ -373,6 +376,29 @@
 		}
 
 		$query = "UPDATE product SET amount = '".$number."' WHERE id_product = '".$id."'";
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+			"result" => "true",
+			"message" => "update product successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn); 
+	}
+
+	function updateRate(){
+		global $conn;
+		if (isset($_POST["id_product"]) || isset($_POST["rate"])) {
+			$id = $_POST["id_product"];
+			$rate = $_POST["rate"];
+		}
+
+		$query = "UPDATE product SET rate = '".$rate."' WHERE id_product = '".$id."'";
 		if (mysqli_query($conn, $query)) {
 			echo json_encode([
 			"result" => "true",

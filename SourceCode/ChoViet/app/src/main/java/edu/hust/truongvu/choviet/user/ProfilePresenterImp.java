@@ -2,8 +2,8 @@ package edu.hust.truongvu.choviet.user;
 
 import android.content.Context;
 
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
+//import com.facebook.AccessToken;
+//import com.facebook.AccessTokenTracker;
 
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.User;
@@ -14,8 +14,8 @@ import edu.hust.truongvu.choviet.model.entity.User;
 
 public class ProfilePresenterImp implements ProfilePresenter {
     private ProfileView profileView;
-    private AccessToken accessToken;
-    private AccessTokenTracker accessTokenTracker;
+//    private AccessToken accessToken;
+//    private AccessTokenTracker accessTokenTracker;
     private Context mContext;
 
     public ProfilePresenterImp(Context context, ProfileView profileView){

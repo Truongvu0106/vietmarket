@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -122,5 +123,40 @@ public class CategoryModel {
             return null;
         }
         return childCategory;
+    }
+
+    public ArrayList<ChildCategory> getListChildCategoryByParent(int idParent){
+        ArrayList<ChildCategory> childCategories = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunction = new HashMap<>();
+        attrFunction.put("func", "getListChildCategoryByParent");
+
+        HashMap<String, String> attrIdParent = new HashMap<>();
+        attrIdParent.put("id_parent", idParent + "");
+
+        attrs.add(attrFunction);
+        attrs.add(attrIdParent);
+        try {
+            MyService myService = new MyService(mContext, CATEGORY_PATH, attrs);
+            myService.execute();
+
+            String results = myService.get();
+            JSONObject jsonObject = new JSONObject(results);
+            JSONArray jsonCategories = jsonObject.getJSONArray("child_categories");
+            JSONArray myJsonArr = jsonCategories.getJSONArray(0);
+            for (int i = 0; i < myJsonArr.length(); i++){
+                JSONObject data = myJsonArr.getJSONObject(i);
+                String id = data.getString("id");
+                String name = data.getString("name");
+                String parent = data.getString("parent");
+                String img = data.getString("image");
+                ChildCategory childCategory = new ChildCategory(Integer.parseInt(id), name, Integer.parseInt(parent), R.drawable.iphone, img);
+                childCategories.add(childCategory);
+            }
+
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+        return childCategories;
     }
 }

@@ -15,8 +15,6 @@ import edu.hust.truongvu.choviet.helper.Constants;
 
 public class CategoryPresenterImp implements CategoryPresenter {
 
-    public static String PATH_PARENT = Constants.Path.MY_PATH + "categoryparent.php";
-    public static String PATH_CHILD = Constants.Path.MY_PATH + "categorychild.php";
     public static ArrayList<ChildCategory> childCategories;
     private CategoryModel categoryModel;
     private CategoryView categoryView;

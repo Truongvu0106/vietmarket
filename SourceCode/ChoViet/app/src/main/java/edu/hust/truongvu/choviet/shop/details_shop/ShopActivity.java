@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
 import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.helper.MyHelper;
@@ -33,7 +35,10 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     private ImageView avatarShop, coverShop;
     private TextView tvName, tvSlogan, tvNumProduct, tvRate, tvAddress, tvPhone, tvWebsite;
     private View btnFollow, layoutFollowed;
+    private RatingBar mRatingbar;
+    private View layoutRating;
     boolean mIsFollowing = false;
+    private float currentRate = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +62,8 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
         tvWebsite = findViewById(R.id.tv_website);
         btnFollow = findViewById(R.id.btn_follow);
         layoutFollowed = findViewById(R.id.layout_followed);
+        mRatingbar = findViewById(R.id.rating_bar);
+        layoutRating = findViewById(R.id.layout_rating);
     }
 
     @Override
@@ -73,6 +80,10 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
         tvWebsite.setText(shop.getWebsite());
         shopPresenter.checkFollowing(MyHelper.getUserIdPreference(this), shop.getId());
         btnFollow.setOnClickListener(this);
+        layoutRating.setOnClickListener(this);
+
+        currentRate = shopPresenter.getRateByUserAndShop(MyHelper.getUserIdPreference(this), shop.getId());
+        mRatingbar.setRating(currentRate);
     }
 
     @Override
@@ -118,6 +129,38 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     }
 
     @Override
+    public void addUserRateSuccessful(float rate) {
+        mRatingbar.setRating(rate);
+        shopPresenter.updateTotalRate(true, shop.getId(), rate);
+    }
+
+    @Override
+    public void addUserRateFalse() {
+
+    }
+
+    @Override
+    public void updateUserRateSuccessful(float rate) {
+        mRatingbar.setRating(rate);
+        shopPresenter.updateTotalRate(false, shop.getId(), rate);
+    }
+
+    @Override
+    public void updateUserRateFalse() {
+
+    }
+
+    @Override
+    public void updateTotalRateSuccessful(float rate) {
+        tvRate.setText(rate + "");
+    }
+
+    @Override
+    public void updateTotalRateFalse() {
+
+    }
+
+    @Override
     public void loadListProductByShopSuccessful(ArrayList<Product> listProduct) {
         adapter = new ProductAdapter(this, listProduct, new ProductAdapter.ProductListener() {
             @Override
@@ -152,9 +195,45 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
             case R.id.btn_follow:
                 handleFollowAction();
                 break;
+            case R.id.layout_rating:
+                rateShop();
+                break;
             default:
                 break;
         }
+    }
+
+    private void rateShop(){
+        int currentUserId = MyHelper.getUserIdPreference(this);
+        if (currentUserId == 0){
+            ProfileCheckDialog dialog = new ProfileCheckDialog(this, new ProfileCheckDialog.ProfileCheckListener() {
+                @Override
+                public void login() {
+                    startActivity(new Intent(ShopActivity.this, StartActivity.class));
+                }
+
+                @Override
+                public void continueAsGuess() {
+
+                }
+            });
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        }else {
+            RateShopDialog dialog = new RateShopDialog(this, currentRate, new RateShopDialog.RateShopListener() {
+                @Override
+                public void onRate(float rate) {
+                    if (currentRate == 0){
+                        shopPresenter.addUserRate(MyHelper.getUserIdPreference(ShopActivity.this), shop.getId(), rate);
+                    }else {
+                        shopPresenter.updateUserRate(MyHelper.getUserIdPreference(ShopActivity.this), shop.getId(), rate);
+                    }
+                }
+            });
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        }
+
     }
 
     private void handleFollowAction(){

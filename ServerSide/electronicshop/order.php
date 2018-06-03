@@ -6,6 +6,9 @@
 		case 'getAllOrder':
 			$func();
 			break;
+		case 'getOrderByUser':
+			$func();
+			break;
 		case 'getListOrderByShopId':
 			$func();
 			break;
@@ -30,6 +33,39 @@
 		global $conn;
 		
 		$query = "SELECT * FROM product_order";
+		$results = mysqli_query($conn, $query);
+		$my_json_array = array();
+		echo "{";
+		echo "\"orders\":[";
+		if ($results) {
+			while ($line = mysqli_fetch_array($results)) {
+				array_push($my_json_array, array(
+					"id_order" => $line["id_order"], 
+					"id_user" => $line["id_user"],
+					"fullname" => $line["fullname"],
+					"phone" => $line["phone"],
+					"date_order" => $line["date_order"],
+					"status" => $line["status"],
+					"type_transport" => $line["type_transport"],
+					"type_payment" => $line["type_payment"],
+					"value" => $line["value"],
+					"address" => $line["address"]));
+			}
+			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
+		}
+		echo "]}";
+		mysqli_close($conn);
+	}
+
+	function getOrderByUser(){
+		global $conn;
+
+		if (isset($_POST["id_user"]) || isset($_POST["status"])) {
+			$idUser = $_POST["id_user"];
+			$status = $_POST["status"];
+		}
+		
+		$query = "SELECT * FROM product_order WHERE id_user = ".$idUser." AND status = ".$status;
 		$results = mysqli_query($conn, $query);
 		$my_json_array = array();
 		echo "{";
@@ -147,7 +183,7 @@
 			while ($line = mysqli_fetch_array($results)) {
 				array_push($my_json_array, array(
 					"id" => $line["id"], 
-					"id_order" => $line["id_customer"],
+					"id_order" => $line["id_order"],
 					"id_product" => $line["id_product"],
 					"id_shop" => $line["id_shop"],
 					"number" => $line["number"]));

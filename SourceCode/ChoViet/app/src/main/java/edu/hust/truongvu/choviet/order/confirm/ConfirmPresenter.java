@@ -13,4 +13,5 @@ public interface ConfirmPresenter {
     void initView(String name, String phone, String address, int idTransport, int idPayMethod);
     void confirmOrder(Order order);
     void updateStockProduct(ArrayList<OrderDetails> data);
+    void applyPromotion(String code);
 }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,8 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
 
     private RecyclerView recyclerView;
     private TextView tvAddress, tvTransport, tvPayment, tvSummary;
-    private View btnConfirm;
+    private EditText edtPromotion;
+    private View btnConfirm, btnApply;
     private ListCustomerOrderAdapter adapter;
     private ConfirmPresenterImp confirmPresenterImp;
     private long summary = 0;
@@ -61,9 +63,12 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
         tvTransport = view.findViewById(R.id.tv_shipping);
         tvPayment = view.findViewById(R.id.tv_payment);
         tvSummary = view.findViewById(R.id.tv_summary);
+        edtPromotion = view.findViewById(R.id.edt_code);
+        btnApply = view.findViewById(R.id.btn_apply);
         btnConfirm = view.findViewById(R.id.btn_confirm);
 
         btnConfirm.setOnClickListener(this);
+        btnApply.setOnClickListener(this);
 
         confirmPresenterImp = new ConfirmPresenterImp(getContext(), this);
         confirmPresenterImp.initView(AddressFragment.mName, AddressFragment.mPhone, AddressFragment.selectedAddress,
@@ -135,11 +140,35 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     }
 
     @Override
+    public void applyPromotionSuccessful(long price) {
+        summary -= price;
+        if (summary <= 0) summary = 0;
+        tvSummary.setText(MyHelper.formatMoney(summary));
+    }
+
+    @Override
+    public void applyPromotionFalse(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_confirm:
                 confirm();
                 break;
+            case R.id.btn_apply:
+                applyPromotion();
+                break;
+        }
+    }
+
+    private void applyPromotion(){
+        String code = edtPromotion.getText().toString().trim();
+        if (code.matches("")){
+            Toast.makeText(getContext(), getContext().getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+        }else {
+            confirmPresenterImp.applyPromotion(code);
         }
     }
 

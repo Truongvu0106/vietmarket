@@ -161,6 +161,63 @@ public class OrderModel {
         return listOrder;
     }
 
+    public ArrayList<Order> getOrderByUser(int idUser, int status1){
+        ArrayList<Order> listOrder = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "getOrderByUser");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_user", idUser + "");
+
+        HashMap<String, String> attrStatus = new HashMap<>();
+        attrStatus.put("status", status1 + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrId);
+        attrs.add(attrStatus);
+
+        MyService myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            Log.e("order_user", data);
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray myJsonArr = jsonObject.getJSONArray("orders");
+            JSONArray jsonTransport = myJsonArr.getJSONArray(0);
+            for (int i = 0; i < jsonTransport.length(); i++) {
+                JSONObject jsonObject1 = jsonTransport.getJSONObject(i);
+                String id = jsonObject1.getString("id_order");
+                String id_user = jsonObject1.getString("id_user");
+                String fullname = jsonObject1.getString("fullname");
+                String phone = jsonObject1.getString("phone");
+                String date_order = jsonObject1.getString("date_order");
+                String status = jsonObject1.getString("status");
+                String type_transport = jsonObject1.getString("type_transport");
+                String type_payment = jsonObject1.getString("type_payment");
+                String value = jsonObject1.getString("value");
+                String address = jsonObject1.getString("address");
+
+                Order order = new Order(Integer.parseInt(id), Integer.parseInt(id_user), fullname,
+                        phone, Long.parseLong(date_order), Integer.parseInt(status), Integer.parseInt(type_transport),
+                        Integer.parseInt(type_payment), Long.parseLong(value), address);
+                listOrder.add(order);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+        return listOrder;
+    }
+
     public ArrayList<OrderDetails> getDetailsOrderByShop(int idShop){
         ArrayList<OrderDetails> listOrder = new ArrayList<>();
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -223,6 +280,7 @@ public class OrderModel {
 
         try {
             String data = myService.get();
+            Log.e("details_order", data);
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("orderdetails");
             JSONArray jsonTransport = myJsonArr.getJSONArray(0);

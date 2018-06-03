@@ -20,6 +20,46 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/margin_small"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="vertical">
+                <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:textColor="@color/black"
+                    android:text="@string/promotion"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="horizontal">
+                    <edu.hust.truongvu.choviet.helper.customview.MyEditText
+                        android:id="@+id/edt_code"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="@dimen/edt_height_small"
+                        android:background="@drawable/bg_border_gray"
+                        android:padding="@dimen/padding_medium"
+                        android:layout_marginRight="@dimen/margin_medium"
+                        android:inputType="number"
+                        android:textSize="@dimen/text_size_big"/>
+                    <Button
+                        android:id="@+id/btn_apply"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/edt_height_small"
+                        android:padding="@dimen/padding_medium"
+                        android:background="@color/colorBlueDark"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:text="@string/apply"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_medium"

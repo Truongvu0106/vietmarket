@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import edu.hust.truongvu.choviet.model.RateModel;
 import edu.hust.truongvu.choviet.model.ShopModel;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.model.entity.Shop;
@@ -17,6 +18,7 @@ public class ShopPresenterImp implements ShopPresenter {
     private ShopView shopView;
     private ProductModel productModel;
     private ShopModel shopModel;
+    private RateModel rateModel;
     private Context mContext;
 
     public ShopPresenterImp(Context context, ShopView shopView){
@@ -24,6 +26,7 @@ public class ShopPresenterImp implements ShopPresenter {
         this.mContext = context;
         productModel = new ProductModel(mContext);
         shopModel = new ShopModel(mContext);
+        rateModel = new RateModel(mContext);
     }
 
 
@@ -69,5 +72,63 @@ public class ShopPresenterImp implements ShopPresenter {
         }else {
             shopView.unFollowFalse();
         }
+    }
+
+    @Override
+    public void addUserRate(int idUser, int idShop, float rate) {
+        if (rateModel.addRateShop(idShop, idUser, rate)){
+            shopView.addUserRateSuccessful(rate);
+        }else {
+            shopView.addUserRateFalse();
+        }
+    }
+
+    @Override
+    public void updateUserRate(int idUser, int idShop, float rate) {
+        if (rateModel.updateUserRateShop(idShop, idUser, rate)){
+            shopView.updateUserRateSuccessful(rate);
+        }else {
+            shopView.updateUserRateFalse();
+        }
+    }
+
+    @Override
+    public void updateTotalRate(boolean isNew, int idShop, float rate) {
+        float curTotalRate = 0;
+        float total = 0;
+
+        ArrayList<Float> listRate = rateModel.getListRateShop(idShop);
+        total = listRate.size();
+        if (total == 0){
+            update(idShop, rate);
+            return;
+        }
+        if (isNew){
+            total += 1;
+        }
+        for (int i = 0; i < listRate.size(); i++){
+            curTotalRate += listRate.get(i);
+        }
+
+        float newRate = curTotalRate/total;
+        update(idShop, newRate);
+    }
+
+    private void update(int idShop, float rate){
+        if (shopModel.updateTotalRateShop(idShop, rate)){
+            Shop shop = shopModel.getShopById(idShop);
+            if (shop == null){
+                shopView.updateTotalRateFalse();
+            }else {
+                shopView.updateTotalRateSuccessful(rate);
+            }
+        }else {
+            shopView.updateTotalRateFalse();
+        }
+    }
+
+    @Override
+    public float getRateByUserAndShop(int idUser, int idShop){
+        return rateModel.getRateByShopAndUser(idShop, idUser);
     }
 }

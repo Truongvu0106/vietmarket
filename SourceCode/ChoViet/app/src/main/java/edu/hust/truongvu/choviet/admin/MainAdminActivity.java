@@ -1,10 +1,6 @@
 package edu.hust.truongvu.choviet.admin;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.View;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -30,10 +25,9 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.admin.banner.BannerFragment;
-import edu.hust.truongvu.choviet.admin.category.ManageCategoryFragment;
+import edu.hust.truongvu.choviet.admin.category.ParentCategoryFragment;
 import edu.hust.truongvu.choviet.admin.member.MemberFragment;
 import edu.hust.truongvu.choviet.admin.promotion.PromotionFragment;
-import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.user.info_user.LogoutDialog;
 
 public class MainAdminActivity extends AppCompatActivity {
@@ -102,7 +96,7 @@ public class MainAdminActivity extends AppCompatActivity {
                                 Spannable text3 = new SpannableString(getSupportActionBar().getTitle());
                                 text3.setSpan(new ForegroundColorSpan(Color.WHITE), 0, text3.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                                 getSupportActionBar().setTitle(text3);
-                                ManageCategoryFragment fragment3 = new ManageCategoryFragment();
+                                ParentCategoryFragment fragment3 = new ParentCategoryFragment();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container_admin, fragment3).commit();
                                 break;
                             case 4: // Promotion

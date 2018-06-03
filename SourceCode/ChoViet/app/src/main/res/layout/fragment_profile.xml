@@ -97,7 +97,91 @@
                             android:layout_alignParentRight="true"
                             android:src="@drawable/next"/>
                     </RelativeLayout>
-                    <ImageView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/margin_small"
+                        android:paddingLeft="@dimen/margin_medium"
+                        android:paddingRight="@dimen/margin_medium"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:id="@+id/order_wait"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/icon_size_normal"
+                                android:src="@drawable/wait"
+                                android:padding="@dimen/padding_medium"
+                                android:tint="@color/colorGray"/>
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/grayicon"
+                                android:text="@string/waiting"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/order_ship"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/icon_size_normal"
+                                android:src="@drawable/box"
+                                android:padding="@dimen/padding_medium"
+                                android:tint="@color/colorGray"/>
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/grayicon"
+                                android:text="@string/shipping"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/order_receive"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/icon_size_normal"
+                                android:src="@drawable/received"
+                                android:padding="@dimen/padding_medium"
+                                android:tint="@color/colorGray"/>
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/grayicon"
+                                android:text="@string/received"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/order_cancel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/icon_size_normal"
+                                android:src="@drawable/cancel"
+                                android:padding="@dimen/padding_medium"
+                                android:tint="@color/colorGray"/>
+                            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/grayicon"
+                                android:text="@string/cancel"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorGray"/>
@@ -127,7 +211,7 @@
                             android:layout_alignParentRight="true"
                             android:src="@drawable/next"/>
                     </RelativeLayout>
-                    <ImageView
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorGray"/>
@@ -157,7 +241,7 @@
                             android:layout_alignParentRight="true"
                             android:src="@drawable/next"/>
                     </RelativeLayout>
-                    <ImageView
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorGray"/>
@@ -220,7 +304,7 @@
                             android:layout_alignParentRight="true"
                             android:src="@drawable/next"/>
                     </RelativeLayout>
-                    <ImageView
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorGray"/>
@@ -250,7 +334,7 @@
                             android:layout_alignParentRight="true"
                             android:src="@drawable/next"/>
                     </RelativeLayout>
-                    <ImageView
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorGray"/>
@@ -288,6 +372,7 @@
         android:id="@+id/layout_err"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:background="@color/white">
         <LinearLayout
             android:layout_width="wrap_content"

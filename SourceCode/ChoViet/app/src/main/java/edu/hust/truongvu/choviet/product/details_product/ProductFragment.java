@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     private ViewPager mViewPager;
     private ViewPagerIndicator mIndicator;
     private ImgProductPagerAdapter adapter;
+    private RatingBar ratingBar;
     private CategoryPresenterImp categoryPresenterImp;
     private ProductPresenterImp productPresenterImp;
     private CartPresenterImp cartPresenterImp;
@@ -96,6 +98,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         layoutDisableRate = view.findViewById(R.id.layout_disable_rate);
         layoutNoRate = view.findViewById(R.id.layout_no_rate);
         tvDisableRate = view.findViewById(R.id.tv_disable_rate);
+        ratingBar = view.findViewById(R.id.rating_bar);
 
         username = MyHelper.getUserNamePreference(getContext());
         cartPresenterImp = new CartPresenterImp();
@@ -151,6 +154,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         }
 
         tvRate.setText(product.getRate() + "/5");
+        ratingBar.setRating(product.getRate());
         tvDescription.setText(product.getInfomation());
         tvCategory.setText(product.getTypeProduct() + "");
 
@@ -350,6 +354,18 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
     }
 
+    @Override
+    public void updateRateSuccessful(float newRate) {
+        tvRate.setText(newRate + "/5");
+        tvRateOther.setText(newRate + "/5");
+        ratingBar.setRating(newRate);
+    }
+
+    @Override
+    public void updateRateFalse() {
+
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -402,6 +418,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
                 public void onRate(Rate rate) {
                     if (productPresenterImp.addRate(rate)){
                         productPresenterImp.initListRate(username, product.getId());
+                        productPresenterImp.updateRate(rate);
                     }
 
                 }

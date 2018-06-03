@@ -20,4 +20,6 @@ public interface ProductPresenter {
     void addToCart(Context context, Product product);
     void initInforShop(int idShop);
 
+    void updateRate(Rate rate);
+
 }

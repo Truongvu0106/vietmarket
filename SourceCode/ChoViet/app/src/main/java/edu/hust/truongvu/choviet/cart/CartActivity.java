@@ -1,6 +1,5 @@
 package edu.hust.truongvu.choviet.cart;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.customview.DeleteItemDialog;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.User;
@@ -77,7 +77,7 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
 
             @Override
             public void onDelete(final Product product) {
-                DeleteItemCartDialog deleteItemCartDialog = new DeleteItemCartDialog(CartActivity.this, product.getId(), new DeleteItemCartDialog.DeleteItemCartListener() {
+                DeleteItemDialog deleteItemDialog = new DeleteItemDialog(CartActivity.this, product.getId(), new DeleteItemDialog.DeleteItemCartListener() {
                     @Override
                     public void onDelete(int id_product) {
                         cartPresenterImp.deleteItemCart(CartActivity.this, id_product);
@@ -86,8 +86,8 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
                         MyHelper.setViewCart(layoutNumberItemCart, tvNumberItemCart, cartPresenterImp.getNumberItemCart(CartActivity.this));
                     }
                 });
-                deleteItemCartDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                deleteItemCartDialog.show();
+                deleteItemDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                deleteItemDialog.show();
             }
 
             @Override

@@ -23,4 +23,13 @@ public interface ShopView {
 
     void unFollowSuccessful();
     void unFollowFalse();
+
+    void addUserRateSuccessful(float rate);
+    void addUserRateFalse();
+
+    void updateUserRateSuccessful(float rate);
+    void updateUserRateFalse();
+
+    void updateTotalRateSuccessful(float rate);
+    void updateTotalRateFalse();
 }

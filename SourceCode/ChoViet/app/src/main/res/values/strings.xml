@@ -107,6 +107,7 @@
     <string name="out_of_stock">Out of stock</string>
     <string name="total_product">Total product</string>
     <string name="total_user">Total user</string>
+    <string name="number_of_child">Number of child</string>
     <string name="your_product_total_product">Your products/Total products</string>
     <string name="your_order_total_order">Your orders/Total orders</string>
     <string name="top_product">Top product</string>
@@ -233,6 +234,7 @@
     <string name="not_upload_image">Not upload image product yet</string>
     <string name="add_successful">Add successful!</string>
     <string name="add_false">Add false!</string>
+    <string name="code_already_exist">Code already existed</string>
     <string name="update_successful">Update successful!</string>
     <string name="update_false">Update false!</string>
     <string name="no_data">No data found!</string>
@@ -304,4 +306,14 @@
     <string name="add_prodmotion">Add promotion</string>
     <string name="extend">Extend</string>
     <string name="hello">Hello!</string>
+
+    <string name="generate">Generate</string>
+    <string name="rest">Rest</string>
+    <string name="code">Code</string>
+    <string name="to">To</string>
+    <string name="amount">Amount</string>
+    <string name="end_must_after_start">End date must be after start date</string>
+    <string name="start_must_before_end">Start date must before end date</string>
+    <string name="code_overdue">Code overdue</string>
+    <string name="code_invalid">Code invalid</string>
 </resources>

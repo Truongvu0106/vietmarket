@@ -26,13 +26,13 @@ import edu.hust.truongvu.choviet.helper.Constants;
 public class UserModel {
     public static final String PATH_USER = Constants.Path.MY_PATH + "user.php";
     private Context context;
-    public static int USERTYPE = 0;
 
     public UserModel(Context context){
         this.context = context;
     }
 
     public boolean checkLogin(String username, String password){
+        Log.e("trtrtrtr", "dadsadasdasd");
         boolean flag = false;
         List<HashMap<String, String>> attrs = new ArrayList<>();
 
@@ -54,6 +54,7 @@ public class UserModel {
 
         try {
             String data = myService.get();
+            Log.e("trtrtrtr", data + "");
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){
@@ -61,22 +62,32 @@ public class UserModel {
                 String username1 = jsonObject.getString("username");
                 int id = jsonObject.getInt("id");
                 int type = jsonObject.getInt("type");
-                SharedPreferences loginPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = loginPreference.edit();
-                editor.putString(Constants.MyTag.USERNAME, username1);
-                editor.putInt(Constants.MyTag.USERID, id);
-                editor.putInt(Constants.MyTag.USERNAME, type);
-                USERTYPE = type;
-                editor.commit();
+                Log.e("type", type + "");
+                if (type == Constants.User.TYPE_ADMIN){
+                    SharedPreferences loginPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = loginPreference.edit();
+                    editor.putString(Constants.MyTag.USERNAME, "");
+                    editor.putInt(Constants.MyTag.USERID, 0);
+                    editor.commit();
+                }else {
+                    SharedPreferences loginPreference = context.getSharedPreferences(Constants.MyTag.MY_LOGIN, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = loginPreference.edit();
+                    editor.putString(Constants.MyTag.USERNAME, username1);
+                    editor.putInt(Constants.MyTag.USERID, id);
+                    editor.commit();
+                }
             }else {
                 flag = false;
                 Log.e("error_sign_in", data);
             }
         } catch (InterruptedException e) {
+            Log.e("trtrtrtr", e.toString());
             e.printStackTrace();
         } catch (ExecutionException e) {
+            Log.e("trtrtrtr", e.toString());
             e.printStackTrace();
         } catch (JSONException e) {
+            Log.e("trtrtrtr", e.toString());
             e.printStackTrace();
         }
         return flag;

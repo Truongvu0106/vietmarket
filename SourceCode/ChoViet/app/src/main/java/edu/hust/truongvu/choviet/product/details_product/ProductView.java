@@ -31,5 +31,6 @@ public interface ProductView {
     void loadInforShopSuccessful(Shop shop);
     void loadInforShopFalse();
 
-
+    void updateRateSuccessful(float newRate);
+    void updateRateFalse();
 }

@@ -6,78 +6,99 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/padding_big"
     android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color"
+        android:padding="@dimen/padding_medium"
+        android:layout_marginBottom="@dimen/margin_small">
+        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small"
+            android:text="01/06/2018"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/layout_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_tiny"
+            android:text="@string/user"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:src="@drawable/profile"
+                android:padding="@dimen/padding_tiny"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/tv_name_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                android:text="Vu Xuan Truong"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:src="@drawable/ic_address"
+                android:padding="@dimen/padding_tiny"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                android:text="Nha N1 chung cu Dong Tau, Thinh Liet, Hoang Mai"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:src="@drawable/ic_phone"
+                android:padding="@dimen/padding_tiny"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                android:text="0924042081"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@color/colorGrayLight"/>
+    </LinearLayout>
 
-    <edu.hust.truongvu.choviet.helper.customview.MyTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/text_size_tiny"
-        android:text="@string/user"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="@dimen/icon_size_small"
-            android:layout_height="@dimen/icon_size_small"
-            android:src="@drawable/profile"
-            android:padding="@dimen/padding_tiny"/>
-        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-            android:id="@+id/tv_name_customer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small"
-            android:text="Vu Xuan Truong"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="@dimen/icon_size_small"
-            android:layout_height="@dimen/icon_size_small"
-            android:src="@drawable/ic_address"
-            android:padding="@dimen/padding_tiny"/>
-        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small"
-            android:text="Nha N1 chung cu Dong Tau, Thinh Liet, Hoang Mai"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="@dimen/icon_size_small"
-            android:layout_height="@dimen/icon_size_small"
-            android:src="@drawable/ic_phone"
-            android:padding="@dimen/padding_tiny"/>
-        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small"
-            android:text="0924042081"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:background="@color/colorGrayLight"/>
     <edu.hust.truongvu.choviet.helper.customview.MyTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -169,6 +190,7 @@
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/layout_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small">

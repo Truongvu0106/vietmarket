@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.security.SecureRandom;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -29,36 +31,13 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class MyHelper {
+    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     public static ArrayList<String> getListSubString(String path){
         if (path.matches("")) {
             return new ArrayList<>();
         }
         ArrayList<String> results = new ArrayList<>();
-//        boolean flag = false;
-//        for (int i = 0; i < path.length(); i++) {
-//            if (path.charAt(i) == '@') {
-//                flag = true;
-//                break;
-//            }
-//        }
-//
-//        if (flag) {
-//            int i = 0, j = 0;
-//            while(i < (path.length() - 1)){
-//                i++;
-//                if (path.charAt(i) == '@') {
-//                    String subPath = path.substring(j, i);
-//                    results.add(subPath);
-//                    j = i+1;
-//                }else if(i == (path.length() - 1)){
-//                    String subPath1 = path.substring(j, path.length());
-//                    results.add(subPath1);
-//                }
-//            }
-//        }else{
-//            results.add(path);
-//        }
         String[] paths = path.split("@");
         for (int i = 0; i< paths.length; i++){
             results.add(paths[i]);
@@ -115,6 +94,7 @@ public class MyHelper {
         }
         return user;
     }
+
 
     public static String formatMoney(long money){
         return NumberFormat.getNumberInstance(Locale.US).format(money) + "đ";
@@ -185,5 +165,19 @@ public class MyHelper {
         return strings[strings.length - 1];
     }
 
+    public static String convertDateToString(long time){
+        Date date=new Date(time);
+        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+        String dateText = df2.format(date);
+        return dateText;
+    }
+
+    public static String randomString( int len ){
+        SecureRandom rnd = new SecureRandom();
+        StringBuilder sb = new StringBuilder(len);
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
+    }
 
 }

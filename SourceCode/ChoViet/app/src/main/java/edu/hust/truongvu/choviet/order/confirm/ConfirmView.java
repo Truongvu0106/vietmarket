@@ -20,4 +20,7 @@ public interface ConfirmView {
 
     void updateStockSuccessful();
     void updateStockFalse();
+
+    void applyPromotionSuccessful(long price);
+    void applyPromotionFalse(String message);
 }

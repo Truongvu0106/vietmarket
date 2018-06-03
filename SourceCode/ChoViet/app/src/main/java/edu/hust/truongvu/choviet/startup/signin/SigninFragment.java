@@ -15,12 +15,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
+//import com.facebook.CallbackManager;
+//import com.facebook.FacebookCallback;
+//import com.facebook.FacebookException;
+//import com.facebook.FacebookSdk;
+//import com.facebook.login.LoginManager;
+//import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -33,6 +33,7 @@ import edu.hust.truongvu.choviet.admin.MainAdminActivity;
 import edu.hust.truongvu.choviet.init.MainActivity;
 import edu.hust.truongvu.choviet.helper.customview.MyToast;
 import edu.hust.truongvu.choviet.model.UserModel;
+import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.startup.signup.SignupFragment;
 import edu.hust.truongvu.choviet.helper.Constants;
 
@@ -52,7 +53,7 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
     private static View view;
     private FragmentManager fragmentManager;
     private SigninPresenterImp signinPresenterImp;
-    CallbackManager callbackManager;
+//    CallbackManager callbackManager;
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInOptions gso;
     public SigninFragment() {
@@ -74,24 +75,24 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
-        FacebookSdk.sdkInitialize(getContext().getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
+//        FacebookSdk.sdkInitialize(getContext().getApplicationContext());
+//        callbackManager = CallbackManager.Factory.create();
+//        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                startActivity(new Intent(getActivity(), MainActivity.class));
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//
+//            }
+//
+//            @Override
+//            public void onError(FacebookException error) {
+//
+//            }
+//        });
         root = view.findViewById(R.id.root_signin);
         username = view.findViewById(R.id.signin_username);
         password = view.findViewById(R.id.signin_password);
@@ -152,12 +153,9 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(User user) {
         Log.e("login", "success");
-        SharedPreferences sharePreference = getContext().getSharedPreferences(Constants.MyTag.MY_LOGIN, MODE_PRIVATE);
-        int type = sharePreference.getInt(Constants.MyTag.USERTYPE, 0);
-        Log.e("user_type", UserModel.USERTYPE + "");
-        if (type == UserModel.USERTYPE){
+        if (user.getIdTypeUser() == Constants.User.TYPE_ADMIN){
             startActivity(new Intent(getActivity(), MainAdminActivity.class));
         }else {
             Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -200,7 +198,7 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
                 Log.e("Error", e.toString());
             }
         }else {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
+//            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 }

@@ -4,12 +4,16 @@ import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.model.ProductModel;
+import edu.hust.truongvu.choviet.model.PromotionModel;
 import edu.hust.truongvu.choviet.model.entity.Order;
 import edu.hust.truongvu.choviet.model.entity.OrderDetails;
 import edu.hust.truongvu.choviet.model.entity.PayMethod;
 import edu.hust.truongvu.choviet.model.entity.Product;
+import edu.hust.truongvu.choviet.model.entity.Promotion;
 import edu.hust.truongvu.choviet.model.entity.Transport;
 import edu.hust.truongvu.choviet.model.CartModel;
 import edu.hust.truongvu.choviet.model.OrderModel;
@@ -28,6 +32,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
     private PayMethodModel payMethodModel;
     private OrderModel orderModel;
     private ProductModel productModel;
+    private PromotionModel promotionModel;
 
 
     public ConfirmPresenterImp(Context context, ConfirmView confirmView){
@@ -38,6 +43,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
         payMethodModel = new PayMethodModel(context);
         orderModel = new OrderModel(context);
         productModel = new ProductModel(context);
+        promotionModel = new PromotionModel(context);
     }
 
     @Override
@@ -101,6 +107,28 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
             confirmView.updateStockSuccessful();
         }else {
             confirmView.updateStockFalse();
+        }
+    }
+
+    @Override
+    public void applyPromotion(String code) {
+        Promotion promotion = promotionModel.getPromotionByCode(code);
+
+        if (promotion == null){
+            confirmView.applyPromotionFalse(context.getString(R.string.code_invalid));
+            return;
+        }
+
+        Date date = new Date();
+        if (promotion.getNumber() <= 0){
+            confirmView.applyPromotionFalse(context.getString(R.string.code_invalid));
+        }else if (promotion.getStart() > date.getTime()){
+            confirmView.applyPromotionFalse(context.getString(R.string.code_invalid));
+        }else if (promotion.getEnd() < date.getTime()){
+            confirmView.applyPromotionFalse(context.getString(R.string.code_overdue));
+        }else {
+            confirmView.applyPromotionSuccessful(promotion.getAmount());
+            promotionModel.updateNumber(promotion.getId(), promotion.getNumber() - 1);
         }
     }
 }

@@ -71,7 +71,9 @@
         </receiver>
 
         <activity android:name=".user.myshop.update_product.UpdateProductActivity" />
-        <activity android:name=".admin.MainAdminActivity"></activity>
+        <activity android:name=".admin.MainAdminActivity" />
+        <activity android:name=".admin.category.ChildCategoryActivity" />
+        <activity android:name=".user.myorder.MyOrderActivity"></activity>
     </application>
 
 </manifest>

@@ -74,7 +74,6 @@
 				$id = $line["id_user"];
 				$type = $line["id_type"];
 			}
-			echo "{result : true, username : \"".$username."\", id : ".$id." }";
 			echo json_encode([
 				"result" => "true",
 				"username" => $username,
@@ -82,7 +81,10 @@
 				"type" => $type
 			]);
 		}else{
-			echo "{result : false, error : ".$query."</br>".$conn->error."}";
+			echo json_encode([
+				"result" => "true",
+				"error" => "error : ".$query."</br>".$conn->error."}"
+			]);
 		}
 		mysqli_close($conn);
 	}

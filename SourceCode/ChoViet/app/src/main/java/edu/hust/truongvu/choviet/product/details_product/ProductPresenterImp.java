@@ -69,7 +69,7 @@ public class ProductPresenterImp implements ProductPresenter{
 
     @Override
     public void initListRate(String username, int id_product) {
-        ArrayList<Rate> listProductRate = rateModel.loadListRate(id_product);
+        ArrayList<Rate> listProductRate = rateModel.getListRate(id_product);
         if (listProductRate == null || listProductRate.size() == 0){
             productView.loadListRateFalse();
         }else {
@@ -125,6 +125,28 @@ public class ProductPresenterImp implements ProductPresenter{
         }
     }
 
+    @Override
+    public void updateRate(Rate rate) {
+        float currentTotalRate = 0;
+        int idProduct = rate.getIdProduct();
+        ArrayList<Rate> listRated = rateModel.getListRate(idProduct);
+        for (int i = 0; i < listRated.size(); i++){
+            currentTotalRate += listRated.get(i).getStarRate();
+        }
+        currentTotalRate += rate.getStarRate();
+        float newRate = currentTotalRate/(listRated.size()+1);
+        if (productModel.updateRateProduct(idProduct, newRate)){
+            Product product = productModel.getProductById(idProduct);
+            if (product == null){
+                productView.updateRateFalse();
+            }else {
+                productView.updateRateSuccessful(product.getRate());
+            }
+        }else {
+            productView.updateRateFalse();
+        }
+
+    }
 
 
 }

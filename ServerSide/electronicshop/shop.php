@@ -33,6 +33,9 @@
 		case 'getNumberUserFollowing':
 			$func();
 			break;
+		case 'updateRateShop':
+			$func();
+			break;
 		default:
 			# code...
 			break;
@@ -303,6 +306,29 @@
 			"number" => $count
 			]);
 		mysqli_close($conn);
+	}
+
+	function updateRateShop(){
+		global $conn;
+		if (isset($_POST["id_shop"]) || isset($_POST["rate"])) {
+			$id = $_POST["id_shop"];
+			$rate = $_POST["rate"];
+		}
+
+		$query = "UPDATE shop SET rate = '".$rate."' WHERE id_shop = '".$id."'";
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+			"result" => "true",
+			"message" => "update product successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn); 
 	}
 	
 ?>

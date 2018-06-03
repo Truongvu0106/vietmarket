@@ -15,4 +15,12 @@ public interface ShopPresenter {
     void follow(int idUser, int idShop);
 
     void unFollow(int idUser, int idShop);
+
+    float getRateByUserAndShop(int idUser, int idShop);
+
+    void addUserRate(int idUser, int idShop, float rate);
+
+    void updateUserRate(int idUser, int idShop, float rate);
+
+    void updateTotalRate(boolean isNew, int idShop, float rate);
 }

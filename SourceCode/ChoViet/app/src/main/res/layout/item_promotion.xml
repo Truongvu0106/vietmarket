@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin_small"
+    android:paddingLeft="@dimen/margin_medium"
+    android:paddingRight="@dimen/margin_medium"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:layout_height="wrap_content">
+        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_huge"
+            android:textColor="@color/grayicon"
+            android:textStyle="bold"
+            android:text="ABCDE"/>
+        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="31/5/2018 - 1/6/2018"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_tiny">
+
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/colorRed"
+                android:text="-20000d"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/tv_rest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginLeft="@dimen/margin_huge"
+                android:layout_toRightOf="@id/tv_amount"
+                android:text="Rest: 20"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/btn_delete"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
+            android:layout_centerInParent="true"
+            android:src="@drawable/delete"
+            android:padding="@dimen/padding_medium"
+            android:tint="@color/grayicon" />
+    </RelativeLayout>
+</LinearLayout>

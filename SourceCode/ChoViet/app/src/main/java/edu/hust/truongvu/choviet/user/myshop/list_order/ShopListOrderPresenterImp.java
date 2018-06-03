@@ -1,10 +1,14 @@
 package edu.hust.truongvu.choviet.user.myshop.list_order;
 
 import android.content.Context;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.model.OrderModel;
 import edu.hust.truongvu.choviet.model.entity.Order;
+import edu.hust.truongvu.choviet.model.entity.OrderDetails;
 
 /**
  * Created by truon on 5/9/2018.
@@ -22,6 +26,7 @@ public class ShopListOrderPresenterImp implements ShopListOrderPresenter {
 
     @Override
     public void initListOrder(int idShop) {
+        ArrayList<OrderDetails> orders = orderModel.getDetailsOrderByShop(idShop);
 
     }
 

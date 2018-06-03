@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
+//import com.facebook.AccessToken;
+//import com.facebook.AccessTokenTracker;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import org.json.JSONException;
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvNumberItemCart;
     private MainPresenter mainPresenterImp;
     private CartPresenter cartPresenterImp;
-    private AccessToken accessToken;
-    private AccessTokenTracker accessTokenTracker;
+//    private AccessToken accessToken;
+//    private AccessTokenTracker accessTokenTracker;
     View container, layoutErr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +118,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
     }
 
     @Override
