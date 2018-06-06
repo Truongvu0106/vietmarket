@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.admin.category;
+package edu.hust.truongvu.choviet.admin.category.child;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.helper.MyHelper;
-import edu.hust.truongvu.choviet.model.CategoryModel;
 import edu.hust.truongvu.choviet.model.entity.ChildCategory;
-import edu.hust.truongvu.choviet.model.entity.ParentCategory;
 
 /**
  * Created by truon on 5/30/2018.

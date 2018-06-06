@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import edu.hust.truongvu.choviet.R;
 
@@ -30,7 +29,7 @@ public class DeleteItemDialog extends AlertDialog{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_delete_item_cart);
+        setContentView(R.layout.dialog_delete_item);
         tvCancel = findViewById(R.id.btn_cancel);
         tvYes = findViewById(R.id.btn_yes);
 

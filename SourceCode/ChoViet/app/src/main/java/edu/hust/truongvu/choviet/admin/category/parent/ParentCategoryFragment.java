@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.admin.category;
+package edu.hust.truongvu.choviet.admin.category.parent;
 
 
 import android.content.Intent;
@@ -13,18 +13,21 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.model.entity.ChildCategory;
+import edu.hust.truongvu.choviet.admin.category.child.ChildCategoryActivity;
+import edu.hust.truongvu.choviet.admin.category.child.ManageChildActivity;
 import edu.hust.truongvu.choviet.model.entity.ParentCategory;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ParentCategoryFragment extends Fragment implements ManageCategoryView{
+public class ParentCategoryFragment extends Fragment implements ManageParentView {
     public static final String CATEGORY_TAG = "category_tag";
+    public static final String IS_UPDATE = "is_update";
+    public static ParentCategory mParent;
     private RecyclerView recyclerView;
     private ParentCategoryAdapter adapter;
     private View btnAdd;
-    private ManageCategoryPresenter presenter;
+    private ManageParentPresenter presenter;
     public ParentCategoryFragment() {
         // Required empty public constructor
     }
@@ -41,10 +44,12 @@ public class ParentCategoryFragment extends Fragment implements ManageCategoryVi
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(), ManageParentActivity.class);
+                intent.putExtra(IS_UPDATE, false);
+                startActivity(intent);
             }
         });
-        presenter = new ManageCategoryPresenterImp(getContext(), this);
+        presenter = new ManageParentPresenterImp(getContext(), this);
         presenter.initListParentCategory();
 
 
@@ -71,22 +76,22 @@ public class ParentCategoryFragment extends Fragment implements ManageCategoryVi
     }
 
     @Override
-    public void loadListChildSuccessful(ArrayList<ChildCategory> data) {
-
-    }
-
-    @Override
-    public void loadListChildFalse() {
-
-    }
-
-    @Override
     public void addParentSuccessful() {
 
     }
 
     @Override
     public void addParentFalse() {
+
+    }
+
+    @Override
+    public void uploadNewImageSuccessful() {
+
+    }
+
+    @Override
+    public void uploadNewImageFalse() {
 
     }
 
@@ -100,23 +105,5 @@ public class ParentCategoryFragment extends Fragment implements ManageCategoryVi
 
     }
 
-    @Override
-    public void addChildSuccessful() {
 
-    }
-
-    @Override
-    public void addChildFalse() {
-
-    }
-
-    @Override
-    public void updateChildSuccessful() {
-
-    }
-
-    @Override
-    public void updateChildFalse() {
-
-    }
 }

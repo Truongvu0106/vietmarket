@@ -180,6 +180,7 @@
                         android:text="@string/like" />
 
                     <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_num_like"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_big"
@@ -209,12 +210,14 @@
                         android:text="@string/comment" />
 
                     <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_num_rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_big"
                         android:text="123" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/btn_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -646,27 +649,7 @@
                                 android:text="(123)" />
                         </LinearLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/margin_small"
-                        android:orientation="horizontal">
-                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/text_size_small"
-                            android:textColor="@color/colorRed"
-                            android:text="@string/view_all"/>
-                        <ImageView
-                            android:layout_width="@dimen/icon_size_small"
-                            android:layout_height="@dimen/icon_size_small"
-                            android:tint="@color/colorRed"
-                            android:padding="@dimen/padding_small"
-                            android:layout_marginLeft="@dimen/margin_small"
-                            android:src="@drawable/next"/>
-                    </LinearLayout>
+
                 </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -760,6 +743,7 @@
                         android:layout_marginLeft="@dimen/margin_small"
                         android:text="@string/another_product"/>
                     <LinearLayout
+                        android:id="@+id/btn_view_other_product"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
@@ -810,6 +794,7 @@
                         android:layout_marginLeft="@dimen/margin_small"
                         android:text="@string/maybe_you_like"/>
                     <LinearLayout
+                        android:id="@+id/btn_view_suggest_product"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"

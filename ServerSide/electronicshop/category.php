@@ -16,6 +16,18 @@
 		case 'getListChildCategoryByParent':
 			$func();
 			break;
+		case 'addChildCategory':
+			$func();
+			break;
+		case 'updateChildCategory':
+			$func();
+			break;
+		case 'addParentCategory':
+			$func();
+			break;
+		case 'updateParentCategory':
+			$func();
+			break;
 		default:
 			# code...
 			break;
@@ -111,6 +123,69 @@
 		}
 		echo "]}";
 		mysqli_close($conn);
+	}
+
+	function addChildCategory(){
+		global $conn;
+		if (isset($_POST["name_type_child"]) || isset($_POST["id_type_parent"]) || isset($_POST["image_cate"])) {
+			$name = $_POST["name_type_child"];
+			$idParent = $_POST["id_type_parent"];
+			$image = $_POST["image_cate"];
+		}
+		
+		$query = "INSERT INTO type_child (name_type_child, id_type_parent, image_cate) 
+		VALUES ('".$name."',
+				'".$idParent."',
+				'".$image."')"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "insert category successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn);
+	}
+
+	function updateChildCategory(){
+		global $conn;
+		if (isset($_POST["id_type_child"]) || isset($_POST["name_type_child"]) || isset($_POST["id_type_parent"]) || isset($_POST["image_cate"])) {
+			$id = $_POST["id_type_child"];
+			$name = $_POST["name_type_child"];
+			$idParent = $_POST["id_type_parent"];
+			$image = $_POST["image_cate"];
+		}
+
+		$query = "UPDATE type_child SET 
+				name_type_child = '".$name."',
+				id_type_parent = '".$idParent."',
+				image_cate = '".$image."' WHERE id_type_child = '".$id."'"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+			"result" => "true",
+			"message" => "update child successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn);
+	}
+
+	function addParentCategory(){
+
+	}
+
+	function updateParentCategory(){
+
 	}
 
  ?>

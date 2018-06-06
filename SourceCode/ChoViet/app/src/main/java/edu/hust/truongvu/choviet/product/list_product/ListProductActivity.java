@@ -13,6 +13,8 @@ import android.widget.GridLayout;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.cart.CartPresenterImp;
+import edu.hust.truongvu.choviet.helper.customview.MyToolbarMain;
 import edu.hust.truongvu.choviet.model.entity.PriceFilter;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.product.details_product.ProductActivity;
@@ -43,6 +45,12 @@ public class ListProductActivity extends AppCompatActivity implements ListProduc
     }
 
     private void initView(){
+        new MyToolbarMain(this, this, new CartPresenterImp().getNumberItemCart(this), new MyToolbarMain.MainToolbarListener() {
+            @Override
+            public void onBackClick() {
+                onBackPressed();
+            }
+        });
         btnFilter = findViewById(R.id.btn_filter);
         btnSort = findViewById(R.id.btn_sort);
         btnClearFilter = findViewById(R.id.btn_clear);

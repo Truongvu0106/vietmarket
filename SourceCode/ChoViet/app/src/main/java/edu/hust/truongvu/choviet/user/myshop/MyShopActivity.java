@@ -28,7 +28,7 @@ public class MyShopActivity extends AppCompatActivity implements View.OnClickLis
     private FloatingActionButton btnAddNewProduct, btnEditInfor;
     private HorizontalInfiniteCycleViewPager viewPager;
     private ShopOptionPagerAdapter adapter;
-    private View btnRegisterShop, layoutInfor, layoutErr;
+    private View btnRegisterShop, layoutInfor, layoutErr, btnBack;
     private MyShopPresenter myShopPresenter;
     private ImageView imgAvatar, imgCover;
     private TextView tvName, tvSlogan, tvNumberProduct, tvRate, tvAddress, tvPhone, tvWebsite;
@@ -63,6 +63,7 @@ public class MyShopActivity extends AppCompatActivity implements View.OnClickLis
         tvPhone = findViewById(R.id.tv_phone);
         tvWebsite = findViewById(R.id.tv_website);
         viewPager = findViewById(R.id.pager_options);
+        btnBack = findViewById(R.id.btn_back);
         adapter = new ShopOptionPagerAdapter(this, new ShopOptionPagerAdapter.ShopOpitonPagerListener() {
             @Override
             public void onClick(int id) {
@@ -86,6 +87,7 @@ public class MyShopActivity extends AppCompatActivity implements View.OnClickLis
         btnAddNewProduct.setOnClickListener(this);
         btnEditInfor.setOnClickListener(this);
         btnRegisterShop.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
     }
 
     @Override
@@ -99,6 +101,9 @@ public class MyShopActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btn_register_now:
                 mStartActivity(RegisterShopActivity.class);
+                break;
+            case R.id.btn_back:
+                onBackPressed();
                 break;
             default:
                 break;

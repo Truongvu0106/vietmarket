@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.admin.category;
+package edu.hust.truongvu.choviet.admin.category.parent;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

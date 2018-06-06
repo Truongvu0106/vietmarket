@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,30 +12,46 @@
         android:orientation="vertical"
         android:padding="@dimen/margin_medium"
         android:layout_margin="@dimen/margin_huge">
+
         <edu.hust.truongvu.choviet.helper.customview.MyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_small"
             android:textColor="@color/black"
             android:text="@string/you_have_not_sign_in"/>
-        <Button
-            android:id="@+id/sigin_in"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="@dimen/icon_size_huge"
+            android:layout_height="@dimen/icon_size_large"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_tiny"
+            app:lottie_rawRes="@raw/uh_oh"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlue"
-            android:layout_marginTop="@dimen/margin_big"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:text="@string/sign_in_now"/>
-        <Button
-            android:id="@+id/continue_as_guess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorBlueDark"
-            android:layout_marginTop="@dimen/margin_small"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:text="@string/continue_as_guess"/>
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:orientation="vertical">
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/continue_as_guess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/colorBlue"
+                android:text="@string/continue_as_guess"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:id="@+id/sigin_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/text_size_small"
+                android:layout_alignParentRight="true"
+                android:text="@string/sign_in_now"/>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

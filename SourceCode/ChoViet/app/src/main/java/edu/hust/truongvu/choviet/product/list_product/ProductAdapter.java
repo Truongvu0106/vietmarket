@@ -70,10 +70,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
     class ProductHolder extends RecyclerView.ViewHolder{
         private ImageView imgProduct, imgLikeFill;
-        private TextView tvDiscount, tvName, tvOldPrice, tvNewPrice;
+        private TextView tvDiscount, tvName, tvOldPrice, tvNewPrice, tvNumberRate;
         private View layoutDiscount, layoutLike;
         private RatingBar ratingBar;
         private boolean isLiked = false;
+
         public ProductHolder(View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.img_product);
@@ -85,14 +86,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             layoutDiscount = itemView.findViewById(R.id.layout_discount);
             layoutLike = itemView.findViewById(R.id.btn_like);
             ratingBar = itemView.findViewById(R.id.rate_product);
-
+            tvNumberRate = itemView.findViewById(R.id.tv_number_rate);
             tvOldPrice.setPaintFlags(tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         public void setContent(final Product product){
             final int currentUserId = MyHelper.getUserIdPreference(context);
             tvName.setText(product.getName());
-
+            tvNumberRate.setText("(" + productModel.countRateProduct(product.getId()) + ")");
             int discount = product.getDiscount();
             long oldPrice = product.getPrice();
             if (discount == 0){

@@ -126,6 +126,16 @@ public class ProductPresenterImp implements ProductPresenter{
     }
 
     @Override
+    public int getNumLike(int idProduct) {
+        return productModel.countLikeProduct(idProduct);
+    }
+
+    @Override
+    public int getNumRate(int idProduct) {
+        return productModel.countRateProduct(idProduct);
+    }
+
+    @Override
     public void updateRate(Rate rate) {
         float currentTotalRate = 0;
         int idProduct = rate.getIdProduct();

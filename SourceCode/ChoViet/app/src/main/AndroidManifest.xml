@@ -72,8 +72,13 @@
 
         <activity android:name=".user.myshop.update_product.UpdateProductActivity" />
         <activity android:name=".admin.MainAdminActivity" />
-        <activity android:name=".admin.category.ChildCategoryActivity" />
-        <activity android:name=".user.myorder.MyOrderActivity"></activity>
+        <activity android:name=".admin.category.child.ChildCategoryActivity" />
+        <activity android:name=".user.myorder.MyOrderActivity" />
+        <activity android:name=".advertisment.discount.DiscountActivity" />
+        <activity android:name=".advertisment.promotion.PromotionActivity" />
+        <activity android:name=".admin.banner.manage_banner.ManageBannerActivity" />
+        <activity android:name=".admin.category.child.ManageChildActivity" />
+        <activity android:name=".admin.category.parent.ManageParentActivity"></activity>
     </application>
 
 </manifest>

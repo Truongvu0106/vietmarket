@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.admin.banner;
+package edu.hust.truongvu.choviet.admin.banner.list_banner;
 
 import android.content.Context;
 

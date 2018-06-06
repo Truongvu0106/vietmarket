@@ -9,7 +9,7 @@
 		case 'getOrderByUser':
 			$func();
 			break;
-		case 'getListOrderByShopId':
+		case 'getDetailsOrderByShop':
 			$func();
 			break;
 		case 'getDetailsOrderById':
@@ -22,6 +22,15 @@
 			$func();
 			break;
 		case 'countOrderByTime':
+			$func();
+			break;
+		case 'updateStatusOrder':
+			$func();
+			break;
+		case 'updateStatusDetailsOrder':
+			$func();
+			break;
+		case 'deleteDetailsOrder':
 			$func();
 			break;
 		default:
@@ -125,13 +134,15 @@
 				$midProduct = $jsonObject->id_product;
 				$midShop = $jsonObject->id_shop;
 				$mNumber = $jsonObject->number;
+				$mStatus = $jsonObject->status;
 
-				$mQuery = "INSERT INTO order_details (id_order, id_product, id_shop, number, date_order_shop) 
+				$mQuery = "INSERT INTO order_details (id_order, id_product, id_shop, number, date_order_shop, status) 
 				VALUES ('".$idOrder."',
 						'".$midProduct."',
 						'".$midShop."',
 						'".$mNumber."',
-						'".$dateOrder."')"; 
+						'".$dateOrder."',
+						'".$mStatus."')"; 
 				$mResults = mysqli_query($conn, $mQuery);
 			}
 			echo "{result : true}";
@@ -157,10 +168,12 @@
 			while ($line = mysqli_fetch_array($results)) {
 				array_push($my_json_array, array(
 					"id" => $line["id"], 
-					"id_order" => $line["id_customer"],
+					"id_order" => $line["id_order"],
 					"id_product" => $line["id_product"],
 					"id_shop" => $line["id_shop"],
-					"number" => $line["number"]));
+					"number" => $line["number"],
+					"date_order_shop" => $line["date_order_shop"],
+					"status" => $line["status"]));
 			}
 			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
 		}
@@ -186,7 +199,9 @@
 					"id_order" => $line["id_order"],
 					"id_product" => $line["id_product"],
 					"id_shop" => $line["id_shop"],
-					"number" => $line["number"]));
+					"number" => $line["number"],
+					"date_order_shop" => $line["date_order_shop"],
+					"status" => $line["status"]));
 			}
 			echo json_encode($my_json_array, JSON_UNESCAPED_UNICODE);
 		}
@@ -232,5 +247,75 @@
 			]);
 		mysqli_close($conn);
 	}
+
+	function updateStatusOrder(){
+		global $conn;
+		if (isset($_POST["id"]) || isset($_POST["status"])) {
+			$id = $_POST["id"];
+			$status = $_POST["status"];
+		}
+
+		$query = "UPDATE product_order SET status = '".$status."' WHERE id_order = '".$id."'";
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "update staus successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn); 
+	}
+
+	function updateStatusDetailsOrder(){
+		global $conn;
+		if (isset($_POST["id"]) || isset($_POST["status"])) {
+			$id = $_POST["id"];
+			$status = $_POST["status"];
+		}
+
+		$query = "UPDATE order_details SET status = '".$status."' WHERE id = '".$id."'";
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "update staus successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn); 
+	}
+
+	function deleteDetailsOrder(){
+		global $conn;
+		if (isset($_POST["id"])) {
+			$id = $_POST["id"];
+		}
+
+		$query = "DELETE FROM order_details WHERE id = ".$id; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "delete successful"
+			]);
+		}else{
+			echo json_encode([
+				"result" => "false",
+				"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn); 
+	}
+
+
 
  ?>

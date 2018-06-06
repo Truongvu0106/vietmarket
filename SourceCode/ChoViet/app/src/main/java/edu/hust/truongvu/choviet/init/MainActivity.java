@@ -1,6 +1,8 @@
 package edu.hust.truongvu.choviet.init;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -24,7 +26,9 @@ import edu.hust.truongvu.choviet.cart.CartPresenter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.helper.ConnectivityReceiver;
 import edu.hust.truongvu.choviet.helper.MyHelper;
+import edu.hust.truongvu.choviet.helper.customview.ConfirmDialog;
 import edu.hust.truongvu.choviet.helper.customview.MyLayoutError;
+import edu.hust.truongvu.choviet.helper.customview.MyToolbarMain;
 import edu.hust.truongvu.choviet.search.SearchActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainView, ConnectivityReceiver.ConnectivityReceiverListener{
@@ -33,8 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static String IMAGE = "";
     public static Uri URI_IMAGE = null;
     private View toolbar;
-    private View search, cart, layoutNumberItemCart;
-    private TextView tvNumberItemCart;
     private MainPresenter mainPresenterImp;
     private CartPresenter cartPresenterImp;
 //    private AccessToken accessToken;
@@ -56,15 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         container = findViewById(R.id.frame_container);
         layoutErr = findViewById(R.id.layout_err);
 
-        search = findViewById(R.id.layout_search);
-        cart = findViewById(R.id.img_cart);
-        layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
-        tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
 
         checkConnection();
-
-        search.setOnClickListener(this);
-        cart.setOnClickListener(this);
 
         mainPresenterImp = new MainPresenterImp(this);
         cartPresenterImp = new CartPresenterImp();
@@ -87,7 +82,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        MyHelper.setViewCart(layoutNumberItemCart, tvNumberItemCart, cartPresenterImp.getNumberItemCart(this));
+//        MyHelper.setViewCart(layoutNumberItemCart, tvNumberItemCart, cartPresenterImp.getNumberItemCart(this));
+        new MyToolbarMain(this, this, cartPresenterImp.getNumberItemCart(this), new MyToolbarMain.MainToolbarListener() {
+            @Override
+            public void onBackClick() {
+                back();
+            }
+        });
     }
 
     @Override
@@ -107,21 +108,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.layout_search:
-                startActivity(new Intent(MainActivity.this, SearchActivity.class));
-                break;
-            case R.id.img_cart:
-                startActivity(new Intent(MainActivity.this, CartActivity.class));
-                break;
+
         }
     }
 
     @Override
     public void onBackPressed() {
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
-        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(homeIntent);
+        back();
     }
 
     @Override
@@ -173,5 +166,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             container.setVisibility(View.GONE);
             layoutErr.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void back(){
+        ConfirmDialog dialog = new ConfirmDialog(this, getString(R.string.do_u_really_want_to_exit), new ConfirmDialog.ConfirmListener() {
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onOk() {
+                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                homeIntent.addCategory( Intent.CATEGORY_HOME );
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }

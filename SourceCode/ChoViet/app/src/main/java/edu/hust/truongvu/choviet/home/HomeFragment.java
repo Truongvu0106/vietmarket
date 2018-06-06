@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.advertisment.discount.DiscountActivity;
+import edu.hust.truongvu.choviet.advertisment.promotion.PromotionActivity;
+import edu.hust.truongvu.choviet.init.MainFragment;
 import edu.hust.truongvu.choviet.model.entity.Brand;
 import edu.hust.truongvu.choviet.model.entity.PopularSearch;
 import edu.hust.truongvu.choviet.model.entity.Product;
@@ -42,6 +45,7 @@ public class HomeFragment extends Fragment implements HomeView,
     private SliderLayout mSliderLayout;
     private View btnLoadMoreHighLightShop, btnLoadMoreHighLightProduct,
             btnLoadMoreLastestProduct, btnLoadMoreSuggestProduct;
+    private View btnShop, btnDiscount, btnPromotion, btnCategory;
     private ArrayList<Product> mlistHighlightProduct = new ArrayList<>(),
             mListLastestProduct = new ArrayList<>(),
             mListSuggestProduct = new ArrayList<>();
@@ -76,6 +80,10 @@ public class HomeFragment extends Fragment implements HomeView,
         btnLoadMoreHighLightProduct = view.findViewById(R.id.more_highlight_product);
         btnLoadMoreLastestProduct = view.findViewById(R.id.more_lastest_product);
         btnLoadMoreSuggestProduct = view.findViewById(R.id.more_suggest);
+        btnShop = view.findViewById(R.id.btn_store);
+        btnPromotion = view.findViewById(R.id.btn_promotion);
+        btnCategory = view.findViewById(R.id.btn_category);
+        btnDiscount = view.findViewById(R.id.btn_discount);
         homePresenterImp = new HomePresenterImp(getContext(),this);
         homePresenterImp.initBanner();
         homePresenterImp.initListSearch();
@@ -89,6 +97,10 @@ public class HomeFragment extends Fragment implements HomeView,
         btnLoadMoreHighLightProduct.setOnClickListener(this);
         btnLoadMoreLastestProduct.setOnClickListener(this);
         btnLoadMoreSuggestProduct.setOnClickListener(this);
+        btnShop.setOnClickListener(this);
+        btnPromotion.setOnClickListener(this);
+        btnCategory.setOnClickListener(this);
+        btnDiscount.setOnClickListener(this);
         return view;
     }
 
@@ -284,6 +296,8 @@ public class HomeFragment extends Fragment implements HomeView,
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.more_highlight_store:
+                MainFragment.viewPager.setCurrentItem(2);
+                MainFragment.bottomNavigation.getMenu().getItem(2).setChecked(true);
                 break;
             case R.id.more_highlight_product:
                 Intent intent = new Intent(getContext(), ListProductActivity.class);
@@ -299,6 +313,20 @@ public class HomeFragment extends Fragment implements HomeView,
                 Intent intent2 = new Intent(getContext(), ListProductActivity.class);
                 intent2.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, mListSuggestProduct);
                 startActivity(intent2);
+                break;
+            case R.id.btn_store:
+                MainFragment.viewPager.setCurrentItem(2);
+                MainFragment.bottomNavigation.getMenu().getItem(2).setChecked(true);
+                break;
+            case R.id.btn_discount:
+                startActivity(new Intent(getActivity(), DiscountActivity.class));
+                break;
+            case R.id.btn_promotion:
+                startActivity(new Intent(getActivity(), PromotionActivity.class));
+                break;
+            case R.id.btn_category:
+                MainFragment.viewPager.setCurrentItem(1);
+                MainFragment.bottomNavigation.getMenu().getItem(1).setChecked(true);
                 break;
         }
     }

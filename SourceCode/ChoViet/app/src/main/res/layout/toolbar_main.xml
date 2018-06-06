@@ -65,7 +65,7 @@
                 android:layout_marginRight="@dimen/margin_small"
                 android:padding="@dimen/padding_huge"/>
             <RelativeLayout
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/layout_number_item_cart"
                 android:layout_width="25dp"
                 android:layout_height="25dp"

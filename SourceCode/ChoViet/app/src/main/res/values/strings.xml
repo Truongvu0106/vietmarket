@@ -200,9 +200,10 @@
     <string name="update_status">Update status</string>
     <string name="delete">Delete</string>
 
-    <string name="name">Name:</string>
-    <string name="price">Price:</string>
-    <string name="image">Image:</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="image">Image</string>
+    <string name="title">Title</string>
     <string name="information">Description</string>
     <string name="enter_name">Enter name</string>
     <string name="enter_phone">Enter phone number</string>
@@ -272,7 +273,7 @@
     <string name="register_successful">Register successful!</string>
     <string name="register_false">Register false!</string>
 
-    <string name="you_have_not_sign_in">You have not signed in yet</string>
+    <string name="you_have_not_sign_in">Oops! you have not signed in yet!</string>
     <string name="sign_in_now">Sign in now</string>
     <string name="continue_as_guess">Continue as guest</string>
 
@@ -304,6 +305,7 @@
     <string name="manage_user">Manage user</string>
     <string name="manage_category">Manage category</string>
     <string name="add_prodmotion">Add promotion</string>
+    <string name="manage_order">Manage order</string>
     <string name="extend">Extend</string>
     <string name="hello">Hello!</string>
 
@@ -316,4 +318,12 @@
     <string name="start_must_before_end">Start date must before end date</string>
     <string name="code_overdue">Code overdue</string>
     <string name="code_invalid">Code invalid</string>
+
+    <string name="id_order">Id order</string>
+
+    <string name="hot_deal_today">Hot deal to day</string>
+    <string name="dicount">Dícount</string>
+    <string name="discount_must_under_100">Discount must under 100%</string>
+    <string name="do_u_really_want_to_exit">Do you really want to exit?</string>
+    <string name="do_u_want_to_update">Do you want to update?</string>
 </resources>

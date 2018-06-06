@@ -36,7 +36,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     private TextView tvName, tvSlogan, tvNumProduct, tvRate, tvAddress, tvPhone, tvWebsite;
     private View btnFollow, layoutFollowed;
     private RatingBar mRatingbar;
-    private View layoutRating;
+    private View layoutRating, btnBack;
     boolean mIsFollowing = false;
     private float currentRate = 0;
     @Override
@@ -64,6 +64,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
         layoutFollowed = findViewById(R.id.layout_followed);
         mRatingbar = findViewById(R.id.rating_bar);
         layoutRating = findViewById(R.id.layout_rating);
+        btnBack = findViewById(R.id.btn_back);
     }
 
     @Override
@@ -81,6 +82,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
         shopPresenter.checkFollowing(MyHelper.getUserIdPreference(this), shop.getId());
         btnFollow.setOnClickListener(this);
         layoutRating.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
 
         currentRate = shopPresenter.getRateByUserAndShop(MyHelper.getUserIdPreference(this), shop.getId());
         mRatingbar.setRating(currentRate);
@@ -197,6 +199,9 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
                 break;
             case R.id.layout_rating:
                 rateShop();
+                break;
+            case R.id.btn_back:
+                onBackPressed();
                 break;
             default:
                 break;

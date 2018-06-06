@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.user.myshop.list_order;
+package edu.hust.truongvu.choviet.user.myorder;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -28,6 +28,7 @@ import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.TransportModel;
 import edu.hust.truongvu.choviet.model.UserModel;
 import edu.hust.truongvu.choviet.helper.Constants.OrderStatus;
+import edu.hust.truongvu.choviet.user.myshop.list_order.UpdateStatusOrderDialog;
 
 
 /**
@@ -37,7 +38,7 @@ import edu.hust.truongvu.choviet.helper.Constants.OrderStatus;
 public class ListOrderAdapter extends RecyclerView.Adapter<ListOrderAdapter.ListOrderViewHolder>{
     public interface ShopListOrderListener{
         void onUpdateStatus(Order order, Constants.OrderStatus status);
-        void onDelete(int id);
+        void onDelete(Order order);
     }
 
     private Context mContext;
@@ -54,7 +55,7 @@ public class ListOrderAdapter extends RecyclerView.Adapter<ListOrderAdapter.List
 
     @Override
     public ListOrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order_shop, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order, parent, false);
         ListOrderViewHolder holder = new ListOrderViewHolder(view);
         return holder;
     }
@@ -131,7 +132,7 @@ public class ListOrderAdapter extends RecyclerView.Adapter<ListOrderAdapter.List
                 checkWait.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimaryDark));
             }else if (status == OrderStatus.SHIPPING.getIdStatus()){
                 checkShipping.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimaryDark));
-            }else if (status == OrderStatus.CANCEL.getIdStatus()){
+            }else if (status == OrderStatus.RECEIVED.getIdStatus()){
                 checkReceived.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimaryDark));
             }else {
                 checkCancel.setColorFilter(ContextCompat.getColor(mContext, R.color.colorRed));
@@ -169,6 +170,7 @@ public class ListOrderAdapter extends RecyclerView.Adapter<ListOrderAdapter.List
                         @Override
                         public void onClick(OrderStatus status) {
                             mListener.onUpdateStatus(order, status);
+                            updateStatus(status.getIdStatus());
                         }
                     });
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -179,9 +181,33 @@ public class ListOrderAdapter extends RecyclerView.Adapter<ListOrderAdapter.List
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onDelete(order.getId());
+                    mListener.onDelete(order);
                 }
             });
+        }
+
+        private void updateStatus(int status){
+            if (status == Constants.OrderStatus.WAITING.getIdStatus()){
+                checkWait.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimaryDark));
+                checkShipping.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkReceived.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkCancel.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+            }else if (status == Constants.OrderStatus.SHIPPING.getIdStatus()){
+                checkWait.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkShipping.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimaryDark));
+                checkReceived.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkCancel.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+            }else if (status == OrderStatus.RECEIVED.getIdStatus()){
+                checkWait.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkShipping.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkReceived.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimaryDark));
+                checkCancel.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+            }else {
+                checkWait.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkShipping.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkReceived.setColorFilter(ContextCompat.getColor(mContext, R.color.colorGray));
+                checkCancel.setColorFilter(ContextCompat.getColor(mContext, R.color.colorRed));
+            }
         }
     }
 }

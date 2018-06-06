@@ -24,6 +24,8 @@ import edu.hust.truongvu.choviet.helper.Constants;
 public class OrderModel {
     public static final String ORDER_PATH = Constants.Path.MY_PATH + "order.php";
     private Context context;
+    private MyService myService;
+
     public OrderModel(Context context){
         this.context = context;
     }
@@ -43,7 +45,8 @@ public class OrderModel {
             json += "{";
             json += "\"id_product\" : " + listDetails.get(i).getIdProduct() + ",";
             json += "\"id_shop\" : " + listDetails.get(i).getIdShop() + ",";
-            json += "\"number\" : " + listDetails.get(i).getNumber();
+            json += "\"number\" : " + listDetails.get(i).getNumber() + ",";
+            json += "\"status\" : " + listDetails.get(i).getStatus();
             if (i == listDetails.size() - 1){
                 json += "}";
             }else {
@@ -235,6 +238,7 @@ public class OrderModel {
 
         try {
             String data = myService.get();
+            Log.e("order_details", data);
             JSONObject jsonObject = new JSONObject(data);
             JSONArray myJsonArr = jsonObject.getJSONArray("orderdetails");
             JSONArray jsonTransport = myJsonArr.getJSONArray(0);
@@ -245,18 +249,24 @@ public class OrderModel {
                 String id_product = jsonObject1.getString("id_product");
                 String id_shop = jsonObject1.getString("id_shop");
                 String number = jsonObject1.getString("number");
+                String dateOrder = jsonObject1.getString("date_order_shop");
+                String status = jsonObject1.getString("status");
 
                 OrderDetails orderDetails = new OrderDetails(Integer.parseInt(id), Integer.parseInt(id_order),
-                        Integer.parseInt(id_product), Integer.parseInt(id_shop), Integer.parseInt(number));
+                        Integer.parseInt(id_product), Integer.parseInt(id_shop), Integer.parseInt(number),
+                        Long.parseLong(dateOrder), Integer.parseInt(status));
                 listOrder.add(orderDetails);
             }
         } catch (InterruptedException e) {
+            Log.e("order_details", e.toString());
             e.printStackTrace();
             return new ArrayList<>();
         } catch (ExecutionException e) {
+            Log.e("order_details", e.toString());
             e.printStackTrace();
             return new ArrayList<>();
         } catch (JSONException e) {
+            Log.e("order_details", e.toString());
             e.printStackTrace();
             return new ArrayList<>();
         }
@@ -291,9 +301,12 @@ public class OrderModel {
                 String id_product = jsonObject1.getString("id_product");
                 String id_shop = jsonObject1.getString("id_shop");
                 String number = jsonObject1.getString("number");
+                String dateOrder = jsonObject1.getString("date_order_shop");
+                String status = jsonObject1.getString("status");
 
                 OrderDetails orderDetails = new OrderDetails(Integer.parseInt(id), Integer.parseInt(id_order),
-                        Integer.parseInt(id_product), Integer.parseInt(id_shop), Integer.parseInt(number));
+                        Integer.parseInt(id_product), Integer.parseInt(id_shop), Integer.parseInt(number),
+                        Long.parseLong(dateOrder), Integer.parseInt(status));
                 listOrder.add(orderDetails);
             }
         } catch (InterruptedException e) {
@@ -388,5 +401,126 @@ public class OrderModel {
         }
 
         return number;
+    }
+
+    public boolean updateStatusOrder(int id, int status){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateStatusOrder");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id", id + "");
+
+        HashMap<String, String> attrStatus = new HashMap<>();
+        attrStatus.put("status", status + "");
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrStatus);
+
+        myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            Log.e("tr_update_status", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error update status", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean deleteOrder(int id){
+        return true;
+    }
+
+    public boolean updateStatusOrderDetails(int id, int status){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateStatusDetailsOrder");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id", id + "");
+
+        HashMap<String, String> attrStatus = new HashMap<>();
+        attrStatus.put("status", status + "");
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrStatus);
+
+        myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            Log.e("tr_update_status", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error update status", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean deleteOrderDetails(int id){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> func = new HashMap<>();
+        func.put("func", "deleteDetailsOrder");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id", id+"");
+
+
+        attrs.add(func);
+        attrs.add(attrId);
+
+        myService = new MyService(context, ORDER_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error like", jsonObject.getString("message"));
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 }

@@ -33,6 +33,15 @@ public class ShopListProductPresenterImp implements ShopListProductPresenter {
     }
 
     @Override
+    public void setDiscount(int idProduct, int discount) {
+        if (productModel.updateDiscountProduct(idProduct, discount)){
+            shopListProductView.setDiscountSuccessful();
+        }else {
+            shopListProductView.setDiscountFalse();
+        }
+    }
+
+    @Override
     public void deleteProduct(Product product) {
 
     }

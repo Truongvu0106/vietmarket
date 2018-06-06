@@ -8,5 +8,6 @@ import edu.hust.truongvu.choviet.model.entity.Product;
 
 public interface ShopListProductPresenter {
     void initListProduct(int idShop);
+    void setDiscount(int idProduct, int discount);
     void deleteProduct(Product product);
 }

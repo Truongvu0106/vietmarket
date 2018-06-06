@@ -646,6 +646,46 @@ public class ProductModel {
         return flag;
     }
 
+    public boolean updateDiscountProduct(int idProduct, int discount){
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateDiscount");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_product", idProduct + "");
+
+        HashMap<String, String> attrNumber = new HashMap<>();
+        attrNumber.put("discount", discount + "");
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrNumber);
+
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            Log.e("tr_update_discount", data);
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error update product", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
     public boolean updateRateProduct(int idProduct, float rate){
         boolean flag = false;
         List<HashMap<String, String>> attrs = new ArrayList<>();
@@ -910,6 +950,41 @@ public class ProductModel {
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
         attrFunc.put("func", "countLikeProduct");
+
+        HashMap<String, String> attrIdProduct = new HashMap<>();
+        attrIdProduct.put("id_product", idProduct + "");
+
+        attrs.add(attrFunc);
+        attrs.add(attrIdProduct);
+
+        myService = new MyService(mContext, PRODUCT_PATH, attrs);
+        myService.execute();
+
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("number");
+            number = Integer.parseInt(result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+        return number;
+    }
+
+    public int countRateProduct(int idProduct){
+        int number = 0;
+        ArrayList<Integer> listIdShop = new ArrayList<>();
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+        HashMap<String, String> attrFunc = new HashMap<>();
+        attrFunc.put("func", "countRateProduct");
 
         HashMap<String, String> attrIdProduct = new HashMap<>();
         attrIdProduct.put("id_product", idProduct + "");

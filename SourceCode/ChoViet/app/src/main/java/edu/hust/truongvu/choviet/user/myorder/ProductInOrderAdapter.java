@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.user.myshop.list_order;
+package edu.hust.truongvu.choviet.user.myorder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -51,7 +51,13 @@
 		case 'updateRate':
 			$func();
 			break;
+		case 'updateDiscount':
+			$func();
+			break;
 		case 'countLikeProduct':
+			$func();
+			break;
+		case 'countRateProduct':
 			$func();
 			break;
 		case 'countProductByBrand':
@@ -414,6 +420,29 @@
 		mysqli_close($conn); 
 	}
 
+	function updateDiscount(){
+		global $conn;
+		if (isset($_POST["id_product"]) || isset($_POST["discount"])) {
+			$id = $_POST["id_product"];
+			$discount = $_POST["discount"];
+		}
+
+		$query = "UPDATE product SET discount = '".$discount."' WHERE id_product = '".$id."'";
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+			"result" => "true",
+			"message" => "update product successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn); 
+	}
+
 	function updateProduct(){
 		global $conn;
 		if (isset($_POST["id_product"]) || isset($_POST["name_product"]) || isset($_POST["price"]) || isset($_POST["image"]) || isset($_POST["information"]) || isset($_POST["weight"]) || isset($_POST["type_product"]) || isset($_POST["brand"]) || isset($_POST["rate"]) || isset($_POST["amount"]) || isset($_POST["id_shop"]) || isset($_POST["rate"]) || isset($_POST["hightlight"]) || isset($_POST["discount"])) {
@@ -553,6 +582,21 @@
 		}
 
 		$query = "SELECT * FROM product_like WHERE id_product = ".$idProduct;
+		$results = mysqli_query($conn, $query);
+		$count = mysqli_num_rows($results);
+		echo json_encode([
+			"number" => $count
+			]);
+		mysqli_close($conn);
+	}
+
+	function countRateProduct(){
+		global $conn;
+		if (isset($_POST["id_product"])) {
+			$idProduct = $_POST["id_product"];
+		}
+
+		$query = "SELECT * FROM rate WHERE id_product = ".$idProduct;
 		$results = mysqli_query($conn, $query);
 		$count = mysqli_num_rows($results);
 		echo json_encode([

@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,11 +22,12 @@ import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
 import edu.hust.truongvu.choviet.init.MainActivity;
 
-public class InfoUserActivity extends AppCompatActivity implements View.OnClickListener{
+public class InfoUserActivity extends AppCompatActivity implements View.OnClickListener, InfoUserView{
     private TextView tvUseName, tvPass, tvGender, tvBirthDay;
     private EditText edtFullName, edtPhone;
     private RecyclerView recyclerView;
     private View btnAddAddress, btnSignout;
+    private InfoUserPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class InfoUserActivity extends AppCompatActivity implements View.OnClickL
             }
         });
         initView();
+        presenter = new InfoUserPresenterImp(this, this);
     }
 
     private void initView(){
@@ -94,6 +97,7 @@ public class InfoUserActivity extends AppCompatActivity implements View.OnClickL
                 editor.putInt(Constants.MyTag.USERID, 0);
                 editor.commit();
                 startActivity(new Intent(InfoUserActivity.this, MainActivity.class));
+                presenter.signout();
             }
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -143,5 +147,16 @@ public class InfoUserActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void signoutSuccessful() {
+        Log.e("sign_out", "successful");
+    }
+
+    @Override
+    public void signoutFalse() {
+        Log.e("sign_out", "false");
+
     }
 }

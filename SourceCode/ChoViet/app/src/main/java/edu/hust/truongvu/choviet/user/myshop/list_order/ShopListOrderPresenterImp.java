@@ -1,6 +1,7 @@
 package edu.hust.truongvu.choviet.user.myshop.list_order;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
@@ -26,17 +27,30 @@ public class ShopListOrderPresenterImp implements ShopListOrderPresenter {
 
     @Override
     public void initListOrder(int idShop) {
+        Log.e("idShop", idShop + "");
         ArrayList<OrderDetails> orders = orderModel.getDetailsOrderByShop(idShop);
-
+        if (orders == null || orders.isEmpty()){
+            view.loadListOrderFalse();
+        }else {
+            view.loadListOrderSuccessful(orders);
+        }
     }
 
     @Override
-    public void updateStatus(Order order, Constants.OrderStatus status) {
-
+    public void updateStatus(int idOrder, int status) {
+        if (orderModel.updateStatusOrderDetails(idOrder, status)){
+            view.updateSuccessful();
+        }else {
+            view.updateFalse();
+        }
     }
 
     @Override
     public void deleteOrder(int idOrder) {
-
+        if (orderModel.deleteOrderDetails(idOrder)){
+            view.deleteSuccessful();
+        }else {
+            view.deleteFalse();
+        }
     }
 }

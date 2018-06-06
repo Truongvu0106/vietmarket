@@ -20,13 +20,14 @@ import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
 import edu.hust.truongvu.choviet.order.address.GuessInfoActivity;
+import edu.hust.truongvu.choviet.search.SearchActivity;
 import edu.hust.truongvu.choviet.startup.StartActivity;
 import edu.hust.truongvu.choviet.user.ProfileCheckDialog;
 
 public class CartActivity extends AppCompatActivity implements CartView, View.OnClickListener{
 
     private RecyclerView mListItem;
-    private View btnPay, layoutNumberItemCart;
+    private View btnPay, layoutNumberItemCart, btnBack, layoutSearch;
     private TextView tvTotal, tvNumberItemCart;
 
     private long totalMoney = 0;
@@ -42,9 +43,13 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
         tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
         btnPay = findViewById(R.id.btn_pay);
+        btnBack = findViewById(R.id.btn_back);
+        layoutSearch = findViewById(R.id.layout_search);
 
         cartPresenterImp = new CartPresenterImp(this);
         btnPay.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
+        layoutSearch.setOnClickListener(this);
         cartPresenterImp.initListItemCart(this);
         cartPresenterImp.calculateTotal(this);
     }
@@ -160,6 +165,12 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
                 }else {
                     startActivity(new Intent(CartActivity.this, PaymentActivity.class));
                 }
+                break;
+            case R.id.btn_back:
+                onBackPressed();
+                break;
+            case R.id.layout_search:
+                startActivity(new Intent(CartActivity.this, SearchActivity.class));
                 break;
             default:
                 break;

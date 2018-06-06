@@ -15,7 +15,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.model.ProductModel;
 import edu.hust.truongvu.choviet.model.ShopModel;
+import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.model.entity.Shop;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.Constants;
@@ -37,12 +39,14 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
     private ArrayList<Shop> data;
     private Context context;
     private ShopModel shopModel;
+    private ProductModel productModel;
 
     public ListShopAdapter(Context context, ArrayList<Shop> data, ShopListener listener){
         this.context = context;
         this.data = data;
         this.myListener = listener;
         shopModel = new ShopModel(context);
+        productModel = new ProductModel(context);
     }
 
     @Override
@@ -87,6 +91,8 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
             final int currentUserId = MyHelper.getUserIdPreference(context);
             MyHelper.setImagePicasso(context, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());
             MyHelper.setImagePicasso(context, imgCover, Constants.Path.MY_PATH + shop.getImgCover());
+            ArrayList<Product> list = productModel.getProductByIdShop(shop.getId());
+            tvNumProduct.setText(list.size() + "");
             tvRate.setText(shop.getRate() + "");
             tvName.setText(shop.getName());
             tvSlogan.setText(shop.getSlogan());

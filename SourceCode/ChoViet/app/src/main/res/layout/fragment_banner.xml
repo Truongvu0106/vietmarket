@@ -1,28 +1,29 @@
-<android.support.v4.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.hust.truongvu.choviet.admin.banner.BannerFragment">
-    <LinearLayout
+    tools:context="edu.hust.truongvu.choviet.admin.banner.list_banner.BannerFragment">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_banner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:layout_margin="@dimen/margin_medium"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:text="@string/add"/>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+            android:layout_width="@dimen/icon_size_large"
+            android:layout_height="@dimen/icon_size_large"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/margin_big"
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/ic_add"
+            android:tint="@color/white"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</LinearLayout>
 

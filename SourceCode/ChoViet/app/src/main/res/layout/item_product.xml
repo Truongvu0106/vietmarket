@@ -102,9 +102,10 @@
                         android:layout_marginLeft="@dimen/margin_small"
                         android:src="@drawable/comment"/>
                     <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:id="@+id/tv_number_rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(100)"/>
+                        android:text="()"/>
                 </LinearLayout>
                 <RatingBar
                     android:id="@+id/rate_product"

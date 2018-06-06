@@ -59,4 +59,5 @@ dependencies {
     }
     implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
     implementation 'com.mikepenz:fontawesome-typeface:5.0.6.0@aar'
+    implementation 'com.airbnb.android:lottie:2.5.4'
 }

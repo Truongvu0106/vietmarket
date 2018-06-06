@@ -1,4 +1,4 @@
-package edu.hust.truongvu.choviet.admin.banner;
+package edu.hust.truongvu.choviet.admin.banner.list_banner;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.helper.Constants;
-import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.Banner;
 
 /**

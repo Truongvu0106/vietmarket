@@ -18,9 +18,9 @@ import edu.hust.truongvu.choviet.helper.BottomNavigationViewHelper;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
-    ViewPager viewPager;
+    public static ViewPager viewPager;
     MenuItem prevMenuItem;
-    BottomNavigationView bottomNavigation;
+    public static BottomNavigationView bottomNavigation;
 
     public MainFragment() {
         // Required empty public constructor

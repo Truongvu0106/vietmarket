@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.cart.CartActivity;
 import edu.hust.truongvu.choviet.category.CategoryPresenterImp;
+import edu.hust.truongvu.choviet.product.list_product.ListProductActivity;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
 import edu.hust.truongvu.choviet.cart.CartPresenterImp;
 import edu.hust.truongvu.choviet.model.entity.Brand;
@@ -60,11 +61,12 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     private ProductPresenterImp productPresenterImp;
     private CartPresenterImp cartPresenterImp;
     private RecyclerView mListRate, mListProduct, mListSuggest;
-    private View btnRate, layoutDisableRate, layoutNoRate, btnAddToCart, btnViewShop, btnBuyNow, layoutDiscount;
+    private View btnRate, layoutDisableRate, layoutNoRate, btnAddToCart, btnViewShop,
+            btnBuyNow, layoutDiscount, btnShare, btnViewOtherProduct, btnViewSuggestProduct;
     private ImageView imgShop;
     private TextView tvDisableRate, tvName, tvOldPrice, tvNewPrice, tvNameShop,
             tvRate, tvTotalProduct, tvRateShop, tvDescription, tvCategory, tvWeight,
-            tvBrand, tvStock, tvFrom, tvRateOther, tvDiscount;
+            tvBrand, tvStock, tvFrom, tvRateOther, tvDiscount, tvNumLike, tvNumRate;
     private Product product;
     public ProductFragment() {
         // Required empty public constructor
@@ -95,6 +97,9 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         btnRate = view.findViewById(R.id.btn_rate);
         btnAddToCart = view.findViewById(R.id.btn_add_to_cart);
         btnBuyNow = view.findViewById(R.id.btn_buy_now);
+        btnShare = view.findViewById(R.id.btn_share);
+        btnViewOtherProduct = view.findViewById(R.id.btn_view_other_product);
+        btnViewSuggestProduct = view.findViewById(R.id.btn_view_suggest_product);
         layoutDisableRate = view.findViewById(R.id.layout_disable_rate);
         layoutNoRate = view.findViewById(R.id.layout_no_rate);
         tvDisableRate = view.findViewById(R.id.tv_disable_rate);
@@ -130,6 +135,8 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         tvBrand = view.findViewById(R.id.tv_brand);
         tvStock = view.findViewById(R.id.tv_stock);
         tvFrom = view.findViewById(R.id.tv_from);
+        tvNumLike = view.findViewById(R.id.tv_num_like);
+        tvNumRate = view.findViewById(R.id.tv_num_rate);
         tvRateOther = view.findViewById(R.id.tv_rate_product_other);
         btnViewShop = view.findViewById(R.id.btn_view_shop);
         layoutDiscount = view.findViewById(R.id.layout_discount);
@@ -157,6 +164,8 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         ratingBar.setRating(product.getRate());
         tvDescription.setText(product.getInfomation());
         tvCategory.setText(product.getTypeProduct() + "");
+        tvNumLike.setText(productPresenterImp.getNumLike(product.getId()) + "");
+        tvNumRate.setText(productPresenterImp.getNumRate(product.getId()) + "");
 
         ChildCategory childCategory = categoryPresenterImp.getChildCategory(product.getTypeProduct());
         if (childCategory == null){
@@ -185,6 +194,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         btnRate.setOnClickListener(this);
         btnAddToCart.setOnClickListener(this);
         btnBuyNow.setOnClickListener(this);
+        btnShare.setOnClickListener(this);
     }
 
     @Override
@@ -262,7 +272,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadListProductOtherSuccessful(ArrayList<Product> listProduct) {
+    public void loadListProductOtherSuccessful(final ArrayList<Product> listProduct) {
         ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -283,6 +293,14 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         });
         mListProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mListProduct.setAdapter(adapter);
+        btnViewOtherProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getContext(), ListProductActivity.class);
+                intent1.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, listProduct);
+                startActivity(intent1);
+            }
+        });
     }
 
     @Override
@@ -291,7 +309,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     }
 
     @Override
-    public void loadLisProductSuggestSuccessful(ArrayList<Product> listSuggest) {
+    public void loadLisProductSuggestSuccessful(final ArrayList<Product> listSuggest) {
         ProductAdapter adapter = new ProductAdapter(getContext(), listSuggest, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
@@ -312,6 +330,15 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         });
         mListSuggest.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mListSuggest.setAdapter(adapter);
+
+        btnViewSuggestProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getContext(), ListProductActivity.class);
+                intent1.putExtra(Constants.MyTag.INTENT_LIST_PRODUCT, listSuggest);
+                startActivity(intent1);
+            }
+        });
     }
 
     @Override
@@ -380,9 +407,25 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
             case R.id.btn_buy_now:
                 buyNow();
                 break;
+            case R.id.btn_share:
+                share(product);
+                break;
             default:
                 break;
         }
+    }
+
+    private void share(Product product){
+        Intent share = new Intent(android.content.Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        // Add data to the intent, the receiving app will decide
+        // what to do with it.
+        share.putExtra(Intent.EXTRA_SUBJECT, product.getName());
+        share.putExtra(Intent.EXTRA_TEXT, product.getName() + " - " + MyHelper.formatMoney(product.getPrice()));
+
+        startActivity(Intent.createChooser(share, "Share link!"));
     }
 
     private void addToCart(){
@@ -404,9 +447,6 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         }
     }
 
-    private void viewShop(){
-
-    }
 
     private void rate(){
         User user = MyHelper.getCurrentUser(getContext());

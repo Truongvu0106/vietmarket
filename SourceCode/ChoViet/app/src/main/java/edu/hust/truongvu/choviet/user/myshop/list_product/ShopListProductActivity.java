@@ -1,11 +1,15 @@
 package edu.hust.truongvu.choviet.user.myshop.list_product;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -63,8 +67,15 @@ public class ShopListProductActivity extends AppCompatActivity implements ShopLi
     public void loadListSuccessful(ArrayList<Product> data) {
         adapter = new ShopListProductAdapter(this, data, new ShopListProductAdapter.ShopProductListener() {
             @Override
-            public void setDiscount(Product product) {
-
+            public void setDiscount(final Product product) {
+                AddDiscountDialog discountDialog = new AddDiscountDialog(ShopListProductActivity.this, product.getDiscount(), new AddDiscountDialog.AddDiscountListener() {
+                    @Override
+                    public void onApply(int number) {
+                        shopListProductPresenter.setDiscount(product.getId(), number);
+                    }
+                });
+                discountDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                discountDialog.show();
             }
 
             @Override
@@ -87,6 +98,17 @@ public class ShopListProductActivity extends AppCompatActivity implements ShopLi
     @Override
     public void loadListFalse() {
 
+    }
+
+    @Override
+    public void setDiscountSuccessful() {
+        Toast.makeText(this, getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
+        shopListProductPresenter.initListProduct(idShop);
+    }
+
+    @Override
+    public void setDiscountFalse() {
+        Toast.makeText(this, getString(R.string.update_false), Toast.LENGTH_SHORT).show();
     }
 
     @Override

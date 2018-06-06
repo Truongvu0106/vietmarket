@@ -159,4 +159,20 @@ public class CategoryModel {
         }
         return childCategories;
     }
+
+    public boolean addParentCategory(ParentCategory parentCategory){
+        return true;
+    }
+
+    public boolean updateParentCategory(ParentCategory parentCategory, boolean isChangedImage){
+        return true;
+    }
+
+    public boolean addChildCategory(ChildCategory childCategory){
+        return true;
+    }
+
+    public boolean updateChildCategory(ChildCategory childCategory, boolean isChangedImage){
+        return true;
+    }
 }

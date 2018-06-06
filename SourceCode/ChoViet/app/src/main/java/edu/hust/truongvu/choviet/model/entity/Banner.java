@@ -1,10 +1,12 @@
 package edu.hust.truongvu.choviet.model.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by truon on 5/29/2018.
  */
 
-public class Banner {
+public class Banner implements Serializable{
     private int id;
     private String title;
     private String image;

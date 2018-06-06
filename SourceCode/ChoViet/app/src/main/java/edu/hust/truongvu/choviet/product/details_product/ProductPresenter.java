@@ -19,6 +19,8 @@ public interface ProductPresenter {
     boolean addRate(Rate rate);
     void addToCart(Context context, Product product);
     void initInforShop(int idShop);
+    int getNumLike(int idProduct);
+    int getNumRate(int idProduct);
 
     void updateRate(Rate rate);
 

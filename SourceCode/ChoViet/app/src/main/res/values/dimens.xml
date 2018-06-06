@@ -45,6 +45,7 @@
     <dimen name="icon_size_bigger">80dp</dimen>
     <dimen name="icon_size_large">100dp</dimen>
     <dimen name="icon_size_huge">150dp</dimen>
+    <dimen name="radius_mediom">15dp</dimen>
 
     <!-- Dialog -->
     <dimen name="dialog_width_medium">300dp</dimen>

@@ -15,7 +15,6 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.Order;
-import edu.hust.truongvu.choviet.user.myshop.list_order.ListOrderAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,7 +56,7 @@ public class OrderStatusFragment extends Fragment implements OrderStatusView{
             }
 
             @Override
-            public void onDelete(int id) {
+            public void onDelete(Order order) {
 
             }
         });

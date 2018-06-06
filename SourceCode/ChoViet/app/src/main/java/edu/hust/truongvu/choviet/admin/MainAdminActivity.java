@@ -1,5 +1,6 @@
 package edu.hust.truongvu.choviet.admin;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
@@ -24,9 +25,10 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import edu.hust.truongvu.choviet.R;
-import edu.hust.truongvu.choviet.admin.banner.BannerFragment;
-import edu.hust.truongvu.choviet.admin.category.ParentCategoryFragment;
+import edu.hust.truongvu.choviet.admin.banner.list_banner.BannerFragment;
+import edu.hust.truongvu.choviet.admin.category.parent.ParentCategoryFragment;
 import edu.hust.truongvu.choviet.admin.member.MemberFragment;
+import edu.hust.truongvu.choviet.admin.order.OrderFragment;
 import edu.hust.truongvu.choviet.admin.promotion.PromotionFragment;
 import edu.hust.truongvu.choviet.user.info_user.LogoutDialog;
 
@@ -63,10 +65,11 @@ public class MainAdminActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withSelectedItem(1)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(getString(R.string.manage_user)).withIcon(FontAwesome.Icon.faw_address_book),
-                        new PrimaryDrawerItem().withName(getString(R.string.manage_banner)).withIcon(FontAwesome.Icon.faw_address_book),
-                        new PrimaryDrawerItem().withName(getString(R.string.manage_category)).withIcon(FontAwesome.Icon.faw_address_book),
-                        new PrimaryDrawerItem().withName(getString(R.string.add_prodmotion)).withIcon(FontAwesome.Icon.faw_address_book),
+                        new PrimaryDrawerItem().withName(getString(R.string.manage_user)).withIcon(FontAwesome.Icon.faw_id_card),
+                        new PrimaryDrawerItem().withName(getString(R.string.manage_banner)).withIcon(FontAwesome.Icon.faw_adversal),
+                        new PrimaryDrawerItem().withName(getString(R.string.manage_category)).withIcon(FontAwesome.Icon.faw_clone),
+                        new PrimaryDrawerItem().withName(getString(R.string.add_prodmotion)).withIcon(FontAwesome.Icon.faw_credit_card),
+                        new PrimaryDrawerItem().withName(getString(R.string.manage_order)).withIcon(FontAwesome.Icon.faw_clipboard),
                         new SectionDrawerItem().withName(getString(R.string.extend)),
                         new SecondaryDrawerItem().withName(getString(R.string.sign_out)).withIcon(FontAwesome.Icon.faw_power_off)
                 )
@@ -107,11 +110,22 @@ public class MainAdminActivity extends AppCompatActivity {
                                 PromotionFragment fragment4 = new PromotionFragment();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container_admin, fragment4).commit();
                                 break;
-                            case 6:
+                            case 5:
+                                getSupportActionBar().setTitle(((Nameable) drawerItem).getName().getText());
+                                Spannable text5 = new SpannableString(getSupportActionBar().getTitle());
+                                text5.setSpan(new ForegroundColorSpan(Color.WHITE), 0, text5.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                                getSupportActionBar().setTitle(text5);
+                                OrderFragment fragment5 = new OrderFragment();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container_admin, fragment5).commit();
+                                break;
+                            case 7:
                                 LogoutDialog dialog = new LogoutDialog(MainAdminActivity.this, new LogoutDialog.LogoutListener() {
                                     @Override
                                     public void onLogout() {
-
+                                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(homeIntent);
                                     }
                                 });
                                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -125,5 +139,13 @@ public class MainAdminActivity extends AppCompatActivity {
                 })
                 .build();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
     }
 }

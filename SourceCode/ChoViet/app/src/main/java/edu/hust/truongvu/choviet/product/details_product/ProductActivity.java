@@ -19,7 +19,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     private View toolbar;
     ProductPresenterImp productPresenterImp;
-    private View layoutSearch, btnCart, layoutNumberItemCart;
+    private View layoutSearch, btnCart, layoutNumberItemCart, btnBack;
     private TextView tvNumberItemCart;
     private Product product;
     private View layoutErr;
@@ -31,6 +31,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         toolbar = findViewById(R.id.toolbar_product);
         layoutSearch = findViewById(R.id.layout_search);
         btnCart = findViewById(R.id.img_cart);
+        btnBack = findViewById(R.id.btn_back);
         layoutErr = findViewById(R.id.layout_err);
         layoutNumberItemCart = findViewById(R.id.layout_number_item_cart);
         tvNumberItemCart = findViewById(R.id.tv_number_item_cart);
@@ -39,6 +40,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         btnCart.setOnClickListener(this);
         layoutSearch.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
 
         product = (Product) getIntent().getSerializableExtra(Constants.MyTag.INTENT_PRODUCT);
         if (product == null){
@@ -70,6 +72,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.img_cart:
                 startActivity(new Intent(ProductActivity.this, CartActivity.class));
+                break;
+            case R.id.btn_back:
+                onBackPressed();
                 break;
             default:
                 break;

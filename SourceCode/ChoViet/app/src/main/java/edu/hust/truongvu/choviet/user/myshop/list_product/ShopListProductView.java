@@ -12,6 +12,9 @@ public interface ShopListProductView {
     void loadListSuccessful(ArrayList<Product> data);
     void loadListFalse();
 
+    void setDiscountSuccessful();
+    void setDiscountFalse();
+
     void deleteSuccessful();
     void deleteFalse();
 }
