@@ -20,7 +20,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class PayMethodModel {
-    public static final String PAY_PATH = Constants.Path.MY_PATH + "payment.php";
+    public static final String PAY_PATH = Constants.MY_PATH + "payment.php";
     private Context mContext;
     public PayMethodModel(Context context){
         this.mContext = context;

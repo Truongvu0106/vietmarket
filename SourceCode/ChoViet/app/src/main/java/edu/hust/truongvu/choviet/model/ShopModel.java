@@ -24,7 +24,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
 public class ShopModel {
     public static final String IMAGE_ROOT = "/img/shop/";
     public static final String IMAGE_EXTEND = ".jpeg";
-    public static final String SHOP_PATH = Constants.Path.MY_PATH + "shop.php";
+    public static final String SHOP_PATH = Constants.MY_PATH + "shop.php";
     private Context mContext;
     private MyService myService;
     public ShopModel(Context context){

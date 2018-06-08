@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="edu.hust.truongvu.choviet.user.setting.SettingActivity">
+    <include
+        layout="@layout/toolbar_extra"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/grayicon"
+                android:text="Product Name: VietMarket"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/grayicon"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="Version: 1.0.0"/>
+            <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/grayicon"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="Author: Vu Xuan Truong"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

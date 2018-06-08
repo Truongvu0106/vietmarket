@@ -121,12 +121,12 @@ public class MyShopActivity extends AppCompatActivity implements View.OnClickLis
         ID_SHOP = shop.getId();
         layoutInfor.setVisibility(View.VISIBLE);
         layoutErr.setVisibility(View.GONE);
-        MyHelper.setImagePicasso(this, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());
-        MyHelper.setImagePicasso(this, imgCover, Constants.Path.MY_PATH + shop.getImgCover());
+        MyHelper.setImagePicasso(this, imgAvatar, Constants.MY_PATH + shop.getImgAvatar());
+        MyHelper.setImagePicasso(this, imgCover, Constants.MY_PATH + shop.getImgCover());
         tvName.setText(shop.getName());
         tvSlogan.setText(shop.getSlogan());
-        tvNumberProduct.setText(12 + "");
-        tvRate.setText(4.5 + "");
+        tvNumberProduct.setText(myShopPresenter.getNUmbserProductShop(shop.getId()) + "");
+        tvRate.setText(shop.getRate() + "");
         tvAddress.setText(shop.getAddress());
         tvPhone.setText(shop.getPhone());
         tvWebsite.setText(shop.getWebsite());

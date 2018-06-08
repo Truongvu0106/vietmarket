@@ -98,7 +98,7 @@ public class ManageBannerActivity extends AppCompatActivity implements View.OnCl
 
         if (mBanner != null) {
             edtTitle.setText(mBanner.getTitle());
-            MyHelper.setImagePicasso(this, imgBanner, Constants.Path.MY_PATH + mBanner.getImage());
+            MyHelper.setImagePicasso(this, imgBanner, Constants.MY_PATH + mBanner.getImage());
             icon.setVisibility(View.GONE);
             imgBanner.setVisibility(View.VISIBLE);
         }

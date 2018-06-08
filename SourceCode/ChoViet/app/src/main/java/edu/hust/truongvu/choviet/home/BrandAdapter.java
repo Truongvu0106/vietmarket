@@ -65,7 +65,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.BrandHolder>
 //                    .resize(150, 150)
 //                    .centerCrop()
 //                    .into(imageView);
-            MyHelper.setImagePicasso(context, imageView, Constants.Path.MY_PATH + brand.getLogo().trim());
+            MyHelper.setImagePicasso(context, imageView, Constants.MY_PATH + brand.getLogo().trim());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -25,6 +25,7 @@ import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.advertisment.discount.DiscountActivity;
 import edu.hust.truongvu.choviet.advertisment.promotion.PromotionActivity;
 import edu.hust.truongvu.choviet.init.MainFragment;
+import edu.hust.truongvu.choviet.model.entity.Banner;
 import edu.hust.truongvu.choviet.model.entity.Brand;
 import edu.hust.truongvu.choviet.model.entity.PopularSearch;
 import edu.hust.truongvu.choviet.model.entity.Product;
@@ -105,17 +106,30 @@ public class HomeFragment extends Fragment implements HomeView,
     }
 
     @Override
-    public void loadBannerSuccessful(HashMap<String, Integer> hashMap) {
-        for(String name : hashMap.keySet()){
+    public void loadBannerSuccessful(ArrayList<Banner> data) {
+//        for(String name : hashMap.keySet()){
+//            TextSliderView textSliderView = new TextSliderView(getContext());
+//            textSliderView
+//                    .description(name)
+//                    .image(hashMap.get(name))
+//                    .setScaleType(BaseSliderView.ScaleType.Fit)
+//                    .setOnSliderClickListener(this);
+//            textSliderView.bundle(new Bundle());
+//            textSliderView.getBundle()
+//                    .putString("extra",name);
+//
+//            mSliderLayout.addSlider(textSliderView);
+//        }
+        for(Banner banner : data){
             TextSliderView textSliderView = new TextSliderView(getContext());
             textSliderView
-                    .description(name)
-                    .image(hashMap.get(name))
+                    .description(banner.getTitle())
+                    .image(Constants.MY_PATH + banner.getImage())
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
-                    .putString("extra",name);
+                    .putString("extra",banner.getTitle());
 
             mSliderLayout.addSlider(textSliderView);
         }
@@ -165,7 +179,15 @@ public class HomeFragment extends Fragment implements HomeView,
 
     @Override
     public void loadListHighlightShopSuccessful(ArrayList<Shop> listShop) {
-        HighlightShopAdapter adapter = new HighlightShopAdapter(getContext(), listShop, new HighlightShopAdapter.ShopListener() {
+        ArrayList<Shop> listShow = new ArrayList<>();
+        if (listShop.size() < 5){
+            listShow = listShop;
+        }else {
+            for (int i = 0; i < 5; i++){
+                listShow.add(listShop.get(i));
+            }
+        }
+        HighlightShopAdapter adapter = new HighlightShopAdapter(getContext(), listShow, new HighlightShopAdapter.ShopListener() {
             @Override
             public void onStoreResult(Shop shop) {
                 Intent intent = new Intent(getActivity(), ShopActivity.class);
@@ -185,7 +207,16 @@ public class HomeFragment extends Fragment implements HomeView,
     @Override
     public void loadListHighlightProductSuccessful(ArrayList<Product> listProduct) {
         mlistHighlightProduct = listProduct;
-        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
+        ArrayList<Product> listShow = new ArrayList<>();
+        if (listProduct.size() < 7){
+            listShow = listProduct;
+        }else {
+            for (int i = 0; i < 7; i++){
+                listShow.add(listProduct.get(i));
+            }
+        }
+
+        ProductAdapter adapter = new ProductAdapter(getContext(), listShow, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Intent intent = new Intent(getActivity(), ProductActivity.class);
@@ -195,7 +226,6 @@ public class HomeFragment extends Fragment implements HomeView,
 
             @Override
             public void onLikeClick(int idUser, Product product) {
-                Toast.makeText(getContext(), "Like Click", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -215,7 +245,15 @@ public class HomeFragment extends Fragment implements HomeView,
     @Override
     public void loadListLastestProductSuccessful(ArrayList<Product> listProduct) {
         mListLastestProduct = listProduct;
-        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
+        ArrayList<Product> listShow = new ArrayList<>();
+        if (listProduct.size() < 7){
+            listShow = listProduct;
+        }else {
+            for (int i = 0; i < 7; i++){
+                listShow.add(listProduct.get(i));
+            }
+        }
+        ProductAdapter adapter = new ProductAdapter(getContext(), listShow, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Intent intent = new Intent(getActivity(), ProductActivity.class);
@@ -245,7 +283,15 @@ public class HomeFragment extends Fragment implements HomeView,
     @Override
     public void loadListSuggestProductSuccessful(ArrayList<Product> listProduct) {
         mListSuggestProduct = listProduct;
-        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
+        ArrayList<Product> listShow = new ArrayList<>();
+        if (listProduct.size() < 8){
+            listShow = listProduct;
+        }else {
+            for (int i = 0; i < 8; i++){
+                listShow.add(listProduct.get(i));
+            }
+        }
+        ProductAdapter adapter = new ProductAdapter(getContext(), listShow, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Intent intent = new Intent(getActivity(), ProductActivity.class);

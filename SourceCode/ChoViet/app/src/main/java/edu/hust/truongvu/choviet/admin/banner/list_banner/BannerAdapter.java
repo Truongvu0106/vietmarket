@@ -65,7 +65,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
         public void setContent(final Banner banner){
             tvName.setText(banner.getTitle());
             Picasso.with(mContext)
-                    .load(Constants.Path.MY_PATH + banner.getImage())
+                    .load(Constants.MY_PATH + banner.getImage())
                     .placeholder(R.drawable.img_loading)
                     .error(R.drawable.img_error)
                     .resize(350, 150)

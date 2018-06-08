@@ -23,6 +23,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -241,7 +243,7 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
     @Override
     public void uploadImageSuccessful() {
         isUploadImageSuccessful = true;
-        Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.upload_successful), FancyToast.SUCCESS);
     }
 
     @Override
@@ -251,13 +253,15 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
 
     @Override
     public void updateSuccessful() {
-        Toast.makeText(this, getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.update_successful), FancyToast.SUCCESS);
+
         onBackPressed();
     }
 
     @Override
     public void updateFalse() {
-        Toast.makeText(this, getString(R.string.update_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.update_false), FancyToast.ERROR);
+
     }
 
     @Override
@@ -357,31 +361,36 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
         String priceStr = edtPrice.getText().toString();
 
         if (name.matches("") || weightStr.matches("") || des.matches("") || priceStr.matches("") ){
-            Toast.makeText(this, getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.please_enter_all), FancyToast.WARNING);
+
             return;
         }
 
         if (!stockStr.matches("")){
             if (unit.matches("")){
-                Toast.makeText(this, getString(R.string.not_select_unit), Toast.LENGTH_SHORT).show();
+                MyHelper.showToast(this, getString(R.string.not_select_unit), FancyToast.WARNING);
+
                 return;
             }
         }
 
         if (mBrand == 0){
-            Toast.makeText(this, getString(R.string.not_select_brand), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_select_brand), FancyToast.WARNING);
+
             return;
         }
 
         if (mCategory == 0){
-            Toast.makeText(this, getString(R.string.not_select_category), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_select_category), FancyToast.WARNING);
+
             return;
         }
 
         ArrayList<String> images = mlistNameImage;
         boolean isChanged = false;
         if (images.isEmpty()){
-            Toast.makeText(this, getString(R.string.not_upload_image), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_upload_image), FancyToast.WARNING);
+
             return;
         }else {
             for (String s : images){
@@ -394,7 +403,8 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
 
         if (isChanged){
             if (!isUploadImageSuccessful){
-                Toast.makeText(this, getString(R.string.not_upload_image), Toast.LENGTH_SHORT).show();
+                MyHelper.showToast(this, getString(R.string.not_upload_image), FancyToast.WARNING);
+
                 return;
             }
         }
@@ -405,7 +415,7 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
         if (stockStr.matches("")){
             weight = "???";
         }else {
-            weight = weightStr + unit;
+            weight = weightStr + " " + unit;
         }
 
         int stock = Integer.parseInt(stockStr);
@@ -417,7 +427,8 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
 
     private void uploadImage(){
         if (mListMyImage.size() == 0){
-            Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.upload_successful), FancyToast.SUCCESS);
+
             isUploadImageSuccessful = true;
         }else {
             for (String s : mlistNameImage){

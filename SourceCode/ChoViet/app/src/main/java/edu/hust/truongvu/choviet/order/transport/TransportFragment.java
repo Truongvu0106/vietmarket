@@ -5,14 +5,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.Transport;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
 import edu.hust.truongvu.choviet.order.paymethod.PayMethodFragment;
@@ -58,7 +62,7 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
     @Override
     public void loadNext() {
         if (idTransport == 0){
-            Toast.makeText(getContext(), getContext().getString(R.string.please_select_transport), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.please_select_transport), FancyToast.WARNING);
         }else {
             ((PaymentActivity)getContext()).loadFragment(PayMethodFragment.getInstance());
             PaymentActivity.stepView.go(2, true);
@@ -77,6 +81,7 @@ public class TransportFragment extends Fragment implements PaymentView, View.OnC
             @Override
             public void onClick(Transport transport) {
                 idTransport = transport.getId();
+                Log.e("id_transport", idTransport + "");
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

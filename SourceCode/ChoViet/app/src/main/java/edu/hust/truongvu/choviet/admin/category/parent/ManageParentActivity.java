@@ -100,7 +100,7 @@ public class ManageParentActivity extends AppCompatActivity implements ManagePar
 
         if (mParent != null) {
             edtTitle.setText(mParent.getName());
-            MyHelper.setImagePicasso(this, imgBanner, Constants.Path.MY_PATH + mParent.getPath_img());
+            MyHelper.setImagePicasso(this, imgBanner, Constants.MY_PATH + mParent.getPath_img());
             icon.setVisibility(View.GONE);
             imgBanner.setVisibility(View.VISIBLE);
         }

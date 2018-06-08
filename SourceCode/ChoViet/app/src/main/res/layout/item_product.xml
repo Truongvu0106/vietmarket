@@ -21,7 +21,7 @@
                     android:id="@+id/img_product"
                     android:layout_width="170dp"
                     android:layout_height="120dp"
-                    android:scaleType="centerCrop"
+                    android:scaleType="centerInside"
                     android:src="@drawable/giaydep"/>
                 <FrameLayout
                     android:id="@+id/layout_discount"
@@ -52,6 +52,7 @@
                 android:padding="@dimen/padding_medium"
                 android:textSize="@dimen/text_size_small"
                 android:gravity="center"
+                android:lines="2"
                 android:textColor="@color/black"
                 android:text="Giày dép cao cấp aaaaaaaaaaa"/>
             <edu.hust.truongvu.choviet.helper.customview.MyTextView

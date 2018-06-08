@@ -62,7 +62,7 @@ public class ProductInOrderAdapter extends RecyclerView.Adapter<ProductInOrderAd
         }
 
         public void setContent(Product product, int number){
-            MyHelper.setImagePicasso(context, imgProduct, Constants.Path.MY_PATH + product.getImgs().get(0));
+            MyHelper.setImagePicasso(context, imgProduct, Constants.MY_PATH + product.getImgs().get(0));
             tvName.setText(product.getName());
             tvPrice.setText(MyHelper.formatMoney(product.getPrice()));
             tvNumber.setText(context.getString(R.string.number) + ": " + number);

@@ -22,7 +22,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class OrderModel {
-    public static final String ORDER_PATH = Constants.Path.MY_PATH + "order.php";
+    public static final String ORDER_PATH = Constants.MY_PATH + "order.php";
     private Context context;
     private MyService myService;
 
@@ -31,6 +31,8 @@ public class OrderModel {
     }
 
     public boolean insertOrder(Order order){
+
+
         boolean flag = false;
         List<HashMap<String, String>> attrs = new ArrayList<>();
 
@@ -59,6 +61,8 @@ public class OrderModel {
         attrListDetailsJson.put("list_details", json);
 
         Log.e("myJson", json);
+
+        Log.e("user_order", order.getIdUser() + "");
 
         HashMap<String, String> attrIdUser = new HashMap<>();
         attrIdUser.put("id_user", order.getIdUser() + "");

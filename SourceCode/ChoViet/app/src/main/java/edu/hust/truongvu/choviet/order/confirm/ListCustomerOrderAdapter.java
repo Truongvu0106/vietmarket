@@ -67,11 +67,11 @@ public class ListCustomerOrderAdapter extends RecyclerView.Adapter<ListCustomerO
         public void setContent(Product product){
             Shop shop = shopModel.getShopById(product.getIdShop());
             if (shop != null){
-                MyHelper.setImagePicasso(context, imgShop, Constants.Path.MY_PATH + shop.getImgAvatar());
+                MyHelper.setImagePicasso(context, imgShop, Constants.MY_PATH + shop.getImgAvatar());
                 tvNameShop.setText(shop.getName());
             }
             tvNameProduct.setText(product.getName());
-            MyHelper.setImagePicasso(context, imgPrpduct, Constants.Path.MY_PATH + product.getImgs().get(0));
+            MyHelper.setImagePicasso(context, imgPrpduct, Constants.MY_PATH + product.getImgs().get(0));
             long price = product.getPrice() - (product.getPrice() * product.getDiscount())/100;
             tvPrice.setText(MyHelper.formatMoney(price));
             tvNumber.setText(context.getString(R.string.number) + ": " + product.getNumberSelect());

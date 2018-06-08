@@ -18,7 +18,7 @@
 
 
     <!-- signup -->
-    <string name="signup">Sign Up</string>
+    <string name="signup">Sign up</string>
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
@@ -58,13 +58,13 @@
     <string name="market">Market</string>
 
     <!-- home -->
-    <string name="shop">Store</string>
+    <string name="shop">Shop</string>
     <string name="discount">Discount</string>
     <string name="promotion">Promotion</string>
     <string name="popular_search">Popular searchs</string>
     <string name="brand">Brand</string>
     <string name="more">More</string>
-    <string name="highlights_store">Highlights stores</string>
+    <string name="highlights_store">Highlights shops</string>
     <string name="highlights_products">Highlights products</string>
     <string name="lastest_products">Lastest products</string>
     <string name="suggest_products">Suggest products</string>
@@ -318,12 +318,18 @@
     <string name="start_must_before_end">Start date must before end date</string>
     <string name="code_overdue">Code overdue</string>
     <string name="code_invalid">Code invalid</string>
+    <string name="apply_successful">Apply successful</string>
 
     <string name="id_order">Id order</string>
 
     <string name="hot_deal_today">Hot deal to day</string>
-    <string name="dicount">Dícount</string>
     <string name="discount_must_under_100">Discount must under 100%</string>
     <string name="do_u_really_want_to_exit">Do you really want to exit?</string>
     <string name="do_u_want_to_update">Do you want to update?</string>
+    <string name="only_one_code_used">Only one discount code will be used</string>
+
+    <string name="return_to_home">Return to home</string>
+    <string name="language">Language</string>
+    <string name="m_notification">Notification</string>
+    <string name="copy_to_clipoard">Copy to clipboard</string>
 </resources>

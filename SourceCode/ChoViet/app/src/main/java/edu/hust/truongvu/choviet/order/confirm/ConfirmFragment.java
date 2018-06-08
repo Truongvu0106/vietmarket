@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     private int idTransport, idPayment;
     private String mAddress = "", mName = "", mPhone = "";
     private ArrayList<OrderDetails> listOrderDetails;
+    private boolean isApplyPromotionSuccessful = false;
     public ConfirmFragment() {
         // Required empty public constructor
     }
@@ -71,6 +75,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
         btnApply.setOnClickListener(this);
 
         confirmPresenterImp = new ConfirmPresenterImp(getContext(), this);
+        Log.e("id_transport", TransportFragment.idTransport + "");
         confirmPresenterImp.initView(AddressFragment.mName, AddressFragment.mPhone, AddressFragment.selectedAddress,
                 TransportFragment.idTransport, PayMethodFragment.idMethod);
         return view;
@@ -80,6 +85,8 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     public void loadViewSuccess(Transport transport, PayMethod payMethod, String name, String phone, String address, ArrayList<Product> list) {
         idPayment = payMethod.getId();
         idTransport = transport.getId();
+        Log.e("transport", idTransport+ "");
+        Log.e("payment", idPayment+ "");
         mAddress = address;
         mName = name;
         mPhone = phone;
@@ -113,43 +120,46 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
 
     @Override
     public void loadViewFalse() {
-        Toast.makeText(getContext(), "False", Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), "False", FancyToast.ERROR);
     }
 
     @Override
     public void addOrderSuccessful() {
-        Toast.makeText(getContext(), getContext().getString(R.string.order_confirmed_successful), Toast.LENGTH_SHORT).show();
         confirmPresenterImp.updateStockProduct(listOrderDetails);
 
     }
 
     @Override
     public void addOrderFalse() {
-        Toast.makeText(getContext(), getContext().getString(R.string.m_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), getContext().getString(R.string.m_false), FancyToast.ERROR);
     }
 
     @Override
     public void updateStockSuccessful() {
-        Toast.makeText(getContext(), getContext().getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getActivity(), MainActivity.class));
+        startActivity(new Intent(getActivity(), OrderSuccessfulActivity.class));
     }
 
     @Override
     public void updateStockFalse() {
-        Toast.makeText(getContext(), getContext().getString(R.string.update_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), getContext().getString(R.string.update_false), FancyToast.ERROR);
         startActivity(new Intent(getActivity(), MainActivity.class));
     }
 
     @Override
     public void applyPromotionSuccessful(long price) {
+        isApplyPromotionSuccessful = true;
         summary -= price;
+        Log.e("promotion_price", price + "");
+        Log.e("promotion_summary", summary + "");
         if (summary <= 0) summary = 0;
         tvSummary.setText(MyHelper.formatMoney(summary));
+        MyHelper.showToast(getContext(), getContext().getString(R.string.apply_successful), FancyToast.SUCCESS);
     }
 
     @Override
     public void applyPromotionFalse(String message) {
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        isApplyPromotionSuccessful = false;
+        MyHelper.showToast(getContext(), message, FancyToast.ERROR);
     }
 
     @Override
@@ -165,9 +175,13 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
     }
 
     private void applyPromotion(){
+        if (isApplyPromotionSuccessful){
+            MyHelper.showToast(getContext(), getContext().getString(R.string.only_one_code_used), FancyToast.WARNING);
+            return;
+        }
         String code = edtPromotion.getText().toString().trim();
         if (code.matches("")){
-            Toast.makeText(getContext(), getContext().getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.please_enter_all), FancyToast.WARNING);
         }else {
             confirmPresenterImp.applyPromotion(code);
         }
@@ -175,6 +189,7 @@ public class ConfirmFragment extends Fragment implements ConfirmView, View.OnCli
 
     private void confirm(){
         int currentUserId = MyHelper.getUserIdPreference(getContext());
+        Log.e("user_order", currentUserId + "");
         Order order = new Order(0, currentUserId, mName, mPhone, System.currentTimeMillis(),
                 Constants.OrderStatus.WAITING.getIdStatus(), idTransport, idPayment, summary, mAddress);
         order.setOrderDetails(listOrderDetails);

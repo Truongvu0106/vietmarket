@@ -69,7 +69,7 @@ public class ChildCategoryAdapter extends RecyclerView.Adapter<ChildCategoryAdap
 //                    .resize(150, 150)
 //                    .centerCrop()
 //                    .into(img);
-            MyHelper.setImagePicasso(context, img, Constants.Path.MY_PATH + category.getPath_img().trim());
+            MyHelper.setImagePicasso(context, img, Constants.MY_PATH + category.getPath_img().trim());
             name.setText(category.getName());
 
             itemView.setOnClickListener(new View.OnClickListener() {

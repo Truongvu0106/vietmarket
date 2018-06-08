@@ -8,9 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.customview.DeleteItemDialog;
 import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
 import edu.hust.truongvu.choviet.model.entity.OrderDetails;
@@ -75,12 +78,13 @@ public class ShopListOrderActivity extends AppCompatActivity implements ShopList
 
     @Override
     public void updateSuccessful() {
-        Toast.makeText(this, getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.update_successful), FancyToast.SUCCESS);
     }
 
     @Override
     public void updateFalse() {
-        Toast.makeText(this, getString(R.string.update_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.update_false), FancyToast.ERROR);
+
     }
 
     @Override

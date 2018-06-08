@@ -23,8 +23,12 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class CategoryModel {
-    public static String CATEGORY_PATH = Constants.Path.MY_PATH + "category.php";
+    public static String CATEGORY_PATH = Constants.MY_PATH + "category.php";
+    public static final String PATH_IMAGE = "img/category/";
+
     private Context mContext;
+    private MyService myService;
+
     public CategoryModel(Context context){
         this.mContext = context;
     }
@@ -161,18 +165,182 @@ public class CategoryModel {
     }
 
     public boolean addParentCategory(ParentCategory parentCategory){
-        return true;
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "addParentCategory");
+
+        HashMap<String, String> attrName = new HashMap<>();
+        attrName.put("name_type_parent", parentCategory.getName());
+
+        HashMap<String, String> attrImage = new HashMap<>();
+        attrImage.put("image", PATH_IMAGE + parentCategory.getPath_img() + ".jpeg");
+
+        attrs.add(attrFucn);
+        attrs.add(attrName);
+        attrs.add(attrImage);
+
+        myService = new MyService(mContext, CATEGORY_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error add parent", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 
     public boolean updateParentCategory(ParentCategory parentCategory, boolean isChangedImage){
-        return true;
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateParentCategory");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_type_parent", parentCategory.getId() + "");
+
+        HashMap<String, String> attrName = new HashMap<>();
+        attrName.put("name_type_parent", parentCategory.getName());
+
+        HashMap<String, String> attrImage = new HashMap<>();
+        if (isChangedImage){
+            attrImage.put("image", PATH_IMAGE + parentCategory.getPath_img() + ".jpeg");
+        }else {
+            attrImage.put("image", parentCategory.getPath_img());
+        }
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrName);
+        attrs.add(attrImage);
+
+        myService = new MyService(mContext, CATEGORY_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error add product", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 
     public boolean addChildCategory(ChildCategory childCategory){
-        return true;
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "addChildCategory");
+
+        HashMap<String, String> attrName = new HashMap<>();
+        attrName.put("name_type_child", childCategory.getName());
+
+        HashMap<String, String> attrIdParent = new HashMap<>();
+        attrIdParent.put("id_type_parent", childCategory.getIdParent() + "");
+
+        HashMap<String, String> attrImage = new HashMap<>();
+        attrImage.put("image_cate", PATH_IMAGE + childCategory.getPath_img() + ".jpeg");
+
+        attrs.add(attrFucn);
+        attrs.add(attrName);
+        attrs.add(attrIdParent);
+        attrs.add(attrImage);
+
+        myService = new MyService(mContext, CATEGORY_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error add child", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 
     public boolean updateChildCategory(ChildCategory childCategory, boolean isChangedImage){
-        return true;
+        boolean flag = false;
+        List<HashMap<String, String>> attrs = new ArrayList<>();
+
+        HashMap<String, String> attrFucn = new HashMap<>();
+        attrFucn.put("func", "updateChildCategory");
+
+        HashMap<String, String> attrId = new HashMap<>();
+        attrId.put("id_type_child", childCategory.getId() + "");
+
+        HashMap<String, String> attrName = new HashMap<>();
+        attrName.put("name_type_child", childCategory.getName());
+
+        HashMap<String, String> attrIdParent = new HashMap<>();
+        attrIdParent.put("id_type_parent", childCategory.getIdParent() + "");
+
+        HashMap<String, String> attrImage = new HashMap<>();
+        if (isChangedImage){
+            attrImage.put("image_cate", PATH_IMAGE + childCategory.getPath_img() + ".jpeg");
+        }else {
+            attrImage.put("image_cate", childCategory.getPath_img());
+        }
+
+        attrs.add(attrFucn);
+        attrs.add(attrId);
+        attrs.add(attrName);
+        attrs.add(attrIdParent);
+        attrs.add(attrImage);
+
+        myService = new MyService(mContext, CATEGORY_PATH, attrs);
+        myService.execute();
+        try {
+            String data = myService.get();
+            JSONObject jsonObject = new JSONObject(data);
+            String result = jsonObject.getString("result");
+            if (result.matches("true")){
+                flag = true;
+            }else {
+                flag = false;
+                Log.e("error update child", data);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 }

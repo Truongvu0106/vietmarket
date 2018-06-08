@@ -8,7 +8,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 
 /**
  * Created by truon on 6/4/2018.
@@ -59,13 +62,14 @@ public class AddDiscountDialog extends AlertDialog{
     private void apply(){
         String s = edtNumber.getText().toString().trim();
         if (s.matches("")){
-            Toast.makeText(mContext, mContext.getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(mContext, mContext.getString(R.string.please_enter_all), FancyToast.WARNING);
             return;
         }
         try {
             int number = Integer.parseInt(s);
             if (number > 100){
-                Toast.makeText(mContext, mContext.getString(R.string.discount_must_under_100), Toast.LENGTH_SHORT).show();
+                MyHelper.showToast(mContext, mContext.getString(R.string.discount_must_under_100), FancyToast.WARNING);
+
                 return;
             }
             mListener.onApply(number);

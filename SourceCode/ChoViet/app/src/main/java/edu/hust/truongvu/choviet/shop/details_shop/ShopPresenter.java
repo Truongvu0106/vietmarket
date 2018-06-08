@@ -23,4 +23,6 @@ public interface ShopPresenter {
     void updateUserRate(int idUser, int idShop, float rate);
 
     void updateTotalRate(boolean isNew, int idShop, float rate);
+
+    int getNumberProductInShop(int idShop);
 }

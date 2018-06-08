@@ -24,7 +24,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class UserModel {
-    public static final String PATH_USER = Constants.Path.MY_PATH + "user.php";
+    public static final String PATH_USER = Constants.MY_PATH + "user.php";
     private Context context;
 
     public UserModel(Context context){

@@ -59,7 +59,7 @@ public class PopularSearchAdapter extends RecyclerView.Adapter<PopularSearchAdap
 
         public void setContent(PopularSearch data){
             textView.setText(data.getKeySearch());
-            MyHelper.setImagePicasso(mContext, imageView, Constants.Path.MY_PATH + data.getImg());
+            MyHelper.setImagePicasso(mContext, imageView, Constants.MY_PATH + data.getImg());
         }
     }
 }

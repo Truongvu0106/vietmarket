@@ -30,6 +30,7 @@ import edu.hust.truongvu.choviet.admin.category.parent.ParentCategoryFragment;
 import edu.hust.truongvu.choviet.admin.member.MemberFragment;
 import edu.hust.truongvu.choviet.admin.order.OrderFragment;
 import edu.hust.truongvu.choviet.admin.promotion.PromotionFragment;
+import edu.hust.truongvu.choviet.helper.customview.ConfirmDialog;
 import edu.hust.truongvu.choviet.user.info_user.LogoutDialog;
 
 public class MainAdminActivity extends AppCompatActivity {
@@ -143,9 +144,25 @@ public class MainAdminActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
-        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(homeIntent);
+        back();
+    }
+
+    private void back(){
+        ConfirmDialog dialog = new ConfirmDialog(this, getString(R.string.do_u_really_want_to_exit), new ConfirmDialog.ConfirmListener() {
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onOk() {
+                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                homeIntent.addCategory( Intent.CATEGORY_HOME );
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }

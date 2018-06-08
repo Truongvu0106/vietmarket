@@ -59,6 +59,7 @@
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/black"
                 android:lines="2"
+                android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="Address: dasdasd"/>
         </LinearLayout>

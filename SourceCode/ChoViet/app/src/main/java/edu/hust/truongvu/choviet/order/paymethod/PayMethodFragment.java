@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.PayMethod;
 import edu.hust.truongvu.choviet.order.confirm.ConfirmFragment;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
@@ -58,7 +61,7 @@ public class PayMethodFragment extends Fragment implements PaymentView, View.OnC
     @Override
     public void loadNext() {
         if (idMethod == 0){
-            Toast.makeText(getContext(), getContext().getString(R.string.please_select_paymethod), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.please_select_paymethod), FancyToast.WARNING);
         }else {
             ((PaymentActivity)getContext()).loadFragment(ConfirmFragment.getInstance());
             PaymentActivity.stepView.go(3, true);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -169,115 +169,124 @@
                 </LinearLayout>
             </LinearLayout>
         </FrameLayout>
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingTop="@dimen/margin_medium"
-            android:paddingLeft="@dimen/margin_medium"
-            android:paddingRight="@dimen/margin_medium"
-            android:orientation="vertical"
-            android:layout_marginTop="@dimen/margin_medium">
-            <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rate_now"/>
-            <FrameLayout
-                android:id="@+id/layout_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <RatingBar
-                    android:id="@+id/rating_bar"
-                    android:layout_width="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:isIndicator="true"
-                    android:numStars="5" />
-            </FrameLayout>
+                    android:background="@color/white"
+                    android:paddingTop="@dimen/margin_medium"
+                    android:paddingLeft="@dimen/margin_medium"
+                    android:paddingRight="@dimen/margin_medium"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/margin_medium">
+                    <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rate_now"/>
+                    <FrameLayout
+                        android:id="@+id/layout_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+                        <RatingBar
+                            android:id="@+id/rating_bar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="true"
+                            android:numStars="5" />
+                    </FrameLayout>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:paddingTop="@dimen/padding_small"
-            android:paddingBottom="@dimen/padding_small"
-            android:paddingRight="@dimen/padding_small"
-            android:paddingLeft="@dimen/padding_medium"
-            android:layout_marginTop="@dimen/margin_medium">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/ic_address"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:paddingTop="@dimen/padding_small"
+                    android:paddingBottom="@dimen/padding_small"
+                    android:paddingRight="@dimen/padding_small"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:layout_marginTop="@dimen/margin_medium">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_medium"
+                            android:layout_height="@dimen/icon_size_medium"
+                            android:padding="@dimen/padding_big"
+                            android:src="@drawable/ic_address"/>
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:id="@+id/tv_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_marginLeft="@dimen/margin_small"
+                            android:text="Nha N1, chung cu Dong Tau"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_medium"
+                            android:layout_height="@dimen/icon_size_medium"
+                            android:padding="@dimen/padding_big"
+                            android:src="@drawable/ic_phone"/>
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:id="@+id/tv_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_marginLeft="@dimen/margin_small"
+                            android:text="0983815459"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_medium"
+                            android:layout_height="@dimen/icon_size_medium"
+                            android:padding="@dimen/padding_big"
+                            android:src="@drawable/ic_website"/>
+                        <edu.hust.truongvu.choviet.helper.customview.MyTextView
+                            android:id="@+id/tv_website"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_marginLeft="@dimen/margin_small"
+                            android:text="www.hust.edu.vn"/>
+                    </LinearLayout>
+                </LinearLayout>
                 <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:text="Nha N1, chung cu Dong Tau"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="@dimen/margin_small"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/ic_phone"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:id="@+id/tv_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:text="0983815459"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="@dimen/margin_small"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:padding="@dimen/padding_big"
-                    android:src="@drawable/ic_website"/>
-                <edu.hust.truongvu.choviet.helper.customview.MyTextView
-                    android:id="@+id/tv_website"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:layout_marginLeft="@dimen/margin_small"
-                    android:text="www.hust.edu.vn"/>
-            </LinearLayout>
-        </LinearLayout>
-        <edu.hust.truongvu.choviet.helper.customview.MyTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_medium"
-            android:textAllCaps="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginLeft="@dimen/padding_big"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="@string/products"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/list_product"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_small">
+                    android:textSize="@dimen/text_size_medium"
+                    android:textAllCaps="true"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginLeft="@dimen/padding_big"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="@string/products"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/margin_small">
 
-        </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</LinearLayout>

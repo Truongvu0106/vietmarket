@@ -21,7 +21,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class RateModel {
-    public static final String PATH_RATE = Constants.Path.MY_PATH + "rate.php";
+    public static final String PATH_RATE = Constants.MY_PATH + "rate.php";
     private Context context;
 
     public RateModel(Context context) {

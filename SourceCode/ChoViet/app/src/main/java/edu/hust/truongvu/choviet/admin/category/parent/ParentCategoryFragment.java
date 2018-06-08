@@ -65,9 +65,23 @@ public class ParentCategoryFragment extends Fragment implements ManageParentView
                 intent.putExtra(CATEGORY_TAG, id);
                 startActivity(intent);
             }
+
+            @Override
+            public void onUpdate(ParentCategory parentCategory) {
+                mParent = parentCategory;
+                Intent intent = new Intent(getContext(), ManageParentActivity.class);
+                intent.putExtra(IS_UPDATE, true);
+                startActivity(intent);
+            }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.initListParentCategory();
     }
 
     @Override

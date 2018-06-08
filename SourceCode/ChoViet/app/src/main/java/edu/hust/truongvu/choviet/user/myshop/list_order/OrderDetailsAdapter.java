@@ -88,7 +88,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
 
             Product product = productModel.getProductById(orderDetails.getIdProduct());
             if (product != null){
-                MyHelper.setImagePicasso(mContext, img, Constants.Path.MY_PATH + product.getImgs().get(0));
+                MyHelper.setImagePicasso(mContext, img, Constants.MY_PATH + product.getImgs().get(0));
                 tvName.setText(product.getName());
                 tvPrice.setText(MyHelper.formatMoney(product.getPrice()));
             }

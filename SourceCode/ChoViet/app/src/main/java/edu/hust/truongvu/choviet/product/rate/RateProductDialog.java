@@ -8,7 +8,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.Rate;
 import edu.hust.truongvu.choviet.model.entity.User;
 
@@ -61,9 +64,9 @@ public class RateProductDialog extends AlertDialog implements RatingBar.OnRating
             @Override
             public void onClick(View view) {
                 if (star == 0){
-                    Toast.makeText(context, context.getString(R.string.please_add_star), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(context, context.getString(R.string.please_add_star), FancyToast.WARNING);
                 } else if (tvTitle.getText().toString().trim().matches("")){
-                    Toast.makeText(context, context.getString(R.string.please_write_title_rate), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(context, context.getString(R.string.please_write_title_rate), FancyToast.WARNING);
                 } else {
                     Rate rate = new Rate(id_product, user.getUsername(), tvTitle.getText().toString().trim(),
                             tvContent.getText().toString(), star, "");

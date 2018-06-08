@@ -100,7 +100,7 @@ public class ManageChildActivity extends AppCompatActivity implements ManageChil
 
         if (mChild != null) {
             edtTitle.setText(mChild.getName());
-            MyHelper.setImagePicasso(this, imgBanner, Constants.Path.MY_PATH + mChild.getPath_img());
+            MyHelper.setImagePicasso(this, imgBanner, Constants.MY_PATH + mChild.getPath_img());
             icon.setVisibility(View.GONE);
             imgBanner.setVisibility(View.VISIBLE);
         }

@@ -17,7 +17,7 @@ import edu.hust.truongvu.choviet.services.UploadImageService;
  */
 
 public class RegisterPresenterImp implements RegisterPresenter, UploadImageListener{
-    public static final String URL = Constants.Path.MY_PATH + "uploadImageShop.php";
+    public static final String URL = Constants.MY_PATH + "uploadImageShop.php";
     private ShopModel shopModel;
     private RegisterView view;
     private Context mContext;

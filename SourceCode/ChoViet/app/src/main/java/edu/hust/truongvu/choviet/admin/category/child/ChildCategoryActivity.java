@@ -54,6 +54,11 @@ public class ChildCategoryActivity extends AppCompatActivity implements ManageCh
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.initListChildCategory(PARENT);
+    }
 
     @Override
     public void loadListChildSuccessful(ArrayList<ChildCategory> data) {

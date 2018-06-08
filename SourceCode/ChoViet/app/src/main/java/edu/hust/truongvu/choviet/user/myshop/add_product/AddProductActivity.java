@@ -22,6 +22,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -234,30 +236,34 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         String priceStr = edtPrice.getText().toString();
 
         if (name.matches("") || weightStr.matches("") || des.matches("") || priceStr.matches("") ){
-            Toast.makeText(this, getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.please_enter_all), FancyToast.WARNING);
             return;
         }
 
         if (!stockStr.matches("")){
             if (unit.matches("")){
-                Toast.makeText(this, getString(R.string.not_select_unit), Toast.LENGTH_SHORT).show();
+                MyHelper.showToast(this, getString(R.string.not_select_unit), FancyToast.WARNING);
+
                 return;
             }
         }
 
         if (mBrand == 0){
-            Toast.makeText(this, getString(R.string.not_select_brand), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_select_brand), FancyToast.WARNING);
+
             return;
         }
 
         if (mCategory == 0){
-            Toast.makeText(this, getString(R.string.not_select_category), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_select_category), FancyToast.WARNING);
+
             return;
         }
 
         ArrayList<String> images = new ArrayList<>();
         if (!isUploadImageSuccessful){
-            Toast.makeText(this, getString(R.string.not_upload_image), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_upload_image), FancyToast.WARNING);
+
             return;
         }else {
             for (MyImage myImage : listMyImage){
@@ -279,7 +285,8 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     private void uploadImage(){
         if (listMyImage.size() == 0){
-            Toast.makeText(this, getString(R.string.not_choose_image), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_choose_image), FancyToast.WARNING);
+
         }else {
             addProductPresenterImp.upLoadImage(listMyImage);
         }
@@ -309,23 +316,26 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void uploadImageSuccessful() {
         isUploadImageSuccessful = true;
-        Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.upload_successful), FancyToast.SUCCESS);
     }
 
     @Override
     public void uploadImageFalse() {
         isUploadImageSuccessful = false;
-        Toast.makeText(this, getString(R.string.file_size_too_large), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.file_size_too_large), FancyToast.ERROR);
+
     }
 
     @Override
     public void addProductSuccessful() {
-        Toast.makeText(this, getString(R.string.add_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.add_successful), FancyToast.SUCCESS);
+        startActivity(new Intent(this, MyShopActivity.class));
     }
 
     @Override
     public void addProductFalse() {
-        Toast.makeText(this, getString(R.string.add_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.add_false), FancyToast.ERROR);
+
     }
 
     @Override

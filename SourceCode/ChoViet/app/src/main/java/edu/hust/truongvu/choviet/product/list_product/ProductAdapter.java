@@ -114,7 +114,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
                 imgLikeFill.setVisibility(View.GONE);
             }
 
-            MyHelper.setImagePicasso(context, imgProduct, Constants.Path.MY_PATH + product.getImgs().get(0).trim());
+            MyHelper.setImagePicasso(context, imgProduct, Constants.MY_PATH + product.getImgs().get(0).trim());
             ratingBar.setRating(product.getRate());
 
             itemView.setOnClickListener(new View.OnClickListener() {

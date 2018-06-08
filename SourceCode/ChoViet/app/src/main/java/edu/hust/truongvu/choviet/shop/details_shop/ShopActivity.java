@@ -13,6 +13,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
@@ -44,6 +46,7 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         recyclerView = findViewById(R.id.list_product);
+        recyclerView.setFocusable(false);
         initView();
         shop = (Shop) getIntent().getSerializableExtra(Constants.MyTag.INTENT_SHOP);
         shopPresenter = new ShopPresenterImp(this, this);
@@ -70,11 +73,11 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
     @Override
     public void loadInforShopSuccessful(Shop shop) {
         shopPresenter.initListProduct(shop.getId());
-        MyHelper.setImagePicasso(ShopActivity.this, avatarShop, Constants.Path.MY_PATH + shop.getImgAvatar());
-        MyHelper.setImagePicasso(ShopActivity.this, coverShop, Constants.Path.MY_PATH + shop.getImgCover());
+        MyHelper.setImagePicasso(ShopActivity.this, avatarShop, Constants.MY_PATH + shop.getImgAvatar());
+        MyHelper.setLargeImagePicasso(ShopActivity.this, coverShop, Constants.MY_PATH + shop.getImgCover());
         tvName.setText(shop.getName());
         tvSlogan.setText(shop.getSlogan());
-        tvNumProduct.setText("0");
+        tvNumProduct.setText(shopPresenter.getNumberProductInShop(shop.getId()) + "");
         tvRate.setText(shop.getRate() + "");
         tvAddress.setText(shop.getAddress());
         tvPhone.setText(shop.getPhone());
@@ -112,22 +115,24 @@ public class ShopActivity extends AppCompatActivity implements ShopView, View.On
 
     @Override
     public void followSuccessful() {
-        Toast.makeText(this, getString(R.string.added_to_your_following), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.added_to_your_following), FancyToast.SUCCESS);
     }
 
     @Override
     public void followFalse() {
-        Toast.makeText(this, getString(R.string.follow_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.follow_false), FancyToast.ERROR);
+
     }
 
     @Override
     public void unFollowSuccessful() {
-        Toast.makeText(this, getString(R.string.remove_from_your_following), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.remove_from_your_following), FancyToast.SUCCESS);
+
     }
 
     @Override
     public void unFollowFalse() {
-        Toast.makeText(this, getString(R.string.unfollow_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.unfollow_false), FancyToast.ERROR);
     }
 
     @Override

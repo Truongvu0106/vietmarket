@@ -89,8 +89,8 @@ public class ListShopAdapter extends RecyclerView.Adapter<ListShopAdapter.ListSh
 
         public void setContent(final Shop shop){
             final int currentUserId = MyHelper.getUserIdPreference(context);
-            MyHelper.setImagePicasso(context, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());
-            MyHelper.setImagePicasso(context, imgCover, Constants.Path.MY_PATH + shop.getImgCover());
+            MyHelper.setImagePicasso(context, imgAvatar, Constants.MY_PATH + shop.getImgAvatar());
+            MyHelper.setLargeImagePicasso(context, imgCover, Constants.MY_PATH + shop.getImgCover());
             ArrayList<Product> list = productModel.getProductByIdShop(shop.getId());
             tvNumProduct.setText(list.size() + "");
             tvRate.setText(shop.getRate() + "");

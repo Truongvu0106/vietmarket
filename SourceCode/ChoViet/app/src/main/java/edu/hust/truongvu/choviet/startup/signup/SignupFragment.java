@@ -14,9 +14,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.Calendar;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.startup.signin.SigninFragment;
 import edu.hust.truongvu.choviet.helper.Constants;
 
@@ -92,14 +95,14 @@ public class SignupFragment extends Fragment implements SignupView, View.OnClick
 
     @Override
     public void onSuccess() {
-        Toast.makeText(getContext(), getString(R.string.signup_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), getContext().getString(R.string.signup_successful), FancyToast.SUCCESS);
         navigateToSignin();
     }
 
     @Override
     public void onError(String error) {
         Log.e("signup_error", error);
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), error, FancyToast.ERROR);
         root.startAnimation(animation);
     }
 

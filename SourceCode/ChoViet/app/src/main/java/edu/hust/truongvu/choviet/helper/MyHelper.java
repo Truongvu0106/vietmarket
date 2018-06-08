@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
 import com.squareup.picasso.Picasso;
 
 import java.security.SecureRandom;
@@ -54,8 +55,23 @@ public class MyHelper {
                 .load(path)
                 .placeholder(R.drawable.img_loading)
                 .error(R.drawable.img_error)
-                .resize(150, 150)
-                .centerCrop()
+                .resize(250, 250)
+                .centerInside()
+//                .centerCrop()
+                .into(imageView);
+    }
+
+    public static void setLargeImagePicasso(Context context, ImageView imageView, String path){
+        if (path == null || path.matches("")){
+            return;
+        }
+        Picasso.with(context)
+                .load(path)
+                .placeholder(R.drawable.img_loading)
+                .error(R.drawable.img_error)
+                .resize(500, 250)
+                .centerInside()
+//                .centerCrop()
                 .into(imageView);
     }
 
@@ -178,6 +194,10 @@ public class MyHelper {
         for( int i = 0; i < len; i++ )
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
+    }
+
+    public static void showToast(Context context, String title, int type){
+        FancyToast.makeText(context, title, FancyToast.LENGTH_SHORT, type,false).show();
     }
 
 }

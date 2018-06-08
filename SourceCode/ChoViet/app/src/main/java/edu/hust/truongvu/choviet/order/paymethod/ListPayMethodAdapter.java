@@ -67,7 +67,7 @@ public class ListPayMethodAdapter extends RecyclerView.Adapter<ListPayMethodAdap
 
         public void setContent(Context context, final PayMethod payMethod, final int position){
             tvName.setText(payMethod.getName());
-            MyHelper.setImagePicasso(context, imageView, Constants.Path.MY_PATH + payMethod.getImage());
+            MyHelper.setImagePicasso(context, imageView, Constants.MY_PATH + payMethod.getImage());
             if (position == mCheckedPosition){
                 imgCheck.setVisibility(View.VISIBLE);
             }else {

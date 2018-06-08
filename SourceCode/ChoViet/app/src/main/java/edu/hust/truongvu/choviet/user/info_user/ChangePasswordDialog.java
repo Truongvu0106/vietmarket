@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 
 /**
  * Created by truon on 4/17/2018.
@@ -51,12 +54,13 @@ public class ChangePasswordDialog extends AlertDialog{
                 String repass = edtRepass.getText().toString().trim();
 
                 if (pass.matches("") || repass.matches("")){
-                    Toast.makeText(context, context.getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(context, context.getString(R.string.please_enter_all), FancyToast.WARNING);
                     return;
                 }
 
                 if (!pass.matches(repass)){
-                    Toast.makeText(context, context.getString(R.string.pass_not_match), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(context, context.getString(R.string.pass_not_match), FancyToast.WARNING);
+
                     return;
                 }
 

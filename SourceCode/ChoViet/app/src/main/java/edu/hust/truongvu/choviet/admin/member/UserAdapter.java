@@ -66,7 +66,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder>{
         }
 
         public void setContent(final User user){
-            MyHelper.loadImageUser(mContext, imgAvatar, Constants.Path.MY_PATH + user.getAddress());
+            MyHelper.loadImageUser(mContext, imgAvatar, Constants.MY_PATH + user.getAvatar());
             tvUserName.setText(user.getUsername());
             tvFullName.setText(user.getFullname());
             tvPhone.setText(mContext.getString(R.string.phone) + ": " + user.getPhone());

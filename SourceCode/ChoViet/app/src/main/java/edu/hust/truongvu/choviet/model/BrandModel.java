@@ -20,7 +20,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class BrandModel {
-    public static final String BRAND_PATH = Constants.Path.MY_PATH + "brand.php";
+    public static final String BRAND_PATH = Constants.MY_PATH + "brand.php";
     private Context mContext;
 
     public BrandModel(Context context){

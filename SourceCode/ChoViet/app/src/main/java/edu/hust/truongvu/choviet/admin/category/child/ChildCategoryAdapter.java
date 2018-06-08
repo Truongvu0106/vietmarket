@@ -40,7 +40,7 @@ public class ChildCategoryAdapter extends RecyclerView.Adapter<ChildCategoryAdap
     @NonNull
     @Override
     public ChildCategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_admin_parent_category, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_admin_category, parent, false);
         ChildCategoryHolder holder = new ChildCategoryHolder(view);
         return holder;
     }
@@ -59,17 +59,20 @@ public class ChildCategoryAdapter extends RecyclerView.Adapter<ChildCategoryAdap
     class ChildCategoryHolder extends RecyclerView.ViewHolder{
         private ImageView img;
         private TextView tvName, tvNumber;
+        private View btnMore;
         public ChildCategoryHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
             tvName = itemView.findViewById(R.id.tv_title);
             tvNumber = itemView.findViewById(R.id.tv_number_child);
+            btnMore = itemView.findViewById(R.id.btn_more);
         }
 
         public void setContent(final ChildCategory childCategory){
-            MyHelper.setImagePicasso(mContext, img, Constants.Path.MY_PATH + childCategory.getPath_img());
+            MyHelper.setImagePicasso(mContext, img, Constants.MY_PATH + childCategory.getPath_img());
             tvName.setText(childCategory.getName());
             tvNumber.setVisibility(View.GONE);
+            btnMore.setVisibility(View.GONE);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

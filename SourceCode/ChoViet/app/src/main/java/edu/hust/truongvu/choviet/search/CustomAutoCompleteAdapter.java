@@ -45,7 +45,7 @@ public class CustomAutoCompleteAdapter extends ArrayAdapter<PopularSearch>{
         if (tvSearch != null)
             tvSearch.setText(popularSearch.getKeySearch());
         if (imgSearch != null)
-            MyHelper.setImagePicasso(mContext, imgSearch, Constants.Path.MY_PATH + popularSearch.getImg());
+            MyHelper.setImagePicasso(mContext, imgSearch, Constants.MY_PATH + popularSearch.getImg());
         return convertView;
     }
 

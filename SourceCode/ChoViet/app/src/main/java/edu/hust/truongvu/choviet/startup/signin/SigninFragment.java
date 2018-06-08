@@ -27,9 +27,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import edu.hust.truongvu.choviet.R;
 import edu.hust.truongvu.choviet.admin.MainAdminActivity;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.init.MainActivity;
 import edu.hust.truongvu.choviet.helper.customview.MyToast;
 import edu.hust.truongvu.choviet.model.UserModel;
@@ -165,8 +167,7 @@ public class SigninFragment extends Fragment implements SigninView, View.OnClick
 
     @Override
     public void onError(String error) {
-        Toast.makeText(getContext(), getString(R.string.wrong_signin), Toast.LENGTH_SHORT).show();
-        Log.e("error_signin", error);
+        MyHelper.showToast(getContext(), getString(R.string.wrong_signin), FancyToast.ERROR);
         root.startAnimation(animation);
     }
 

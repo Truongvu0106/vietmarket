@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
@@ -20,6 +22,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
+import edu.hust.truongvu.choviet.order.PaymentPresenter;
 import edu.hust.truongvu.choviet.order.PaymentPresenterImp;
 import edu.hust.truongvu.choviet.order.PaymentView;
 import edu.hust.truongvu.choviet.order.transport.TransportFragment;
@@ -30,8 +33,8 @@ import edu.hust.truongvu.choviet.order.transport.TransportFragment;
 public class AddressFragment extends Fragment implements PaymentView, AddressView, View.OnClickListener{
     public static String selectedAddress = "";
     public static String mName = "", mPhone = "";
-    private PaymentPresenterImp paymentPresenterImp;
-    private AddressPresenterImp addressPresenterImp;
+    private PaymentPresenter paymentPresenterImp;
+    private AddressPresenter addressPresenterImp;
     private TextView tvuserName, tvPhone;
     private View btnNext, btnInsertAddress;
     private RecyclerView recyclerView;
@@ -93,7 +96,7 @@ public class AddressFragment extends Fragment implements PaymentView, AddressVie
     @Override
     public void loadNext() {
         if (selectedAddress.matches("")){
-            Toast.makeText(getContext(), getContext().getString(R.string.please_select_address), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.please_select_address), FancyToast.WARNING);
         }else {
             PaymentActivity.stepView.go(1, true);
             ((PaymentActivity)getContext()).loadFragment(TransportFragment.getInstance());
@@ -148,6 +151,6 @@ public class AddressFragment extends Fragment implements PaymentView, AddressVie
 
     @Override
     public void insertFalse() {
-        Toast.makeText(getContext(), getContext().getString(R.string.insert_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), getContext().getString(R.string.insert_false), FancyToast.ERROR);
     }
 }

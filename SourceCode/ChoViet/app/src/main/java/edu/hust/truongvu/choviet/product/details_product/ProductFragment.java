@@ -17,9 +17,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,6 @@ import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.ZoomOutPageTransformer;
 import edu.hust.truongvu.choviet.product.rate.RateProductAdapter;
-import edu.hust.truongvu.choviet.product.list_product.ImgProductPagerAdapter;
 import edu.hust.truongvu.choviet.product.rate.RateProductDialog;
 import edu.hust.truongvu.choviet.shop.details_shop.ShopActivity;
 import edu.hust.truongvu.choviet.helper.Constants;
@@ -110,9 +109,9 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
         productPresenterImp = new ProductPresenterImp(getContext(), this);
         categoryPresenterImp = new CategoryPresenterImp(getContext());
         productPresenterImp.initListImage(product.getImgs());
-        productPresenterImp.initListProductOther(0);
+        productPresenterImp.initListProductOther(product.getIdShop());
         productPresenterImp.initListRate(username, product.getId());
-        productPresenterImp.initListProductSuggest(0);
+        productPresenterImp.initListProductSuggest(product.getTypeProduct());
 
         initView(view);
         productPresenterImp.initInforShop(product.getIdShop());
@@ -273,7 +272,15 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
     @Override
     public void loadListProductOtherSuccessful(final ArrayList<Product> listProduct) {
-        ProductAdapter adapter = new ProductAdapter(getContext(), listProduct, new ProductAdapter.ProductListener() {
+        ArrayList<Product> listShow = new ArrayList<>();
+        if (listProduct.size() < 4){
+            listShow = listProduct;
+        }else {
+            for (int i = 0; i < 4; i++){
+                listShow.add(listProduct.get(i));
+            }
+        }
+        ProductAdapter adapter = new ProductAdapter(getContext(), listShow, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Intent intent = new Intent(getActivity(), ProductActivity.class);
@@ -310,7 +317,15 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
     @Override
     public void loadLisProductSuggestSuccessful(final ArrayList<Product> listSuggest) {
-        ProductAdapter adapter = new ProductAdapter(getContext(), listSuggest, new ProductAdapter.ProductListener() {
+        ArrayList<Product> listShow = new ArrayList<>();
+        if (listSuggest.size() < 4){
+            listShow = listSuggest;
+        }else {
+            for (int i = 0; i < 4; i++){
+                listShow.add(listSuggest.get(i));
+            }
+        }
+        ProductAdapter adapter = new ProductAdapter(getContext(), listShow, new ProductAdapter.ProductListener() {
             @Override
             public void onProductResult(Product product) {
                 Intent intent = new Intent(getActivity(), ProductActivity.class);
@@ -348,17 +363,17 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
     @Override
     public void addToCartSuccessful() {
-        Toast.makeText(getContext(), getContext().getString(R.string.added_to_your_cart), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), getContext().getString(R.string.added_to_your_cart), FancyToast.SUCCESS);
     }
 
     @Override
     public void addToCartFalse() {
-        Toast.makeText(getContext(), getContext().getString(R.string.already_in_your_cart), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(getContext(), getContext().getString(R.string.already_in_your_cart), FancyToast.ERROR);
     }
 
     @Override
     public void loadInforShopSuccessful(final Shop shop) {
-        MyHelper.setImagePicasso(getContext(), imgShop, Constants.Path.MY_PATH + shop.getImgAvatar());
+        MyHelper.setImagePicasso(getContext(), imgShop, Constants.MY_PATH + shop.getImgAvatar());
         tvNameShop.setText(shop.getName());
         tvRateShop.setText(shop.getRate() + "");
         tvTotalProduct.setText("0");
@@ -430,7 +445,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
     private void addToCart(){
         if (product.getAmount() <= 0){
-            Toast.makeText(getContext(), getContext().getString(R.string.out_of_stock), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.out_of_stock), FancyToast.ERROR);
         }else {
             productPresenterImp.addToCart(getContext(), product);
             itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
@@ -439,7 +454,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
 
     private void buyNow(){
         if (product.getAmount() <= 0){
-            Toast.makeText(getContext(), getContext().getString(R.string.out_of_stock), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.out_of_stock), FancyToast.ERROR);
         }else {
             productPresenterImp.addToCart(getContext(), product);
             itemCartListener.passNumberItem(cartPresenterImp.getNumberItemCart(getContext()));
@@ -451,7 +466,7 @@ public class ProductFragment extends Fragment implements ProductView, View.OnCli
     private void rate(){
         User user = MyHelper.getCurrentUser(getContext());
         if (user == null){
-            Toast.makeText(getContext(), getContext().getString(R.string.not_log_in), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(getContext(), getContext().getString(R.string.not_log_in), FancyToast.WARNING);
         }else {
             RateProductDialog rateDialog = new RateProductDialog(getContext(), product.getId(), user, new RateProductDialog.RateProductListener() {
                 @Override

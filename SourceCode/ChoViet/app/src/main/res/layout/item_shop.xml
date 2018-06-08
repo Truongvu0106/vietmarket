@@ -47,6 +47,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/margin_small"
+                        android:lines="1"
                         android:text="Adidas Shop"/>
                     <edu.hust.truongvu.choviet.helper.customview.MyTextView
                         android:id="@+id/slogan_store"
@@ -54,6 +55,7 @@
                         android:layout_height="40dp"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/padding_small"
+                        android:lines="2"
                         android:layout_marginTop="@dimen/margin_small"
                         android:text="Nâng niu bàn chân Việt"/>
                 </LinearLayout>

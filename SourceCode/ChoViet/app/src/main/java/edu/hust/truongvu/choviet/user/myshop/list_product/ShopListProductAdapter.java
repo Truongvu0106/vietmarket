@@ -73,7 +73,7 @@ public class ShopListProductAdapter extends RecyclerView.Adapter<ShopListProduct
         }
 
         public void setContent(final Product product){
-            MyHelper.setImagePicasso(mContext, imageView, Constants.Path.MY_PATH + product.getImgs().get(0));
+            MyHelper.setImagePicasso(mContext, imageView, Constants.MY_PATH + product.getImgs().get(0));
             tvName.setText(product.getName());
             tvPrice.setText(MyHelper.formatMoney(product.getPrice()));
             tvStock.setText(mContext.getString(R.string.stock) + ": " + product.getAmount());

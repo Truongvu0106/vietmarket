@@ -80,7 +80,7 @@ public class ProductPresenterImp implements ProductPresenter{
 
     @Override
     public void initListProductOther(int idShop) {
-        ArrayList<Product> listProduct = productModel.getAllProduct();
+        ArrayList<Product> listProduct = productModel.getProductByIdShop(idShop);
         if (listProduct == null || listProduct.size() == 0){
             productView.loadListProductOtherFalse();
         }else {
@@ -90,7 +90,7 @@ public class ProductPresenterImp implements ProductPresenter{
 
     @Override
     public void initListProductSuggest(int idCategory) {
-        ArrayList<Product> listProduct = productModel.getAllProduct();
+        ArrayList<Product> listProduct = productModel.getProductByCategory(idCategory);
         if (listProduct == null || listProduct.size() == 0) {
             productView.loadListProductSuggestFalse();
         }else {

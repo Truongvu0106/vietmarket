@@ -18,7 +18,7 @@ import edu.hust.truongvu.choviet.services.UploadImageService;
  */
 
 public class ManageParentPresenterImp implements ManageParentPresenter, UploadImageListener{
-    public static final String UPLOAD_IMG_URL = Constants.Path.MY_PATH + "category.php";
+    public static final String UPLOAD_IMG_URL = Constants.MY_PATH + "uploadImageCategory.php";
 
     private Context mContext;
     private ManageParentView view;

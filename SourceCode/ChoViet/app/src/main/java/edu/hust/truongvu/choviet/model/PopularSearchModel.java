@@ -18,7 +18,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class PopularSearchModel {
-    public static final String POPULAR_SEARCH_PATH = Constants.Path.MY_PATH + "popularsearch.php";
+    public static final String POPULAR_SEARCH_PATH = Constants.MY_PATH + "popularsearch.php";
     private Context mContext;
     public PopularSearchModel(Context context){
         this.mContext = context;

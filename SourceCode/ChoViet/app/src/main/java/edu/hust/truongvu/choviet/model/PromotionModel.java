@@ -24,7 +24,7 @@ import edu.hust.truongvu.choviet.services.MyService;
 public class PromotionModel {
     private Context mContext;
     private MyService myService;
-    public static final String PROMOTION_PATH = Constants.Path.MY_PATH + "promotion.php";
+    public static final String PROMOTION_PATH = Constants.MY_PATH + "promotion.php";
 
     public PromotionModel(Context context){
         this.mContext = context;

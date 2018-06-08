@@ -91,7 +91,7 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadTopRateProductSucessful(Product product) {
-        MyHelper.setImagePicasso(getContext(), imgToprate, Constants.Path.MY_PATH + product.getImgs().get(0));
+        MyHelper.setImagePicasso(getContext(), imgToprate, Constants.MY_PATH + product.getImgs().get(0));
         tvToprate.setText(product.getName());
     }
 
@@ -103,7 +103,7 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadMostLikeProductSucessful(Product product) {
-        MyHelper.setImagePicasso(getContext(), imgMostLike, Constants.Path.MY_PATH + product.getImgs().get(0));
+        MyHelper.setImagePicasso(getContext(), imgMostLike, Constants.MY_PATH + product.getImgs().get(0));
         tvMostlike.setText(product.getName());
     }
 
@@ -115,7 +115,7 @@ public class ShopReportFragment extends Fragment implements ShopReportView{
 
     @Override
     public void loadBestSellProductSucessful(Product product) {
-        MyHelper.setImagePicasso(getContext(), imgBestSell, Constants.Path.MY_PATH + product.getImgs().get(0));
+        MyHelper.setImagePicasso(getContext(), imgBestSell, Constants.MY_PATH + product.getImgs().get(0));
         tvBestsell.setText(product.getName());
     }
 

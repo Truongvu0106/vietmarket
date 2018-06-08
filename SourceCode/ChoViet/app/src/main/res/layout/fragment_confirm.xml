@@ -43,7 +43,6 @@
                         android:background="@drawable/bg_border_gray"
                         android:padding="@dimen/padding_medium"
                         android:layout_marginRight="@dimen/margin_medium"
-                        android:inputType="number"
                         android:textSize="@dimen/text_size_big"/>
                     <Button
                         android:id="@+id/btn_apply"

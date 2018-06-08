@@ -107,7 +107,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
                 long newPrice = oldPrice - oldPrice*product.getDiscount()/100;
                 tvNewPrice.setText(MyHelper.formatMoney(newPrice));
             }
-            MyHelper.setImagePicasso(context,imgProduct,Constants.Path.MY_PATH + product.getImgs().get(0));
+            MyHelper.setImagePicasso(context,imgProduct,Constants.MY_PATH + product.getImgs().get(0));
             tvNameProduct.setText(product.getName());
             like_fill.setVisibility(View.GONE);
             initSpinner(product);
@@ -115,7 +115,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
 
             Shop shop = shopModel.getShopById(product.getIdShop());
             if (shop != null){
-                MyHelper.setImagePicasso(context, imgShop, Constants.Path.MY_PATH + shop.getImgAvatar());
+                MyHelper.setImagePicasso(context, imgShop, Constants.MY_PATH + shop.getImgAvatar());
                 tvNameShop.setText(shop.getName());
             }
 

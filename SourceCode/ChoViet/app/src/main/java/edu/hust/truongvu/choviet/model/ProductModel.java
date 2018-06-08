@@ -24,7 +24,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
 public class ProductModel {
     public static final String IMAGE_ROOT = "/img/product/";
     public static final String IMAGE_EXTEND = ".jpeg";
-    private static final String PRODUCT_PATH = Constants.Path.MY_PATH + "product.php";
+    private static final String PRODUCT_PATH = Constants.MY_PATH + "product.php";
     private Context mContext;
     private MyService myService;
     public ProductModel(Context context){
@@ -483,6 +483,7 @@ public class ProductModel {
         myService.execute();
         try {
             String data = myService.get();
+            Log.e("add_product", data);
             JSONObject jsonObject = new JSONObject(data);
             String result = jsonObject.getString("result");
             if (result.matches("true")){

@@ -8,7 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 
 /**
  * Created by truon on 3/25/2018.
@@ -48,7 +51,7 @@ public class InsertAddressDialog extends AlertDialog{
             public void onClick(View view) {
                 String address = edtAddress.getText().toString().trim();
                 if (address.matches("")){
-                    Toast.makeText(context, context.getString(R.string.please_enter_address), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(context, context.getString(R.string.please_enter_address), FancyToast.WARNING);
                 }else {
                     myListener.onInsert(address);
                     dismiss();

@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -129,9 +131,11 @@ public class RegisterShopActivity extends AppCompatActivity implements View.OnCl
         String website = edtWebsite.getText().toString().trim();
 
         if (name.matches("") || slogan.matches("") || phone.matches("") || address.matches("")){
-            Toast.makeText(this, getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.please_enter_all), FancyToast.WARNING);
+
         }else if (avatar == null || cover == null){
-            Toast.makeText(this, getString(R.string.not_choose_image), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_choose_image), FancyToast.WARNING);
+
         }else {
             Shop shop = new Shop(0, name, slogan, avatar.getName(), cover.getName(),
                     MyHelper.getUserIdPreference(this), address, phone, website, 0, false);
@@ -247,7 +251,8 @@ public class RegisterShopActivity extends AppCompatActivity implements View.OnCl
 
     private void uploadImage(){
         if (avatar == null || cover == null){
-            Toast.makeText(this, getString(R.string.not_choose_image), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.not_choose_image), FancyToast.WARNING);
+
         }else {
             ArrayList<MyImage> listMyImage = new ArrayList<>();
             listMyImage.add(avatar);
@@ -258,13 +263,15 @@ public class RegisterShopActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void resgisterSuccessful() {
-        Toast.makeText(this, getString(R.string.register_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.register_successful), FancyToast.SUCCESS);
+
         onBackPressed();
     }
 
     @Override
     public void registerFalse() {
-        Toast.makeText(this, getString(R.string.register_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.register_false), FancyToast.ERROR);
+
         onBackPressed();
     }
 
@@ -272,12 +279,14 @@ public class RegisterShopActivity extends AppCompatActivity implements View.OnCl
     public void uploadImageSucessful() {
         isUploadImageSuccessful = true;
         btnUploadImage.setEnabled(false);
-        Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.upload_successful), FancyToast.SUCCESS);
+
     }
 
     @Override
     public void uploadImageFalse() {
         isUploadImageSuccessful = false;
-        Toast.makeText(this, getString(R.string.file_size_too_large), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.file_size_too_large), FancyToast.ERROR);
+
     }
 }

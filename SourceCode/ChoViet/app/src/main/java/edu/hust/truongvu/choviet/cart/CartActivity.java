@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
@@ -114,14 +116,14 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
 
     @Override
     public void deleteSuccessful() {
-        Toast.makeText(this, getString(R.string.item_has_been_removed), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.item_has_been_removed), FancyToast.SUCCESS);
         cartPresenterImp.initListItemCart(this);
         cartPresenterImp.calculateTotal(this);
     }
 
     @Override
     public void deleteFalse() {
-        Toast.makeText(this, getString(R.string.remove_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.remove_false), FancyToast.ERROR);
     }
 
     @Override
@@ -147,7 +149,8 @@ public class CartActivity extends AppCompatActivity implements CartView, View.On
             case R.id.btn_pay:
                 User user = MyHelper.getCurrentUser(CartActivity.this);
                 if (totalMoney == 0 || mListProduct.size() == 0){
-                    Toast.makeText(this, getString(R.string.cart_empty), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(this, getString(R.string.cart_empty), FancyToast.ERROR);
+
                 }else if (user == null){
                     ProfileCheckDialog dialog = new ProfileCheckDialog(CartActivity.this, new ProfileCheckDialog.ProfileCheckListener() {
                         @Override

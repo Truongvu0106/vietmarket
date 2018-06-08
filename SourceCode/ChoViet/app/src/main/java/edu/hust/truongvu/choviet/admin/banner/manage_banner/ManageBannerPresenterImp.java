@@ -15,7 +15,7 @@ import edu.hust.truongvu.choviet.services.UploadImageService;
  */
 
 public class ManageBannerPresenterImp implements ManageBannerPresenter, UploadImageListener{
-    public static final String UPLOAD_IMG_URL = Constants.Path.MY_PATH + "uploadImageBanner.php";
+    public static final String UPLOAD_IMG_URL = Constants.MY_PATH + "uploadImageBanner.php";
 
     private Context mContext;
     private ManageBannerView view;

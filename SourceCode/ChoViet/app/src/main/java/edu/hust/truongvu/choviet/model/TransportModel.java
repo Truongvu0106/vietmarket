@@ -20,7 +20,7 @@ import edu.hust.truongvu.choviet.helper.Constants;
  */
 
 public class TransportModel {
-    private static final String TRANSPORT_PATH = Constants.Path.MY_PATH + "transport.php";
+    private static final String TRANSPORT_PATH = Constants.MY_PATH + "transport.php";
     private Context context;
     public TransportModel(Context context){
         this.context = context;
@@ -69,7 +69,7 @@ public class TransportModel {
         Transport transport = null;
         List<HashMap<String, String>> attrs = new ArrayList<>();
         HashMap<String, String> attrFunc = new HashMap<>();
-        attrFunc.put("func", "getAllTransport");
+        attrFunc.put("func", "getTransportById");
 
         HashMap<String, String> attrId = new HashMap<>();
         attrId.put("id", id + "");

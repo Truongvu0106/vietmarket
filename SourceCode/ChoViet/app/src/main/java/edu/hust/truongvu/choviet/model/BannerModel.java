@@ -24,7 +24,7 @@ import edu.hust.truongvu.choviet.services.MyService;
  */
 
 public class BannerModel {
-    public static String BANNER_PATH = Constants.Path.MY_PATH + "banner.php";
+    public static String BANNER_PATH = Constants.MY_PATH + "banner.php";
     public static final String PATH_IMAGE = "/img/banner/";
     private Context mContext;
     private MyService myService;

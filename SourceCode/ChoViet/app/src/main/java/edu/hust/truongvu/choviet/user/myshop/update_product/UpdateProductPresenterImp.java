@@ -21,7 +21,7 @@ import edu.hust.truongvu.choviet.services.UploadImageService;
  */
 
 public class UpdateProductPresenterImp implements UpdateProductPresenter, UploadImageListener{
-    public static final String UPLOAD_IMG_URL = Constants.Path.MY_PATH + "uploadImageProduct.php";
+    public static final String UPLOAD_IMG_URL = Constants.MY_PATH + "uploadImageProduct.php";
     private UpdateProductView updateProductView;
     private Context mContext;
     private ProductModel productModel;

@@ -1,0 +1,335 @@
+<resources>
+    <string name="app_name">Viet Market</string>
+    <string name="facebook_app_id">209910142922615</string>
+    <string name="fb_login_protocol_scheme">fb209910142922615</string>
+    <string name="google_plus_id">80859942862-pucbv1v6k5eattv4v6oa6v69jsgrecvf.apps.googleusercontent.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- signin -->
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="forgot_pass">Quên mật khẩu?</string>
+    <string name="signin">Đăng nhập</string>
+    <string name="not_have_acc">Chưa có tài khoản?</string>
+    <string name="sign_up_here">Đăng ký ngay.</string>
+    <string name="sign_in_facebook">Đăng nhập bằng facebook</string>
+    <string name="sign_in_google">Đăng nhập bằng Google+</string>
+
+
+    <!-- signup -->
+    <string name="signup">Đăng ký</string>
+    <string name="full_name">Tên đầy đủ</string>
+    <string name="email">Email</string>
+    <string name="phone">SĐT</string>
+    <string name="retype_pass">Nhập lại mật khẩu</string>
+    <string name="birthday">Ngày sinh</string>
+    <string name="have_acc">Đã có tài khoản?</string>
+    <string name="sign_in_here">Đăng nhập.</string>
+
+    <!-- Toast -->
+    <string name="please_enter_signin">Nhập tên tài khoản và mật khẩu</string>
+    <string name="wrong_signin">Tên đăng nhập hoặc mật khẩu không đúng</string>
+    <string name="please_enter_all">Xin nhập đầy đủ các trường</string>
+    <string name="pass_not_match">Mật khẩu không khớp</string>
+    <string name="please_enter_email">Chưa nhập email</string>
+    <string name="invalid_email">Email không đúng</string>
+    <string name="please_enter_title">Chưa nhập tiêu đề</string>
+    <string name="signup_successful">Đăng ký thành công</string>
+    <string name="signup_false">Đăng ký thất bại</string>
+
+    <string name="edt_hint">Nhập thông tin</string>
+    <string name="no_date">Không có ngày</string>
+    <string name="done">Hoàn thành</string>
+    <string name="not_done">Chưa hoàn thành</string>
+
+    <!-- forgot pass -->
+    <string name="forgot_title">Please enter your registed email below:</string>
+    <string name="enter_email">Enter email</string>
+    <string name="back">Back</string>
+    <string name="submit">Submit</string>
+
+    <!-- menu -->
+    <string name="home">Trang chủ</string>
+    <string name="category">Danh mục</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="notification">Thông báo</string>
+    <string name="profile">Tài khoản</string>
+    <string name="market">Market</string>
+
+    <!-- home -->
+    <string name="shop">Shop</string>
+    <string name="discount">Giảm giá</string>
+    <string name="promotion">Khuyến mại</string>
+    <string name="popular_search">Tìm kiếm phổ biến</string>
+    <string name="brand">Thương hiệu</string>
+    <string name="more">Thêm</string>
+    <string name="highlights_store">Gian hàng nổi bật</string>
+    <string name="highlights_products">Sản phẩm nổi bật</string>
+    <string name="lastest_products">Sản phẩm mới</string>
+    <string name="suggest_products">Gợi ý</string>
+    <string name="load_more">Tải thêm</string>
+    <string name="search_something">Tìm kiếm...</string>
+    <string name="empty_content">Nội dung trống</string>
+
+    <!-- profile -->
+    <string name="your_order">Đơn hàng của bạn</string>
+    <string name="your_wishlist">Sản phẩm yêu thích</string>
+    <string name="your_store">Gian hàng của bạn</string>
+    <string name="your_favorite_shop">Gian hàng theo dõi</string>
+    <string name="settings">Cài đặt</string>
+    <string name="account">Tài khoản</string>
+    <string name="about_us">Về chúng tôi</string>
+    <string name="user_information">Thông tin người dùng</string>
+
+    <!-- product -->
+    <string name="like">Thích</string>
+    <string name="comment">Bình luận</string>
+    <string name="view_shop">Xem gian hàng</string>
+    <string name="products">Sản phẩm</string>
+    <string name="rates">Đánh giá</string>
+    <string name="details_product">Chi tiết sản phẩm</string>
+    <string name="weight">Cân nặng</string>
+    <string name="status">Trạng thái</string>
+    <string name="stock">Số lượng</string>
+    <string name="sold">Đã bán</string>
+    <string name="from">Từ</string>
+    <string name="rating_product">Đánh giá sản phẩm</string>
+    <string name="view_all">Xem tất cả</string>
+    <string name="another_product">Sản phẩm khác</string>
+    <string name="maybe_you_like">Có thể bạn thích</string>
+    <string name="shop_now">Mua ngay</string>
+    <string name="rate_now">Đánh giá ngay</string>
+    <string name="already_rate">Đã đánh giá</string>
+    <string name="login_to_rate">Đăng nhập để đánh giá</string>
+    <string name="not_log_in">Bạn chưa đăng nhập</string>
+    <string name="added_to_your_cart">Đã thêm vào giỏ hàng</string>
+    <string name="out_of_stock">Hết hàng</string>
+    <string name="total_product">Tổng sản phẩm</string>
+    <string name="total_user">Tổng người dùng</string>
+    <string name="number_of_child">Số danh mục con</string>
+    <string name="your_product_total_product">Sản phẩm của bạn/Tổng sản phẩm</string>
+    <string name="your_order_total_order">Đơn hàng của bạn/Tổng đơn hàng</string>
+    <string name="top_product">Top sản phẩm</string>
+    <string name="your_shop_rank">Xếp hạng gian hàng</string>
+    <string name="hall_of_fame">Danh vọng</string>
+    <string name="total_shop">Tổng gian hàng</string>
+    <string name="total_order">Tổng đơn hàng</string>
+    <string name="top_rate">Top đánh giá</string>
+    <string name="most_like">Yêu thích nhiều nhất</string>
+    <string name="best_sell">Bán tốt nhất</string>
+    <string name="already_in_your_cart">Sản phẩm đã ở trong giỏ hàng</string>
+    <string name="do_you_really_want_to_delete">Bạn có muốn xóa?</string>
+    <string name="yes">Có</string>
+    <string name="item_has_been_removed">Đã xóa!</string>
+    <string name="remove_false">Xóa thất bại</string>
+    <string name="cart_empty">Giỏ hàng trống</string>
+    <string name="add_to_your_wishlist">Đã thêm vào sản phẩm yêu thích</string>
+    <string name="remove_from_your_wishlist">Đã xóa khỏi danh sách yêu thích</string>
+
+    <!-- cart -->
+    <string name="carry_out_payment">Tiến hành thanh toán</string>
+    <string name="summary">Tổng cộng:</string>
+
+    <!-- payment -->
+    <string-array name="payment_step">
+        <item>Địa chỉ</item>
+        <item>Vận chuyển</item>
+        <item>Thanh toán</item>
+        <item>Xác nhận</item>
+    </string-array>
+    <string name="next_shipping">Tiếp : Vận chuyển</string>
+    <string name="next_payment">Tiếp : Thanh toán</string>
+    <string name="next_confirm">Tiếp : Xác nhận</string>
+    <string name="confirm">Xác nhận</string>
+
+    <!-- Shop -->
+    <string name="follow">Theo dõi</string>
+    <string name="added_to_your_following">Đã thêm vào danh sách theo dõi</string>
+    <string name="follow_false">Theo dõi thất bại</string>
+    <string name="remove_from_your_following">Đã xóa khỏi danh sách theo dõi</string>
+    <string name="unfollow_false">Bỏ theo dõi thất bại</string>
+    <string name="following_shop">Đang theo dõi gian hàng</string>
+
+    <!-- Rate -->
+    <string name="rate_title">Tiêu đề</string>
+    <string name="rate_content">Nội dung</string>
+    <string name="cancel">Hủy</string>
+    <string name="please_add_star">Mời thêm số sao</string>
+    <string name="please_write_title_rate">Mời viết tiêu đề</string>
+
+    <!-- address -->
+    <string name="insert_other_address">Nhập địa chỉ khác</string>
+    <string name="ok">OK</string>
+    <string name="please_enter_address">Nhập địa chỉ</string>
+    <string name="add_new_address">Nhập địa chỉ mới</string>
+    <string name="insert_false">Thêm thất bại</string>
+    <string name="please_select_address">Chưa chọn địa chỉ</string>
+
+    <!-- transport -->
+    <string name="please_select_transport">Chưa chọn hình thức vận chuyển</string>
+
+    <!-- payment -->
+    <string name="please_select_paymethod">Chưa chọn phương thức thanh toán</string>
+
+    <!-- infomation -->
+    <string name="change_pass">Đổi mật khẩu</string>
+    <string name="gender">Giới tính</string>
+    <string name="not_set">Chưa thêm</string>
+    <string name="address">Địa chỉ</string>
+    <string name="update">Cập nhật</string>
+
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+
+    <string name="list_product">Danh sách sản phẩm</string>
+    <string name="list_order">Danh sách đơn hàng</string>
+    <string name="report">Thống kê</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="add_new_product">Thêm sản phẩm mới</string>
+    <string name="update_product">Cập nhật sản phẩm</string>
+    <string name="edit_information">Chỉnh sửa thông tin</string>
+    <string name="number">Số lượng</string>
+
+    <string name="user">Khách hàng</string>
+
+    <string name="waiting">Đang chờ</string>
+    <string name="shipping">Đang giao</string>
+    <string name="received">Đã nhận</string>
+    <string name="other">Khác</string>
+    <string name="update_status">Cập nhật trạng thái</string>
+    <string name="delete">Xóa</string>
+
+    <string name="name">Tên</string>
+    <string name="price">Giá</string>
+    <string name="image">Hình ảnh</string>
+    <string name="title">Tiêu đề</string>
+    <string name="information">Mô tả</string>
+    <string name="enter_name">Nhập tên</string>
+    <string name="enter_phone">Nhập số điện thoại</string>
+    <string name="enter_address">Nhập địa chỉ</string>
+    <string name="enter_information">Nhập mô tả</string>
+    <string name="enter_weight">Nhập khổi lượng</string>
+    <string name="enter_price">Nhập giá</string>
+    <string name="add_photo">Thêm ảnh</string>
+    <string name="enter_number">Nhập số lượng</string>
+    <string name="add">Thêm</string>
+    <string name="empty">Trống</string>
+    <string name="payment">Thanh toán</string>
+    <string name="m_false">Thất bại</string>
+    <string name="order_confirmed_successful">Đơn hàng của bạn đã được xác nhận thành công!</string>
+    <string name="upload_image">Tải ảnh lên</string>
+
+    <string name="take_picture">Chụp ảnh</string>
+    <string name="choose_from_gallery">Chọn từ thư viện</string>
+    <string name="please_wait">Xin hãy đợi...</string>
+    <string name="no_new_photo_to_upload">Không có ảnh mới</string>
+    <string name="not_choose_image">Chưa chọn ảnh</string>
+    <string name="upload_successful">Tải ảnh thành công!</string>
+    <string name="file_size_too_large">Kích thước ảnh quá lớn!</string>
+    <string name="kg">Kg</string>
+    <string name="g">gam</string>
+    <string name="not_select_unit">Chưa chọn đơn vị</string>
+    <string name="not_select_brand">Chưa chọn thương hiệu</string>
+    <string name="not_select_category">Chưa chọn danh mục</string>
+    <string name="not_upload_image">Chưa tải được hình ảnh</string>
+    <string name="add_successful">Thêm thành công!</string>
+    <string name="add_false">Thêm thất bại!</string>
+    <string name="code_already_exist">Mã đã tồn tại</string>
+    <string name="update_successful">Cập nhật thành công!</string>
+    <string name="update_false">Cập nhật thất bại!</string>
+    <string name="no_data">Không tìm thấy!</string>
+    <string name="not_connect_internet">Thiết bị không kết nối với internet!</string>
+    <string name="try_again">Thử lại</string>
+
+    <!-- dialog -->
+    <string name="order_by">Sắp xếp theo:</string>
+    <string name="lastest">Mới nhất</string>
+    <string name="oldest">Cũ nhất</string>
+    <string name="price_low_hight">Giá: thấp - cao</string>
+    <string name="price_hight_low">Giá: cao - thấp</string>
+    <string name="filter">Lọc:</string>
+    <string name="all">Tất cả</string>
+    <string name="apply">Áp dụng</string>
+    <string name="price_a">Giá</string>
+    <string name="choose_category">Chọn danh mục</string>
+    <string name="choose_price">Chọn giá</string>
+    <string name="less_than">Nhỏ hơn</string>
+    <string name="more_than">Lớn hơn</string>
+
+    <string name="or">HOẶC</string>
+    <string name="do_you_want_clear_filter">Bạn có muốn bỏ tất cả bộ lọc?</string>
+
+    <string name="wishlist">Sản phẩm yêu thích</string>
+
+    <string name="register">Đăng ký</string>
+    <string name="register_now">Đăng ký ngay</string>
+    <string name="name_shop">Tên gian hàng</string>
+    <string name="slogan">Slogan</string>
+    <string name="avatar">Ảnh đại diện</string>
+    <string name="cover">Ảnh bìa</string>
+    <string name="website">Website</string>
+    <string name="register_shop">Đăng ký gian hàng</string>
+    <string name="register_successful">Đăng ký thành công!</string>
+    <string name="register_false">Đăng ký thất bại!</string>
+
+    <string name="you_have_not_sign_in">Ồ! bạn chưa đăng nhập!</string>
+    <string name="sign_in_now">Đăng nhập ngay</string>
+    <string name="continue_as_guess">Tiếp tục như khách</string>
+
+    <string name="enter_your_information">Nhập thông tin của bạn</string>
+    <string name="sign_out">Đăng xuất</string>
+    <string name="do_you_want_to_logout">Bạn có muốn đăng xuất?</string>
+
+    <string name="add_discount">Thêm giảm giá</string>
+
+    <string name="shop_report">Thống kê gian hàng</string>
+    <string name="overview_report">Thống kê tổng quan</string>
+
+    <string name="month">Tháng</string>
+    <string name="number_order">Số đơn hàng</string>
+    <string name="January">Jan</string>
+    <string name="February">Feb</string>
+    <string name="March">Mar</string>
+    <string name="April">Apr</string>
+    <string name="May">May</string>
+    <string name="June">Jun</string>
+    <string name="July">Jul</string>
+    <string name="August">Aug</string>
+    <string name="September">Sep</string>
+    <string name="October">Oct</string>
+    <string name="November">Nov</string>
+    <string name="December">Dec</string>
+
+    <string name="manage_banner">Quản lý banner</string>
+    <string name="manage_user">Quản lý người dùng</string>
+    <string name="manage_category">Quản lý danh mục</string>
+    <string name="add_prodmotion">Thêm mã giảm giá</string>
+    <string name="manage_order">Quản lý đơn hàng</string>
+    <string name="extend">Mở rộng</string>
+    <string name="hello">Xin chào!</string>
+
+    <string name="generate">Sinh tự động</string>
+    <string name="rest">Còn lại</string>
+    <string name="code">Mã</string>
+    <string name="to">Đến</string>
+    <string name="amount">Mức giảm giá</string>
+    <string name="end_must_after_start">Ngày kết thúc phải sau ngày bắt đầu</string>
+    <string name="start_must_before_end">Ngày bắt đầu phải trước ngày kết thúc</string>
+    <string name="code_overdue">Mã đã quá hạn</string>
+    <string name="code_invalid">Mã bị sai</string>
+    <string name="apply_successful">Áp dụng thành công</string>
+
+    <string name="id_order">Mã đơn hàng</string>
+
+    <string name="hot_deal_today">Mã giảm giá hot</string>
+    <string name="discount_must_under_100">Mức giảm giá phải dưới 100%</string>
+    <string name="do_u_really_want_to_exit">Bạn có muốn thoát ứng dụng?</string>
+    <string name="do_u_want_to_update">Bạn có muốn cập nhật?</string>
+    <string name="only_one_code_used">Chỉ được dùng mã giảm giá 1 lần</string>
+
+    <string name="return_to_home">Quay về trang chủ</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="m_notification">Thông báo</string>
+    <string name="copy_to_clipoard">Sao chép vào bộ nhớ tạm</string>
+</resources>

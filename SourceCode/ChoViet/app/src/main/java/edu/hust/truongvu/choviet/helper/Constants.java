@@ -5,10 +5,15 @@ package edu.hust.truongvu.choviet.helper;
  */
 
 public class Constants {
+    public static final String PATH_GENNYMOTION = "http://10.0.3.2:8080/electronicshop/";
+    public static final String PATH_ANDROID_STUDIO = "http://127.0.0.1:8080/electronicshop/";
+    public static final String PATH_REAL_DEVICE = "http://192.168.137.1:8080/electronicshop/";
+
+    public static String MY_PATH = PATH_REAL_DEVICE;
     public class Path{
         public static final String PATH_GENNYMOTION = "http://10.0.3.2:8080/electronicshop/";
         public static final String PATH_ANDROID_STUDIO = "http://127.0.0.1:8080/electronicshop/";
-        public static final String PATH_REAL_DEVICE = "http://192.168.100.4:8080/electronicshop/";
+        public static final String PATH_REAL_DEVICE = "http://192.168.137.1:8080/electronicshop/";
 
         public static final String MY_PATH = PATH_REAL_DEVICE;
     }

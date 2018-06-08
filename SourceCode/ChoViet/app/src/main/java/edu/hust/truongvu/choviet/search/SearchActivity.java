@@ -11,9 +11,12 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.product.list_product.ProductAdapter;
 import edu.hust.truongvu.choviet.model.entity.PopularSearch;
 import edu.hust.truongvu.choviet.model.entity.Product;
@@ -126,7 +129,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView, Vie
             case R.id.btn_search:
                 String search = edtSearch.getText().toString();
                 if (search.matches("")){
-                    Toast.makeText(this, getString(R.string.empty_content), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(this, getString(R.string.empty_content), FancyToast.ERROR);
                 }else {
                     searchPresenterImp.onSearch(search);
                     searchPresenterImp.addRecentSearch(search);

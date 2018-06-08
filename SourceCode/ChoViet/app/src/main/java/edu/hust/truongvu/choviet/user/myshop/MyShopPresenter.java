@@ -6,4 +6,5 @@ package edu.hust.truongvu.choviet.user.myshop;
 
 public interface MyShopPresenter {
     void initShopInfor(int idUser);
+    int getNUmbserProductShop(int idShop);
 }

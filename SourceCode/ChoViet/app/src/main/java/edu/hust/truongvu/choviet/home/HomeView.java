@@ -3,6 +3,7 @@ package edu.hust.truongvu.choviet.home;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import edu.hust.truongvu.choviet.model.entity.Banner;
 import edu.hust.truongvu.choviet.model.entity.Brand;
 import edu.hust.truongvu.choviet.model.entity.PopularSearch;
 import edu.hust.truongvu.choviet.model.entity.Product;
@@ -13,7 +14,8 @@ import edu.hust.truongvu.choviet.model.entity.Shop;
  */
 
 public interface HomeView {
-    void loadBannerSuccessful(HashMap<String, Integer> hashMap);
+//    void loadBannerSuccessful(HashMap<String, Integer> hashMap);
+    void loadBannerSuccessful(ArrayList<Banner> listBanners);
     void loadBannerFalse();
 
     void loadListBrandSuccessful(ArrayList<Brand> listBrand);

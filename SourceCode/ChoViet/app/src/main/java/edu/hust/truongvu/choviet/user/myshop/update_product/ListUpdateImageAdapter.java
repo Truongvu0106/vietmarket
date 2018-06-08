@@ -60,7 +60,7 @@ public class ListUpdateImageAdapter extends RecyclerView.Adapter<ListUpdateImage
         }
         public void setContent(final MyImage myImage){
             if (myImage.getBitmap() == null){
-                MyHelper.setImagePicasso(mContext, img, Constants.Path.MY_PATH + myImage.getPath());
+                MyHelper.setImagePicasso(mContext, img, Constants.MY_PATH + myImage.getPath());
             }else {
                 img.setImageBitmap(myImage.getBitmap());
             }

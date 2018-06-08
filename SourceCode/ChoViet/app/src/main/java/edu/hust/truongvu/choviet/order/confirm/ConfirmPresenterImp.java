@@ -53,6 +53,7 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
         listProduct = cartModel.getAllItemCart();
         cartModel.closeDatabse();
         PayMethod payMethod = payMethodModel.getPayMethodById(idPayMethod);
+        Log.e("id_transport_presenter", idTransport + "");
         Transport transport = transportModel.getTransportById(idTransport);
         if (payMethod == null || transport == null){
             if (payMethod == null){
@@ -70,6 +71,8 @@ public class ConfirmPresenterImp implements ConfirmPresenter{
 
     @Override
     public void confirmOrder(Order order) {
+        Log.e("user_order", order.getIdUser() + "");
+
         if (orderModel.insertOrder(order)){
             confirmView.addOrderSuccessful();
             cartModel.openDatabase(context);

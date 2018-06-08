@@ -11,9 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import java.util.ArrayList;
 
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
 import edu.hust.truongvu.choviet.model.entity.Product;
 import edu.hust.truongvu.choviet.user.myshop.MyShopActivity;
@@ -102,13 +105,14 @@ public class ShopListProductActivity extends AppCompatActivity implements ShopLi
 
     @Override
     public void setDiscountSuccessful() {
-        Toast.makeText(this, getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.update_successful), FancyToast.SUCCESS);
         shopListProductPresenter.initListProduct(idShop);
     }
 
     @Override
     public void setDiscountFalse() {
-        Toast.makeText(this, getString(R.string.update_false), Toast.LENGTH_SHORT).show();
+        MyHelper.showToast(this, getString(R.string.update_false), FancyToast.ERROR);
+
     }
 
     @Override

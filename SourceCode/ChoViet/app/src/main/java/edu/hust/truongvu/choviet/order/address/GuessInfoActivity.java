@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.helper.customview.MyToolbarExtra;
 import edu.hust.truongvu.choviet.order.PaymentActivity;
 
@@ -47,7 +50,7 @@ public class GuessInfoActivity extends AppCompatActivity {
         String address = edtAddress.getText().toString();
 
         if (name.matches("") || phone.matches("") || address.matches("")){
-            Toast.makeText(this, getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+            MyHelper.showToast(this, getString(R.string.please_enter_all), FancyToast.WARNING);
         }else {
             Intent intent = new Intent(GuessInfoActivity.this, PaymentActivity.class);
             intent.putExtra(GUESS_NAME, name);

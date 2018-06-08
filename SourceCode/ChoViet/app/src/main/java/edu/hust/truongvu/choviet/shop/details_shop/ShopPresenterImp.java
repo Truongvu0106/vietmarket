@@ -131,4 +131,9 @@ public class ShopPresenterImp implements ShopPresenter {
     public float getRateByUserAndShop(int idUser, int idShop){
         return rateModel.getRateByShopAndUser(idShop, idUser);
     }
+
+    @Override
+    public int getNumberProductInShop(int idShop){
+        return productModel.getProductByIdShop(idShop).size();
+    }
 }

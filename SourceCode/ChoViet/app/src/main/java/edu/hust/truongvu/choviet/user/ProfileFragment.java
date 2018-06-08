@@ -21,10 +21,12 @@ import edu.hust.truongvu.choviet.helper.Constants;
 import edu.hust.truongvu.choviet.helper.MyHelper;
 import edu.hust.truongvu.choviet.model.entity.User;
 import edu.hust.truongvu.choviet.startup.StartActivity;
+import edu.hust.truongvu.choviet.user.about_us.AboutUsActivity;
 import edu.hust.truongvu.choviet.user.followingshop.FollowingShopActivity;
 import edu.hust.truongvu.choviet.user.info_user.InfoUserActivity;
 import edu.hust.truongvu.choviet.user.myorder.MyOrderActivity;
 import edu.hust.truongvu.choviet.user.myshop.MyShopActivity;
+import edu.hust.truongvu.choviet.user.setting.SettingActivity;
 import edu.hust.truongvu.choviet.user.wishlist.WishListProductActivity;
 
 /**
@@ -136,8 +138,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         int id = view.getId();
         switch (id){
             case R.id.btn_edit_profile:
+                startActivity(new Intent(getActivity(), InfoUserActivity.class));
                 break;
             case R.id.btn_setting:
+                startActivity(new Intent(getActivity(), SettingActivity.class));
                 break;
             case R.id.btn_your_order:
                 startOrderAvtivity(Constants.OrderStatus.WAITING.getIdStatus());
@@ -155,8 +159,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
                 startActivity(new Intent(getActivity(), InfoUserActivity.class));
                 break;
             case R.id.btn_setting_two:
+                startActivity(new Intent(getActivity(), SettingActivity.class));
                 break;
             case R.id.btn_about_us:
+                startActivity(new Intent(getActivity(), AboutUsActivity.class));
                 break;
             case R.id.btn_signin_now:
                 startActivity(new Intent(getActivity(), StartActivity.class));
@@ -199,7 +205,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, P
         layoutInfor.setVisibility(View.VISIBLE);
         layoutErr.setVisibility(View.GONE);
         tvName.setText(user.getFullname());
-        MyHelper.loadImageUser(getContext(), imgProfile, Constants.Path.MY_PATH + user.getAvatar());
+        MyHelper.loadImageUser(getContext(), imgProfile, Constants.MY_PATH + user.getAvatar());
     }
 
     @Override

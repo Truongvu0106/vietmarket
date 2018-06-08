@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 
 /**
  * Created by truon on 4/17/2018.
@@ -49,7 +52,7 @@ public class ChangeFullnameDialog extends AlertDialog{
             public void onClick(View view) {
                 String name = edtFullName.getText().toString().trim();
                 if (name.matches("")){
-                    Toast.makeText(context, context.getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(context, context.getString(R.string.please_enter_all), FancyToast.WARNING);
                     return;
                 }
                 mListener.onChange(name);

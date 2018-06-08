@@ -64,8 +64,8 @@ public class HighlightShopAdapter extends RecyclerView.Adapter<HighlightShopAdap
         }
 
         public void setContent(final Shop shop){
-            MyHelper.setImagePicasso(context, imgAvatar, Constants.Path.MY_PATH + shop.getImgAvatar());
-            MyHelper.setImagePicasso(context, imgCover, Constants.Path.MY_PATH + shop.getImgCover());
+            MyHelper.setImagePicasso(context, imgAvatar, Constants.MY_PATH + shop.getImgAvatar());
+            MyHelper.setImagePicasso(context, imgCover, Constants.MY_PATH + shop.getImgCover());
             name.setText(shop.getName());
             slogan.setText(shop.getSlogan());
             itemView.setOnClickListener(new View.OnClickListener() {

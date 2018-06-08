@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
 import edu.hust.truongvu.choviet.R;
+import edu.hust.truongvu.choviet.helper.MyHelper;
 
 /**
  * Created by truon on 4/17/2018.
@@ -49,7 +52,7 @@ public class ChangePhoneDialog extends AlertDialog{
             public void onClick(View view) {
                 String phone = edtPhone.getText().toString().trim();
                 if (phone.matches("")){
-                    Toast.makeText(context, context.getString(R.string.please_enter_all), Toast.LENGTH_SHORT).show();
+                    MyHelper.showToast(getContext(), getContext().getString(R.string.please_enter_all), FancyToast.WARNING);
                     return;
                 }
 

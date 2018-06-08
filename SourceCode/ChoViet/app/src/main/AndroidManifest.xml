@@ -12,6 +12,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -44,11 +45,11 @@
         <activity android:name=".shop.details_shop.ShopActivity" />
         <activity android:name=".product.list_product.ListProductActivity" />
         <activity android:name=".startup.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".user.myshop.MyShopActivity" />
         <activity android:name=".user.myshop.list_product.ShopListProductActivity" />
@@ -78,7 +79,17 @@
         <activity android:name=".advertisment.promotion.PromotionActivity" />
         <activity android:name=".admin.banner.manage_banner.ManageBannerActivity" />
         <activity android:name=".admin.category.child.ManageChildActivity" />
-        <activity android:name=".admin.category.parent.ManageParentActivity"></activity>
+        <activity android:name=".admin.category.parent.ManageParentActivity" />
+        <activity android:name=".order.confirm.OrderSuccessfulActivity" />
+        <activity android:name=".user.setting.SettingActivity" />
+        <activity android:name=".user.about_us.AboutUsActivity" />
+        <activity android:name=".ConfigActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
