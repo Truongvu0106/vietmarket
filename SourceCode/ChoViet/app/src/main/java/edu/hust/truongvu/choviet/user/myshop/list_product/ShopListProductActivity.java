@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.shashank.sony.fancytoastlib.FancyToast;
@@ -78,6 +79,7 @@ public class ShopListProductActivity extends AppCompatActivity implements ShopLi
                     }
                 });
                 discountDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                discountDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
                 discountDialog.show();
             }
 

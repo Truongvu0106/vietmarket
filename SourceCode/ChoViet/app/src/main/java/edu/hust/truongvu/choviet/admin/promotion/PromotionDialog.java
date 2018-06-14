@@ -50,6 +50,8 @@ public class PromotionDialog extends AlertDialog implements View.OnClickListener
         edtCode.setText(mInitCode);
     }
 
+    
+
     private void initView(){
         edtCode = findViewById(R.id.edt_code);
         edtAmount = findViewById(R.id.edt_amount);

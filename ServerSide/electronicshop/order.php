@@ -73,8 +73,13 @@
 			$idUser = $_POST["id_user"];
 			$status = $_POST["status"];
 		}
+
+		if ($idUser == -1) {
+			$query = "SELECT * FROM product_order WHERE id_user = ".$idUser;
+		}else{
+			$query = "SELECT * FROM product_order WHERE id_user = ".$idUser." AND status = ".$status;
+		}
 		
-		$query = "SELECT * FROM product_order WHERE id_user = ".$idUser." AND status = ".$status;
 		$results = mysqli_query($conn, $query);
 		$my_json_array = array();
 		echo "{";
@@ -99,11 +104,12 @@
 		mysqli_close($conn);
 	}
 
+
 	function addNewOrder(){
 		global $conn;
 		if (isset($_POST["list_details"]) || isset($_POST["id_user"]) || isset($_POST["full_name"]) || isset($_POST["phone"]) || isset($_POST["status"]) || isset($_POST["type_transport"]) || isset($_POST["type_payment"]) || isset($_POST["value"]) || isset($_POST["address"])) {
 			$listDetails = $_POST["list_details"];
-			$idUser = isset($_POST["id_user"]);
+			$idUser = $_POST["id_user"];
 			$fullname = $_POST["full_name"];
 			$phone = $_POST["phone"];
 			$dateOrder = round(microtime(true) * 1000);

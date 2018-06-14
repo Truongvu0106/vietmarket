@@ -36,18 +36,24 @@ public class MyService extends AsyncTask<String, Void, String> {
     public MyService(Context context, String path){
         this.path = path;
         this.mContext = context;
+        this.dialog = new ProgressDialog(mContext);
     }
 
     public MyService(Context context, String path, List<HashMap<String, String>> attrs){
         this.path = path;
         this.attrs = attrs;
         this.mContext = context;
+//        this.dialog = new ProgressDialog(mContext);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-//        dialog = ProgressDialog.show(mContext, null, mContext.getString(R.string.please_wait));
+//        dialog.setMessage(mContext.getString(R.string.please_wait));
+//        dialog.setIndeterminate(false);
+//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        dialog.setCancelable(false);
+//        dialog.show();
     }
 
     @Override
@@ -72,9 +78,7 @@ public class MyService extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-//        if (dialog.isShowing()){
-//            dialog.dismiss();
-//        }
+//        dialog.dismiss();
     }
 
     private String doGet(HttpURLConnection httpURLConnection){

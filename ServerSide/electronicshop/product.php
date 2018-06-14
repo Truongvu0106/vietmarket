@@ -356,7 +356,6 @@
 				'".$rate."',
 				'".$amount."',
 				'".$id_shop."',
-				'".$rate."',
 				'".$highlight."',
 				'".$discount."')"; 
 		if (mysqli_query($conn, $query)) {

@@ -140,7 +140,7 @@
 		if (mysqli_query($conn, $query)) {
 			echo json_encode([
 				"result" => "true",
-				"message" => "insert category successful"
+				"message" => "insert child successful"
 			]);
 		}else{
 			echo json_encode([
@@ -181,11 +181,54 @@
 	}
 
 	function addParentCategory(){
+		global $conn;
+		if (isset($_POST["name_type_parent"]) || isset($_POST["image"])) {
+			$name = $_POST["name_type_parent"];
+			$image = $_POST["image"];
+		}
+		
+		$query = "INSERT INTO type_parent (name_type_parent, image) 
+		VALUES ('".$name."',
+				'".$image."')"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+				"result" => "true",
+				"message" => "insert parent successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
 
+		mysqli_close($conn);
 	}
 
 	function updateParentCategory(){
+		global $conn;
+		if (isset($_POST["id_type_parent"]) || isset($_POST["name_type_parent"]) || isset($_POST["image"])) {
+			$id = $_POST["id_type_parent"];
+			$name = $_POST["name_type_parent"];
+			$image = $_POST["image"];
+		}
 
+		$query = "UPDATE type_parent SET 
+				name_type_parent = '".$name."',
+				image = '".$image."' WHERE id_type_parent = '".$id."'"; 
+		if (mysqli_query($conn, $query)) {
+			echo json_encode([
+			"result" => "true",
+			"message" => "update parent successful"
+			]);
+		}else{
+			echo json_encode([
+			"result" => "false",
+			"message" => "error : ".$query."</br>".$conn->error
+			]);
+		}
+
+		mysqli_close($conn);
 	}
 
  ?>
